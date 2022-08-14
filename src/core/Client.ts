@@ -86,8 +86,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) {
 
 		this.store.bind(this.client.ev);
 
-		this.client.ev.on("messages.upsert", async ({ messages, type }) => {
-			const M = new Message(messages[0], this);
+		this.client.ev.on("messages.upsert", ({ messages, type }) => {
+			const M: Message = new Message(messages[0], this);
 
 			if (
 				M.type === "protocolMessage" ||
