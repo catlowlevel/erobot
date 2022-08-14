@@ -124,7 +124,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) {
 						return void emitParticipantsUpdate("promote");
 				}
 			}
-			return void this.emit("new_message", await M.simplify());
+			return void this.emit("new_message", M);
 		});
 		this.client.ev.on("connection.update", (update) => {
 			const { connection, lastDisconnect } = update;
