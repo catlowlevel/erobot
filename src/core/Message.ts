@@ -120,6 +120,14 @@ export class Message {
 		}
 	}
 
+	public typing = async (): Promise<void> => {
+		await this.client.client.presenceSubscribe(this.from);
+		return this.client.client.sendPresenceUpdate("composing", this.from);
+	};
+	public typingDone = async () => {
+		return this.client.client.sendPresenceUpdate("paused", this.from);
+	};
+
 	public simplify = async (): Promise<Message> => {
 		if (this.chat === "dm") return this;
 		return await this.client.client

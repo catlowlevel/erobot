@@ -58,12 +58,16 @@ export class MessageHandler {
 			`Executing command ${cmd} from ${title} by ${M.sender.username}`
 		);
 
-		return command
-			.execute(M, this.formatArgs(args))
-			.then(() => console.log(`Command ${cmd} executed!`))
-			.catch((err) =>
-				console.log(`Command ${cmd} fail to execute!\nReason : ${err}`)
-			);
+		return M.typing().then(async () => {
+			try {
+				await command.execute(M, this.formatArgs(args));
+				console.log(`Command ${cmd} executed!`);
+			} catch (err) {
+				console.log(`Command ${cmd} fail to execute!\nReason : ${err}`);
+			} finally {
+				return M.typingDone();
+			}
+		});
 	};
 	private formatArgs = (args: string[]): IArgs => {
 		args.splice(0, 1);
