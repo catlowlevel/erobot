@@ -63,8 +63,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) {
 			printQRInTerminal: true,
 			auth: state,
 			logger: P({ level: "fatal" }),
-			// logger,
 			msgRetryCounterMap,
+			browser: ["Erobot", "-_-", "0.3"],
 			keepAliveIntervalMs: 1000 * 30,
 			// implement to handle retries
 			getMessage: async (key) => {
