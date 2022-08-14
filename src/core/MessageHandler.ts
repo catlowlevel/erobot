@@ -26,7 +26,7 @@ export class MessageHandler {
 	constructor(private client: Client) {
 		console.log("=====Loading commands========");
 		const files = readdirSync(join(...this.path));
-		for (const file of files) {
+		for (const file of files.filter((file) => file.startsWith("_") === false)) {
 			this.path.push(file);
 			const command: BaseCommand = new (require(join(...this.path)).default)();
 			if (!command) {
