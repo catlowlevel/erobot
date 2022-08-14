@@ -1,0 +1,45 @@
+{
+	"name": "new-ts-template",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "npm run build && node dist/index.js",
+		"dev": "nodemon --watch src --ext js,ts --exec node --no-warnings --loader ts-node/esm src/index.ts",
+		"build": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^18.7.2",
+		"input": "^1.0.1",
+		"nodemon": "^2.0.19",
+		"ts-node": "^10.9.1",
+		"typed-emitter": "^2.1.0",
+		"typescript": "^4.7.4"
+	},
+	"dependencies": {
+		"@adiwajshing/baileys": "https://github.com/adiwajshing/Baileys.git#19484e5cfced4c2d229687e74f714534375a57a3",
+		"@adiwajshing/keyed-db": "^0.2.4",
+		"@hapi/boom": "^10.0.0",
+		"@typegoose/typegoose": "^9.9.0",
+		"@types/node": "^18.7.2",
+		"binance-api-node": "^0.11.43",
+		"cheerio": "^1.0.0-rc.12",
+		"dotenv": "^16.0.1",
+		"get-urls": "^11.0.0",
+		"mongoose": "6.5.0",
+		"node-fetch-commonjs": "^3.1.1",
+		"p-map": "^2.1.0",
+		"pino": "^8.4.0",
+		"pino-pretty": "^9.0.0",
+		"qrcode-terminal": "^0.12.0",
+		"technicalindicators": "^3.1.0",
+		"telegram": "^2.10.7",
+		"tradingview-ws": "^0.0.3",
+		"wa-sticker-formatter": "^4.3.2",
+		"yt-dlp-wrap": "^2.3.11",
+		"ytdl-core": "^4.11.0"
+	}
+}
