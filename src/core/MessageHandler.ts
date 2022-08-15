@@ -53,7 +53,7 @@ export class MessageHandler {
 		const cmd =
 			args[0].slice(1).trim().split(/ +/).shift()?.toLowerCase() || "";
 		const command = this.commands?.get(cmd);
-		if (!command) return M.reply("Unknown command!");
+		if (!command) return M.reply("Perintah tidak dikenal!");
 		console.log(
 			`Executing command ${cmd} from ${title} by ${M.sender.username}`
 		);
@@ -64,6 +64,7 @@ export class MessageHandler {
 				console.log(`Command ${cmd} executed!`);
 			} catch (err) {
 				console.log(`Command ${cmd} fail to execute!\nReason : ${err}`);
+				await M.reply("Terjadi kesalahan.").catch(console.error);
 			} finally {
 				return M.typingDone();
 			}
