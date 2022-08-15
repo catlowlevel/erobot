@@ -18,6 +18,7 @@ import { Message } from ".";
 import P from "pino";
 import { join } from "path";
 import { ROOT_DIR } from "..";
+import { BinanceClient } from "../service/binance/binance";
 
 type Events = {
 	new_call: (call: WACallEvent) => void;
@@ -34,6 +35,7 @@ interface IEvent {
 export class Client extends (EventEmitter as new () => TypedEmitter<Events>) {
 	client: ReturnType<typeof Baileys>;
 	store: ReturnType<typeof makeInMemoryStore>;
+	binanceClient: BinanceClient;
 	// public contact = new Contact(this);
 	constructor() {
 		super();
@@ -43,6 +45,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) {
 		setInterval(() => {
 			this.store.writeToFile(join(ROOT_DIR, "store", "stores.json"));
 		}, 10_000);
+
+		this.binanceClient = new BinanceClient(this, true);
 	}
 	public correctJid = (jid: string): string =>
 		`${jid.split("@")[0].split(":")[0]}@s.whatsapp.net`;
