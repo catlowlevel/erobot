@@ -11,8 +11,10 @@ export default class extends BaseCommand {
 		if (!!!input) {
 			return M.reply(`Symbol name required!`);
 		}
-		const symbol = symbols.find((s) =>
-			s.toLocaleLowerCase().startsWith(input.toLocaleLowerCase())
+		const symbol = symbols.find(
+			(s) =>
+				s.toLocaleLowerCase().startsWith(input.toLocaleLowerCase()) ||
+				s.toLocaleLowerCase().includes(input.toLocaleLowerCase())
 		);
 		if (!symbol) return M.reply("Invalid symbol");
 		const symbolData = await binance.getSymbolData(symbol);
