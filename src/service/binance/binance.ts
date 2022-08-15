@@ -90,7 +90,7 @@ export class BinanceClient {
 				resolved: false,
 				amGreater: price > data.currentPrice,
 			};
-			await this.client.client.sendMessage(
+			await this.client.sendMessage(
 				msg.key.remoteJid!,
 				{
 					text: `Alert added for ${symbol} at ${price}\nCurrent price: ${data.currentPrice}`,

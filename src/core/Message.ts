@@ -111,7 +111,7 @@ export class Message {
 						remoteJid: this.from,
 						fromMe:
 							this.client.correctJid(participant) ===
-							this.client.correctJid(this.client.client.user?.id || ""),
+							this.client.correctJid(this.client.user?.id || ""),
 						id: stanzaId,
 						participant,
 					},
@@ -121,16 +121,16 @@ export class Message {
 	}
 
 	public typing = async (): Promise<void> => {
-		await this.client.client.presenceSubscribe(this.from);
-		return this.client.client.sendPresenceUpdate("composing", this.from);
+		await this.client.presenceSubscribe(this.from);
+		return this.client.sendPresenceUpdate("composing", this.from);
 	};
 	public typingDone = async () => {
-		return this.client.client.sendPresenceUpdate("paused", this.from);
+		return this.client.sendPresenceUpdate("paused", this.from);
 	};
 
 	public simplify = async (): Promise<Message> => {
 		if (this.chat === "dm") return this;
-		return await this.client.client
+		return await this.client
 			.groupMetadata(this.from)
 			.then((res) => {
 				const result = res;
@@ -169,13 +169,13 @@ export class Message {
 			buttonText?: string;
 			title?: string;
 		} = {}
-	): Promise<ReturnType<typeof this.client.client.sendMessage>> => {
-		if (this.from !== this.client.client.user?.id) {
-			this.client.client.readMessages([this.message.key]);
+	): Promise<ReturnType<typeof this.client.sendMessage>> => {
+		if (this.from !== this.client.user?.id) {
+			this.client.readMessages([this.message.key]);
 		}
 		if (type === "text" && Buffer.isBuffer(content))
 			throw new Error("Cannot send Buffer as a text message");
-		return this.client.client.sendMessage(
+		return this.client.sendMessage(
 			this.from,
 			{
 				[type]: content,
@@ -204,8 +204,8 @@ export class Message {
 	public react = async (
 		emoji: string,
 		key: proto.IMessageKey = this.M.key
-	): Promise<ReturnType<typeof this.client.client.sendMessage>> =>
-		await this.client.client.sendMessage(this.from, {
+	): Promise<ReturnType<typeof this.client.sendMessage>> =>
+		await this.client.sendMessage(this.from, {
 			react: {
 				text: emoji,
 				key,
