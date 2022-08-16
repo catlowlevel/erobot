@@ -19,6 +19,7 @@ import P from "pino";
 import { join } from "path";
 import { ROOT_DIR } from "..";
 import { BinanceClient } from "../service/binance/binance";
+import { Samehadaku } from "../service/samehadaku/samehadaku";
 export type client = ReturnType<typeof Baileys>;
 
 type Events = {
@@ -39,7 +40,8 @@ export class Client
 {
 	private client!: client;
 	store: ReturnType<typeof makeInMemoryStore>;
-	binanceClient: BinanceClient;
+	binance: BinanceClient;
+	samehadaku: Samehadaku;
 	// public contact = new Contact(this);
 	constructor() {
 		super();
@@ -50,8 +52,21 @@ export class Client
 			this.store.writeToFile(join(ROOT_DIR, "store", "stores.json"));
 		}, 10_000);
 
-		this.binanceClient = new BinanceClient(this, true);
+		this.initService();
 	}
+
+	async initService() {
+		await new Promise<void>((res) => {
+			setInterval(() => {
+				if (this.condition === "connected") {
+					res();
+				}
+			}, 500);
+		});
+		this.binance = new BinanceClient(this, true);
+		this.samehadaku = new Samehadaku(this);
+	}
+
 	public correctJid = (jid: string): string =>
 		`${jid.split("@")[0].split(":")[0]}@s.whatsapp.net`;
 
