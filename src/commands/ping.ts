@@ -6,7 +6,7 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
 	name = "ping";
 	public override execute = async (M: Message, args: IArgs): Promise<any> => {
-		if (args.args[0].startsWith("b")) {
+		if (args.args[0]?.startsWith("b")) {
 			return this.client.sendMessage(
 				M.from,
 				{
@@ -23,7 +23,7 @@ export default class extends BaseCommand {
 			);
 		}
 
-		if (args.args[0].startsWith("l")) {
+		if (args.args[0]?.startsWith("l")) {
 			const sections: proto.Message.ListMessage.ISection[] = [
 				{
 					title: "Ping",
