@@ -170,9 +170,6 @@ export class Message {
 			title?: string;
 		} = {}
 	): Promise<ReturnType<typeof this.client.sendMessage>> => {
-		if (this.from !== this.client.user?.id) {
-			this.client.readMessages([this.message.key]);
-		}
 		if (type === "text" && Buffer.isBuffer(content))
 			throw new Error("Cannot send Buffer as a text message");
 		return this.client.sendMessage(

@@ -60,6 +60,9 @@ export class MessageHandler {
 
 		return M.typing().then(async () => {
 			try {
+				if (M.from !== this.client.user?.id) {
+					this.client.readMessages([M.message.key]);
+				}
 				await command.execute(M, this.formatArgs(args));
 				console.log(`Command ${cmd} executed!`);
 			} catch (err) {
