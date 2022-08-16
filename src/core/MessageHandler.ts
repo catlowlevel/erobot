@@ -48,7 +48,11 @@ export class MessageHandler {
 		const title =
 			M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
 		if (!args[0] || !args[0].startsWith(prefix)) {
-			return void console.log(`${M.sender.username}@${title} => ${M.content}`);
+			return M.simplify().then((M) => {
+				const title =
+					M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
+				return console.log(`${M.sender.username}@${title} => ${M.content}`);
+			});
 		}
 		const cmd =
 			args[0].slice(1).trim().split(/ +/).shift()?.toLowerCase() || "";
