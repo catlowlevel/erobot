@@ -44,6 +44,16 @@ export class MessageHandler {
 
 	public handleMessage = (M: Message) => {
 		const prefix = ".";
+		let max = 3;
+		while (
+			M.content.startsWith(prefix) &&
+			M.content.at(1) === " " &&
+			max-- > 0
+		) {
+			console.log("max", max, M.content);
+			if (!max) break;
+			M.content = M.content.replace(" ", "");
+		}
 		const args = M.content.split(" ");
 		const title =
 			M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
@@ -55,7 +65,7 @@ export class MessageHandler {
 			});
 		}
 		const cmd =
-			args[0].slice(1).trim().split(/ +/).shift()?.toLowerCase() || "";
+			M.content.slice(1).trim().split(/ +/).shift()?.toLowerCase() || "";
 		const command = this.commands?.get(cmd);
 		if (!command) return M.reply("Perintah tidak dikenal!");
 		console.log(
