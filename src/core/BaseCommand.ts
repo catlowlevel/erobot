@@ -12,4 +12,22 @@ export class BaseCommand {
 	public client!: Client;
 
 	public handler!: MessageHandler;
+
+	protected getIndex = (array: string[], search: string) =>
+		array.findIndex((val) => val.startsWith(search));
+
+	protected getFlag<T extends string>(
+		flags: string[],
+		flag: string,
+		expected?: T[],
+		def?: T
+	): T | undefined {
+		const index = this.getIndex(flags, flag);
+		if (index < 0) return def;
+		const flagValue = flags[index].split("=")[1].toLowerCase() as T;
+		if (expected && def) {
+			if (index < 0 || !expected?.includes(flagValue)) return def;
+		}
+		return flagValue;
+	}
 }
