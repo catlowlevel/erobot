@@ -154,15 +154,18 @@ export class Client
 				}
 			}
 			if (connection === "connecting") {
+				this.condition = "connecting";
 				console.log("Connecting to WhatsApp...");
 			}
 			if (connection === "open") {
+				this.condition = "connected";
 				console.log("Connected to WhatsApp");
 			}
 		});
 		this.client.ev.on("creds.update", saveCreds);
 		return this.client;
 	}
+	public condition!: "connected" | "connecting" | "logged_out";
 
 	public end!: client["end"];
 	public ev!: client["ev"];
