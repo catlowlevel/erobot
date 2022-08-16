@@ -21,6 +21,18 @@
   resolved "https://registry.yarnpkg.com/@adiwajshing/keyed-db/-/keyed-db-0.2.4.tgz#2a09e88fce20b2672deb60a7750c5fe3ab0dfd99"
   integrity sha512-yprSnAtj80/VKuDqRcFFLDYltoNV8tChNwFfIgcf6PGD4sjzWIBgs08pRuTqGH5mk5wgL6PBRSsMCZqtZwzFEw==
 
+"@commonify/lowdb@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@commonify/lowdb/-/lowdb-3.0.0.tgz#09c33ffd19057eab67440a1dc22847569407cafe"
+  integrity sha512-GwZq68zStvMENxEzN6EE8pacgY2Rlrs5L00BpvB6NvpDW96JUxIa8PJXd9T7qIdx07ro0ITBtw6HfSJw/qboGw==
+  dependencies:
+    "@commonify/steno" "2.1.0"
+
+"@commonify/steno@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@commonify/steno/-/steno-2.1.0.tgz#7d1e68a0e239bf4fd35abfd167006a3e56140b28"
+  integrity sha512-3W0LmYb84EU82Ky18M+D0tB33W66ccoC/Ot/8mm3uBQFuaTpiWaoxntQGBTL3+bIpV4e77ks53IE3sy9BRFBxA==
+
 "@cryptography/aes@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@cryptography/aes/-/aes-0.1.1.tgz#0096726a6a2a2cfc2e8bddf3997e98e49f1a224d"

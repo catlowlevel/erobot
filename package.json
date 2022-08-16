@@ -22,6 +22,7 @@
 	"dependencies": {
 		"@adiwajshing/baileys": "https://github.com/adiwajshing/Baileys.git#19484e5cfced4c2d229687e74f714534375a57a3",
 		"@adiwajshing/keyed-db": "^0.2.4",
+		"@commonify/lowdb": "^3.0.0",
 		"@hapi/boom": "^10.0.0",
 		"@typegoose/typegoose": "^9.9.0",
 		"@types/node": "^18.7.2",
