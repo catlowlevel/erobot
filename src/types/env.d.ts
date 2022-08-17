@@ -1,7 +1,8 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      MONGO_URI: string;
+      COINDAR_ACCESSTOKEN: string;
+      COINDAR_BASE_URL_API: string;
     }
   }
 }
