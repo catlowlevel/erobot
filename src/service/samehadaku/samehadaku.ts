@@ -52,8 +52,12 @@ export class Samehadaku {
 		this.db.data = posts;
 
 		await this.db.write();
-		console.log("saved new Posts", newPosts);
+		console.log(
+			"saved new Posts",
+			newPosts.map((p) => p.title)
+		);
 		for (const post of newPosts) {
+			// await this.sendPost("62895611963535-1631537374@g.us", post);
 			await this.sendPost("6282293787977-1527865416@g.us", post);
 		}
 		setTimeout(() => this.loop(), 1000 * 60 * 60);
