@@ -106,10 +106,13 @@ export class BinanceClient {
 			};
 			this.db.data?.push(alert);
 			this.db.write();
+			const gap = getPercentageChange(price, data.currentPrice);
 			return this.client.sendMessage(
 				msg.key.remoteJid!,
 				{
-					text: `Alert added for ${symbol} at ${price}\nCurrent price: ${data.currentPrice}`,
+					text: `Alert added for ${symbol} at ${price}\nCurrent price: ${
+						data.currentPrice
+					}\nGap : ${gap.toFixed(2)}%`,
 				},
 				{ quoted: msg }
 			);

@@ -8,18 +8,31 @@ export default class extends BaseCommand {
 		const binance = this.client.binance;
 		const symbols = await binance.getFuturesSymbols();
 		const input = args.args[0] || "";
-		if (!!!input) {
+
+		let symbol;
+		let price: number | undefined;
+
+		for (const arg of args.args) {
+			if (!symbol) {
+				symbol = symbols.find(
+					(s) =>
+						s.toLocaleLowerCase().startsWith(arg.toLocaleLowerCase()) ||
+						s.toLocaleLowerCase().includes(arg.toLocaleLowerCase())
+				);
+			}
+			try {
+				if (!price) price = Number(arg);
+			} catch (err) {
+				console.log(arg, "Is not a numner");
+			}
+		}
+		if (!args.args.length) {
 			return M.reply(`Symbol name required!`);
 		}
-		const symbol = symbols.find(
-			(s) =>
-				s.toLocaleLowerCase().startsWith(input.toLocaleLowerCase()) ||
-				s.toLocaleLowerCase().includes(input.toLocaleLowerCase())
-		);
 		if (!symbol) return M.reply("Invalid symbol");
-		const price = args.args[1] || "";
+		if (!price) return M.reply("Invalid price");
 		try {
-			return binance.addAlert(symbol, Number(price), M.message);
+			return binance.addAlert(symbol, price, M.message);
 		} catch (error) {
 			throw error;
 		}
