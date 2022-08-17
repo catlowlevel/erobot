@@ -1,27 +1,80 @@
 [
   {
-    "alertPrice": "23950",
-    "symbol": "BTCUSDT",
+    "alertPrice": "1000",
+    "symbol": "1000SHIBUSDT",
     "done": false,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": true,
-        "id": "3EB043600BE27F656308",
-        "participant": "62895611963535@s.whatsapp.net"
+        "fromMe": false,
+        "id": "2BF94D06C3A084C80030BC672B754B47",
+        "participant": "6282293787977@s.whatsapp.net"
       },
-      "messageTimestamp": 1660702316,
-      "pushName": "ERoBot",
-      "status": 2,
+      "messageTimestamp": 1660704254,
+      "pushName": "|",
       "message": {
-        "conversation": ".alert btc 23950"
+        "conversation": ".alert 1000"
+      }
+    },
+    "resolved": false,
+    "amGreater": true
+  },
+  {
+    "alertPrice": "1.8",
+    "symbol": "EOSUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "FD6525C2A879028E4CCB062584FC52A2",
+        "participant": "62895611963546@s.whatsapp.net"
       },
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": 1660702316
-        }
-      ]
+      "messageTimestamp": 1660704959,
+      "pushName": "ARXMIKU",
+      "message": {
+        "conversation": ".alert eos 1.8"
+      }
+    },
+    "resolved": false,
+    "amGreater": true
+  },
+  {
+    "alertPrice": "1.7",
+    "symbol": "EOSUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "A812E8A9273B5730FC4928CEA4BAB9E1",
+        "participant": "62895611963546@s.whatsapp.net"
+      },
+      "messageTimestamp": 1660705155,
+      "pushName": "ARXMIKU",
+      "message": {
+        "conversation": ".alert eos 1.7"
+      }
+    },
+    "resolved": false,
+    "amGreater": true
+  },
+  {
+    "alertPrice": "24500",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "BE1FB3F70A993A8DE978557BF08F52BE",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1660712934,
+      "pushName": "|",
+      "message": {
+        "conversation": ".alert btc 24500"
+      }
     },
     "resolved": false,
     "amGreater": true
