@@ -31,7 +31,7 @@ export class Samehadaku {
 				this.htmlCacheMap.delete(key);
 			});
 			this.htmlCacheMap = new Map<string, string>();
-		}, 1000 * 60);
+		}, 1000 * 60 * 60);
 
 		this.db = new Low(this.postAdapter);
 		this.db.write().then(() => {
@@ -56,7 +56,7 @@ export class Samehadaku {
 		for (const post of newPosts) {
 			await this.sendPost("6282293787977-1527865416@g.us", post);
 		}
-		setTimeout(() => this.loop, 1000 * 60);
+		setTimeout(() => this.loop(), 1000 * 60 * 60);
 	}
 
 	async sendPost(to: string, post: Post, reply?: proto.IWebMessageInfo) {
