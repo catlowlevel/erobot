@@ -5,6 +5,9 @@ import pMap from "p-map";
 import TypedEmitter from "typed-emitter";
 import { proto, WASocket } from "@adiwajshing/baileys";
 import { Client } from "../../core";
+import { JSONFile, Low } from "@commonify/lowdb";
+import { ROOT_DIR } from "../..";
+import { getPercentageChange } from "../../helper/utils";
 // prettier-ignore
 type Interval = "1m" | "3m" | "5m" | "15m" | "30m" | "1h" | "2h" | "4h" | "6h" | "8h" | "12h" | "1d" | "3d" | "1w" | "1M";
 
@@ -32,10 +35,6 @@ interface AlertType {
 	resolved: boolean;
 }
 
-interface AlertDB {
-	alerts: AlertType[];
-}
-
 type Events = {
 	alert: (data: {
 		symbol: string;
@@ -46,20 +45,35 @@ type Events = {
 };
 
 export class BinanceClient {
+	private alertAdapter = new JSONFile<AlertType[]>(
+		`${ROOT_DIR}/json/binance_alerts.json`
+	);
 	tickers = new Map<string, Candle[]>();
 	rsis = new Map<string, number[]>();
 	binanceClient: Binance;
 	evt: TypedEmitter<Events>;
 	private streamingCandles = false;
+	db: Low<AlertType[]>;
+	symbols: string[];
 	constructor(public client: Client, streamCandles: boolean = false) {
+		this.db = new Low(this.alertAdapter);
+		this.db.write().then(() => {
+			this.db.read().then(() => {
+				this.db.data ||= [];
+			});
+		});
+
 		this.binanceClient = binanceApiNode({});
 		this.evt = new EventEmitter() as TypedEmitter<Events>;
 		if (streamCandles) {
 			this.getFuturesSymbols().then((symbols) => {
 				this.streamCandles(symbols, "5m", 7, (data) => {
+					const currentPrice = data.candles[data.candles.length - 1].close;
+					this.handleAlert(data.symbol, currentPrice);
+
 					this.evt.emit("streamedSymbol", {
 						symbol: data.symbol,
-						currentPrice: data.candles[data.candles.length - 1].close,
+						currentPrice,
 					});
 				});
 			});
@@ -90,7 +104,9 @@ export class BinanceClient {
 				resolved: false,
 				amGreater: price > data.currentPrice,
 			};
-			await this.client.sendMessage(
+			this.db.data?.push(alert);
+			this.db.write();
+			return this.client.sendMessage(
 				msg.key.remoteJid!,
 				{
 					text: `Alert added for ${symbol} at ${price}\nCurrent price: ${data.currentPrice}`,
@@ -122,57 +138,64 @@ export class BinanceClient {
 		});
 	}
 
-	// async handleAlert(symbol: string, currentPrice: number) {
-	// 	this.dbAlert.data.alerts.forEach((alert, idx) => {
-	// 		if (alert.symbol !== symbol) return;
-	// 		if (alert.done) return;
+	async handleAlert(symbol: string, currentPrice: number) {
+		this.db.data?.forEach((alert, idx) => {
+			if (alert.symbol !== symbol) return;
+			if (alert.done) return;
 
-	// 		const alertPrice = Number.parseFloat(alert.alertPrice);
-	// 		if (alert.amGreater === undefined) {
-	// 			alert.amGreater = alertPrice > currentPrice;
-	// 			this.dbAlert.save().then(() => console.log("Saved alert on amGreater"));
-	// 		}
+			const alertPrice = Number.parseFloat(alert.alertPrice);
+			if (alert.amGreater === undefined) {
+				alert.amGreater = alertPrice > currentPrice;
+				this.db.write().then(() => console.log("Saved alert on amGreater"));
+			}
 
-	// 		const percentChange = getPercentageChange(currentPrice, alertPrice);
-	// 		const crossOrClose =
-	// 			alert.amGreater === false
-	// 				? currentPrice <= alertPrice
-	// 				: currentPrice > alertPrice;
+			const percentChange = getPercentageChange(currentPrice, alertPrice);
+			const crossOrClose =
+				alert.amGreater === false
+					? currentPrice <= alertPrice
+					: currentPrice > alertPrice;
 
-	// 		// console.log(
-	// 		// 	"handleAlert",
-	// 		// 	symbol,
-	// 		// 	currentPrice,
-	// 		// 	alertPrice,
-	// 		// 	percentChange,
-	// 		// 	crossOrClose,
-	// 		// 	alert.amGreater
-	// 		// );
+			// console.log(
+			// 	"handleAlert",
+			// 	"symbol",
+			// 	symbol,
+			// 	"currentPrice",
+			// 	currentPrice,
+			// 	"alertPrice",
+			// 	alertPrice,
+			// 	"percentChange",
+			// 	percentChange,
+			// 	"crossOrClose",
+			// 	crossOrClose,
+			// 	"alert.amGreater",
+			// 	alert.amGreater
+			// );
 
-	// 		if (percentChange <= 0.01 || crossOrClose) {
-	// 			// this.evt.emit("alert", { symbol, currentPrice, alert });
-	// 			alert.done = true;
-	// 			this.sock
-	// 				.sendMessage(
-	// 					alert.msg.key.remoteJid,
-	// 					{
-	// 						text: `Alert for ${symbol} at ${alertPrice} triggered at ${currentPrice}`,
-	// 					},
-	// 					{ quoted: alert.msg }
-	// 				)
-	// 				.then(() => {
-	// 					const idx = this.dbAlert.data.alerts.indexOf(alert);
-	// 					if (idx > -1) {
-	// 						this.dbAlert.data.alerts.splice(idx, 1);
-	// 						this.dbAlert.save().then(() => console.log("Saved alert"));
-	// 					}
-	// 				})
-	// 				.catch(() => {
-	// 					alert.done = false;
-	// 				});
-	// 		}
-	// 	});
-	// }
+			if (percentChange <= 0.01 || crossOrClose) {
+				// this.evt.emit("alert", { symbol, currentPrice, alert });
+				alert.done = true;
+				this.client
+					.sendMessage(
+						alert.msg.key.remoteJid!,
+						{
+							// text: `Alert for ${symbol} at ${alertPrice} triggered at ${currentPrice}`,
+							text: `⏰ Alert triggered! ⏰\nFor ${symbol} at ${alertPrice}\nCurrent Price : ${currentPrice}`,
+						},
+						{ quoted: alert.msg }
+					)
+					.then(() => {
+						const idx = this.db.data?.indexOf(alert) ?? -1;
+						if (idx > -1) {
+							this.db.data?.splice(idx, 1);
+							this.db.write().then(() => console.log("Saved alert"));
+						}
+					})
+					.catch(() => {
+						alert.done = false;
+					});
+			}
+		});
+	}
 
 	async streamCandles(
 		pairs: string[],
@@ -231,7 +254,6 @@ export class BinanceClient {
 			// });
 			// const currentRSI = rsi[rsi.length - 1];
 			// const previousRSI = rsi[rsi.length - 2];
-
 			if (candle.isFinal) {
 				candles.push({
 					open: Number(candle.open),
@@ -292,6 +314,7 @@ export class BinanceClient {
 
 	async getFuturesSymbols() {
 		const exchangeInfo = await this.binanceClient.futuresExchangeInfo();
-		return exchangeInfo.symbols.map((s) => s.symbol);
+		if (!this.symbols) this.symbols = exchangeInfo.symbols.map((s) => s.symbol);
+		return this.symbols;
 	}
 }

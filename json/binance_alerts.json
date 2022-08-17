@@ -1,0 +1,29 @@
+[
+  {
+    "alertPrice": "23950",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "3EB043600BE27F656308",
+        "participant": "62895611963535@s.whatsapp.net"
+      },
+      "messageTimestamp": 1660702316,
+      "pushName": "ERoBot",
+      "status": 2,
+      "message": {
+        "conversation": ".alert btc 23950"
+      },
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": 1660702316
+        }
+      ]
+    },
+    "resolved": false,
+    "amGreater": true
+  }
+]
