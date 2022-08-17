@@ -7,7 +7,6 @@ export default class extends BaseCommand {
 	public override execute = async (M: Message, args: IArgs): Promise<any> => {
 		const binance = this.client.binance;
 		const symbols = await binance.getFuturesSymbols();
-		const input = args.args[0] || "";
 
 		let symbol;
 		let price: number | undefined;
