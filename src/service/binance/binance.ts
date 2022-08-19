@@ -48,18 +48,30 @@ export class BinanceClient {
 	private alertAdapter = new JSONFile<AlertType[]>(
 		`${ROOT_DIR}/json/binance_alerts.json`
 	);
+	db: Low<AlertType[]>;
+	private pndAdapter = new JSONFile<
+		Record<string, { createdAt: number; lastPrice: number }>
+	>(`${ROOT_DIR}/json/binance_pnd.json`);
+	dbPnd: Low<Record<string, { createdAt: number; lastPrice: number }>>;
+
 	tickers = new Map<string, Candle[]>();
 	rsis = new Map<string, number[]>();
 	binanceClient: Binance;
 	evt: TypedEmitter<Events>;
 	private streamingCandles = false;
-	db: Low<AlertType[]>;
 	symbols: string[];
 	constructor(public client: Client, streamCandles: boolean = false) {
 		this.db = new Low(this.alertAdapter);
 		this.db.write().then(() => {
 			this.db.read().then(() => {
 				this.db.data ||= [];
+			});
+		});
+
+		this.dbPnd = new Low(this.pndAdapter);
+		this.dbPnd.write().then(() => {
+			this.dbPnd.read().then(() => {
+				this.dbPnd.data ||= {};
 			});
 		});
 
@@ -70,6 +82,7 @@ export class BinanceClient {
 				this.streamCandles(symbols, "5m", 7, (data) => {
 					const currentPrice = data.candles[data.candles.length - 1].close;
 					this.handleAlert(data.symbol, currentPrice);
+					this.handlePnD(data.symbol, currentPrice); //Pump And Dump
 
 					this.evt.emit("streamedSymbol", {
 						symbol: data.symbol,
@@ -139,6 +152,43 @@ export class BinanceClient {
 				rej("Timeout");
 			}, 1000 * 5);
 		});
+	}
+	async handlePnD(symbol: string, currentPrice: number) {
+		const current = this.pnd[symbol];
+		if (!current && !symbol.endsWith("BUSD")) {
+			console.log("New symbol", symbol);
+			this.pnd[symbol] = { createdAt: Date.now(), lastPrice: currentPrice };
+			await this.dbPnd.write();
+			return;
+		} else if (current) {
+			const isExpired = Date.now() - current.createdAt > 1000 * 60 * 10; //n minutes
+			const percentGap = getPercentageChange(current.lastPrice, currentPrice);
+			if (isExpired) {
+				this.pnd[symbol] = {
+					createdAt: Date.now(),
+					lastPrice: currentPrice,
+				};
+				await this.dbPnd.write();
+			} else if (percentGap > 5) {
+				const pompom = currentPrice > current.lastPrice;
+				const minutesAgo = Math.floor(
+					(Date.now() - current.createdAt) / 1000 / 60
+				);
+				this.client.sendMessage("120363023114788849@g.us", {
+					text: `${
+						pompom ? "📈📈📈 Pump" : "📉📉📉 Dump"
+					} alert for *${symbol}*\n${pompom ? "" : "-"}${percentGap.toFixed(
+						2
+					)}%\nLast Price (${minutesAgo} minutes ago): $${
+						current.lastPrice
+					}\nCurrent Price : $${currentPrice}`.trim(),
+				});
+
+				delete this.pnd[symbol];
+				await this.dbPnd.write();
+				console.log("pnd saved");
+			}
+		}
 	}
 
 	async handleAlert(symbol: string, currentPrice: number) {
@@ -319,5 +369,9 @@ export class BinanceClient {
 		const exchangeInfo = await this.binanceClient.futuresExchangeInfo();
 		if (!this.symbols) this.symbols = exchangeInfo.symbols.map((s) => s.symbol);
 		return this.symbols;
+	}
+
+	public get pnd() {
+		return this.dbPnd.data!;
 	}
 }
