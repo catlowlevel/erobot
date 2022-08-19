@@ -20,6 +20,8 @@ import { join } from "path";
 import { ROOT_DIR } from "..";
 import { BinanceClient } from "../service/binance/binance";
 import { Samehadaku } from "../service/samehadaku/samehadaku";
+import { Coindar } from "../service/coindar/coindar";
+import chalk, { ChalkFunction } from "chalk";
 export type client = ReturnType<typeof Baileys>;
 
 type Events = {
@@ -42,6 +44,7 @@ export class Client
 	store: ReturnType<typeof makeInMemoryStore>;
 	binance: BinanceClient;
 	samehadaku: Samehadaku;
+	coindar: Coindar;
 	// public contact = new Contact(this);
 	constructor() {
 		super();
@@ -65,6 +68,13 @@ export class Client
 		});
 		this.binance = new BinanceClient(this, true);
 		this.samehadaku = new Samehadaku(this);
+		this.coindar = new Coindar(this);
+		console.log(chalk.green("Services"), "Loaded!");
+	}
+
+	log(str: string, color: keyof typeof chalk = "blue") {
+		const c = chalk[color] as ChalkFunction;
+		console.log(c(str));
 	}
 
 	public correctJid = (jid: string): string =>
