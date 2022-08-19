@@ -1,25 +1,5 @@
 [
   {
-    "alertPrice": "1000",
-    "symbol": "1000SHIBUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": false,
-        "id": "2BF94D06C3A084C80030BC672B754B47",
-        "participant": "6282293787977@s.whatsapp.net"
-      },
-      "messageTimestamp": 1660704254,
-      "pushName": "|",
-      "message": {
-        "conversation": ".alert 1000"
-      }
-    },
-    "resolved": false,
-    "amGreater": true
-  },
-  {
     "alertPrice": "1.8",
     "symbol": "EOSUSDT",
     "done": false,
@@ -118,5 +98,85 @@
     },
     "resolved": false,
     "amGreater": true
+  },
+  {
+    "alertPrice": "2",
+    "symbol": "KNCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "D792A0EEEE90FD4508B9B00469BA4B8F",
+        "participant": "62895611963546@s.whatsapp.net"
+      },
+      "messageTimestamp": 1660775699,
+      "pushName": "ARXMIKU",
+      "message": {
+        "conversation": ".alert knc 2"
+      }
+    },
+    "resolved": false,
+    "amGreater": true
+  },
+  {
+    "alertPrice": "23700",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "D5A190319AE62027ED49E2FAF74C288B",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1660813766,
+      "pushName": "|",
+      "message": {
+        "conversation": ".alert btc 23700"
+      }
+    },
+    "resolved": false,
+    "amGreater": true
+  },
+  {
+    "alertPrice": "20202",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": false,
+        "id": "F3AF973184882F1BCC7E737E63FFEEBA",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1660825475,
+      "pushName": "|",
+      "message": {
+        "conversation": ".alert btc 20202"
+      }
+    },
+    "resolved": false,
+    "amGreater": false
+  },
+  {
+    "alertPrice": "22500",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "A3852769DE111C6C481FF5022050617C",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1660875881,
+      "pushName": "|",
+      "message": {
+        "conversation": ".alert btc 22500"
+      }
+    },
+    "resolved": false,
+    "amGreater": false
   }
 ]
