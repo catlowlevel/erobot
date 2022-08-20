@@ -160,20 +160,20 @@
     "amGreater": false
   },
   {
-    "alertPrice": "22500",
-    "symbol": "BTCUSDT",
+    "alertPrice": "1585",
+    "symbol": "ETHUSDT",
     "done": false,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
         "fromMe": false,
-        "id": "A3852769DE111C6C481FF5022050617C",
+        "id": "AA2F684F9DF96198DB81CC25D2F89067",
         "participant": "6282293787977@s.whatsapp.net"
       },
-      "messageTimestamp": 1660875881,
+      "messageTimestamp": 1660974657,
       "pushName": "|",
       "message": {
-        "conversation": ".alert btc 22500"
+        "conversation": ".alert eth 1585"
       }
     },
     "resolved": false,
