@@ -171,15 +171,21 @@ export class BinanceClient {
 				await this.dbPnd.write();
 			} else if (percentGap > 5) {
 				const pompom = currentPrice > current.lastPrice;
-				const minutesAgo = Math.floor(
-					(Date.now() - current.createdAt) / 1000 / 60
-				);
+				const time = Date.now() - current.createdAt;
+				let ago = Math.floor(time / 1000 / 60);
+				let seconds: number | undefined;
+				let useSecond = false;
+				if (ago === 0) {
+					useSecond = true;
+					seconds = Math.floor(time / 1000);
+					ago = seconds;
+				}
 				this.client.sendMessage("120363023114788849@g.us", {
 					text: `${
 						pompom ? "📈📈📈 Pump" : "📉📉📉 Dump"
 					} alert for *${symbol}*\n${pompom ? "" : "-"}${percentGap.toFixed(
 						2
-					)}%\nLast Price (${minutesAgo} minutes ago): $${
+					)}%\nLast Price (${ago} ${useSecond ? "seconds" : "minutes"} ago): $${
 						current.lastPrice
 					}\nCurrent Price : $${currentPrice}`.trim(),
 				});
