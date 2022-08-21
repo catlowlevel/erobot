@@ -34,7 +34,9 @@ export class Coindar {
 	TAGS_ENDPOINT = `${this.API}tags?access_token=${this.ACCESS_TOKEN}`;
 	EVENTS_ENDPOINT = `${this.API}events?access_token=${this.ACCESS_TOKEN}`;
 
-	private coinsAdapter = new JSONFile<DB>(`${ROOT_DIR}/json/coindar_coins.json`);
+	private coinsAdapter = new JSONFile<DB>(
+		`${ROOT_DIR}/json/coindar_coins.json`
+	);
 	private db: Low<DB>;
 
 	public get coins(): Coin[] {
@@ -51,6 +53,28 @@ export class Coindar {
 				await this.validateCoins();
 			})
 			.catch(console.error);
+	}
+
+	async fetchEvents(opt: {
+		coinIds?: string[];
+		startDate: string;
+		endDate?: string;
+	}) {
+		const urlParams = new URLSearchParams({
+			filter_date_start: opt.startDate,
+		});
+		if (opt.coinIds && opt.coinIds.length) {
+			urlParams.append("filter_coins", opt.coinIds.join());
+		} else if (opt.endDate) {
+			urlParams.append("filter_date_end", opt.endDate);
+		}
+		const url = `${this.EVENTS_ENDPOINT}&${urlParams}`;
+		console.log("url :>> ", url);
+		const response = await fetch(url);
+		if (response.status !== 200)
+			throw new Error("Fail to fetch events!" + response.statusText);
+		const events = (await response.json()) as Event[];
+		return events;
 	}
 
 	async validateCoins() {
@@ -81,5 +105,11 @@ export class Coindar {
 		};
 		await this.db.write();
 		console.log(`Coins fetched! Total : ${coins.length} coins`);
+	}
+
+	getCoin(symbol: string) {
+		return this.db.data?.coins.find((c) =>
+			c.symbol.toLowerCase().startsWith(symbol.toLowerCase())
+		);
 	}
 }
