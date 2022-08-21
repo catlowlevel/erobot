@@ -160,23 +160,23 @@
     "amGreater": false
   },
   {
-    "alertPrice": "1585",
-    "symbol": "ETHUSDT",
+    "alertPrice": "0.158",
+    "symbol": "NKNUSDT",
     "done": false,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
         "fromMe": false,
-        "id": "AA2F684F9DF96198DB81CC25D2F89067",
+        "id": "B83C9178914A358CD44EB04BA7AA7854",
         "participant": "6282293787977@s.whatsapp.net"
       },
-      "messageTimestamp": 1660974657,
+      "messageTimestamp": 1661052522,
       "pushName": "|",
       "message": {
-        "conversation": ".alert eth 1585"
+        "conversation": ".alert nkn 0.158"
       }
     },
     "resolved": false,
-    "amGreater": false
+    "amGreater": true
   }
 ]
