@@ -198,5 +198,45 @@
     },
     "resolved": false,
     "amGreater": true
+  },
+  {
+    "alertPrice": "1.08",
+    "symbol": "OPUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "DC9C98E99B8FA6C50C2CAAB30B19CF25",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1661139631,
+      "pushName": "|",
+      "message": {
+        "conversation": ".alert opusdt 1.08"
+      }
+    },
+    "resolved": false,
+    "amGreater": false
+  },
+  {
+    "alertPrice": "1",
+    "symbol": "OPUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": false,
+        "id": "E9A568274888022F0F0660A69204EADA",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1661141071,
+      "pushName": "|",
+      "message": {
+        "conversation": ".alert op 1"
+      }
+    },
+    "resolved": false,
+    "amGreater": false
   }
 ]
