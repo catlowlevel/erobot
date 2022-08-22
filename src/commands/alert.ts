@@ -13,11 +13,13 @@ export default class extends BaseCommand {
 
 		for (const arg of args.args) {
 			if (!symbol) {
-				symbol = symbols.find(
-					(s) =>
-						s.toLocaleLowerCase().startsWith(arg.toLocaleLowerCase()) ||
+				symbol = symbols
+					.filter((s) =>
 						s.toLocaleLowerCase().includes(arg.toLocaleLowerCase())
-				);
+					)
+					.find((s) =>
+						s.toLocaleLowerCase().startsWith(arg.toLocaleLowerCase())
+					);
 			}
 			try {
 				if (!price) price = Number(arg);
