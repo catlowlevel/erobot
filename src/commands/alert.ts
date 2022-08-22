@@ -32,10 +32,6 @@ export default class extends BaseCommand {
 		}
 		if (!symbol) return M.reply("Invalid symbol");
 		if (!price) return M.reply("Invalid price");
-		try {
-			return binance.addAlert(symbol, price, M.message);
-		} catch (error) {
-			throw error;
-		}
+		return binance.addAlert(symbol, price, M.message);
 	};
 }
