@@ -1,4 +1,4 @@
-import chalk, { ChalkFunction } from "chalk";
+import chalk from "chalk";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { ROOT_DIR } from "..";

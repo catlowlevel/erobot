@@ -1,5 +1,4 @@
 import { proto } from "@adiwajshing/baileys";
-import fetch from "node-fetch-commonjs";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { IArgs } from "../core/MessageHandler";

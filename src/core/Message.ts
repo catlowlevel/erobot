@@ -1,11 +1,6 @@
 import {
-	proto,
-	MessageType,
-	MediaType,
-	AnyMessageContent,
-	downloadContentFromMessage,
-	GroupMetadata,
-	DownloadableMessage,
+	AnyMessageContent, DownloadableMessage, downloadContentFromMessage,
+	GroupMetadata, MediaType, MessageType, proto
 } from "@adiwajshing/baileys";
 // import getUrls from 'get-urls'
 import { extractNumbers } from "../helper/utils";

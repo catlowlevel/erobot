@@ -1,6 +1,4 @@
 //Core implementation mostly copied from https://github.com/LuckyYam/WhatsApp-bot
-import EventEmitter from "events";
-import TypedEmitter from "typed-emitter";
 import Baileys, {
 	DisconnectReason,
 	fetchLatestBaileysVersion,
@@ -9,19 +7,21 @@ import Baileys, {
 	ParticipantAction,
 	proto,
 	useMultiFileAuthState,
-	WACallEvent,
+	WACallEvent
 } from "@adiwajshing/baileys";
 import { config } from "dotenv";
+import EventEmitter from "events";
+import TypedEmitter from "typed-emitter";
 // import { connect } from "mongoose";
 import { Boom } from "@hapi/boom";
-import { Message } from ".";
-import P from "pino";
+import chalk, { ChalkFunction } from "chalk";
 import { join } from "path";
+import P from "pino";
+import { Message } from ".";
 import { ROOT_DIR } from "..";
 import { BinanceClient } from "../service/binance/binance";
-import { Samehadaku } from "../service/samehadaku/samehadaku";
 import { Coindar } from "../service/coindar/coindar";
-import chalk, { ChalkFunction } from "chalk";
+import { Samehadaku } from "../service/samehadaku/samehadaku";
 export type client = ReturnType<typeof Baileys>;
 
 type Events = {

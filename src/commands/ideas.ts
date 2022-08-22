@@ -1,10 +1,10 @@
+import fetch from "node-fetch-commonjs";
+import { format as timeago } from "timeago.js";
+import { shortenUrl } from "../api/bitly/api";
 import { getIdeas, getPrices, searchSymbol } from "../api/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { IArgs } from "../core/MessageHandler";
-import { format as timeago } from "timeago.js";
-import fetch from "node-fetch-commonjs";
-import { shortenUrl } from "../api/bitly/api";
 
 export default class extends BaseCommand {
 	name = "ideas";

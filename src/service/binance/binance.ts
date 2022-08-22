@@ -1,12 +1,12 @@
-import EventEmitter from "events";
+import { proto } from "@adiwajshing/baileys";
+import { JSONFile, Low } from "@commonify/lowdb";
 import binanceApiNode, { Binance } from "binance-api-node";
+import EventEmitter from "events";
 import { writeFileSync } from "fs";
 import pMap from "p-map";
 import TypedEmitter from "typed-emitter";
-import { proto, WASocket } from "@adiwajshing/baileys";
-import { Client } from "../../core";
-import { JSONFile, Low } from "@commonify/lowdb";
 import { ROOT_DIR } from "../..";
+import { Client } from "../../core";
 import { getPercentageChange } from "../../helper/utils";
 // prettier-ignore
 type Interval = "1m" | "3m" | "5m" | "15m" | "30m" | "1h" | "2h" | "4h" | "6h" | "8h" | "12h" | "1d" | "3d" | "1w" | "1M";

@@ -1,10 +1,10 @@
-import fetch from "node-fetch-commonjs";
-import { Client } from "../../core";
-import * as cheerio from "cheerio";
-import { extractNumber } from "../../helper/utils";
-import { JSONFile, Low } from "@commonify/lowdb";
-import { ROOT_DIR } from "../..";
 import { proto } from "@adiwajshing/baileys";
+import { JSONFile, Low } from "@commonify/lowdb";
+import * as cheerio from "cheerio";
+import fetch from "node-fetch-commonjs";
+import { ROOT_DIR } from "../..";
+import { Client } from "../../core";
+import { extractNumber } from "../../helper/utils";
 export interface Post {
 	title: string;
 	eps: string;
