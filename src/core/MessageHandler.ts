@@ -95,7 +95,9 @@ export class MessageHandler {
 				);
 			} catch (err) {
 				this.client.log(
-					`Command ${cmd} fail to execute!\nReason : ${err}`,
+					`Command ${chalk.keyword(color2)(
+						cmd
+					)} fail to execute!\nReason : ${err}`,
 					"red"
 				);
 				await M.reply("Terjadi kesalahan.").catch(console.error);
