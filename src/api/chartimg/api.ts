@@ -25,7 +25,7 @@ export const validTf = (tf: string) => {
 	);
 };
 
-export const getMinitChartImg = async (symbol: string) => {
+export const getMiniChartImg = async (symbol: string) => {
 	const urlParam = new URLSearchParams({
 		key: API_KEY,
 		symbol,
