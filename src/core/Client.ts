@@ -69,7 +69,7 @@ export class Client
 		this.binance = new BinanceClient(this, true);
 		this.samehadaku = new Samehadaku(this);
 		this.coindar = new Coindar(this);
-		console.log(chalk.green("Services"), "Loaded!");
+		this.log("Service loaded");
 	}
 
 	log(str: string, color: keyof typeof chalk = "blue") {
@@ -90,7 +90,7 @@ export class Client
 		);
 		// const { clearState, saveState, state } = await useDatabaseAuth();
 		const { version, isLatest } = await fetchLatestBaileysVersion();
-		console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
+		this.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`, "green");
 		this.client = Baileys({
 			version,
 			printQRInTerminal: true,
@@ -167,24 +167,24 @@ export class Client
 					(lastDisconnect?.error as Boom)?.output?.statusCode !==
 					DisconnectReason.loggedOut
 				) {
-					console.log("Reconnecting...");
+					this.log("Reconnecting...", "yellow");
 					setTimeout(() => this.start(), 3000);
 				} else {
-					console.log("Disconnected.", true);
+					this.log("Disconnected.", "red");
 					// console.log("Deleting session and restarting");
 					// clearState();
 					// console.log("Session deleted");
-					console.log("Starting...");
+					this.log("Starting...", "blue");
 					setTimeout(() => this.start(), 3000);
 				}
 			}
 			if (connection === "connecting") {
 				this.condition = "connecting";
-				console.log("Connecting to WhatsApp...");
+				this.log("Connecting to WhatsApp...", "yellow");
 			}
 			if (connection === "open") {
 				this.condition = "connected";
-				console.log("Connected to WhatsApp");
+				this.log("Connected to WhatsApp", "green");
 			}
 		});
 		this.client.ev.on("creds.update", saveCreds);

@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 export const generateRandomUniqueTag = (n: number = 4): string => {
 	let max = 11;
 	if (n > max)
@@ -122,3 +124,11 @@ export const extractNumber = (str: string) => {
 	}
 	return
 };
+
+const colors: (keyof typeof chalk)[] = [
+	"blue", "red", "green", "cyan", "magenta", "yellow",
+];
+
+export const getRandomColor = () => {
+	return colors[(colors.length * Math.random()) | 0]
+}

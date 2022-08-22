@@ -1,6 +1,8 @@
+import chalk, { ChalkFunction } from "chalk";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { ROOT_DIR } from "..";
+import { getRandomColor } from "../helper/utils";
 import { BaseCommand } from "./BaseCommand";
 import { Client } from "./Client";
 import { Message } from "./Message";
@@ -24,22 +26,26 @@ export class MessageHandler {
 	commands = new Map<string, ICommand>();
 	private path = [ROOT_DIR, "src", "commands"];
 	constructor(private client: Client) {
-		console.log("=====Loading commands========");
+		//prettier-ignore
+
+		client.log("=====Loading commands========", "blue");
 		const files = readdirSync(join(...this.path));
 		for (const file of files.filter((file) => file.startsWith("_") === false)) {
 			this.path.push(file);
 			const command: BaseCommand = new (require(join(...this.path)).default)();
 			if (!command) {
-				console.log(`Command ${file} fail to load`);
+				console.log(`Command ${chalk.red(file)} fail to load`);
 				continue;
 			}
 			command.client = this.client;
 			command.handler = this;
 			this.commands.set(command.name, command);
-			console.log(`Command ${command.name} loaded!`);
+
+			const color = getRandomColor();
+			console.log(`Command ${chalk.keyword(color)(command.name)} loaded!`);
 			this.path.splice(this.path.indexOf(file), 1);
 		}
-		console.log("==============================");
+		client.log("==============================", "blue");
 	}
 
 	public handleMessage = (M: Message) => {
@@ -68,8 +74,13 @@ export class MessageHandler {
 			M.content.slice(1).trim().split(/ +/).shift()?.toLowerCase() || "";
 		const command = this.commands?.get(cmd);
 		if (!command) return M.reply("Perintah tidak dikenal!");
-		console.log(
-			`Executing command ${cmd} from ${title} by ${M.sender.username}`
+		const color = getRandomColor();
+		const color2 = getRandomColor();
+		this.client.log(
+			`Executing command ${chalk.keyword(color2)(cmd)} from ${title} by ${
+				M.sender.username
+			}`,
+			color
 		);
 
 		return M.typing().then(async () => {
@@ -78,9 +89,15 @@ export class MessageHandler {
 					this.client.readMessages([M.message.key]);
 				}
 				await command.execute(M, this.formatArgs(args));
-				console.log(`Command ${cmd} executed!`);
+				this.client.log(
+					`Command ${chalk.keyword(color2)(cmd)} executed!`,
+					color
+				);
 			} catch (err) {
-				console.log(`Command ${cmd} fail to execute!\nReason : ${err}`);
+				this.client.log(
+					`Command ${cmd} fail to execute!\nReason : ${err}`,
+					"red"
+				);
 				await M.reply("Terjadi kesalahan.").catch(console.error);
 			} finally {
 				return M.typingDone();
