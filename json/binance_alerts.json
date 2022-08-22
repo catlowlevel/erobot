@@ -178,5 +178,25 @@
     },
     "resolved": false,
     "amGreater": true
+  },
+  {
+    "alertPrice": "22678",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "8CBB0AECD847D19DAACD10795A64ECE5",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1661071250,
+      "pushName": "|",
+      "message": {
+        "conversation": ".alert btc 22678"
+      }
+    },
+    "resolved": false,
+    "amGreater": true
   }
 ]
