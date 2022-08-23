@@ -1,28 +1,28 @@
-import { prop, getModelForClass } from '@typegoose/typegoose'
-import { Document } from 'mongoose'
+import { prop, getModelForClass } from "@typegoose/typegoose";
+import { Document } from "mongoose";
 
 export class DisabledCommandsSchema {
     @prop({ type: String, required: true, unique: true })
-    public title!: string
+    public title!: string;
 
     @prop({ type: () => DisabledCommand, required: true, default: [] })
-    public disabledCommands!: DisabledCommand[]
+    public disabledCommands!: DisabledCommand[];
 }
 
 class DisabledCommand {
     @prop({ type: String, required: true })
-    public command!: string
+    public command!: string;
 
     @prop({ type: String, required: true })
-    public reason!: string
+    public reason!: string;
 
     @prop({ type: String, required: true })
-    public disabledBy!: string
+    public disabledBy!: string;
 
     @prop({ type: String, required: true })
-    public time!: string
+    public time!: string;
 }
 
-export type TCommandModel = DisabledCommandsSchema & Document
+export type TCommandModel = DisabledCommandsSchema & Document;
 
-export const disabledCommandsSchema = getModelForClass(DisabledCommandsSchema)
+export const disabledCommandsSchema = getModelForClass(DisabledCommandsSchema);

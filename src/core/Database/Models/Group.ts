@@ -1,20 +1,20 @@
-import { prop, getModelForClass } from '@typegoose/typegoose'
-import { Document } from 'mongoose'
+import { prop, getModelForClass } from "@typegoose/typegoose";
+import { Document } from "mongoose";
 
 export class GroupSchema {
     @prop({ type: String, unique: true, required: true })
-    public jid!: string
+    public jid!: string;
 
     @prop({ type: Boolean, required: true, default: false })
-    public events!: boolean
+    public events!: boolean;
 
     @prop({ type: Boolean, required: true, default: false })
-    public mods!: boolean
+    public mods!: boolean;
 
     @prop({ type: Boolean, required: true, default: false })
-    public nsfw!: boolean
+    public nsfw!: boolean;
 }
 
-export type TGroupModel = GroupSchema & Document
+export type TGroupModel = GroupSchema & Document;
 
-export const groupSchema = getModelForClass(GroupSchema)
+export const groupSchema = getModelForClass(GroupSchema);

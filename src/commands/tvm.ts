@@ -5,30 +5,30 @@ import { BaseCommand } from "../core/BaseCommand";
 import { IArgs } from "../core/MessageHandler";
 
 export default class extends BaseCommand {
-	name = "tvm";
-	public override execute = async (M: Message, args: IArgs): Promise<any> => {
-		if (args.args.length <= 0) return M.reply("Invalid arguments!");
+    name = "tvm";
+    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+        if (args.args.length <= 0) return M.reply("Invalid arguments!");
 
-		let symbol: string | undefined;
-		let tf = "1h";
-		for (const arg of args.args) {
-			console.log("arg :>> ", arg);
-			if (!symbol) {
-				const data = await searchSymbol(arg, "BINANCE");
-				if (data.length > 0) {
-					console.log("data[0] :>> ", data[0].description);
-					symbol = data[0].symbol;
-					continue;
-				}
-			}
-			if (validTf(arg)) {
-				tf = arg;
-				continue;
-			}
-		}
+        let symbol: string | undefined;
+        let tf = "1h";
+        for (const arg of args.args) {
+            console.log("arg :>> ", arg);
+            if (!symbol) {
+                const data = await searchSymbol(arg, "BINANCE");
+                if (data.length > 0) {
+                    console.log("data[0] :>> ", data[0].description);
+                    symbol = data[0].symbol;
+                    continue;
+                }
+            }
+            if (validTf(arg)) {
+                tf = arg;
+                continue;
+            }
+        }
 
-		if (!symbol) return M.reply("Invalid symbol!");
-		const buffer = await getMiniChartImg(symbol);
-		return M.reply(buffer, "image");
-	};
+        if (!symbol) return M.reply("Invalid symbol!");
+        const buffer = await getMiniChartImg(symbol);
+        return M.reply(buffer, "image");
+    };
 }
