@@ -1,45 +1,5 @@
 [
   {
-    "alertPrice": "1.8",
-    "symbol": "EOSUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "120363023114788849@g.us",
-        "fromMe": false,
-        "id": "FD6525C2A879028E4CCB062584FC52A2",
-        "participant": "62895611963546@s.whatsapp.net"
-      },
-      "messageTimestamp": 1660704959,
-      "pushName": "ARXMIKU",
-      "message": {
-        "conversation": ".alert eos 1.8"
-      }
-    },
-    "resolved": false,
-    "amGreater": true
-  },
-  {
-    "alertPrice": "1.7",
-    "symbol": "EOSUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "120363023114788849@g.us",
-        "fromMe": false,
-        "id": "A812E8A9273B5730FC4928CEA4BAB9E1",
-        "participant": "62895611963546@s.whatsapp.net"
-      },
-      "messageTimestamp": 1660705155,
-      "pushName": "ARXMIKU",
-      "message": {
-        "conversation": ".alert eos 1.7"
-      }
-    },
-    "resolved": false,
-    "amGreater": true
-  },
-  {
     "alertPrice": "24500",
     "symbol": "BTCUSDT",
     "done": false,
