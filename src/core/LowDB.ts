@@ -6,7 +6,7 @@ export class LowDB<T> implements Low<T> {
     read!: Low<T>["read"];
     adapter!: Low<T>["adapter"];
     private low: Low<T>;
-    constructor(filename: string, initialIfNull: T, onRead: (data: T) => void) {
+    constructor(filename: string, initialIfNull: T, onRead?: (data: T) => void) {
         this.low = new Low(new JSONFile<T>(filename));
         this["data"] = this.low["data"] as T;
         this["adapter"] = this.low["adapter"];
@@ -16,7 +16,7 @@ export class LowDB<T> implements Low<T> {
         this.write().then(async () => {
             await this.read();
             this.data ||= initialIfNull;
-            onRead(this.data);
+            onRead?.(this.data);
         });
     }
 }
