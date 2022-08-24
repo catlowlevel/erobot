@@ -1,9 +1,13 @@
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 
+@Command("alerts", {
+    description: "List alert yang aktif",
+    usage: "alerts",
+})
 export default class extends BaseCommand {
-    name = "alerts";
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         const alerts = this.client.binance.db.data ?? [];
         const filtered = alerts.filter((alert) => alert.msg.key.remoteJid === M.from && alert.done === false);

@@ -1,11 +1,15 @@
 import { getPrices, searchSymbol } from "../api/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { getPercentageChange } from "../helper/utils";
 
+@Command("price", {
+    description: "Harga coin",
+    usage: "price [coin]",
+})
 export default class extends BaseCommand {
-    name = "price";
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         const searchProms = args.args.map(async (arg) => {
             const data = await searchSymbol(arg, "BINANCE");

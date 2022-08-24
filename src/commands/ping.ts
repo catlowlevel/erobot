@@ -1,10 +1,15 @@
 import { proto } from "@adiwajshing/baileys";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 
+@Command("ping", {
+    description: "Cek status bot",
+    usage: "ping",
+    aliases: ["p"],
+})
 export default class extends BaseCommand {
-    name = "ping";
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         if (args.args[0]?.startsWith("b")) {
             return this.client.sendMessage(

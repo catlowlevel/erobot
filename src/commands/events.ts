@@ -1,11 +1,16 @@
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { formatDate } from "../helper/utils";
 import { Coin } from "../service/coindar/coindar";
 
+@Command("events", {
+    description: "Event dari coindar",
+    usage: "events [coin]",
+    aliases: ["event"],
+})
 export default class extends BaseCommand {
-    name = "events";
     get coindar() {
         return this.client.coindar;
     }

@@ -1,9 +1,13 @@
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 
+@Command("alert", {
+    description: "Alert harga coin",
+    usage: "alert [coin]",
+})
 export default class extends BaseCommand {
-    name = "alert";
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         const binance = this.client.binance;
         const symbols = await binance.getFuturesSymbols();

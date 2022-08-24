@@ -1,15 +1,19 @@
 import { proto } from "@adiwajshing/baileys";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { Post } from "../service/samehadaku/samehadaku";
 type UnUnion<T, S> = T extends S ? ([S] extends [T] ? T : never) : never;
 type NotUnion<T> = UnUnion<T, T>;
 type LiteralString<T extends string> = string extends T ? never : NotUnion<T>;
 
+@Command("samehadaku", {
+    description: "Post terakhir dari samehadaku",
+    usage: "samehadaku",
+    aliases: ["anime1"],
+})
 export default class extends BaseCommand {
-    name = "samehadaku";
-
     private get samehadaku() {
         return this.client.samehadaku;
     }

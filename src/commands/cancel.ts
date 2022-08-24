@@ -1,7 +1,12 @@
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 
+@Command("cancel", {
+    description: "Batalkan alert",
+    usage: "cancel",
+})
 export default class extends BaseCommand {
     name = "cancel";
     public override execute = async (M: Message, args: IArgs): Promise<any> => {

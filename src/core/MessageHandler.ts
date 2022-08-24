@@ -11,12 +11,20 @@ export interface IArgs {
     args: string[];
     flags: string[];
 }
+
+interface ICommandConfig {
+    description: string;
+    usage: string;
+    aliases?: string[];
+}
+
 export interface ICommand {
     /**Name of the command */
     name: string;
     /**The client of WhatsApp */
     client: Client;
     /**Handler of message */
+    config: ICommandConfig;
     handler: MessageHandler;
     /**Method for executing the command */
     execute(M: Message, args: IArgs): Promise<void | never>;
@@ -24,6 +32,7 @@ export interface ICommand {
 
 export class MessageHandler {
     commands = new Map<string, ICommand>();
+    aliases = new Map<string, ICommand>();
     private path = [ROOT_DIR, "src", "commands"];
     constructor(private client: Client) {
         //prettier-ignore
@@ -40,6 +49,7 @@ export class MessageHandler {
             command.client = this.client;
             command.handler = this;
             this.commands.set(command.name, command);
+            if (command.config.aliases) command.config.aliases.forEach((a) => this.aliases.set(a, command));
 
             const color = getRandomColor();
             console.log(`Command ${chalk.keyword(color)(command.name)} loaded!`);
@@ -65,7 +75,7 @@ export class MessageHandler {
             });
         }
         const cmd = M.content.slice(1).trim().split(/ +/).shift()?.toLowerCase() || "";
-        const command = this.commands?.get(cmd);
+        const command = this.commands?.get(cmd) || this.aliases?.get(cmd);
         if (!command) return M.reply("Perintah tidak dikenal!");
         const color = getRandomColor();
         const color2 = getRandomColor();

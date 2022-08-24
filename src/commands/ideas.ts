@@ -4,10 +4,15 @@ import { shortenUrl } from "../api/bitly/api";
 import { getIdeas, getPrices, searchSymbol } from "../api/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 
+@Command("ideas", {
+    description: "Ideas dari tradingview;",
+    usage: "ideas [symbol]",
+    aliases: ["idea", "ide"],
+})
 export default class extends BaseCommand {
-    name = "ideas";
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         const result = await searchSymbol(args.args[0]);
         if (!result) throw new Error("Gagal mencari symbol!");

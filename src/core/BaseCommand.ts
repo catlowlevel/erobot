@@ -1,9 +1,9 @@
 import { Client } from "./Client";
 import { Message } from "./Message";
-import { IArgs, MessageHandler } from "./MessageHandler";
+import { IArgs, ICommand, MessageHandler } from "./MessageHandler";
 
 export class BaseCommand {
-    constructor(public name: string) {}
+    constructor(public name: string, public config: ICommand["config"]) {}
 
     public execute = async (M: Message, args: IArgs): Promise<void | never> => {
         throw new Error("Command method not implemented");

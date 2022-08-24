@@ -2,10 +2,15 @@ import { getMiniChartImg, validTf } from "../api/chartimg/api";
 import { searchSymbol } from "../api/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 
+@Command("tvm", {
+    description: "Gambar mini chart dari tradingview",
+    usage: "tvm",
+    aliases: ["chartmini"],
+})
 export default class extends BaseCommand {
-    name = "tvm";
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         if (args.args.length <= 0) return M.reply("Invalid arguments!");
 

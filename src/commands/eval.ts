@@ -1,9 +1,14 @@
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
+import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 
+@Command("eval", {
+    description: "Jalankan kode javascript",
+    usage: "eval [kode]",
+    aliases: ["js"],
+})
 export default class extends BaseCommand {
-    name = "eval";
     public override execute = async (M: Message, { context }: IArgs): Promise<any> => {
         let out!: string;
         try {
