@@ -20,7 +20,8 @@ interface Candle {
     openTime: number;
 }
 
-type StreamCallback = (data: { symbol: string; candles: Candle[]; isFinal: boolean }) => void;
+type Data = { symbol: string; candles: Candle[]; isFinal: boolean };
+type StreamCallback = (data: Data) => void;
 
 interface AlertType {
     symbol: string;
