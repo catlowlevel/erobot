@@ -297,9 +297,6 @@ export class BinanceClient {
                     openTime: candle.startTime + 1000,
                     closeTime: candle.closeTime + 1000,
                 });
-                if (candles.length >= limit) {
-                    candles.shift();
-                }
             }
 
             streamCB({
@@ -319,6 +316,12 @@ export class BinanceClient {
                     : candles,
                 isFinal: candle.isFinal,
             });
+
+            if (candle.isFinal) {
+                if (candles.length >= limit) {
+                    candles.shift();
+                }
+            }
 
             // const current = this.rsis.get(symbol);
             // if (currentRSI > 70 && previousRSI < 70 && !current) {
