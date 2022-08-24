@@ -7,6 +7,7 @@ import pMap from "p-map";
 import TypedEmitter from "typed-emitter";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
+import { LowDB } from "../../core/LowDB";
 import { getPercentageChange } from "../../helper/utils";
 // prettier-ignore
 type Interval = "1m" | "3m" | "5m" | "15m" | "30m" | "1h" | "2h" | "4h" | "6h" | "8h" | "12h" | "1d" | "3d" | "1w" | "1M";
@@ -44,6 +45,7 @@ export class BinanceClient {
         `${ROOT_DIR}/json/binance_pnd.json`
     );
     dbPnd: Low<Record<string, { createdAt: number; lastPrice: number }>>;
+    bullishDb: LowDB<{ [symbol: string]: number }>;
 
     tickers = new Map<string, Candle[]>();
     rsis = new Map<string, number[]>();
@@ -52,6 +54,7 @@ export class BinanceClient {
     private streamingCandles = false;
     symbols: string[];
     constructor(public client: Client, streamCandles: boolean = false) {
+        this.bullishDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish.json`, {});
         this.db = new Low(this.alertAdapter);
         this.db.write().then(() => {
             this.db.read().then(() => {
@@ -70,10 +73,11 @@ export class BinanceClient {
         this.evt = new EventEmitter() as TypedEmitter<Events>;
         if (streamCandles) {
             this.getFuturesSymbols().then((symbols) => {
-                this.streamCandles(symbols, "5m", 7, (data) => {
+                this.streamCandles(symbols, "5m", 8, (data) => {
                     const currentPrice = data.candles[data.candles.length - 1].close;
                     this.handleAlert(data.symbol, currentPrice);
                     this.handlePnD(data.symbol, currentPrice); //Pump And Dump
+                    this.handleBnB(data); //Bullish And Bearish
 
                     this.evt.emit("streamedSymbol", {
                         symbol: data.symbol,
@@ -138,6 +142,36 @@ export class BinanceClient {
             }, 1000 * 5);
         });
     }
+
+    async handleBnB(data: Data) {
+        if (data.isFinal) {
+            const db = this.bullishDb.data;
+            if (!db[data.symbol]) db[data.symbol] = 0;
+
+            let bullish = true;
+            let count = 1;
+            for (const candle of data.candles) {
+                if (candle.open > candle.close) {
+                    if (count-- <= 0) {
+                        bullish = false;
+                        break;
+                    }
+                }
+            }
+
+            if (db[data.symbol]-- <= 0) db[data.symbol] = 0;
+            if (bullish) {
+                const currentPrice = data.candles[data.candles.length - 1].close;
+                const lastPrice = data.candles[0].close;
+                const percentGap = getPercentageChange(currentPrice, lastPrice);
+                const text = `${data.symbol} => ${percentGap.toFixed(2)}\n${lastPrice} => ${currentPrice}`;
+                console.log(text);
+                await this.client.sendMessage("62895611963535-1631537374@g.us", { text });
+            }
+            await this.bullishDb.write();
+        }
+    }
+
     async handlePnD(symbol: string, currentPrice: number) {
         const current = this.pnd[symbol];
         if (!current && !symbol.endsWith("BUSD")) {
