@@ -1,5 +1,5 @@
 import { getChartImg, validIndicator, validTf } from "../api/chartimg/api";
-import { searchSymbol } from "../api/tradingview/api";
+import { getPrices, searchSymbol } from "../api/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
@@ -13,7 +13,7 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         if (args.args.length <= 0) return M.reply("Invalid arguments!");
-
+        M.reply("Loading...");
         let data: { symbol: string; description: string }[] = [];
         let tf = "1h";
         let indicators: string[] = [];
@@ -40,16 +40,34 @@ export default class extends BaseCommand {
         }
 
         if (!data.length) return M.reply("Invalid symbol!");
-        const chartsProms = data.map(({ symbol }) => getChartImg(symbol, tf, indicators));
-        const buffers = await Promise.all(chartsProms);
+        const proms: {
+            charts: Promise<Buffer>[];
+            prices: Promise<
+                {
+                    price: number;
+                    price10m: number;
+                    priceHour: number;
+                    price4Hour: number;
+                    price24Hour: number;
+                    symbol: string;
+                }[]
+            >;
+        } = {
+            charts: data.map(({ symbol }) => getChartImg(symbol, tf, indicators)),
+            prices: getPrices(data.map((d) => d.symbol)),
+        };
+        const bufferProms = Promise.all(proms.charts);
+        const pricesProms = proms.prices;
+        const [buffers, prices] = await Promise.all([bufferProms, pricesProms]);
         let index = 0;
         for (const buffer of buffers) {
+            const currentPrice = prices[index].price;
             await M.reply(
                 buffer,
                 "image",
                 undefined,
                 undefined,
-                `*${data[index].symbol}* | *${data[index].description}*`
+                `*${data[index].symbol}* | *${data[index].description}* | *$${currentPrice}*`
             );
             index++;
         }
