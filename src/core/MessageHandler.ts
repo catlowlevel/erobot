@@ -81,15 +81,28 @@ export class MessageHandler {
         const color2 = getRandomColor();
         this.client.log(`Executing command ${chalk.keyword(color2)(cmd)} from ${title} by ${M.sender.username}`, color);
 
+        const lastTime = Date.now();
         return M.typing().then(async () => {
             try {
                 if (M.from !== this.client.user?.id) {
                     this.client.readMessages([M.message.key]);
                 }
                 await command.execute(M, this.formatArgs(args));
-                this.client.log(`Command ${chalk.keyword(color2)(cmd)} executed!`, color);
+                const timeTaken = Date.now() - lastTime;
+                this.client.log(
+                    `Command ${chalk.keyword(color2)(cmd)} executed after ${chalk.keyword(color2)(
+                        `${(timeTaken / 1000).toFixed(3)}s`
+                    )}!`,
+                    color
+                );
             } catch (err) {
-                this.client.log(`Command ${chalk.keyword(color2)(cmd)} fail to execute!\nReason : ${err}`, "red");
+                const timeTaken = Date.now() - lastTime;
+                this.client.log(
+                    `Command ${chalk.keyword(color2)(cmd)} fail to execute after ${chalk.keyword(color2)(
+                        `${(timeTaken / 1000).toFixed(3)}s`
+                    )}!\nReason : ${err}`,
+                    "red"
+                );
                 await M.reply("Terjadi kesalahan.").catch(console.error);
             } finally {
                 return M.typingDone();
