@@ -84,6 +84,18 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         const { saveCreds, state } = await useMultiFileAuthState(join(ROOT_DIR, "store", "auth"));
         // const { clearState, saveState, state } = await useDatabaseAuth();
         const { version, isLatest } = await fetchLatestBaileysVersion();
+        const today = new Date()
+            .toLocaleString("id", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+            })
+            .replace(/\./g, ":");
+        this.log(today, "yellow");
         this.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`, "green");
         this.client = Baileys({
             version,
