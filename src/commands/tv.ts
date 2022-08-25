@@ -14,16 +14,18 @@ export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         if (args.args.length <= 0) return M.reply("Invalid arguments!");
 
-        let symbol: string | undefined;
+        let data: { symbol: string; description: string }[] = [];
         let tf = "1h";
         let indicators: string[] = [];
         for (const arg of args.args) {
             console.log("arg :>> ", arg);
-            if (!symbol) {
-                const data = await searchSymbol(arg, "BINANCE");
-                if (data.length > 0) {
-                    console.log("data[0] :>> ", data[0].description);
-                    symbol = data[0].symbol;
+            if (data.length <= 2) {
+                const results = await searchSymbol(arg, "BINANCE");
+                if (results.length > 0) {
+                    const symbol = results[0].symbol;
+                    const description = results[0].description;
+                    console.log("result :>> ", description);
+                    data.push({ symbol, description });
                     continue;
                 }
             }
@@ -37,8 +39,20 @@ export default class extends BaseCommand {
             }
         }
 
-        if (!symbol) return M.reply("Invalid symbol!");
-        const buffer = await getChartImg(symbol, tf, indicators);
-        return M.reply(buffer, "image");
+        if (!data.length) return M.reply("Invalid symbol!");
+        const chartsProms = data.map(({ symbol }) => getChartImg(symbol, tf, indicators));
+        const buffers = await Promise.all(chartsProms);
+        let index = 0;
+        for (const buffer of buffers) {
+            await M.reply(
+                buffer,
+                "image",
+                undefined,
+                undefined,
+                `*${data[index].symbol}* | *${data[index].description}*`
+            );
+            index++;
+        }
+        return;
     };
 }
