@@ -386,7 +386,9 @@ export class BinanceClient {
     async getFuturesSymbols() {
         const exchangeInfo = await this.binanceClient.futuresExchangeInfo();
         if (!this.symbols) this.symbols = exchangeInfo.symbols.map((s) => s.symbol);
-        return this.symbols;
+        return this.symbols.filter(
+            (s) => !["ICPUSDT", "BTSUSDT", "BTCSTUSDT", "SCUSDT", "TLMUSDT"].includes(s) && s.endsWith("USDT")
+        );
     }
 
     public get pnd() {
