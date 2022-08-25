@@ -19,7 +19,7 @@ export default class extends BaseCommand {
         let indicators: string[] = [];
         for (const arg of args.args) {
             console.log("arg :>> ", arg);
-            if (data.length <= 2) {
+            if (data.length < 3) {
                 const results = await searchSymbol(arg, "BINANCE");
                 if (results.length > 0) {
                     const symbol = results[0].symbol;
