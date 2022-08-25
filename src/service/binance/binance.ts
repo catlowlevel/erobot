@@ -164,9 +164,10 @@ export class BinanceClient {
                 const currentPrice = data.candles[data.candles.length - 1].close;
                 const lastPrice = data.candles[0].close;
                 const percentGap = getPercentageChange(currentPrice, lastPrice);
-                const text = `${data.symbol} => ${percentGap.toFixed(2)}\n${lastPrice} => ${currentPrice}`;
+                const text = `${data.symbol} => ${percentGap.toFixed(2)}%\n${lastPrice} => ${currentPrice}`;
                 console.log(text);
                 await this.client.sendMessage("62895611963535-1631537374@g.us", { text });
+                db[data.symbol] = 5;
             }
             await this.bullishDb.write();
         }
