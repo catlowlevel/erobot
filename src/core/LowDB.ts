@@ -14,7 +14,13 @@ export class LowDB<T> implements Low<T> {
         this["read"] = this.low["read"];
 
         this.write().then(async () => {
-            await this.read();
+            try {
+                await this.read();
+            } catch (err) {
+                console.log(`File ${filename} =>`, "Something went wrong while trying to read the file, resetting!");
+                this.data ||= initialIfNull;
+                await this.write();
+            }
             this.data ||= initialIfNull;
             onRead?.(this.data);
         });
