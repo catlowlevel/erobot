@@ -146,7 +146,6 @@ export class BinanceClient {
 
     private datas: Data[] = [];
     private deb = debounce(async () => {
-        console.log("debounced");
         // console.log(this.datas.length);
         let messages = "";
         for (const data of this.datas) {
@@ -154,17 +153,17 @@ export class BinanceClient {
             const lastPrice = data.candles[0].close;
             const percentGap = getPercentageChange(currentPrice, lastPrice);
             const text = `${data.symbol} => ${percentGap.toFixed(2)}%\n${lastPrice} => ${currentPrice}`;
-            console.log(text);
+            console.log(`${data.symbol} => ${percentGap.toFixed(2)}%`);
             this.bullishDb.data[data.symbol] = 5;
-            messages += `${text}\n======================`;
+            messages += `${text}\n======================\n`;
         }
+        console.log("debounced");
         await this.client.sendMessage("62895611963535-1631537374@g.us", { text: messages });
         await this.bullishDb.write();
         this.datas = [];
     }, 500);
 
     private debo = (data: Data) => {
-        console.log("debo");
         this.datas.push(data);
         this.deb();
     };
