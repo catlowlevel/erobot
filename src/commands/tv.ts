@@ -17,7 +17,8 @@ export default class extends BaseCommand {
         let data: { symbol: string; description: string }[] = [];
         let tf = "1h";
         let indicators: string[] = [];
-        for (const arg of args.args) {
+        for (let arg of args.args) {
+            arg = arg.toLowerCase();
             console.log("arg :>> ", arg);
             if (data.length < 3) {
                 const results = await searchSymbol(arg, "BINANCE");
