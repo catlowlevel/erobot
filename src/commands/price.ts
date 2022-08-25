@@ -13,11 +13,13 @@ export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         const searchProms = args.args.map(async (arg) => {
             const data = await searchSymbol(arg, "BINANCE");
+            if (data.length <= 0) return "";
             console.log(arg, " => ", data[0].description);
             return data[0].symbol;
         });
 
-        const symbols = await Promise.all(searchProms);
+        const symbols = (await Promise.all(searchProms)).filter((s) => !!s);
+        if (symbols.length <= 0) return M.reply("Invalid symbol!");
         const data = await getPrices(symbols);
         for (const { price, price10m, priceHour, price4Hour, price24Hour, symbol } of data) {
             let messages = `Harga *${symbol}* saat ini *$${price}*`;
