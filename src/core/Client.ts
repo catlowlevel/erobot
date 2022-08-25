@@ -95,6 +95,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             keepAliveIntervalMs: 1000 * 30,
             // implement to handle retries
             getMessage: async (key) => {
+                this.log("Handling retries!", "red");
                 if (this.store) {
                     const msg = await this.store.loadMessage(key.remoteJid!, key.id!, undefined);
                     return msg?.message || undefined;
