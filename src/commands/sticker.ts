@@ -8,7 +8,7 @@ import { IArgs } from "../core/MessageHandler";
 @Command("sticker", {
     description: "Mengubah gambar menjadi sticker",
     usage: "sticker <author> <pack>",
-    aliases: ["s"],
+    aliases: ["s", "stiker"],
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
