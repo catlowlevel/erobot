@@ -13,7 +13,7 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         if (args.args.length <= 0) return M.reply("Invalid arguments!");
-        M.reply("Loading...");
+        M.reply("_Wait..._");
         let data: { symbol: string; description: string }[] = [];
         let tf = "1h";
         let indicators: string[] = [];
