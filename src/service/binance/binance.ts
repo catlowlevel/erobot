@@ -1,6 +1,7 @@
 import { proto } from "@adiwajshing/baileys";
 import { JSONFile, Low } from "@commonify/lowdb";
 import binanceApiNode, { Binance } from "binance-api-node";
+import { debounce } from "debounce";
 import EventEmitter from "events";
 import { writeFileSync } from "fs";
 import pMap from "p-map";
@@ -143,13 +144,38 @@ export class BinanceClient {
         });
     }
 
+    private datas: Data[] = [];
+    private deb = debounce(async () => {
+        console.log("debounced");
+        // console.log(this.datas.length);
+        let messages = "";
+        for (const data of this.datas) {
+            const currentPrice = data.candles[data.candles.length - 1].close;
+            const lastPrice = data.candles[0].close;
+            const percentGap = getPercentageChange(currentPrice, lastPrice);
+            const text = `${data.symbol} => ${percentGap.toFixed(2)}%\n${lastPrice} => ${currentPrice}`;
+            console.log(text);
+            this.bullishDb.data[data.symbol] = 5;
+            messages += `${text}\n======================`;
+        }
+        await this.client.sendMessage("62895611963535-1631537374@g.us", { text: messages });
+        await this.bullishDb.write();
+        this.datas = [];
+    }, 500);
+
+    private debo = (data: Data) => {
+        console.log("debo");
+        this.datas.push(data);
+        this.deb();
+    };
+
     async handleBnB(data: Data) {
         if (data.isFinal) {
             const db = this.bullishDb.data;
             if (!db[data.symbol]) db[data.symbol] = 0;
 
             let bullish = true;
-            let count = 1;
+            let count = 0; // error count
             for (const candle of data.candles) {
                 if (candle.open > candle.close) {
                     if (count-- <= 0) {
@@ -160,14 +186,8 @@ export class BinanceClient {
             }
 
             if (db[data.symbol]-- <= 0) db[data.symbol] = 0;
-            if (bullish) {
-                const currentPrice = data.candles[data.candles.length - 1].close;
-                const lastPrice = data.candles[0].close;
-                const percentGap = getPercentageChange(currentPrice, lastPrice);
-                const text = `${data.symbol} => ${percentGap.toFixed(2)}%\n${lastPrice} => ${currentPrice}`;
-                console.log(text);
-                await this.client.sendMessage("62895611963535-1631537374@g.us", { text });
-                db[data.symbol] = 5;
+            if (bullish && db[data.symbol] <= 0) {
+                this.debo(data);
             }
             await this.bullishDb.write();
         }
