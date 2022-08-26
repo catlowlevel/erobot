@@ -64,7 +64,7 @@
   "BCHUSDT": 0,
   "KLAYUSDT": 0,
   "HBARUSDT": 0,
-  "LINAUSDT": 5,
+  "LINAUSDT": 0,
   "LINKUSDT": 0,
   "WAVESUSDT": 0,
   "ALGOUSDT": 0,
@@ -87,7 +87,7 @@
   "DARUSDT": 0,
   "XTZUSDT": 0,
   "SNXUSDT": 0,
-  "CTSIUSDT": 0,
+  "CTSIUSDT": 3,
   "ENSUSDT": 0,
   "MKRUSDT": 0,
   "ARPAUSDT": 0,
@@ -97,7 +97,7 @@
   "IOSTUSDT": 0,
   "KAVAUSDT": 0,
   "API3USDT": 0,
-  "OMGUSDT": 3,
+  "OMGUSDT": 0,
   "DUSKUSDT": 0,
   "COMPUSDT": 0,
   "SXPUSDT": 0,
@@ -137,5 +137,6 @@
   "BAKEUSDT": 0,
   "OCEANUSDT": 0,
   "GTCUSDT": 0,
-  "HOTUSDT": 0
+  "HOTUSDT": 0,
+  "STGUSDT": 0
 }
