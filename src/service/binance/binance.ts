@@ -171,7 +171,7 @@ export class BinanceClient {
 
             console.log(text);
             await this.client.sendMessage("62895611963535-1631537374@g.us", {
-                text: `Avg Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : ${current.close}`,
+                text: `Avg Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${current.close}`,
             });
         }
         await this.avgDb.write();
