@@ -14,7 +14,6 @@ interface Data {
 }
 interface Idea {
     timestamp: number;
-    price: number;
     data: {
         id: number; //13782710,
         name: string; //'can it break pivot level?🥶',
@@ -83,15 +82,12 @@ export const getIdeas = async (symbol: string) => {
     const html = await fetch(url).then((res) => res.text());
     const $ = Cheerio(html);
     const cards = $(".tv-feed__item.tv-feed-layout__card-item");
-    const price = $("div.tv-symbol-price-quote__value").text() ?? "";
     cards.each((_idx, card) => {
         // console.log("idx :>> ", idx);
         const data = $(card).data("card") as Idea;
         const timeStamp = $(card).find(".tv-card-stats__time").data("timestamp") as number;
         data.timestamp = timeStamp;
-        try {
-            data.price = Number(price);
-        } catch (error) {}
+
         // console.log("data.data.name :>> ", data.data.name);
         const imgId = data.data.image_url;
         const baseUrl = "https://s3.tradingview.com/";
