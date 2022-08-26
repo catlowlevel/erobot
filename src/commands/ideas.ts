@@ -18,10 +18,9 @@ export default class extends BaseCommand {
         if (!result) throw new Error("Gagal mencari symbol!");
         if (result.length <= 0) return M.reply("Invalid symbol!");
         const symbol = result[0].symbol;
-        // const proms = [getIdeas(symbol), getPrices([symbol])] as const;
-        // const [ideas, prices] = await Promise.all(proms);
-        // const price = prices[0].price;
-        const ideas = await getIdeas(symbol);
+        const proms = [getIdeas(symbol), getPrices([symbol])] as const;
+        const [ideas, prices] = await Promise.all(proms);
+        const price = prices[0].price;
         const idea = ideas[0];
         const [imageArrayBuffer, sourceLink] = await Promise.all([
             fetch(idea.data.image_url).then((res) => res.arrayBuffer()),
@@ -29,7 +28,7 @@ export default class extends BaseCommand {
         ]);
         const imageBuffer = Buffer.from(imageArrayBuffer);
         let message = `
-		*${idea.data.short_name}* | $${idea.price}\n
+		*${idea.data.short_name}* | $${price}\n
 		*Title* : ${idea.data.name}\n
 		*Date* : ${timeago(idea.timestamp * 1000)}\n
 		*Source* : ${sourceLink}`
