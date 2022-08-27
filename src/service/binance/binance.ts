@@ -191,7 +191,7 @@ export class BinanceClient {
             messages += `${text}\n======================\n`;
         }
         console.log("debounced");
-	if (this.datas.length <= 0) return;
+        if (this.datas.length <= 0) return;
         await this.client.sendMessage("62895611963535-1631537374@g.us", { text: messages });
         await this.bullishDb.write();
         this.datas = [];
