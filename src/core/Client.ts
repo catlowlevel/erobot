@@ -126,7 +126,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         this.client.ev.on("messages.upsert", ({ messages, type }) => {
             const M: Message = new Message(messages[0], this);
 
-            if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return void null;
+            // if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return void null;
 
             if (type !== "notify") return void null;
             if (messages[0].key.remoteJid === "status@broadcast") return void null;
