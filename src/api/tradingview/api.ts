@@ -61,6 +61,7 @@ export const getPrices = async (symbols: string[]) => {
         timeframe: 5,
         amount: 288,
     });
+    await connection.close();
     const data = candles.map((candle, i) => {
         candle = candle.reverse();
         return {
