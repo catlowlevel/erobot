@@ -42,7 +42,7 @@
   "STMXUSDT": true,
   "NEARUSDT": true,
   "EGLDUSDT": true,
-  "ATAUSDT": true,
+  "ATAUSDT": false,
   "FLMUSDT": true,
   "MASKUSDT": true,
   "ANKRUSDT": true,
