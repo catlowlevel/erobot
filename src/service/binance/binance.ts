@@ -148,7 +148,10 @@ export class BinanceClient {
     }
 
     async handleAvgPnD(data: Data) {
-        if (this.avgDb.data[data.symbol] === undefined) this.avgDb.data[data.symbol] = true;
+        if (this.avgDb.data[data.symbol] === undefined) {
+            this.avgDb.data[data.symbol] = true;
+            await this.avgDb.write();
+        }
         const current = data.candles[data.candles.length - 1];
         const candles = data.candles.filter((_c, i) => i !== data.candles.length - 1);
         let totalPercent = 0;
@@ -173,8 +176,8 @@ export class BinanceClient {
             await this.client.sendMessage("62895611963535-1631537374@g.us", {
                 text: `Avg Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${current.close}`,
             });
+            await this.avgDb.write();
         }
-        await this.avgDb.write();
     }
 
     private datas: Data[] = [];
