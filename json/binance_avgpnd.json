@@ -1,142 +1,621 @@
 {
-  "EOSUSDT": 1661671185620,
-  "BTCUSDT": 1661671161443,
-  "ATOMUSDT": 1661674138765,
-  "ETHUSDT": 1661671161497,
-  "ETCUSDT": 1661639993094,
-  "EGLDUSDT": 1661683437064,
-  "BLZUSDT": 1661665457429,
-  "MATICUSDT": 1661686178146,
-  "KNCUSDT": 1661680926404,
-  "GALAUSDT": 1661683453749,
-  "XRPUSDT": 1661671180990,
-  "STGUSDT": 1661674742697,
-  "FTMUSDT": 1661671148932,
-  "C98USDT": 1661661196761,
-  "UNFIUSDT": 1661680743593,
-  "SANDUSDT": 1661683445741,
-  "ARUSDT": 1661683408684,
-  "OPUSDT": 1661653775342,
-  "ADAUSDT": 1661671161741,
-  "SNXUSDT": 1661681651519,
-  "DYDXUSDT": 1661683430719,
-  "SOLUSDT": 1661683445503,
-  "PEOPLEUSDT": 1661642858640,
-  "CHZUSDT": 1661675026467,
-  "ROSEUSDT": 1661639987831,
-  "OGNUSDT": 1661683494554,
-  "BAKEUSDT": 1661683436192,
-  "GMTUSDT": 1661683485895,
-  "FLMUSDT": 1661642994107,
-  "RLCUSDT": 1661639966260,
-  "JASMYUSDT": 1661679689835,
-  "NEARUSDT": 1661671149133,
-  "AVAXUSDT": 1661683446047,
-  "BNXUSDT": 1661676847180,
-  "CTKUSDT": 1661681067270,
-  "STORJUSDT": 1661683075472,
-  "MANAUSDT": 1661671149094,
-  "APEUSDT": 1661671184515,
-  "CRVUSDT": 1661657150314,
-  "BANDUSDT": 1661683435705,
-  "FILUSDT": 1661671149721,
-  "CHRUSDT": 1661639953366,
-  "HNTUSDT": 1661672528947,
-  "DOTUSDT": 1661671164707,
-  "TRBUSDT": 1661679495211,
-  "RSRUSDT": 1661671593220,
-  "BELUSDT": 1661681018371,
-  "1000SHIBUSDT": 1661672392956,
-  "LINKUSDT": 1661683445071,
-  "TOMOUSDT": 1661683919154,
-  "YFIUSDT": 1661671143498,
-  "LITUSDT": 1661671149768,
-  "BNBUSDT": 1661671148584,
-  "WAVESUSDT": 1661671163135,
-  "AXSUSDT": 1661679685935,
-  "KLAYUSDT": 1661671179011,
-  "ZILUSDT": 1661683488215,
-  "ANKRUSDT": 1661684377102,
-  "BALUSDT": 1661683409914,
-  "KSMUSDT": 1661671188833,
-  "CELRUSDT": 1661683447206,
-  "ONTUSDT": 1661683434521,
-  "TRXUSDT": 1661671180721,
-  "ONEUSDT": 1661653706724,
-  "SUSHIUSDT": 1661671182403,
-  "SRMUSDT": 1661673819145,
-  "DGBUSDT": 1661685646223,
-  "BTCDOMUSDT": 1661664202852,
-  "XEMUSDT": 1661683490257,
-  "QTUMUSDT": 1661671164696,
-  "RVNUSDT": 1661639966484,
-  "DOGEUSDT": 1661683486086,
-  "XLMUSDT": 1661683391582,
-  "RUNEUSDT": 1661639966547,
-  "SKLUSDT": 1661639966972,
-  "STMXUSDT": 1661683256175,
-  "THETAUSDT": 1661671184569,
-  "API3USDT": 1661683451105,
-  "UNIUSDT": 1661671162302,
-  "ALICEUSDT": 1661671164262,
-  "ZENUSDT": 1661683437089,
-  "ALGOUSDT": 1661683430153,
-  "ENJUSDT": 1661683445420,
-  "ENSUSDT": 1661683437176,
-  "NKNUSDT": 1661683492936,
-  "AAVEUSDT": 1661683489317,
-  "KAVAUSDT": 1661661190684,
-  "WOOUSDT": 1661683417961,
-  "IMXUSDT": 1661683438409,
-  "XMRUSDT": 1661671161768,
-  "ALPHAUSDT": 1661653756471,
-  "1INCHUSDT": 1661671162200,
-  "DENTUSDT": 1661671192456,
-  "BCHUSDT": 1661683691073,
-  "LTCUSDT": 1661683079884,
-  "MKRUSDT": 1661653595222,
-  "REEFUSDT": 1661683437966,
-  "IOSTUSDT": 1661683437187,
-  "DEFIUSDT": 1661671185557,
-  "IOTXUSDT": 1661671164900,
-  "ARPAUSDT": 1661673849492,
-  "ZECUSDT": 1661639953156,
-  "OCEANUSDT": 1661671149750,
-  "GALUSDT": 1661673843455,
-  "GTCUSDT": 1661671188482,
-  "SFPUSDT": 1661683491497,
-  "DARUSDT": 1661683432669,
-  "CVCUSDT": 1661690468201,
-  "LPTUSDT": 1661683431283,
-  "MASKUSDT": 1661683435938,
-  "COTIUSDT": 1661683445355,
-  "GRTUSDT": 1661680938112,
-  "HOTUSDT": 1661653645234,
-  "ICXUSDT": 1661683437536,
-  "MTLUSDT": 1661686133577,
-  "RAYUSDT": 1661680695780,
-  "XTZUSDT": 1661671161564,
-  "ZRXUSDT": 1661671164682,
-  "HBARUSDT": 1661682723001,
-  "OMGUSDT": 1661671162875,
-  "ATAUSDT": 1661680978252,
-  "COMPUSDT": 1661671165048,
-  "VETUSDT": 1661683440947,
-  "NEOUSDT": 1661686178580,
-  "AUDIOUSDT": 1661683349859,
-  "RENUSDT": 1661683437146,
-  "BATUSDT": 1661671184634,
-  "FTTUSDT": 1661673895367,
-  "LRCUSDT": 1661683446272,
-  "SXPUSDT": 1661671148943,
-  "DASHUSDT": 1661671164749,
-  "FLOWUSDT": 1661683448183,
-  "DUSKUSDT": 1661681093905,
-  "ANTUSDT": 1661683433005,
-  "CELOUSDT": 1661671164008,
-  "IOTAUSDT": 1661683437108,
-  "CTSIUSDT": 1661671149759,
-  "1000XECUSDT": 1661682783740,
-  "LINAUSDT": 1661671144201,
-  "INJUSDT": 1661677792389
+  "ETHUSDT": {
+    "timeStamp": 1661691278085
+  },
+  "XRPUSDT": {
+    "timeStamp": 1661691278099
+  },
+  "ZILUSDT": {
+    "timeStamp": 1661691278105
+  },
+  "TRBUSDT": {
+    "timeStamp": 1661691278116
+  },
+  "CHZUSDT": {
+    "timeStamp": 1661691278143
+  },
+  "1000SHIBUSDT": {
+    "timeStamp": 1661691278178
+  },
+  "ALGOUSDT": {
+    "timeStamp": 1661691278228
+  },
+  "GALAUSDT": {
+    "timeStamp": 1661691278248
+  },
+  "1000XECUSDT": {
+    "timeStamp": 1661691278335
+  },
+  "BTCUSDT": {
+    "timeStamp": 1661691278362
+  },
+  "ENSUSDT": {
+    "timeStamp": 1661691278389
+  },
+  "DYDXUSDT": {
+    "timeStamp": 1661691278410
+  },
+  "BLZUSDT": {
+    "timeStamp": 1661691278424
+  },
+  "NEARUSDT": {
+    "timeStamp": 1661691278443
+  },
+  "ALICEUSDT": {
+    "timeStamp": 1661691278463
+  },
+  "ATOMUSDT": {
+    "timeStamp": 1661691278466
+  },
+  "APEUSDT": {
+    "timeStamp": 1661691278468
+  },
+  "BNXUSDT": {
+    "timeStamp": 1661691278468
+  },
+  "BNBUSDT": {
+    "timeStamp": 1661691278472
+  },
+  "FLMUSDT": {
+    "timeStamp": 1661691278479
+  },
+  "FTMUSDT": {
+    "timeStamp": 1661691278480
+  },
+  "EOSUSDT": {
+    "timeStamp": 1661691278483
+  },
+  "FTTUSDT": {
+    "timeStamp": 1661691278483
+  },
+  "IOTXUSDT": {
+    "timeStamp": 1661691278490
+  },
+  "KNCUSDT": {
+    "timeStamp": 1661691278491
+  },
+  "LTCUSDT": {
+    "timeStamp": 1661691278491
+  },
+  "IMXUSDT": {
+    "timeStamp": 1661691278491
+  },
+  "ONEUSDT": {
+    "timeStamp": 1661691278491
+  },
+  "RAYUSDT": {
+    "timeStamp": 1661691278492
+  },
+  "NEOUSDT": {
+    "timeStamp": 1661691278492
+  },
+  "ROSEUSDT": {
+    "timeStamp": 1661691278492
+  },
+  "TRXUSDT": {
+    "timeStamp": 1661691278494
+  },
+  "UNFIUSDT": {
+    "timeStamp": 1661691278495
+  },
+  "XMRUSDT": {
+    "timeStamp": 1661691278495
+  },
+  "SXPUSDT": {
+    "timeStamp": 1661691278498
+  },
+  "ETCUSDT": {
+    "timeStamp": 1661691278627
+  },
+  "1INCHUSDT": {
+    "timeStamp": 1661691278673
+  },
+  "COTIUSDT": {
+    "timeStamp": 1661691278684
+  },
+  "DGBUSDT": {
+    "timeStamp": 1661691278726
+  },
+  "MTLUSDT": {
+    "timeStamp": 1661691278782
+  },
+  "STGUSDT": {
+    "timeStamp": 1661691278842
+  },
+  "ANKRUSDT": {
+    "timeStamp": 1661691278880
+  },
+  "GMTUSDT": {
+    "timeStamp": 1661691278923
+  },
+  "OPUSDT": {
+    "timeStamp": 1661691278995
+  },
+  "RLCUSDT": {
+    "timeStamp": 1661691279082
+  },
+  "XEMUSDT": {
+    "timeStamp": 1661691279094
+  },
+  "ADAUSDT": {
+    "timeStamp": 1661691279123
+  },
+  "CRVUSDT": {
+    "timeStamp": 1661691279155
+  },
+  "AVAXUSDT": {
+    "timeStamp": 1661691279200
+  },
+  "SANDUSDT": {
+    "timeStamp": 1661691279291
+  },
+  "HOTUSDT": {
+    "timeStamp": 1661691279294
+  },
+  "WOOUSDT": {
+    "timeStamp": 1661691279712
+  },
+  "MANAUSDT": {
+    "timeStamp": 1661691279796
+  },
+  "STORJUSDT": {
+    "timeStamp": 1661691279831
+  },
+  "AAVEUSDT": {
+    "timeStamp": 1661691279924
+  },
+  "GALUSDT": {
+    "timeStamp": 1661691279997
+  },
+  "KAVAUSDT": {
+    "timeStamp": 1661691280007
+  },
+  "CTKUSDT": {
+    "timeStamp": 1661691280119
+  },
+  "SNXUSDT": {
+    "timeStamp": 1661693010272,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": true,
+        "id": "BAE53D697A928621"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "Average Pump! *SNXUSDT* => 0.50%\nCurrent Price : $2.978"
+        }
+      },
+      "messageTimestamp": "1661693010",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282296012562@s.whatsapp.net",
+          "receiptTimestamp": "1661693011"
+        },
+        {
+          "userJid": "6282299799544@s.whatsapp.net",
+          "receiptTimestamp": "1661693011"
+        },
+        {
+          "userJid": "62895611963546@s.whatsapp.net",
+          "receiptTimestamp": "1661693011"
+        },
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1661693011",
+          "readTimestamp": "1661693521"
+        },
+        {
+          "userJid": "6282194182691@s.whatsapp.net",
+          "receiptTimestamp": "1661693011"
+        },
+        {
+          "userJid": "6289503402488@s.whatsapp.net",
+          "receiptTimestamp": "1661693011",
+          "readTimestamp": "1661693096"
+        }
+      ]
+    }
+  },
+  "OCEANUSDT": {
+    "timeStamp": 1661691280194
+  },
+  "DOGEUSDT": {
+    "timeStamp": 1661691280259
+  },
+  "BCHUSDT": {
+    "timeStamp": 1661691280362
+  },
+  "RUNEUSDT": {
+    "timeStamp": 1661691281055
+  },
+  "CHRUSDT": {
+    "timeStamp": 1661691281227
+  },
+  "HBARUSDT": {
+    "timeStamp": 1661691281320
+  },
+  "C98USDT": {
+    "timeStamp": 1661691281488
+  },
+  "LINKUSDT": {
+    "timeStamp": 1661691281500
+  },
+  "MATICUSDT": {
+    "timeStamp": 1661691281519
+  },
+  "FILUSDT": {
+    "timeStamp": 1661691281522
+  },
+  "SOLUSDT": {
+    "timeStamp": 1661691281522
+  },
+  "DOTUSDT": {
+    "timeStamp": 1661691281531
+  },
+  "PEOPLEUSDT": {
+    "timeStamp": 1661691281717
+  },
+  "DUSKUSDT": {
+    "timeStamp": 1661691281834
+  },
+  "MKRUSDT": {
+    "timeStamp": 1661691282909
+  },
+  "FLOWUSDT": {
+    "timeStamp": 1661691282910
+  },
+  "AXSUSDT": {
+    "timeStamp": 1661691282910
+  },
+  "XLMUSDT": {
+    "timeStamp": 1661691282911
+  },
+  "WAVESUSDT": {
+    "timeStamp": 1661691282911
+  },
+  "LPTUSDT": {
+    "timeStamp": 1661691282912
+  },
+  "HNTUSDT": {
+    "timeStamp": 1661691282913
+  },
+  "EGLDUSDT": {
+    "timeStamp": 1661691282913
+  },
+  "ZECUSDT": {
+    "timeStamp": 1661691282913
+  },
+  "ZENUSDT": {
+    "timeStamp": 1661691282913
+  },
+  "API3USDT": {
+    "timeStamp": 1661691282921
+  },
+  "ARUSDT": {
+    "timeStamp": 1661691283164
+  },
+  "UNIUSDT": {
+    "timeStamp": 1661691283820
+  },
+  "ICXUSDT": {
+    "timeStamp": 1661691284176
+  },
+  "BANDUSDT": {
+    "timeStamp": 1661691284230
+  },
+  "OMGUSDT": {
+    "timeStamp": 1661691285049
+  },
+  "DASHUSDT": {
+    "timeStamp": 1661691285397
+  },
+  "ALPHAUSDT": {
+    "timeStamp": 1661691285552
+  },
+  "COMPUSDT": {
+    "timeStamp": 1661691285613
+  },
+  "ARPAUSDT": {
+    "timeStamp": 1661691286202
+  },
+  "CVCUSDT": {
+    "timeStamp": 1661691286344
+  },
+  "BALUSDT": {
+    "timeStamp": 1661691286552
+  },
+  "GRTUSDT": {
+    "timeStamp": 1661691286951
+  },
+  "CELRUSDT": {
+    "timeStamp": 1661691287666
+  },
+  "LINAUSDT": {
+    "timeStamp": 1661691288170
+  },
+  "KSMUSDT": {
+    "timeStamp": 1661691288456
+  },
+  "SUSHIUSDT": {
+    "timeStamp": 1661691288647
+  },
+  "BAKEUSDT": {
+    "timeStamp": 1661691288881
+  },
+  "AUDIOUSDT": {
+    "timeStamp": 1661691288886
+  },
+  "ANTUSDT": {
+    "timeStamp": 1661692644586,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": true,
+        "id": "BAE5C8A5DB9EC9AD"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "Average Pump! *ANTUSDT* => 0.38%\nCurrent Price : $1.578"
+        }
+      },
+      "messageTimestamp": "1661692644",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282299799544@s.whatsapp.net",
+          "receiptTimestamp": "1661692645"
+        },
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1661692645",
+          "readTimestamp": "1661692686"
+        },
+        {
+          "userJid": "6289503402488@s.whatsapp.net",
+          "receiptTimestamp": "1661692646",
+          "readTimestamp": "1661692995"
+        },
+        {
+          "userJid": "62895611963546@s.whatsapp.net",
+          "receiptTimestamp": "1661692647"
+        },
+        {
+          "userJid": "6282194182691@s.whatsapp.net",
+          "receiptTimestamp": "1661692647",
+          "readTimestamp": "1661692999"
+        },
+        {
+          "userJid": "6282296012562@s.whatsapp.net",
+          "receiptTimestamp": "1661692648"
+        }
+      ]
+    }
+  },
+  "ENJUSDT": {
+    "timeStamp": 1661691288888
+  },
+  "OGNUSDT": {
+    "timeStamp": 1661691288899
+  },
+  "LRCUSDT": {
+    "timeStamp": 1661691288899
+  },
+  "SKLUSDT": {
+    "timeStamp": 1661691288901
+  },
+  "THETAUSDT": {
+    "timeStamp": 1661691288903
+  },
+  "BELUSDT": {
+    "timeStamp": 1661691288903
+  },
+  "SFPUSDT": {
+    "timeStamp": 1661691288907
+  },
+  "JASMYUSDT": {
+    "timeStamp": 1661691288941
+  },
+  "YFIUSDT": {
+    "timeStamp": 1661691288941
+  },
+  "ATAUSDT": {
+    "timeStamp": 1661691288943
+  },
+  "ZRXUSDT": {
+    "timeStamp": 1661691288949
+  },
+  "IOSTUSDT": {
+    "timeStamp": 1661691288961
+  },
+  "DARUSDT": {
+    "timeStamp": 1661691288973
+  },
+  "TOMOUSDT": {
+    "timeStamp": 1661691289002
+  },
+  "NKNUSDT": {
+    "timeStamp": 1661691289013
+  },
+  "BATUSDT": {
+    "timeStamp": 1661691289021
+  },
+  "DEFIUSDT": {
+    "timeStamp": 1661691289026
+  },
+  "RVNUSDT": {
+    "timeStamp": 1661691289026
+  },
+  "KLAYUSDT": {
+    "timeStamp": 1661691289054
+  },
+  "GTCUSDT": {
+    "timeStamp": 1661691289301
+  },
+  "XTZUSDT": {
+    "timeStamp": 1661691289961
+  },
+  "LITUSDT": {
+    "timeStamp": 1661691290303
+  },
+  "RSRUSDT": {
+    "timeStamp": 1661691290363
+  },
+  "CELOUSDT": {
+    "timeStamp": 1661691293051
+  },
+  "VETUSDT": {
+    "timeStamp": 1661693508459,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": true,
+        "id": "BAE56B2DEA3B7016"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "Average Pump! *VETUSDT* => 0.25%\nCurrent Price : $0.02443",
+          "contextInfo": {
+            "stanzaId": "BAE5AB326A66B8FC",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "Average Pump! *VETUSDT* => 0.29%\nCurrent Price : $0.02442"
+              }
+            },
+            "remoteJid": "120363023114788849@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1661693508",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "62895611963546@s.whatsapp.net",
+          "receiptTimestamp": "1661693509"
+        },
+        {
+          "userJid": "6282299799544@s.whatsapp.net",
+          "receiptTimestamp": "1661693509"
+        },
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1661693509",
+          "readTimestamp": "1661693521"
+        },
+        {
+          "userJid": "6282194182691@s.whatsapp.net",
+          "receiptTimestamp": "1661693511"
+        },
+        {
+          "userJid": "6282296012562@s.whatsapp.net",
+          "receiptTimestamp": "1661693512"
+        },
+        {
+          "userJid": "6289503402488@s.whatsapp.net",
+          "receiptTimestamp": "1661693542",
+          "readTimestamp": "1661693569"
+        }
+      ]
+    }
+  },
+  "DENTUSDT": {
+    "timeStamp": 1661691297866
+  },
+  "MASKUSDT": {
+    "timeStamp": 1661691299549
+  },
+  "STMXUSDT": {
+    "timeStamp": 1661693581612,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": true,
+        "id": "BAE561D6AD981A61"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "Average Pump! *STMXUSDT* => 0.26%\nCurrent Price : $0.00764"
+        }
+      },
+      "messageTimestamp": "1661693581",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net"
+    }
+  },
+  "QTUMUSDT": {
+    "timeStamp": 1661691300211
+  },
+  "SRMUSDT": {
+    "timeStamp": 1661692657343,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": true,
+        "id": "BAE5B9982116E476"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "Average Pump! *SRMUSDT* => 0.26%\nCurrent Price : $0.774"
+        }
+      },
+      "messageTimestamp": "1661692657",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282296012562@s.whatsapp.net",
+          "receiptTimestamp": "1661692658"
+        },
+        {
+          "userJid": "6282299799544@s.whatsapp.net",
+          "receiptTimestamp": "1661692658"
+        },
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1661692658",
+          "readTimestamp": "1661692686"
+        },
+        {
+          "userJid": "6282194182691@s.whatsapp.net",
+          "receiptTimestamp": "1661692658",
+          "readTimestamp": "1661692999"
+        },
+        {
+          "userJid": "62895611963546@s.whatsapp.net",
+          "receiptTimestamp": "1661692658"
+        },
+        {
+          "userJid": "6289503402488@s.whatsapp.net",
+          "receiptTimestamp": "1661692658",
+          "readTimestamp": "1661692995"
+        }
+      ]
+    }
+  },
+  "CTSIUSDT": {
+    "timeStamp": 1661691302119
+  },
+  "ONTUSDT": {
+    "timeStamp": 1661691302122
+  },
+  "INJUSDT": {
+    "timeStamp": 1661691302122
+  },
+  "REEFUSDT": {
+    "timeStamp": 1661691302123
+  },
+  "RENUSDT": {
+    "timeStamp": 1661691302124
+  },
+  "BTCDOMUSDT": {
+    "timeStamp": 1661691302127
+  },
+  "IOTAUSDT": {
+    "timeStamp": 1661691302686
+  }
 }
