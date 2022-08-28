@@ -98,7 +98,7 @@ export class Samehadaku {
         const response = await fetch(this.BASE_URL);
         const html = await response.text();
         const $ = cheerio.load(html);
-        const postShow = $("#main > div:nth-child(9) > div.post-show");
+        const postShow = $("div.post-show").first();
         const posts: Post[] = postShow.children()[0].children.map((child) => {
             const post = $(child);
             const titleTitle = post.find("[title]");
