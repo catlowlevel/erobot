@@ -158,5 +158,46 @@
     },
     "resolved": false,
     "amGreater": true
+  },
+  {
+    "alertPrice": "20500",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "99D28CD2B3BF00DF5934C0F256461045",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1661676044,
+      "pushName": "|•|",
+      "message": {
+        "imageMessage": {
+          "url": "https://mmg.whatsapp.net/d/f/AiLsZDLY12m7pAZG8OMHabIqZMKhHKupavyv7NTbuGZ7.enc",
+          "mimetype": "image/jpeg",
+          "caption": ".alert btc 20500",
+          "fileSha256": "6vTCgJKgOfP4vKHGB+HoyWUDnH2Zzlo2+ri1Ihsc3OA=",
+          "fileLength": "241872",
+          "height": 2203,
+          "width": 1128,
+          "mediaKey": "wtCmstSCaMGBBLRfvVPN8gdp0rDrMMP78L41ihe+3Lk=",
+          "fileEncSha256": "RRKIsSwdqN5GnmiPDt8L1i4adP0eNPyS7s4pniCjaRw=",
+          "directPath": "/v/t62.7118-24/32596226_192863516442115_1556006709991750964_n.enc?ccb=11-4&oh=01_AVzIwKVWADnCQLLqV1atqp1sOyFCjZcp4j08WqVkPDXYrQ&oe=632EF7BF",
+          "mediaKeyTimestamp": "1661676041",
+          "jpegThumbnail": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEUAIwMBIgACEQEDEQH/xAAtAAADAQEBAAAAAAAAAAAAAAAAAQIDBAUBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAA8GUrKSDUYQrSTWk1QCylay9IpiMqglejLO1sQyQFgAMA/8QAIRABAAMAAQMFAQAAAAAAAAAAAQACERIDITEQIjNRYTL/2gAIAQEAAT8Aep+R6j9TnObDU7xsjOTOTOWwjTv5nD9nD9lBrYTuxVdSWPCjApvhjfp58cq0rbUWWSzoYQ1cXtEnFlcLbY7SzVdr4muzLx6fVDUnG72CInmcXSc3Za/t+TZWyod5f+pyv9x18vp0qtrgWyO667PZ9TCYTD0//8QAGxEAAgEFAAAAAAAAAAAAAAAAARAAESAhMYH/2gAIAQIBAT8AfIQEIcbVLv/EAB0RAQACAgIDAAAAAAAAAAAAAAEAERBREiEgMUH/2gAIAQMBAT8A71O9YRPsL3hqCXZFtWXOVvoPH//Z",
+          "scansSidecar": "BwqxUtiVtnAuGypfERplZi/guBnqZI61dcnS2s4f87xhpPKBzaU7TQ==",
+          "scanLengths": [
+            20115,
+            146255,
+            33824,
+            41678
+          ],
+          "midQualityFileSha256": "n6gzBEJuWNikU/iotZ8ilZ2rQd2Rx4tmd9frdRIZM2o="
+        }
+      }
+    },
+    "resolved": false,
+    "amGreater": true
   }
 ]
