@@ -28,6 +28,27 @@ export default class extends BaseCommand {
             );
         }
 
+        if (args.args[0]?.startsWith("p")) {
+            return this.client.sendMessage(
+                M.from,
+                { text: "P" },
+                {
+                    quoted: {
+                        key: {
+                            remoteJid: M.from,
+                            fromMe: false,
+                            id: "0",
+                            participant: M.mentioned?.[0],
+                        },
+                        messageTimestamp: Date.now() / 1000,
+                        message: {
+                            conversation: "Halo",
+                        },
+                    },
+                }
+            );
+        }
+
         if (args.args[0]?.startsWith("l")) {
             const sections: proto.Message.ListMessage.ISection[] = [
                 {
