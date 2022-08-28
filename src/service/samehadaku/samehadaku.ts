@@ -41,24 +41,28 @@ export class Samehadaku {
     }
 
     async loop() {
-        const posts = await this.getPosts();
+        try {
+            const posts = await this.getPosts();
 
-        const newPosts = posts.filter((post) => {
-            if (!this.db.data) throw new Error("data is undefined");
-            return !this.db.data.map((post) => post.url).includes(post.url);
-        });
-        this.db.data = posts;
+            const newPosts = posts.filter((post) => {
+                if (!this.db.data) throw new Error("data is undefined");
+                return !this.db.data.map((post) => post.url).includes(post.url);
+            });
+            this.db.data = posts;
 
-        await this.db.write();
-        console.log(
-            "saved new Posts",
-            newPosts.map((p) => p.title)
-        );
-        for (const post of newPosts) {
-            // await this.sendPost("62895611963535-1631537374@g.us", post);
-            // await this.sendPost("6282293787977-1527865416@g.us", post);
+            await this.db.write();
+            console.log(
+                "saved new Posts",
+                newPosts.map((p) => p.title)
+            );
+            for (const post of newPosts) {
+                // await this.sendPost("62895611963535-1631537374@g.us", post);
+                // await this.sendPost("6282293787977-1527865416@g.us", post);
+            }
+            setTimeout(() => this.loop(), 1000 * 60 * 60);
+        } catch (error) {
+            console.log("Error on loop", error);
         }
-        setTimeout(() => this.loop(), 1000 * 60 * 60);
     }
 
     async sendPost(to: string, post: Post, reply?: proto.IWebMessageInfo) {
