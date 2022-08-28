@@ -174,8 +174,10 @@ export class BinanceClient {
                 .padEnd(5)}% | CURRENT % : ${currentPercent.toFixed(2)}%`;
 
             console.log(text);
-            await this.client.sendMessage("62895611963535-1631537374@g.us", {
-                text: `Avg Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${current.close}`,
+            await this.client.sendMessage("120363023114788849@g.us", {
+                text: `Average Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${
+                    current.close
+                }`,
             });
             await this.avgDb.write();
         }
@@ -196,7 +198,7 @@ export class BinanceClient {
         }
         console.log("debounced");
         if (this.datas.length <= 0) return;
-        await this.client.sendMessage("62895611963535-1631537374@g.us", { text: messages });
+        await this.client.sendMessage("120363023114788849@g.us", { text: messages });
         await this.bullishDb.write();
         this.datas = [];
     }, 500);
