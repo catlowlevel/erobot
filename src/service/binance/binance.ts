@@ -54,10 +54,10 @@ export class BinanceClient {
     evt: TypedEmitter<Events>;
     private streamingCandles = false;
     symbols: string[];
-    avgDb: LowDB<{ [symbol: string]: boolean }>;
+    avgDb: LowDB<{ [symbol: string]: number }>;
     constructor(public client: Client, streamCandles: boolean = false) {
         this.bullishDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish.json`, {});
-        this.avgDb = new LowDB<{ [symbol: string]: boolean }>(`${ROOT_DIR}/json/binance_avgpnd.json`, {});
+        this.avgDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_avgpnd.json`, {});
         this.db = new Low(this.alertAdapter);
         this.db.write().then(() => {
             this.db.read().then(() => {
@@ -149,7 +149,7 @@ export class BinanceClient {
 
     async handleAvgPnD(data: Data) {
         if (this.avgDb.data[data.symbol] === undefined) {
-            this.avgDb.data[data.symbol] = true;
+            this.avgDb.data[data.symbol] = Date.now();
             await this.avgDb.write();
         }
         const current = data.candles[data.candles.length - 1];
@@ -162,12 +162,13 @@ export class BinanceClient {
         const avg = totalPercent / candles.length;
         const currentPercent = getPercentageChange(current!.close, current!.open);
 
-        if (data.isFinal) {
-            this.avgDb.data[data.symbol] = true;
-        }
-        if (currentPercent > avg * 5 && current.close > current.open && this.avgDb.data[data.symbol]) {
+        if (
+            currentPercent > avg * 5 &&
+            current.close > current.open &&
+            Date.now() - this.avgDb.data[data.symbol] >= 1000 * 60 * 5
+        ) {
             // console.log(data.symbol, avg.toFixed(2), currentPercent.toFixed(2));
-            this.avgDb.data[data.symbol] = false;
+            this.avgDb.data[data.symbol] = Date.now();
             const text = `${data.symbol.padEnd(10)} => ${`${current.close}`.padEnd(7)} | LAST 7 % AVG : ${avg
                 .toFixed(2)
                 .padEnd(5)}% | CURRENT % : ${currentPercent.toFixed(2)}%`;
