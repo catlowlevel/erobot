@@ -54,10 +54,13 @@ export class BinanceClient {
     evt: TypedEmitter<Events>;
     private streamingCandles = false;
     symbols: string[];
-    avgDb: LowDB<{ [symbol: string]: number }>;
+    avgDb: LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>;
     constructor(public client: Client, streamCandles: boolean = false) {
         this.bullishDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish.json`, {});
-        this.avgDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_avgpnd.json`, {});
+        this.avgDb = new LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>(
+            `${ROOT_DIR}/json/binance_avgpnd.json`,
+            {}
+        );
         this.db = new Low(this.alertAdapter);
         this.db.write().then(() => {
             this.db.read().then(() => {
@@ -149,7 +152,7 @@ export class BinanceClient {
 
     async handleAvgPnD(data: Data) {
         if (this.avgDb.data[data.symbol] === undefined) {
-            this.avgDb.data[data.symbol] = Date.now();
+            this.avgDb.data[data.symbol] = { timeStamp: Date.now() };
             await this.avgDb.write();
         }
         const current = data.candles[data.candles.length - 1];
@@ -165,20 +168,25 @@ export class BinanceClient {
         if (
             currentPercent > avg * 5 &&
             current.close > current.open &&
-            Date.now() - this.avgDb.data[data.symbol] >= 1000 * 60 * 5
+            Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 5
         ) {
             // console.log(data.symbol, avg.toFixed(2), currentPercent.toFixed(2));
-            this.avgDb.data[data.symbol] = Date.now();
+            this.avgDb.data[data.symbol].timeStamp = Date.now();
             const text = `${data.symbol.padEnd(10)} => ${`${current.close}`.padEnd(7)} | LAST 7 % AVG : ${avg
                 .toFixed(2)
                 .padEnd(5)}% | CURRENT % : ${currentPercent.toFixed(2)}%`;
 
             console.log(text);
-            await this.client.sendMessage("120363023114788849@g.us", {
-                text: `Average Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${
-                    current.close
-                }`,
-            });
+            const msg = await this.client.sendMessage(
+                "120363023114788849@g.us",
+                {
+                    text: `Average Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${
+                        current.close
+                    }`,
+                },
+                { quoted: this.avgDb.data[data.symbol]?.msg }
+            );
+            this.avgDb.data[data.symbol].msg = msg;
             await this.avgDb.write();
         }
     }
