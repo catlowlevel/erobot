@@ -166,9 +166,9 @@ export class BinanceClient {
         const currentPercent = getPercentageChange(current!.close, current!.open);
 
         if (
-            currentPercent > avg * 5 &&
+            currentPercent > avg * 7 &&
             current.close > current.open &&
-            Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 5
+            Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 10
         ) {
             // console.log(data.symbol, avg.toFixed(2), currentPercent.toFixed(2));
             this.avgDb.data[data.symbol].timeStamp = Date.now();
