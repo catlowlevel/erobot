@@ -338,10 +338,13 @@ export class BinanceClient {
         });
     }
 
-    async streamCandles(pairs: string[], interval: Interval, limit: number, streamCB: StreamCallback) {
-        console.log(`Getting all candles for ${pairs.length} pairs`);
+    async getCandles(pairs: string[], interval: Interval, limit: number, includeCurrentCandle: boolean) {
+        this.client.log(
+            `Getting all candles for ${pairs.length} pairs, timeframe ${interval}, limit ${limit}`,
+            "yellow"
+        );
         const errorCandles: string[] = [];
-        const successCandles: string[] = [];
+        const successCandles: { symbol: string; candles: Candle[] }[] = [];
         const lastTime = new Date().getTime();
         const proms = pairs.map(async (symbol) => {
             try {
@@ -358,18 +361,28 @@ export class BinanceClient {
                     openTime: c.openTime,
                     closeTime: c.closeTime,
                 }));
-                candles.pop();
-                this.tickers.set(symbol, candles);
-                successCandles.push(symbol);
+                if (includeCurrentCandle === false) {
+                    candles.pop();
+                }
+                //this.tickers.set(symbol, candles);
+                successCandles.push({ symbol, candles });
             } catch (error) {
                 errorCandles.push(symbol);
             }
         });
         await pMap(proms, (p) => p, { concurrency: 2 });
         const nowTime = new Date().getTime();
-        console.log(`Time to get candles : ${(nowTime - lastTime) / 1000}s`);
-        console.log(`Got all past candles except for`, errorCandles);
-        console.log(`Total pairs: ${successCandles.length}`);
+        this.client.log(`Time to get candles : ${(nowTime - lastTime) / 1000}s`, "yellow");
+        this.client.log(`Got all past candles except for ${errorCandles}`, "yellow");
+        this.client.log(`Total pairs: ${successCandles.length}`, "yellow");
+        return successCandles;
+    }
+
+    async streamCandles(pairs: string[], interval: Interval, limit: number, streamCB: StreamCallback) {
+        const data = await this.getCandles(pairs, interval, limit, false);
+        data.forEach((val) => {
+            this.tickers.set(val.symbol, val.candles);
+        });
         this.streamingCandles = true;
         this.binanceClient.ws.futuresCandles(pairs, interval, (candle) => {
             const symbol = candle.symbol;
