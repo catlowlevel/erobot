@@ -13,12 +13,13 @@ export class BaseCommand {
 
     public handler!: MessageHandler;
 
-    protected getIndex = (array: string[], search: string) => array.findIndex((val) => val.startsWith(search));
+    protected getIndex = (array: string[], search: string) =>
+        array.findIndex((val) => val.toLowerCase().startsWith(search.toLowerCase()));
 
     protected getFlag<T extends string>(flags: string[], flag: string, expected?: T[], def?: T): T | undefined {
         const index = this.getIndex(flags, flag);
         if (index < 0) return def;
-        const flagValue = flags[index].split("=")[1].toLowerCase() as T;
+        const flagValue = flags[index].split("=")[1] as T;
         if (expected && def) {
             if (index < 0 || !expected?.includes(flagValue)) return def;
         }
