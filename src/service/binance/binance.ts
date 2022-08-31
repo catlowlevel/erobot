@@ -165,29 +165,44 @@ export class BinanceClient {
         const avg = totalPercent / candles.length;
         const currentPercent = getPercentageChange(current!.close, current!.open);
 
-        if (
-            currentPercent > avg * 7 &&
-            current.close > current.open &&
-            Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 10
-        ) {
+        if (currentPercent > avg * 7 && Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 10) {
             // console.log(data.symbol, avg.toFixed(2), currentPercent.toFixed(2));
+            const pompom = current.close > current.open;
+
             this.avgDb.data[data.symbol].timeStamp = Date.now();
-            const text = `${data.symbol.padEnd(10)} => ${`${current.close}`.padEnd(7)} | LAST 7 % AVG : ${avg
-                .toFixed(2)
-                .padEnd(5)}% | CURRENT % : ${currentPercent.toFixed(2)}%`;
+            const text = `${data.symbol.padEnd(10)} => ${`${current.close}`.padEnd(7)} | LAST ${
+                candles.length - 1
+            } % AVG : ${avg.toFixed(2).padEnd(5)}% | CURRENT % : ${pompom ? "" : "-"}${currentPercent.toFixed(2)}%`;
 
             console.log(text);
-            const msg = await this.client.sendMessage(
-                "120363023114788849@g.us",
-                {
-                    text: `Average Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${
-                        current.close
-                    }`,
-                },
-                { quoted: this.avgDb.data[data.symbol]?.msg }
-            );
-            this.avgDb.data[data.symbol].msg = msg;
-            await this.avgDb.write();
+            // console.log(data.candles.map((c) => c.close));
+            if (pompom) {
+                const msg = await this.client.sendMessage(
+                    "120363023114788849@g.us",
+                    {
+                        text: `Average Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${
+                            current.close
+                        }`,
+                    },
+                    { quoted: this.avgDb.data[data.symbol]?.msg }
+                );
+                this.avgDb.data[data.symbol].msg = msg;
+                await this.avgDb.write();
+            } else {
+                if (data.symbol === "BTCUSDT") {
+                    const msg = await this.client.sendMessage(
+                        "120363023114788849@g.us",
+                        {
+                            text: `Average Dump! *${data.symbol}* => -${currentPercent.toFixed(2)}%\nCurrent Price : $${
+                                current.close
+                            }`,
+                        },
+                        { quoted: this.avgDb.data[data.symbol]?.msg }
+                    );
+                    this.avgDb.data[data.symbol].msg = msg;
+                    await this.avgDb.write();
+                }
+            }
         }
     }
 
