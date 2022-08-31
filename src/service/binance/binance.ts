@@ -155,14 +155,19 @@ export class BinanceClient {
             this.avgDb.data[data.symbol] = { timeStamp: Date.now() };
             await this.avgDb.write();
         }
-        const current = data.candles[data.candles.length - 1];
-        const candles = data.candles.filter((_c, i) => i !== data.candles.length - 1);
+        const MAX_INDEX = 8;
+        const candles = data.candles.reverse().filter((_c, i) => i < MAX_INDEX);
+
+        const current = candles[0];
         let totalPercent = 0;
-        for (const candle of candles) {
+        let count = 0;
+        candles.forEach((candle, idx) => {
+            if (idx === 0) return;
             const percent = getPercentageChange(candle.close, candle.open);
             totalPercent += percent;
-        }
-        const avg = totalPercent / candles.length;
+            count++;
+        });
+        const avg = totalPercent / count;
         const currentPercent = getPercentageChange(current!.close, current!.open);
 
         if (currentPercent > avg * 7 && Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 10) {
@@ -238,7 +243,13 @@ export class BinanceClient {
 
             let bullish = true;
             let count = 0; // error count
-            for (const candle of data.candles) {
+            let MAX_INDEX = 7;
+            const candles = data.candles
+                .reverse()
+                .filter((_c, i) => i < MAX_INDEX)
+                .reverse();
+            // console.log(candles.length, data.candles.length);
+            for (const candle of candles) {
                 if (candle.open > candle.close) {
                     if (count-- <= 0) {
                         bullish = false;
@@ -250,6 +261,7 @@ export class BinanceClient {
             if (db[data.symbol]-- <= 0) db[data.symbol] = 0;
             if (bullish && db[data.symbol] <= 0) {
                 this.debo(data);
+                console.log(candles.length, data.candles.length);
             }
             await this.bullishDb.write();
         }
