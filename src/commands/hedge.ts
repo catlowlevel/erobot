@@ -70,9 +70,11 @@ export default class extends BaseCommand {
         }
 
         let messages = `=======| ${tf} - ${limit} Candles |=======\n`;
-        messages += hedges.reduce((acc, curr) => {
-            return `${curr.symbol} => $${curr.price} | ${curr.percentGap.toFixed(2)}%\n${acc}`;
-        }, "");
+        messages += hedges
+            .sort((a, b) => (a.percentGap > b.percentGap ? 1 : -1))
+            .reduce((acc, curr) => {
+                return `${curr.symbol} => $${curr.price} | ${curr.percentGap.toFixed(2)}%\n${acc}`;
+            }, "");
         if (hedges.length <= 0) {
             return M.reply("There's no hedge!");
         }
