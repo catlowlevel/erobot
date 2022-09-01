@@ -1276,62 +1276,31 @@
     }
   },
   "KNCUSDT": {
-    "timeStamp": 1662018845255,
+    "timeStamp": 1662034489361,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
         "fromMe": true,
-        "id": "BAE5D00C0B2B17BE"
+        "id": "BAE58C1DEFC2AF5C"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "Average Pump! *KNCUSDT* => 0.46%\nCurrent Price : $1.725",
+          "text": "Average Pump! *KNCUSDT* => 0.86%\nCurrent Price : $1.749",
           "contextInfo": {
-            "stanzaId": "BAE57E950C6FB081",
+            "stanzaId": "BAE5D00C0B2B17BE",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "Average Pump! *KNCUSDT* => 0.52%\nCurrent Price : $1.724"
+                "text": "Average Pump! *KNCUSDT* => 0.46%\nCurrent Price : $1.725"
               }
             },
             "remoteJid": "120363023114788849@g.us"
           }
         }
       },
-      "messageTimestamp": "1661942994",
+      "messageTimestamp": "1662034489",
       "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282296012562@s.whatsapp.net",
-          "receiptTimestamp": "1661942994",
-          "readTimestamp": "1661945825"
-        },
-        {
-          "userJid": "6289503402488@s.whatsapp.net",
-          "receiptTimestamp": "1661942994",
-          "readTimestamp": "1661945707"
-        },
-        {
-          "userJid": "6282194182691@s.whatsapp.net",
-          "receiptTimestamp": "1661942994",
-          "readTimestamp": "1661951795"
-        },
-        {
-          "userJid": "62895611963546@s.whatsapp.net",
-          "receiptTimestamp": "1661942994",
-          "readTimestamp": "1661946608"
-        },
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1661942994",
-          "readTimestamp": "1661943029"
-        },
-        {
-          "userJid": "6282299799544@s.whatsapp.net",
-          "receiptTimestamp": "1661942995"
-        }
-      ]
+      "participant": "62895611963535:35@s.whatsapp.net"
     }
   },
   "LTCUSDT": {
@@ -2439,59 +2408,31 @@
     }
   },
   "XEMUSDT": {
-    "timeStamp": 1662027619612,
+    "timeStamp": 1662034812436,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
         "fromMe": true,
-        "id": "BAE5DDF97628AC4E"
+        "id": "BAE5ACC9D32761B3"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "Average Pump! *XEMUSDT* => 0.68%\nCurrent Price : $0.044",
+          "text": "Average Pump! *XEMUSDT* => 0.23%\nCurrent Price : $0.044",
           "contextInfo": {
-            "stanzaId": "BAE5E9D05274CC21",
+            "stanzaId": "BAE5DDF97628AC4E",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "Average Pump! *XEMUSDT* => 0.45%\nCurrent Price : $0.044"
+                "text": "Average Pump! *XEMUSDT* => 0.68%\nCurrent Price : $0.044"
               }
             },
             "remoteJid": "120363023114788849@g.us"
           }
         }
       },
-      "messageTimestamp": "1662027619",
+      "messageTimestamp": "1662034812",
       "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282299799544@s.whatsapp.net",
-          "receiptTimestamp": "1662027620"
-        },
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662027625"
-        },
-        {
-          "userJid": "6289503402488@s.whatsapp.net",
-          "receiptTimestamp": "1662027620"
-        },
-        {
-          "userJid": "6282296012562@s.whatsapp.net",
-          "receiptTimestamp": "1662027620"
-        },
-        {
-          "userJid": "62895611963546@s.whatsapp.net",
-          "receiptTimestamp": "1662027620",
-          "readTimestamp": "1662028540"
-        },
-        {
-          "userJid": "6282194182691@s.whatsapp.net",
-          "receiptTimestamp": "1662027620",
-          "readTimestamp": "1662030266"
-        }
-      ]
+      "participant": "62895611963535:35@s.whatsapp.net"
     }
   },
   "ADAUSDT": {
