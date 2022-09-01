@@ -3,7 +3,7 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import {getPercentageChange} from "../helper/utils";
+import { getPercentageChange } from "../helper/utils";
 import { Interval } from "../service/binance/binance";
 
 @Command("hedge", {
@@ -36,7 +36,7 @@ export default class extends BaseCommand {
         //const redBtc = candlesBtc.filter((c) => red(c.close, c.open));
         //const greenBtc = candlesBtc.filter((c) => green(c.close, c.open));
 
-        const hedges: { symbol: string; price: number, percentGap : number }[] = [];
+        const hedges: { symbol: string; price: number; percentGap: number }[] = [];
         //for (const symbol of symbols) {
         //if (symbol === "BTCUSDT") continue;
         //const candles = tickers.get(symbol) || [];
@@ -52,14 +52,18 @@ export default class extends BaseCommand {
         // console.log(JSON.stringify(hedges));
         const btcCurrentPrice = candlesBtc[candlesBtc.length - 1].close;
         const btcLastPrice = candlesBtc[0].close;
-	console.log("BTCUSDT Current : " + btcCurrentPrice);
+        console.log("BTCUSDT Current : " + btcCurrentPrice);
 
         for (const symbol of symbols) {
             if (symbol === "BTCUSDT") continue;
             const candles = tickers.find((t) => t.symbol === symbol)?.candles || [];
+            if (candles.length <= 0) {
+                console.log(`No candles for ${symbol}`);
+                continue;
+            }
             const currentPrice = candles[candles.length - 1].close;
             const lastPrice = candles[0].close;
-	    const percentGap = getPercentageChange(currentPrice, lastPrice);
+            const percentGap = getPercentageChange(currentPrice, lastPrice);
             if (green(currentPrice, lastPrice) && red(btcCurrentPrice, btcLastPrice)) {
                 hedges.push({ symbol, price: currentPrice, percentGap });
             }
