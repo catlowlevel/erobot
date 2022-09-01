@@ -366,6 +366,8 @@ export class BinanceClient {
     }
 
     async getCandles(pairs: string[], interval: Interval, limit: number, includeCurrentCandle: boolean) {
+        if (limit > this.MAX_CANDLE_LIMIT)
+            throw new Error("Limit number exceeded maximum length of " + this.MAX_CANDLE_LIMIT);
         this.client.log(
             `Getting all candles for ${pairs.length} pairs, timeframe ${interval}, limit ${limit}`,
             "yellow"
@@ -501,5 +503,9 @@ export class BinanceClient {
 
     public get pnd() {
         return this.dbPnd.data!;
+    }
+
+    public get MAX_CANDLE_LIMIT() {
+        return 500;
     }
 }
