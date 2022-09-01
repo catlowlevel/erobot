@@ -40,7 +40,7 @@
   "RLCUSDT": 0,
   "FLMUSDT": 0,
   "GMTUSDT": 0,
-  "XRPUSDT": 0,
+  "XRPUSDT": 5,
   "APEUSDT": 0,
   "YFIUSDT": 0,
   "RSRUSDT": 0,
@@ -58,7 +58,7 @@
   "TRXUSDT": 0,
   "ZENUSDT": 0,
   "CELRUSDT": 0,
-  "BALUSDT": 0,
+  "BALUSDT": 2,
   "1000SHIBUSDT": 0,
   "IOTAUSDT": 0,
   "BCHUSDT": 0,
@@ -121,7 +121,7 @@
   "UNIUSDT": 0,
   "DGBUSDT": 0,
   "SFPUSDT": 0,
-  "KSMUSDT": 0,
+  "KSMUSDT": 5,
   "AVAXUSDT": 0,
   "BTCDOMUSDT": 0,
   "INJUSDT": 0,
@@ -138,5 +138,6 @@
   "OCEANUSDT": 0,
   "GTCUSDT": 0,
   "HOTUSDT": 0,
-  "STGUSDT": 0
+  "STGUSDT": 0,
+  "FOOTBALLUSDT": 0
 }

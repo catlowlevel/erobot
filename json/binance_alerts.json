@@ -158,5 +158,25 @@
     },
     "resolved": false,
     "amGreater": true
+  },
+  {
+    "alertPrice": "4.543",
+    "symbol": "APEUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "D8D53214031AD0ECB1DF0196E76F1297",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1661925220,
+      "pushName": "|•|",
+      "message": {
+        "conversation": ".alert ape 4.543"
+      }
+    },
+    "resolved": false,
+    "amGreater": false
   }
 ]
