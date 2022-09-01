@@ -69,7 +69,7 @@ export default class extends BaseCommand {
             }
         }
 
-        let messages = `====|${tf} - ${limit} Candles|====`;
+        let messages = `=======| ${tf} - ${limit} Candles |=======\n`;
         messages += hedges.reduce((acc, curr) => {
             return `${curr.symbol} => $${curr.price} | ${curr.percentGap.toFixed(2)}%\n${acc}`;
         }, "");
