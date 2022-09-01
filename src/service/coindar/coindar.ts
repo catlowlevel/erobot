@@ -98,7 +98,9 @@ export class Coindar {
         console.log(`Coins fetched! Total : ${coins.length} coins`);
     }
 
-    getCoin(symbol: string) {
-        return this.db.data?.coins.find((c) => c.symbol.toLowerCase().startsWith(symbol.toLowerCase()));
+    findCoins(symbol: string) {
+        return this.db.data?.coins
+            .filter((c) => c.symbol.toLowerCase().startsWith(symbol.toLowerCase()))
+            .filter((c) => c.symbol.toLowerCase() === symbol.toLowerCase());
     }
 }

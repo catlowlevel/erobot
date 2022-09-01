@@ -17,8 +17,8 @@ export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         const coins: Coin[] = [];
         for (const arg of args.args) {
-            const coin = this.coindar.getCoin(arg);
-            if (coin) coins.push(coin);
+            const coin = this.coindar.findCoins(arg);
+            if (coin) coin.forEach((c) => coins.push(c));
         }
         //log coins
         coins.forEach((c) => console.log(c.symbol, c.name));
