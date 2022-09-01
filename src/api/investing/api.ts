@@ -21,7 +21,9 @@ export const getCalendar = async () => {
     rows.each((_idx, row) => {
         const economy = $(row).find("td.flagCur").text()?.trim() ?? "";
         const impact = $(row).find("td.sentiment").first().find("i.grayFullBullishIcon").length;
-        const date = $(row).attr("event_timestamp") ?? "";
+        const date3 = $(row).attr("event_timestamp") ?? "";
+        const date2 = new Date(date3);
+        const date = new Date(date2.setHours(date2.getHours() + 8)).toLocaleString();
         const name = $(row).find("td.event").text()?.trim() ?? "";
         const actual = $(row).find("td.act").text()?.trim() ?? "";
         const forecast = $(row).find("td.fore").text()?.trim() ?? "";
