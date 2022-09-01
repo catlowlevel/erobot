@@ -68,7 +68,7 @@ export class MessageHandler {
         }
         const args = M.content.split(" ");
         const title = M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
-        if (!args[0] || !args[0].startsWith(prefix)) {
+        if (!args[0] || !args[0].startsWith(prefix) || M.content.length <= 1) {
             return M.simplify().then((M) => {
                 const title = M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
                 return console.log(`${M.sender.username}@${title} => ${M.content}`);
