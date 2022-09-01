@@ -156,7 +156,10 @@ export class BinanceClient {
             await this.avgDb.write();
         }
         const MAX_INDEX = 8;
-        const candles = data.candles.reverse().filter((_c, i) => i < MAX_INDEX);
+        const candles = data.candles
+            .slice(0)
+            .reverse()
+            .filter((_c, i) => i < MAX_INDEX);
 
         const current = candles[0];
         let totalPercent = 0;
@@ -245,6 +248,7 @@ export class BinanceClient {
             let count = 0; // error count
             let MAX_INDEX = 7;
             const candles = data.candles
+                .slice(0)
                 .reverse()
                 .filter((_c, i) => i < MAX_INDEX)
                 .reverse();
