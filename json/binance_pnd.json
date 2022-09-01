@@ -1,107 +1,107 @@
 {
   "AAVEUSDT": {
-    "createdAt": 1662025402585,
-    "lastPrice": 83.36
+    "createdAt": 1662033237147,
+    "lastPrice": 85.15
   },
   "ATOMUSDT": {
-    "createdAt": 1662025366614,
-    "lastPrice": 11.697
+    "createdAt": 1662033189433,
+    "lastPrice": 12.085
   },
   "ETHUSDT": {
-    "createdAt": 1662025665909,
-    "lastPrice": 1546.6
+    "createdAt": 1662033468086,
+    "lastPrice": 1578.29
   },
   "DEFIUSDT": {
-    "createdAt": 1662025701401,
-    "lastPrice": 737.5
+    "createdAt": 1662033032136,
+    "lastPrice": 748.6
   },
   "1000SHIBUSDT": {
-    "createdAt": 1662025468112,
-    "lastPrice": 0.012058
+    "createdAt": 1662033281529,
+    "lastPrice": 0.012167
   },
   "UNIUSDT": {
-    "createdAt": 1662025719459,
-    "lastPrice": 6.079
+    "createdAt": 1662033552711,
+    "lastPrice": 6.234
   },
   "LINKUSDT": {
-    "createdAt": 1662025392967,
-    "lastPrice": 6.525
+    "createdAt": 1662033219038,
+    "lastPrice": 6.712
   },
   "IOTXUSDT": {
-    "createdAt": 1662025270329,
-    "lastPrice": 0.02981
+    "createdAt": 1662033135671,
+    "lastPrice": 0.03019
   },
   "ARUSDT": {
-    "createdAt": 1662025722403,
-    "lastPrice": 10.032
+    "createdAt": 1662033548478,
+    "lastPrice": 10.197
   },
   "ALGOUSDT": {
-    "createdAt": 1662025453675,
-    "lastPrice": 0.2866
+    "createdAt": 1662033295764,
+    "lastPrice": 0.2899
   },
   "LRCUSDT": {
-    "createdAt": 1662025800196,
-    "lastPrice": 0.3442
+    "createdAt": 1662033032127,
+    "lastPrice": 0.3492
   },
   "CRVUSDT": {
-    "createdAt": 1662025464966,
-    "lastPrice": 1.087
+    "createdAt": 1662033293531,
+    "lastPrice": 1.114
   },
   "MATICUSDT": {
-    "createdAt": 1662025284218,
-    "lastPrice": 0.8305
+    "createdAt": 1662033094001,
+    "lastPrice": 0.841
   },
   "XLMUSDT": {
-    "createdAt": 1662025857131,
-    "lastPrice": 0.10406
+    "createdAt": 1662033105270,
+    "lastPrice": 0.10416
   },
   "SRMUSDT": {
-    "createdAt": 1662025688339,
-    "lastPrice": 0.775
+    "createdAt": 1662033598558,
+    "lastPrice": 0.788
   },
   "BNBUSDT": {
-    "createdAt": 1662025301072,
-    "lastPrice": 275.76
+    "createdAt": 1662033105856,
+    "lastPrice": 278.34
   },
   "COMPUSDT": {
-    "createdAt": 1662025253196,
-    "lastPrice": 45.69
+    "createdAt": 1662033088548,
+    "lastPrice": 46.64
   },
   "XTZUSDT": {
-    "createdAt": 1662025812564,
-    "lastPrice": 1.497
+    "createdAt": 1662033044538,
+    "lastPrice": 1.521
   },
   "IOTAUSDT": {
-    "createdAt": 1662025816207,
-    "lastPrice": 0.2795
+    "createdAt": 1662033047783,
+    "lastPrice": 0.282
   },
   "EGLDUSDT": {
-    "createdAt": 1662025305423,
-    "lastPrice": 52.05
+    "createdAt": 1662033155039,
+    "lastPrice": 52.67
   },
   "ETHUSDT_220930": {
     "createdAt": 1661355032968,
     "lastPrice": 1654.4
   },
   "BATUSDT": {
-    "createdAt": 1662025327127,
-    "lastPrice": 0.3294
+    "createdAt": 1662033232839,
+    "lastPrice": 0.3338
   },
   "TRXUSDT": {
-    "createdAt": 1662025506869,
-    "lastPrice": 0.0628
+    "createdAt": 1662033334919,
+    "lastPrice": 0.06317
   },
   "BTCDOMUSDT": {
-    "createdAt": 1662025787436,
-    "lastPrice": 1215.1
+    "createdAt": 1662033044697,
+    "lastPrice": 1206
   },
   "BNXUSDT": {
-    "createdAt": 1662025795538,
-    "lastPrice": 131.97
+    "createdAt": 1662033033708,
+    "lastPrice": 132.65
   },
   "XEMUSDT": {
-    "createdAt": 1662025352098,
-    "lastPrice": 0.0436
+    "createdAt": 1662033265728,
+    "lastPrice": 0.0441
   },
   "BTSUSDT": {
     "createdAt": 1661224802015,
@@ -124,471 +124,471 @@
     "lastPrice": 319.408
   },
   "CTSIUSDT": {
-    "createdAt": 1662025832044,
-    "lastPrice": 0.1385
+    "createdAt": 1662033222702,
+    "lastPrice": 0.1396
   },
   "DENTUSDT": {
-    "createdAt": 1662025351491,
-    "lastPrice": 0.000936
+    "createdAt": 1662033298006,
+    "lastPrice": 0.000946
   },
   "ALPHAUSDT": {
-    "createdAt": 1662025683902,
-    "lastPrice": 0.1201
+    "createdAt": 1662033598966,
+    "lastPrice": 0.1217
   },
   "MKRUSDT": {
-    "createdAt": 1662025838131,
-    "lastPrice": 752.6
+    "createdAt": 1662033088548,
+    "lastPrice": 758.2
   },
   "ONTUSDT": {
-    "createdAt": 1662025470372,
-    "lastPrice": 0.2414
+    "createdAt": 1662033336644,
+    "lastPrice": 0.2455
   },
   "THETAUSDT": {
-    "createdAt": 1662025299296,
-    "lastPrice": 1.148
+    "createdAt": 1662033157423,
+    "lastPrice": 1.168
   },
   "OMGUSDT": {
-    "createdAt": 1662025692305,
-    "lastPrice": 1.759
+    "createdAt": 1662033549885,
+    "lastPrice": 1.785
   },
   "CELOUSDT": {
-    "createdAt": 1662025740199,
-    "lastPrice": 0.825
+    "createdAt": 1662033572554,
+    "lastPrice": 0.84
   },
   "RENUSDT": {
-    "createdAt": 1662025647397,
-    "lastPrice": 0.1193
+    "createdAt": 1662033485280,
+    "lastPrice": 0.1203
   },
   "ENJUSDT": {
-    "createdAt": 1662025405507,
-    "lastPrice": 0.5035
+    "createdAt": 1662033263907,
+    "lastPrice": 0.5111
   },
   "HBARUSDT": {
-    "createdAt": 1662025837268,
-    "lastPrice": 0.06212
+    "createdAt": 1662033091993,
+    "lastPrice": 0.06275
   },
   "ZILUSDT": {
-    "createdAt": 1662025429411,
-    "lastPrice": 0.03563
+    "createdAt": 1662033292524,
+    "lastPrice": 0.03581
   },
   "NEOUSDT": {
-    "createdAt": 1662025289731,
-    "lastPrice": 8.869
+    "createdAt": 1662033142595,
+    "lastPrice": 8.99
   },
   "BALUSDT": {
-    "createdAt": 1662025510388,
-    "lastPrice": 7.557
+    "createdAt": 1662033316449,
+    "lastPrice": 7.679
   },
   "ZRXUSDT": {
-    "createdAt": 1662025658165,
-    "lastPrice": 0.2919
+    "createdAt": 1662033513114,
+    "lastPrice": 0.2957
   },
   "ICXUSDT": {
-    "createdAt": 1662025807981,
-    "lastPrice": 0.2674
+    "createdAt": 1662033050636,
+    "lastPrice": 0.2697
   },
   "SOLUSDT": {
-    "createdAt": 1662025425075,
-    "lastPrice": 31.07
+    "createdAt": 1662033243928,
+    "lastPrice": 31.43
   },
   "APEUSDT": {
-    "createdAt": 1662025837156,
-    "lastPrice": 4.701
+    "createdAt": 1662033053977,
+    "lastPrice": 4.762
   },
   "DYDXUSDT": {
-    "createdAt": 1662025785316,
-    "lastPrice": 1.515
+    "createdAt": 1662033026488,
+    "lastPrice": 1.529
   },
   "XRPUSDT": {
-    "createdAt": 1662025517802,
-    "lastPrice": 0.3245
+    "createdAt": 1662033332535,
+    "lastPrice": 0.3267
   },
   "ROSEUSDT": {
-    "createdAt": 1662025710097,
-    "lastPrice": 0.06172
+    "createdAt": 1662033547809,
+    "lastPrice": 0.06254
   },
   "JASMYUSDT": {
-    "createdAt": 1662025751102,
-    "lastPrice": 0.008505
+    "createdAt": 1662033602577,
+    "lastPrice": 0.008605
   },
   "AVAXUSDT": {
-    "createdAt": 1662025503950,
-    "lastPrice": 18.87
+    "createdAt": 1662033318625,
+    "lastPrice": 19.23
   },
   "WOOUSDT": {
-    "createdAt": 1662025260199,
-    "lastPrice": 0.14858
+    "createdAt": 1662033100078,
+    "lastPrice": 0.15149
   },
   "BANDUSDT": {
-    "createdAt": 1662025324087,
-    "lastPrice": 1.2577
+    "createdAt": 1662033198617,
+    "lastPrice": 1.2673
   },
   "BTCUSDT": {
-    "createdAt": 1662025666896,
-    "lastPrice": 19906
+    "createdAt": 1662033469120,
+    "lastPrice": 20080.1
   },
   "GALUSDT": {
-    "createdAt": 1662025356241,
-    "lastPrice": 2.4561
+    "createdAt": 1662033220054,
+    "lastPrice": 2.5034
   },
   "DOGEUSDT": {
-    "createdAt": 1662025828601,
-    "lastPrice": 0.06066
+    "createdAt": 1662033036821,
+    "lastPrice": 0.06144
   },
   "ALICEUSDT": {
-    "createdAt": 1662025507712,
-    "lastPrice": 1.994
+    "createdAt": 1662033337557,
+    "lastPrice": 2.013
   },
   "BTCUSDT_220930": {
     "createdAt": 1661355030746,
     "lastPrice": 21591.3
   },
   "KNCUSDT": {
-    "createdAt": 1662025743792,
-    "lastPrice": 1.706
+    "createdAt": 1662033575198,
+    "lastPrice": 1.731
   },
   "SANDUSDT": {
-    "createdAt": 1662025858495,
-    "lastPrice": 0.9277
+    "createdAt": 1662033077838,
+    "lastPrice": 0.9361
   },
   "CVCUSDT": {
-    "createdAt": 1662025572294,
-    "lastPrice": 0.14152
+    "createdAt": 1662033420198,
+    "lastPrice": 0.14199
   },
   "MASKUSDT": {
-    "createdAt": 1662025709475,
-    "lastPrice": 1.292
+    "createdAt": 1662033580056,
+    "lastPrice": 1.315
   },
   "ENSUSDT": {
-    "createdAt": 1662025463598,
-    "lastPrice": 12.992
+    "createdAt": 1662033273597,
+    "lastPrice": 13.364
   },
   "LTCUSDT": {
-    "createdAt": 1662025677469,
-    "lastPrice": 55.58
+    "createdAt": 1662033486114,
+    "lastPrice": 56.5
   },
   "YFIUSDT": {
-    "createdAt": 1662025725752,
-    "lastPrice": 8945
+    "createdAt": 1662033570762,
+    "lastPrice": 9159
   },
   "GTCUSDT": {
-    "createdAt": 1662025820402,
-    "lastPrice": 2.205
+    "createdAt": 1662033044368,
+    "lastPrice": 2.232
   },
   "STORJUSDT": {
-    "createdAt": 1662025546301,
-    "lastPrice": 0.5418
+    "createdAt": 1662033403279,
+    "lastPrice": 0.5465
   },
   "BAKEUSDT": {
-    "createdAt": 1662025521237,
-    "lastPrice": 0.2515
+    "createdAt": 1662033362497,
+    "lastPrice": 0.2544
   },
   "GRTUSDT": {
-    "createdAt": 1662025505819,
-    "lastPrice": 0.10188
+    "createdAt": 1662033336609,
+    "lastPrice": 0.1041
   },
   "BCHUSDT": {
-    "createdAt": 1662025339140,
-    "lastPrice": 115.48
+    "createdAt": 1662033164939,
+    "lastPrice": 116.13
   },
   "FILUSDT": {
-    "createdAt": 1662025346553,
-    "lastPrice": 5.741
+    "createdAt": 1662033198584,
+    "lastPrice": 5.781
   },
   "FLMUSDT": {
-    "createdAt": 1662025495762,
-    "lastPrice": 0.1122
+    "createdAt": 1662033333449,
+    "lastPrice": 0.1145
   },
   "MANAUSDT": {
-    "createdAt": 1662025574824,
-    "lastPrice": 0.7648
+    "createdAt": 1662033388082,
+    "lastPrice": 0.7729
   },
   "1INCHUSDT": {
-    "createdAt": 1662025707816,
-    "lastPrice": 0.6495
+    "createdAt": 1662033600207,
+    "lastPrice": 0.6581
   },
   "WAVESUSDT": {
-    "createdAt": 1662025717271,
-    "lastPrice": 4.607
+    "createdAt": 1662033547789,
+    "lastPrice": 4.552
   },
   "QTUMUSDT": {
-    "createdAt": 1662025835559,
-    "lastPrice": 3.083
+    "createdAt": 1662033108706,
+    "lastPrice": 3.136
   },
   "SUSHIUSDT": {
-    "createdAt": 1662025514348,
-    "lastPrice": 1.03
+    "createdAt": 1662033429614,
+    "lastPrice": 1.049
   },
   "OCEANUSDT": {
-    "createdAt": 1662025339360,
-    "lastPrice": 0.16491
+    "createdAt": 1662033170136,
+    "lastPrice": 0.16676
   },
   "ZENUSDT": {
-    "createdAt": 1662025800758,
-    "lastPrice": 15.533
+    "createdAt": 1662033063002,
+    "lastPrice": 15.722
   },
   "IMXUSDT": {
-    "createdAt": 1662025759682,
-    "lastPrice": 0.8201
+    "createdAt": 1662033614195,
+    "lastPrice": 0.8268
   },
   "API3USDT": {
-    "createdAt": 1662025673329,
-    "lastPrice": 1.662
+    "createdAt": 1662033511070,
+    "lastPrice": 1.685
   },
   "KSMUSDT": {
-    "createdAt": 1662025720730,
-    "lastPrice": 46.61
+    "createdAt": 1662033601115,
+    "lastPrice": 46.95
   },
   "RSRUSDT": {
-    "createdAt": 1662025806486,
-    "lastPrice": 0.006207
+    "createdAt": 1662033046853,
+    "lastPrice": 0.006219
   },
   "FTMUSDT": {
-    "createdAt": 1662025452522,
-    "lastPrice": 0.2692
+    "createdAt": 1662033283198,
+    "lastPrice": 0.2727
   },
   "ZECUSDT": {
-    "createdAt": 1662025756106,
-    "lastPrice": 57.72
+    "createdAt": 1662033594580,
+    "lastPrice": 58.75
   },
   "GALAUSDT": {
-    "createdAt": 1662025331191,
-    "lastPrice": 0.04974
+    "createdAt": 1662033198625,
+    "lastPrice": 0.0504
   },
   "COTIUSDT": {
-    "createdAt": 1662025657577,
-    "lastPrice": 0.08987
+    "createdAt": 1662033517397,
+    "lastPrice": 0.09114
   },
   "LITUSDT": {
-    "createdAt": 1662025661783,
-    "lastPrice": 0.722
+    "createdAt": 1662033545969,
+    "lastPrice": 0.726
   },
   "KAVAUSDT": {
-    "createdAt": 1662025493142,
-    "lastPrice": 1.7206
+    "createdAt": 1662033322618,
+    "lastPrice": 1.7323
   },
   "SXPUSDT": {
-    "createdAt": 1662025552508,
-    "lastPrice": 0.3648
+    "createdAt": 1662033416835,
+    "lastPrice": 0.37
   },
   "CHZUSDT": {
-    "createdAt": 1662025833916,
-    "lastPrice": 0.20843
+    "createdAt": 1662033041307,
+    "lastPrice": 0.21126
   },
   "KLAYUSDT": {
-    "createdAt": 1662025320202,
-    "lastPrice": 0.2273
+    "createdAt": 1662033265730,
+    "lastPrice": 0.2308
   },
   "ADAUSDT": {
-    "createdAt": 1662025506807,
-    "lastPrice": 0.4435
+    "createdAt": 1662033316740,
+    "lastPrice": 0.4479
   },
   "RVNUSDT": {
-    "createdAt": 1662025302098,
-    "lastPrice": 0.02826
+    "createdAt": 1662033151127,
+    "lastPrice": 0.02862
   },
   "HNTUSDT": {
-    "createdAt": 1662025492801,
-    "lastPrice": 4.901
+    "createdAt": 1662033302823,
+    "lastPrice": 4.928
   },
   "FTTUSDT": {
-    "createdAt": 1662025512300,
-    "lastPrice": 26.49
+    "createdAt": 1662033353871,
+    "lastPrice": 26.786
   },
   "ONEUSDT": {
-    "createdAt": 1662025338749,
-    "lastPrice": 0.02081
+    "createdAt": 1662033165596,
+    "lastPrice": 0.02099
   },
   "MTLUSDT": {
-    "createdAt": 1662025813911,
-    "lastPrice": 1.1779
+    "createdAt": 1662033047024,
+    "lastPrice": 1.189
   },
   "DASHUSDT": {
-    "createdAt": 1662025436087,
-    "lastPrice": 43.87
+    "createdAt": 1662033257561,
+    "lastPrice": 44.47
   },
   "XMRUSDT": {
-    "createdAt": 1662025546015,
-    "lastPrice": 152.2
+    "createdAt": 1662033372539,
+    "lastPrice": 153.29
   },
   "STMXUSDT": {
-    "createdAt": 1662025736479,
-    "lastPrice": 0.00771
+    "createdAt": 1662033607691,
+    "lastPrice": 0.00776
   },
   "CHRUSDT": {
-    "createdAt": 1662025840300,
+    "createdAt": 1662033060196,
     "lastPrice": 0.1852
   },
   "AUDIOUSDT": {
-    "createdAt": 1662025648305,
-    "lastPrice": 0.2765
+    "createdAt": 1662033511071,
+    "lastPrice": 0.2793
   },
   "DOTUSDT": {
-    "createdAt": 1662025829337,
-    "lastPrice": 6.978
+    "createdAt": 1662033048550,
+    "lastPrice": 7.058
   },
   "AXSUSDT": {
-    "createdAt": 1662025731117,
-    "lastPrice": 13.81
+    "createdAt": 1662033548253,
+    "lastPrice": 13.95
   },
   "RUNEUSDT": {
-    "createdAt": 1662025837609,
-    "lastPrice": 1.886
+    "createdAt": 1662033070276,
+    "lastPrice": 1.915
   },
   "GMTUSDT": {
-    "createdAt": 1662025546565,
-    "lastPrice": 0.6645
+    "createdAt": 1662033363034,
+    "lastPrice": 0.6747
   },
   "HOTUSDT": {
-    "createdAt": 1662025620234,
-    "lastPrice": 0.002062
+    "createdAt": 1662033485252,
+    "lastPrice": 0.002087
   },
   "CELRUSDT": {
-    "createdAt": 1662025800892,
-    "lastPrice": 0.01713
+    "createdAt": 1662033048548,
+    "lastPrice": 0.01735
   },
   "LINAUSDT": {
-    "createdAt": 1662025640288,
-    "lastPrice": 0.00789
+    "createdAt": 1662033600888,
+    "lastPrice": 0.008
   },
   "VETUSDT": {
-    "createdAt": 1662025807923,
-    "lastPrice": 0.0239
+    "createdAt": 1662033063178,
+    "lastPrice": 0.02418
   },
   "OGNUSDT": {
-    "createdAt": 1662025838399,
-    "lastPrice": 0.1688
+    "createdAt": 1662033112728,
+    "lastPrice": 0.1727
   },
   "LPTUSDT": {
-    "createdAt": 1662025324243,
-    "lastPrice": 10.092
+    "createdAt": 1662033242843,
+    "lastPrice": 10.275
   },
   "ETCUSDT": {
-    "createdAt": 1662025856117,
-    "lastPrice": 32.193
+    "createdAt": 1662033061106,
+    "lastPrice": 32.419
   },
   "C98USDT": {
-    "createdAt": 1662025550097,
-    "lastPrice": 0.4327
+    "createdAt": 1662033397684,
+    "lastPrice": 0.44
   },
   "RAYUSDT": {
-    "createdAt": 1662025561305,
-    "lastPrice": 0.656
+    "createdAt": 1662033450635,
+    "lastPrice": 0.665
   },
   "BELUSDT": {
-    "createdAt": 1662025425926,
-    "lastPrice": 0.6685
+    "createdAt": 1662033287766,
+    "lastPrice": 0.6716
   },
   "ATAUSDT": {
-    "createdAt": 1662025740204,
-    "lastPrice": 0.1612
+    "createdAt": 1662033614284,
+    "lastPrice": 0.163
   },
   "ARPAUSDT": {
-    "createdAt": 1662025555776,
-    "lastPrice": 0.03468
+    "createdAt": 1662033451681,
+    "lastPrice": 0.03491
   },
   "OPUSDT": {
-    "createdAt": 1662025271700,
-    "lastPrice": 1.1116
+    "createdAt": 1662033080436,
+    "lastPrice": 1.1327
   },
   "TOMOUSDT": {
-    "createdAt": 1662025799279,
-    "lastPrice": 0.4957
+    "createdAt": 1662033030357,
+    "lastPrice": 0.5005
   },
   "DUSKUSDT": {
-    "createdAt": 1662025680204,
-    "lastPrice": 0.13427
+    "createdAt": 1662033505772,
+    "lastPrice": 0.13603
   },
   "INJUSDT": {
-    "createdAt": 1662025502115,
-    "lastPrice": 1.512
+    "createdAt": 1662033032139,
+    "lastPrice": 1.525
   },
   "REEFUSDT": {
-    "createdAt": 1662025315413,
-    "lastPrice": 0.003659
+    "createdAt": 1662033257702,
+    "lastPrice": 0.003715
   },
   "NKNUSDT": {
-    "createdAt": 1662025507437,
-    "lastPrice": 0.0967
+    "createdAt": 1662033361597,
+    "lastPrice": 0.0977
   },
   "DARUSDT": {
-    "createdAt": 1662025504736,
-    "lastPrice": 0.2452
+    "createdAt": 1662033337765,
+    "lastPrice": 0.2464
   },
   "DGBUSDT": {
-    "createdAt": 1662025443134,
-    "lastPrice": 0.01034
+    "createdAt": 1662033352476,
+    "lastPrice": 0.01042
   },
   "EOSUSDT": {
-    "createdAt": 1662025546918,
-    "lastPrice": 1.463
+    "createdAt": 1662033358639,
+    "lastPrice": 1.473
   },
   "ANTUSDT": {
-    "createdAt": 1662025300605,
-    "lastPrice": 1.706
+    "createdAt": 1662033133689,
+    "lastPrice": 1.714
   },
   "RLCUSDT": {
-    "createdAt": 1662025310123,
-    "lastPrice": 1.1198
+    "createdAt": 1662033131627,
+    "lastPrice": 1.1316
   },
   "SKLUSDT": {
-    "createdAt": 1662025858161,
-    "lastPrice": 0.04756
+    "createdAt": 1662033100167,
+    "lastPrice": 0.04812
   },
   "ANKRUSDT": {
-    "createdAt": 1662025506942,
-    "lastPrice": 0.03422
+    "createdAt": 1662033334946,
+    "lastPrice": 0.03451
   },
   "UNFIUSDT": {
-    "createdAt": 1662025547394,
-    "lastPrice": 7.499
+    "createdAt": 1662033363131,
+    "lastPrice": 7.625
   },
   "BLZUSDT": {
-    "createdAt": 1662025604858,
-    "lastPrice": 0.09735
+    "createdAt": 1662033450581,
+    "lastPrice": 0.09759
   },
   "CTKUSDT": {
-    "createdAt": 1662025813460,
-    "lastPrice": 0.9181
+    "createdAt": 1662033032112,
+    "lastPrice": 0.9302
   },
   "1000XECUSDT": {
-    "createdAt": 1662025444515,
-    "lastPrice": 0.04604
+    "createdAt": 1662033258962,
+    "lastPrice": 0.04533
   },
   "IOSTUSDT": {
-    "createdAt": 1662025809211,
-    "lastPrice": 0.012801
+    "createdAt": 1662033062969,
+    "lastPrice": 0.012934
   },
   "SNXUSDT": {
-    "createdAt": 1662025373473,
-    "lastPrice": 3.02
+    "createdAt": 1662033195644,
+    "lastPrice": 2.991
   },
   "FLOWUSDT": {
-    "createdAt": 1662025449196,
-    "lastPrice": 2.014
+    "createdAt": 1662033291246,
+    "lastPrice": 2.035
   },
   "NEARUSDT": {
-    "createdAt": 1662025751275,
-    "lastPrice": 4.224
+    "createdAt": 1662033568695,
+    "lastPrice": 4.272
   },
   "TRBUSDT": {
-    "createdAt": 1662025421875,
-    "lastPrice": 19.24
+    "createdAt": 1662033230136,
+    "lastPrice": 19.67
   },
   "STGUSDT": {
-    "createdAt": 1662025795080,
-    "lastPrice": 0.6128
+    "createdAt": 1662033606133,
+    "lastPrice": 0.6234
   },
   "PEOPLEUSDT": {
-    "createdAt": 1662025422114,
-    "lastPrice": 0.02018
+    "createdAt": 1662033252838,
+    "lastPrice": 0.02046
   },
   "SFPUSDT": {
-    "createdAt": 1662025400651,
-    "lastPrice": 0.4061
+    "createdAt": 1662033219423,
+    "lastPrice": 0.4044
   },
   "FOOTBALLUSDT": {
-    "createdAt": 1662025655102,
-    "lastPrice": 1088.4
+    "createdAt": 1662033351463,
+    "lastPrice": 1140.65
   }
 }
