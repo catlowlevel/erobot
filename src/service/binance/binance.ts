@@ -87,7 +87,7 @@ export class BinanceClient {
         }
     }
 
-    async onAlert(cb: (data: { symbol: string; currentPrice: number; alert: AlertType }) => void) {
+    private async onAlert(cb: (data: { symbol: string; currentPrice: number; alert: AlertType }) => void) {
         this.evt.on("alert", (data) => {
             cb(data);
         });
@@ -142,7 +142,7 @@ export class BinanceClient {
         });
     }
 
-    async handleAvgPnD(data: Data) {
+    private async handleAvgPnD(data: Data) {
         if (this.avgDb.data[data.symbol] === undefined) {
             this.avgDb.data[data.symbol] = { timeStamp: Date.now() };
             await this.avgDb.write();
@@ -231,7 +231,7 @@ export class BinanceClient {
         this.deb();
     };
 
-    async handleBnB(data: Data) {
+    private async handleBnB(data: Data) {
         if (data.isFinal) {
             const db = this.bullishDb.data;
             if (!db[data.symbol]) db[data.symbol] = 0;
@@ -263,7 +263,7 @@ export class BinanceClient {
         }
     }
 
-    async handlePnD(symbol: string, currentPrice: number) {
+    private async handlePnD(symbol: string, currentPrice: number) {
         const current = this.pnd[symbol];
         if (!current && !symbol.endsWith("BUSD")) {
             console.log("New symbol", symbol);
@@ -305,7 +305,7 @@ export class BinanceClient {
         }
     }
 
-    async handleAlert(symbol: string, currentPrice: number) {
+    private async handleAlert(symbol: string, currentPrice: number) {
         this.db.data?.forEach((alert, idx) => {
             if (alert.symbol !== symbol) return;
             if (alert.done) return;
@@ -403,7 +403,7 @@ export class BinanceClient {
         return successCandles;
     }
 
-    async streamCandles(pairs: string[], interval: Interval, limit: number, streamCB: StreamCallback) {
+    private async streamCandles(pairs: string[], interval: Interval, limit: number, streamCB: StreamCallback) {
         const data = await this.getCandles(pairs, interval, limit, false);
         data.forEach((val) => {
             this.tickers.set(val.symbol, val.candles);
@@ -474,7 +474,7 @@ export class BinanceClient {
         });
     }
 
-    async getFuturesTickers() {
+    private async getFuturesTickers() {
         const ts: string[] = [];
         this.binanceClient.ws.futuresAllTickers((tickers) => {
             for (const ticker of tickers) {
