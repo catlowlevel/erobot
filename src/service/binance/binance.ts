@@ -171,7 +171,6 @@ export class BinanceClient {
             this.bullishEmaDb.data[data.symbol] = 10;
             console.log(`${data.symbol} LONG!`);
             // console.log(candles.length, data.candles.length);
-            console.log(`${data.symbol} LONG`);
             this.client.sendMessageQueue("62895611963535-1631537374@g.us", { text: `${data.symbol} LONG` });
         }
         await this.bullishEmaDb.write();
