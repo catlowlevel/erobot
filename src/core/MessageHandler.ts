@@ -103,6 +103,7 @@ export class MessageHandler {
                     )}!\nReason : ${err}`,
                     "red"
                 );
+                console.trace(err);
                 await M.reply("Terjadi kesalahan.").catch(console.error);
             } finally {
                 return M.typingDone();
