@@ -1,4 +1,5 @@
 import { proto } from "@adiwajshing/baileys";
+import Queue from "queue";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
@@ -79,6 +80,16 @@ export default class extends BaseCommand {
                 { quoted: M.message }
             );
         }
+        if (args.args[0]?.startsWith("q")) {
+            const count = Number(args.args[1]) ?? 2;
+            for (let i = 0; i < count; i++) {
+                this.client.sendMessageQueue(M.from, { text: "Pong! " + (i + 1) }, { quoted: M.message }, (msg) => {
+                    console.log(i, msg?.message?.extendedTextMessage?.text);
+                });
+            }
+            return;
+        }
+
         M.reply("Pong!");
     };
 }
