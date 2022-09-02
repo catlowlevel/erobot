@@ -43,7 +43,7 @@ type Events = {
 export class BinanceClient {
     db: LowDB<AlertType[]>;
     bullishDb: LowDB<{ [symbol: string]: number }>;
-    bullishEmaDb: LowDB<{ [symbol: string]: number }>;
+    bullishEmaDb: LowDB<{ [symbol: string]: { countdown: number; msg?: proto.IWebMessageInfo } }>;
     avgDb: LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>;
     dbPnd: LowDB<Record<string, { createdAt: number; lastPrice: number }>>;
 
@@ -57,7 +57,10 @@ export class BinanceClient {
     private streamingCandles = false;
     constructor(public client: Client, streamCandles: boolean = false) {
         this.bullishDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish.json`, {});
-        this.bullishEmaDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish_ema.json`, {});
+        this.bullishEmaDb = new LowDB<{ [symbol: string]: { countdown: number; msg?: proto.IWebMessageInfo } }>(
+            `${ROOT_DIR}/json/binance_bullish_ema.json`,
+            {}
+        );
         this.db = new LowDB<AlertType[]>(`${ROOT_DIR}/json/binance_alerts.json`, []);
         this.avgDb = new LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>(
             `${ROOT_DIR}/json/binance_avgpnd.json`,
