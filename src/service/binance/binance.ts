@@ -71,7 +71,7 @@ export class BinanceClient {
         this.evt = new EventEmitter() as TypedEmitter<Events>;
         if (streamCandles) {
             this.getFuturesSymbols().then((symbols) => {
-                this.streamCandles(symbols, "5m", 8, (data) => {
+                this.streamCandles(symbols, "5m", 200, (data) => {
                     const currentPrice = data.candles[data.candles.length - 1].close;
                     this.handleAlert(data.symbol, currentPrice);
                     this.handlePnD(data.symbol, currentPrice); //Pump And Dump
