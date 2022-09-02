@@ -40,40 +40,32 @@ type Events = {
 };
 
 export class BinanceClient {
-    private alertAdapter = new JSONFile<AlertType[]>(`${ROOT_DIR}/json/binance_alerts.json`);
-    db: Low<AlertType[]>;
-    private pndAdapter = new JSONFile<Record<string, { createdAt: number; lastPrice: number }>>(
-        `${ROOT_DIR}/json/binance_pnd.json`
-    );
-    dbPnd: Low<Record<string, { createdAt: number; lastPrice: number }>>;
+    db: LowDB<AlertType[]>;
     bullishDb: LowDB<{ [symbol: string]: number }>;
+    bullishEmaDb: LowDB<{ [symbol: string]: number }>;
+    avgDb: LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>;
+    dbPnd: LowDB<Record<string, { createdAt: number; lastPrice: number }>>;
 
-    tickers = new Map<string, Candle[]>();
-    rsis = new Map<string, number[]>();
     binanceClient: Binance;
     evt: TypedEmitter<Events>;
-    private streamingCandles = false;
+
+    tickers = new Map<string, Candle[]>();
+    // rsis = new Map<string, number[]>();
     symbols: string[];
-    avgDb: LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>;
+
+    private streamingCandles = false;
     constructor(public client: Client, streamCandles: boolean = false) {
         this.bullishDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish.json`, {});
+        this.bullishEmaDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish_ema.json`, {});
+        this.db = new LowDB<AlertType[]>(`${ROOT_DIR}/json/binance_alerts.json`, []);
         this.avgDb = new LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>(
             `${ROOT_DIR}/json/binance_avgpnd.json`,
             {}
         );
-        this.db = new Low(this.alertAdapter);
-        this.db.write().then(() => {
-            this.db.read().then(() => {
-                this.db.data ||= [];
-            });
-        });
-
-        this.dbPnd = new Low(this.pndAdapter);
-        this.dbPnd.write().then(() => {
-            this.dbPnd.read().then(() => {
-                this.dbPnd.data ||= {};
-            });
-        });
+        this.dbPnd = new LowDB<Record<string, { createdAt: number; lastPrice: number }>>(
+            `${ROOT_DIR}/json/binance_pnd.json`,
+            {}
+        );
 
         this.binanceClient = binanceApiNode({});
         this.evt = new EventEmitter() as TypedEmitter<Events>;
