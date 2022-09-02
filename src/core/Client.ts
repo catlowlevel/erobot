@@ -1,9 +1,11 @@
 //Core implementation mostly copied from https://github.com/LuckyYam/WhatsApp-bot
 import Baileys, {
+    AnyMessageContent,
     DisconnectReason,
     fetchLatestBaileysVersion,
     makeInMemoryStore,
     MessageRetryMap,
+    MiscMessageGenerationOptions,
     ParticipantAction,
     proto,
     useMultiFileAuthState,
@@ -17,6 +19,8 @@ import { Boom } from "@hapi/boom";
 import chalk, { ChalkFunction } from "chalk";
 import { join } from "path";
 import P from "pino";
+import Queue from "queue";
+import { client } from "telegram";
 import { Message } from ".";
 import { ROOT_DIR } from "..";
 import { BinanceClient } from "../service/binance/binance";
@@ -42,10 +46,13 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     binance: BinanceClient;
     samehadaku: Samehadaku;
     coindar: Coindar;
+
+    msgQueue: Queue;
     // public contact = new Contact(this);
     constructor() {
         super();
         config();
+        this.msgQueue = Queue({ autostart: true, concurrency: 1 });
         this.store = makeInMemoryStore({ logger: P({ level: "fatal" }) });
         this.store.readFromFile(join(ROOT_DIR, "store", "stores.json"));
         setInterval(() => {
@@ -72,6 +79,26 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     log(str: string, color: keyof typeof chalk = "blue") {
         const c = chalk[color] as ChalkFunction;
         console.log(c(str));
+    }
+
+    sendMessageQueue(
+        jid: string,
+        content: AnyMessageContent,
+        options?: MiscMessageGenerationOptions | undefined,
+        sentCb?: (msg: proto.WebMessageInfo | undefined) => void
+    ) {
+        this.msgQueue.push((cb) => {
+            this.client
+                .sendMessage(jid, content, options)
+                .then((msg) => {
+                    sentCb?.(msg);
+                    cb?.();
+                })
+                .catch((err) => {
+                    console.log("error on messageQueue", err);
+                    cb?.();
+                });
+        });
     }
 
     public correctJid = (jid: string): string => `${jid.split("@")[0].split(":")[0]}@s.whatsapp.net`;
