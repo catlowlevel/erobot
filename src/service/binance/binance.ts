@@ -150,7 +150,7 @@ export class BinanceClient {
     private async handleAboveEma(data: Data) {
         if (!data.isFinal) return;
         const db = this.bullishEmaDb.data;
-        if (!db[data.symbol]) db[data.symbol] = 0;
+        if (!db[data.symbol]) db[data.symbol] = { countdown: 0 };
 
         let MAX_INDEX = 10;
         const ema25 = ema({ period: 25, values: data.candles.map((c) => c.close) }).reverse();
@@ -169,9 +169,9 @@ export class BinanceClient {
             if (candle.close > candle.ema25 && candle.ema25 > candle.ema99) continue;
             bullish = false;
         }
-        if (db[data.symbol]-- <= 0) db[data.symbol] = 0;
-        if (bullish && db[data.symbol] <= 0) {
-            this.bullishEmaDb.data[data.symbol] = 10;
+        if (db[data.symbol].countdown-- <= 0) db[data.symbol].countdown = 0;
+        if (bullish && db[data.symbol].countdown <= 0) {
+            this.bullishEmaDb.data[data.symbol].countdown = 10;
             console.log(`${data.symbol} LONG!`);
             // console.log(candles.length, data.candles.length);
             this.client.sendMessageQueue("62895611963535-1631537374@g.us", { text: `${data.symbol} LONG` });
