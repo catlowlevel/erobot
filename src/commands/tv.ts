@@ -1,5 +1,5 @@
-import { getChartImg, validIndicator, validTf } from "../api/chartimg/api";
-import { getPrices, searchSymbol } from "../api/tradingview/api";
+import { getChartImg, validIndicator, validTf } from "../lib/chartimg/api";
+import { getPrices, searchSymbol } from "../lib/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";

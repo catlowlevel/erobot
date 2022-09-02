@@ -1,4 +1,4 @@
-import { shortenUrl } from "../api/bitly/api";
+import { shortenUrl } from "../lib/bitly/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";

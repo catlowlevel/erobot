@@ -1,4 +1,4 @@
-import { validTf } from "../api/chartimg/api";
+import { validTf } from "../lib/chartimg/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";

@@ -1,5 +1,5 @@
 import { format } from "timeago.js";
-import { getCalendar } from "../api/investing/api";
+import { getCalendar } from "../lib/investing/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";

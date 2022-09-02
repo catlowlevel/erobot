@@ -1,7 +1,7 @@
 import fetch from "node-fetch-commonjs";
 import { format as timeago } from "timeago.js";
-import { shortenUrl } from "../api/bitly/api";
-import { getIdeas, getPrices, searchSymbol } from "../api/tradingview/api";
+import { shortenUrl } from "../lib/bitly/api";
+import { getIdeas, getPrices, searchSymbol } from "../lib/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";

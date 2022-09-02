@@ -1,5 +1,5 @@
-import { getMiniChartImg, validTf } from "../api/chartimg/api";
-import { searchSymbol } from "../api/tradingview/api";
+import { getMiniChartImg, validTf } from "../lib/chartimg/api";
+import { searchSymbol } from "../lib/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
