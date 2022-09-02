@@ -5,6 +5,7 @@ import { debounce } from "debounce";
 import EventEmitter from "events";
 import { writeFileSync } from "fs";
 import pMap from "p-map";
+import { ema } from "technicalindicators";
 import TypedEmitter from "typed-emitter";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
@@ -77,6 +78,7 @@ export class BinanceClient {
                     this.handlePnD(data.symbol, currentPrice); //Pump And Dump
                     this.handleBnB(data); //Bullish And Bearish
                     this.handleAvgPnD(data);
+                    this.handleAboveEma(data);
 
                     this.evt.emit("streamedSymbol", {
                         symbol: data.symbol,
@@ -140,6 +142,37 @@ export class BinanceClient {
                 rej("Timeout");
             }, 1000 * 5);
         });
+    }
+
+    private async handleAboveEma(data: Data) {
+        if (!data.isFinal) return;
+        const db = this.bullishEmaDb.data;
+        if (!db[data.symbol]) db[data.symbol] = 0;
+
+        let MAX_INDEX = 10;
+        const ema25 = ema({ period: 25, values: data.candles.map((c) => c.close) }).reverse();
+        const ema99 = ema({ period: 99, values: data.candles.map((c) => c.close) }).reverse();
+
+        const candles = data.candles
+            .slice(0)
+            .reverse()
+            .map((c, i) => ({ close: c.close, ema25: ema25[i], ema99: ema99[i] }))
+            .filter((_c, i) => i < MAX_INDEX)
+            .reverse();
+
+        let bullish = true;
+
+        for (const candle of candles) {
+            if (candle.close > candle.ema25 && candle.ema25 > candle.ema99) continue;
+            bullish = false;
+        }
+        if (db[data.symbol]-- <= 0) db[data.symbol] = 0;
+        if (bullish && db[data.symbol] <= 0) {
+            this.bullishEmaDb.data[data.symbol] = 10;
+            console.log(`${data.symbol} LONG!`);
+            // console.log(candles.length, data.candles.length);
+        }
+        await this.bullishEmaDb.write();
     }
 
     private async handleAvgPnD(data: Data) {
