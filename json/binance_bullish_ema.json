@@ -1,143 +1,1810 @@
 {
-  "RAYUSDT": 0,
-  "OPUSDT": 0,
-  "FLMUSDT": 0,
-  "LITUSDT": 0,
-  "BNBUSDT": 0,
-  "1000XECUSDT": 0,
-  "ROSEUSDT": 3,
-  "XEMUSDT": 0,
-  "UNFIUSDT": 0,
-  "ALPHAUSDT": 0,
-  "API3USDT": 0,
-  "HOTUSDT": 0,
-  "SFPUSDT": 0,
-  "ONTUSDT": 0,
-  "DARUSDT": 0,
-  "MASKUSDT": 0,
-  "ARPAUSDT": 0,
-  "IOSTUSDT": 0,
-  "WOOUSDT": 0,
-  "ONEUSDT": 0,
-  "BTCUSDT": 0,
-  "EOSUSDT": 10,
-  "GMTUSDT": 0,
-  "COMPUSDT": 0,
-  "ETHUSDT": 0,
-  "HNTUSDT": 0,
-  "XRPUSDT": 0,
-  "DASHUSDT": 0,
-  "ADAUSDT": 0,
-  "LINKUSDT": 0,
-  "AVAXUSDT": 0,
-  "ENSUSDT": 0,
-  "ARUSDT": 0,
-  "SRMUSDT": 0,
-  "1000SHIBUSDT": 0,
-  "BELUSDT": 0,
-  "ATOMUSDT": 0,
-  "ETCUSDT": 0,
-  "AUDIOUSDT": 0,
-  "LTCUSDT": 0,
-  "THETAUSDT": 0,
-  "SOLUSDT": 0,
-  "GRTUSDT": 0,
-  "BCHUSDT": 0,
-  "MKRUSDT": 0,
-  "DYDXUSDT": 0,
-  "KNCUSDT": 0,
-  "RLCUSDT": 0,
-  "CHZUSDT": 0,
-  "FTMUSDT": 0,
-  "ENJUSDT": 0,
-  "UNIUSDT": 0,
-  "SUSHIUSDT": 3,
-  "BAKEUSDT": 0,
-  "KSMUSDT": 0,
-  "AXSUSDT": 4,
-  "BALUSDT": 0,
-  "LINAUSDT": 3,
-  "ALICEUSDT": 3,
-  "HBARUSDT": 0,
-  "FLOWUSDT": 0,
-  "FILUSDT": 0,
-  "WAVESUSDT": 0,
-  "XMRUSDT": 0,
-  "VETUSDT": 0,
-  "1INCHUSDT": 2,
-  "YFIUSDT": 0,
-  "AAVEUSDT": 0,
-  "C98USDT": 0,
-  "SANDUSDT": 0,
-  "BNXUSDT": 5,
-  "RSRUSDT": 0,
-  "DOTUSDT": 0,
-  "MATICUSDT": 0,
-  "XLMUSDT": 0,
-  "OCEANUSDT": 0,
-  "ANTUSDT": 0,
-  "CRVUSDT": 0,
-  "JASMYUSDT": 0,
-  "TRXUSDT": 0,
-  "CTKUSDT": 0,
-  "CHRUSDT": 0,
-  "TRBUSDT": 0,
-  "GALAUSDT": 0,
-  "XTZUSDT": 2,
-  "NEARUSDT": 0,
-  "CELOUSDT": 0,
-  "PEOPLEUSDT": 0,
-  "ZILUSDT": 0,
-  "MANAUSDT": 0,
-  "EGLDUSDT": 0,
-  "ALGOUSDT": 0,
-  "ZECUSDT": 0,
-  "KAVAUSDT": 0,
-  "APEUSDT": 0,
-  "ANKRUSDT": 0,
-  "IOTXUSDT": 0,
-  "LPTUSDT": 0,
-  "FTTUSDT": 0,
-  "QTUMUSDT": 0,
-  "STGUSDT": 0,
-  "CVCUSDT": 0,
-  "BATUSDT": 0,
-  "CTSIUSDT": 3,
-  "OMGUSDT": 0,
-  "KLAYUSDT": 3,
-  "NEOUSDT": 0,
-  "SXPUSDT": 0,
-  "IMXUSDT": 0,
-  "SNXUSDT": 0,
-  "IOTAUSDT": 0,
-  "BLZUSDT": 0,
-  "ZRXUSDT": 0,
-  "DUSKUSDT": 0,
-  "DOGEUSDT": 0,
-  "SKLUSDT": 0,
-  "ZENUSDT": 0,
-  "DEFIUSDT": 0,
-  "RUNEUSDT": 0,
-  "BANDUSDT": 0,
-  "REEFUSDT": 0,
-  "TOMOUSDT": 0,
-  "DENTUSDT": 0,
-  "ATAUSDT": 0,
-  "BTCDOMUSDT": 0,
-  "FOOTBALLUSDT": 0,
-  "LRCUSDT": 0,
-  "CELRUSDT": 0,
-  "STMXUSDT": 0,
-  "GALUSDT": 0,
-  "RENUSDT": 0,
-  "INJUSDT": 0,
-  "ICXUSDT": 0,
-  "NKNUSDT": 0,
-  "COTIUSDT": 0,
-  "GTCUSDT": 0,
-  "OGNUSDT": 0,
-  "STORJUSDT": 0,
-  "MTLUSDT": 0,
-  "DGBUSDT": 0,
-  "RVNUSDT": 0
+  "OPUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5E88991F3C016"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "OPUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113703",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "BTCUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE564EFA8A81383"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "BTCUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113400",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "CHZUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5707A57B2413C"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "CHZUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662108000",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662108001"
+        }
+      ]
+    }
+  },
+  "ETHUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5359931EC45DA"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ETHUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113400",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "MATICUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE508404E6D4896"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "MATICUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE535EDCA7DAA5A",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "MATICUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662113704",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "ZECUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE57C3145CA9427"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ZECUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662112800",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662112801",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "KLAYUSDT": {
+    "countdown": 0
+  },
+  "ARUSDT": {
+    "countdown": 0
+  },
+  "SFPUSDT": {
+    "countdown": 0
+  },
+  "GRTUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE559DEA35E1FF5"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "GRTUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113704",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "IOTAUSDT": {
+    "countdown": 0
+  },
+  "TOMOUSDT": {
+    "countdown": 0
+  },
+  "ZRXUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE539690D3BDC4B"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ZRXUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113403",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "CTKUSDT": {
+    "countdown": 0
+  },
+  "1INCHUSDT": {
+    "countdown": 1,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE537150AC016AB"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "1INCHUSDT LONG | 1.05%\nCurrent Price : $0.725",
+          "contextInfo": {
+            "stanzaId": "BAE5A2794FDE5982",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "1INCHUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662115800",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662115800",
+          "readTimestamp": "1662118026"
+        }
+      ]
+    }
+  },
+  "SANDUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE58C82F0254355"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "SANDUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE50BBDBC252B17",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "SANDUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662113700",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "FTMUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE551594AC6BA87"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "FTMUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113703",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "FILUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE57F5EF780AFC7"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "FILUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113401",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "XRPUSDT": {
+    "countdown": 0
+  },
+  "C98USDT": {
+    "countdown": 0
+  },
+  "APEUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE554B4B3B9DD23"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "APEUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113402",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "ALGOUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE505F57F8CEFD4"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ALGOUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE5671CC2295AB2",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "ALGOUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662114000",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114001",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "ONEUSDT": {
+    "countdown": 0
+  },
+  "AVAXUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5FE3154CF7873"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "AVAXUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113405",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113498",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "DENTUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5218FC1995B3F"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "DENTUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113402",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "LTCUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE550377BDAA4BC"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "LTCUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE5F7F9E16999D4",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "LTCUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662113700",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "LITUSDT": {
+    "countdown": 0
+  },
+  "STMXUSDT": {
+    "countdown": 0
+  },
+  "ATOMUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE59743C298A571"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ATOMUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE545105D8CFD1A",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "ATOMUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662114001",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114002",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "BNBUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE50F5E7D291CF8"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "BNBUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662111901",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662111902",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "XEMUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE54189AB431032"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "XEMUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662108001",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net"
+    }
+  },
+  "YFIUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5B14EF5DE6AE2"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "YFIUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662114600",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114601"
+        }
+      ]
+    }
+  },
+  "ONTUSDT": {
+    "countdown": 0
+  },
+  "SNXUSDT": {
+    "countdown": 0
+  },
+  "IMXUSDT": {
+    "countdown": 0
+  },
+  "GMTUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5AAAB666F53AC"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "GMTUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113400",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "LRCUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5B2B9774593F0"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "LRCUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113404",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113498",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "RUNEUSDT": {
+    "countdown": 0
+  },
+  "COMPUSDT": {
+    "countdown": 0
+  },
+  "DOGEUSDT": {
+    "countdown": 0
+  },
+  "AXSUSDT": {
+    "countdown": 0
+  },
+  "RENUSDT": {
+    "countdown": 0
+  },
+  "HNTUSDT": {
+    "countdown": 0
+  },
+  "ENSUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5CEA630222B68"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ENSUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662111902",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662111902",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "LINKUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5F3DBBE05F5E6"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "LINKUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113403",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "BCHUSDT": {
+    "countdown": 0
+  },
+  "EOSUSDT": {
+    "countdown": 0
+  },
+  "THETAUSDT": {
+    "countdown": 0
+  },
+  "AAVEUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE588F4FAC393DC"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "AAVEUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE5AEA58A33007B",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "AAVEUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662114900",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114901"
+        }
+      ]
+    }
+  },
+  "LINAUSDT": {
+    "countdown": 0
+  },
+  "ALPHAUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5296053443F01"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ALPHAUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113703",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "GALAUSDT": {
+    "countdown": 0
+  },
+  "CRVUSDT": {
+    "countdown": 0
+  },
+  "ALICEUSDT": {
+    "countdown": 0
+  },
+  "CVCUSDT": {
+    "countdown": 0
+  },
+  "COTIUSDT": {
+    "countdown": 0
+  },
+  "RSRUSDT": {
+    "countdown": 0
+  },
+  "XTZUSDT": {
+    "countdown": 0
+  },
+  "ETCUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5575860A53F2F"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ETCUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113702",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "TRBUSDT": {
+    "countdown": 0
+  },
+  "NEOUSDT": {
+    "countdown": 0
+  },
+  "DOTUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5B5C18484B3C7"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "DOTUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662112801",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662112835",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "VETUSDT": {
+    "countdown": 0
+  },
+  "SXPUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5CA046F3C27E5"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "SXPUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113702",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "NEARUSDT": {
+    "countdown": 0
+  },
+  "OCEANUSDT": {
+    "countdown": 0
+  },
+  "BNXUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE512CBCEE60F6D"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "BNXUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE579788F41E8B2",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "BNXUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662114001",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114002",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "MTLUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5D9E33506DB7D"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "MTLUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113401",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "ROSEUSDT": {
+    "countdown": 0
+  },
+  "IOTXUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE50F2344685D75"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "IOTXUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113700",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "REEFUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5A1456337932E"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "REEFUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE575ACF6812BDE",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "REEFUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662114000",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114001",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "FLOWUSDT": {
+    "countdown": 0
+  },
+  "RLCUSDT": {
+    "countdown": 0
+  },
+  "SUSHIUSDT": {
+    "countdown": 0
+  },
+  "AUDIOUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE51B2B972D6496"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "AUDIOUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662112800",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662112835",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "BALUSDT": {
+    "countdown": 0
+  },
+  "RAYUSDT": {
+    "countdown": 0
+  },
+  "ICXUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5208F77C8F9B5"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ICXUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662114600",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114601"
+        }
+      ]
+    }
+  },
+  "GALUSDT": {
+    "countdown": 0
+  },
+  "OGNUSDT": {
+    "countdown": 0
+  },
+  "RVNUSDT": {
+    "countdown": 0
+  },
+  "HBARUSDT": {
+    "countdown": 0
+  },
+  "CELOUSDT": {
+    "countdown": 0
+  },
+  "PEOPLEUSDT": {
+    "countdown": 0
+  },
+  "ANTUSDT": {
+    "countdown": 0
+  },
+  "DGBUSDT": {
+    "countdown": 0
+  },
+  "ADAUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5D308A1BB28C4"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ADAUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113100",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113101",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "DYDXUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5A0D58EEDD540"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "DYDXUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662112800",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662112835",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "STORJUSDT": {
+    "countdown": 0
+  },
+  "ATAUSDT": {
+    "countdown": 0
+  },
+  "UNIUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5257082C07F9D"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "UNIUSDT LONG",
+          "contextInfo": {
+            "stanzaId": "BAE578A37C2BAE3C",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "UNIUSDT LONG"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662114001",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114002",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "WOOUSDT": {
+    "countdown": 0
+  },
+  "TRXUSDT": {
+    "countdown": 0
+  },
+  "IOSTUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE53C7765766490"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "IOSTUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113704",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "SOLUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5B4995573790D"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "SOLUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113701",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "XLMUSDT": {
+    "countdown": 0
+  },
+  "MANAUSDT": {
+    "countdown": 0
+  },
+  "WAVESUSDT": {
+    "countdown": 0
+  },
+  "SKLUSDT": {
+    "countdown": 0
+  },
+  "FOOTBALLUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE55616AD913BD0"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "FOOTBALLUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113705",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "KNCUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE539BBEB881F6A"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "KNCUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662114901",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114901"
+        }
+      ]
+    }
+  },
+  "1000SHIBUSDT": {
+    "countdown": 0
+  },
+  "CTSIUSDT": {
+    "countdown": 0
+  },
+  "UNFIUSDT": {
+    "countdown": 0
+  },
+  "XMRUSDT": {
+    "countdown": 0
+  },
+  "HOTUSDT": {
+    "countdown": 0
+  },
+  "QTUMUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5CCF900C25663"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "QTUMUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113703",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "ARPAUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5C874A5D5ED8F"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ARPAUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113403",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "DASHUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5436145AEF5F4"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "DASHUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113403",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "LPTUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE597DEA81A9460"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "LPTUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113702",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "API3USDT": {
+    "countdown": 0
+  },
+  "DUSKUSDT": {
+    "countdown": 0
+  },
+  "DARUSDT": {
+    "countdown": 0
+  },
+  "MASKUSDT": {
+    "countdown": 0
+  },
+  "ZILUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5C99E6191780E"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ZILUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662114001",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114002",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "1000XECUSDT": {
+    "countdown": 0
+  },
+  "SRMUSDT": {
+    "countdown": 0
+  },
+  "BLZUSDT": {
+    "countdown": 0
+  },
+  "KAVAUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5176D10171E76"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "KAVAUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662111000",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662111000",
+          "readTimestamp": "1662111604"
+        }
+      ]
+    }
+  },
+  "BATUSDT": {
+    "countdown": 0
+  },
+  "JASMYUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5992891B2D1DC"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "JASMYUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113402",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "FTTUSDT": {
+    "countdown": 0
+  },
+  "EGLDUSDT": {
+    "countdown": 0
+  },
+  "MKRUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5CF4BE8CCFD63"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "MKRUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662111602",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662111603",
+          "readTimestamp": "1662111604"
+        }
+      ]
+    }
+  },
+  "DEFIUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE50D47335734F8"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "DEFIUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113404",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113498",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "BANDUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5EA72E3126DF1"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "BANDUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113700",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "OMGUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE549EBFE82EA41"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "OMGUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113701",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "BAKEUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE54AF3233DD50C"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "BAKEUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662114600",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662114600"
+        }
+      ]
+    }
+  },
+  "BELUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE52CC156EF2464"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "BELUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113401",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "STGUSDT": {
+    "countdown": 0
+  },
+  "BTCDOMUSDT": {
+    "countdown": 0
+  },
+  "CHRUSDT": {
+    "countdown": 0
+  },
+  "GTCUSDT": {
+    "countdown": 0
+  },
+  "INJUSDT": {
+    "countdown": 0
+  },
+  "KSMUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5D37F8F8E63E3"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "KSMUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113401",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113495",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "ENJUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5409285573BDD"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ENJUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113404",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113498",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "ANKRUSDT": {
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE55B7E71EA7734"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "ANKRUSDT LONG"
+        }
+      },
+      "messageTimestamp": "1662113705",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662113735",
+          "readTimestamp": "1662114105"
+        }
+      ]
+    }
+  },
+  "ZENUSDT": {
+    "countdown": 0
+  },
+  "NKNUSDT": {
+    "countdown": 0
+  },
+  "CELRUSDT": {
+    "countdown": 0
+  },
+  "FLMUSDT": {
+    "countdown": 0
+  }
 }

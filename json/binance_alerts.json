@@ -178,25 +178,5 @@
     },
     "resolved": false,
     "amGreater": false
-  },
-  {
-    "alertPrice": "0.12",
-    "symbol": "RENUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": false,
-        "id": "0DB10B5C40A5196985F85FDEC1076524",
-        "participant": "6282293787977@s.whatsapp.net"
-      },
-      "messageTimestamp": 1662080521,
-      "pushName": "|•|",
-      "message": {
-        "conversation": ".alert ren 0.12"
-      }
-    },
-    "resolved": false,
-    "amGreater": false
   }
 ]
