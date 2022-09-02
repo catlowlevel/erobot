@@ -79,7 +79,7 @@ export class BinanceClient {
                     const currentPrice = data.candles[data.candles.length - 1].close;
                     this.handleAlert(data.symbol, currentPrice);
                     this.handlePnD(data.symbol, currentPrice); //Pump And Dump
-                    this.handleBnB(data); //Bullish And Bearish
+                    //this.handleBnB(data); //Bullish And Bearish
                     this.handleAvgPnD(data);
                     this.handleAboveEma(data);
 
@@ -172,9 +172,20 @@ export class BinanceClient {
         if (db[data.symbol].countdown-- <= 0) db[data.symbol].countdown = 0;
         if (bullish && db[data.symbol].countdown <= 0) {
             this.bullishEmaDb.data[data.symbol].countdown = 10;
+            const currentPrice = candles[candles.length - 1].close;
+            const lastPrice = candles[0].close;
+            const percentGap = getPercentageChange(currentPrice, lastPrice);
             console.log(`${data.symbol} LONG!`);
             // console.log(candles.length, data.candles.length);
-            this.client.sendMessageQueue("62895611963535-1631537374@g.us", { text: `${data.symbol} LONG` });
+            this.client.sendMessageQueue(
+                "62895611963535-1631537374@g.us",
+                { text: `${data.symbol} LONG | ${percentGap.toFixed(2)}%\nCurrent Price : $${currentPrice}` },
+                { quoted: db[data.symbol].msg },
+                (msg) => {
+                    db[data.symbol].msg = msg;
+                    this.bullishEmaDb.write();
+                }
+            );
         }
         await this.bullishEmaDb.write();
     }
