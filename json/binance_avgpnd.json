@@ -3301,56 +3301,55 @@
     }
   },
   "BCHUSDT": {
-    "timeStamp": 1662139463472,
+    "timeStamp": 1662178453606,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
         "fromMe": true,
-        "id": "BAE5424EF86CFF19"
+        "id": "BAE5B68376FAC5B5"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "Average Pump! *BCHUSDT* => 1.14%\nCurrent Price : $118.05",
+          "text": "Average Pump! *BCHUSDT* => 0.41%\nCurrent Price : $116.95",
           "contextInfo": {
-            "stanzaId": "BAE563D54292BB60",
+            "stanzaId": "BAE5424EF86CFF19",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "Average Pump! *BCHUSDT* => 0.36%\nCurrent Price : $116.44"
+                "text": "Average Pump! *BCHUSDT* => 1.14%\nCurrent Price : $118.05"
               }
             },
             "remoteJid": "120363023114788849@g.us"
           }
         }
       },
-      "messageTimestamp": "1662121890",
+      "messageTimestamp": "1662178453",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
-          "userJid": "6282296012562@s.whatsapp.net",
-          "receiptTimestamp": "1662121891"
-        },
-        {
-          "userJid": "6289503402488@s.whatsapp.net",
-          "receiptTimestamp": "1662121891"
+          "userJid": "6282194182691@s.whatsapp.net",
+          "receiptTimestamp": "1662178454"
         },
         {
           "userJid": "62895611963546@s.whatsapp.net",
-          "receiptTimestamp": "1662121891"
+          "receiptTimestamp": "1662178454"
         },
         {
           "userJid": "6282299799544@s.whatsapp.net",
-          "receiptTimestamp": "1662121892"
+          "receiptTimestamp": "1662178454"
+        },
+        {
+          "userJid": "6289503402488@s.whatsapp.net",
+          "receiptTimestamp": "1662178454"
+        },
+        {
+          "userJid": "6282296012562@s.whatsapp.net",
+          "receiptTimestamp": "1662178454"
         },
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662121892",
-          "readTimestamp": "1662122371"
-        },
-        {
-          "userJid": "6282194182691@s.whatsapp.net",
-          "receiptTimestamp": "1662121892"
+          "receiptTimestamp": "1662178455"
         }
       ]
     }
@@ -4099,64 +4098,63 @@
     }
   },
   "XLMUSDT": {
-    "timeStamp": 1662166310654,
+    "timeStamp": 1662177874431,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
         "fromMe": true,
-        "id": "BAE50F783A06D076"
+        "id": "BAE54F10161D40E1"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "Average Pump! *XLMUSDT* => 0.40%\nCurrent Price : $0.10527",
+          "text": "Average Pump! *XLMUSDT* => 0.47%\nCurrent Price : $0.10522",
           "contextInfo": {
-            "stanzaId": "BAE58861A1E41C39",
+            "stanzaId": "BAE50F783A06D076",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "Average Pump! *XLMUSDT* => 0.55%\nCurrent Price : $0.10502"
+                "text": "Average Pump! *XLMUSDT* => 0.40%\nCurrent Price : $0.10527"
               }
             },
             "remoteJid": "120363023114788849@g.us"
           }
         }
       },
-      "messageTimestamp": "1662166310",
+      "messageTimestamp": "1662177874",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
-          "userJid": "6282299799544@s.whatsapp.net",
-          "receiptTimestamp": "1662166311"
-        },
-        {
           "userJid": "6282296012562@s.whatsapp.net",
-          "receiptTimestamp": "1662166311"
-        },
-        {
-          "userJid": "6289503402488@s.whatsapp.net",
-          "receiptTimestamp": "1662166311"
-        },
-        {
-          "userJid": "62895611963546@s.whatsapp.net",
-          "receiptTimestamp": "1662166311",
-          "readTimestamp": "1662166559"
+          "receiptTimestamp": "1662177875"
         },
         {
           "userJid": "6282194182691@s.whatsapp.net",
-          "receiptTimestamp": "1662166311",
-          "readTimestamp": "1662173691"
+          "receiptTimestamp": "1662177875",
+          "readTimestamp": "1662178138"
         },
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662166315",
-          "readTimestamp": "1662172545"
+          "receiptTimestamp": "1662177875"
+        },
+        {
+          "userJid": "62895611963546@s.whatsapp.net",
+          "receiptTimestamp": "1662177875",
+          "readTimestamp": "1662177965"
+        },
+        {
+          "userJid": "6289503402488@s.whatsapp.net",
+          "receiptTimestamp": "1662177876"
+        },
+        {
+          "userJid": "6282299799544@s.whatsapp.net",
+          "receiptTimestamp": "1662177879"
         }
       ]
     }
   },
   "WAVESUSDT": {
-    "timeStamp": 1662174041496,
+    "timeStamp": 1662177657924,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
@@ -5034,57 +5032,31 @@
     }
   },
   "BALUSDT": {
-    "timeStamp": 1662146609792,
+    "timeStamp": 1662179065646,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
         "fromMe": true,
-        "id": "BAE563EBE1571750"
+        "id": "BAE512E3575ABE54"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "Average Pump! *BALUSDT* => 1.91%\nCurrent Price : $7.874",
+          "text": "Average Pump! *BALUSDT* => 1.00%\nCurrent Price : $7.631",
           "contextInfo": {
-            "stanzaId": "BAE5DA1500E56A01",
+            "stanzaId": "BAE563EBE1571750",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "Average Pump! *BALUSDT* => 1.30%\nCurrent Price : $7.777"
+                "text": "Average Pump! *BALUSDT* => 1.91%\nCurrent Price : $7.874"
               }
             },
             "remoteJid": "120363023114788849@g.us"
           }
         }
       },
-      "messageTimestamp": "1662069887",
+      "messageTimestamp": "1662179065",
       "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282299799544@s.whatsapp.net",
-          "receiptTimestamp": "1662069888"
-        },
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662069888"
-        },
-        {
-          "userJid": "6282194182691@s.whatsapp.net",
-          "receiptTimestamp": "1662069888"
-        },
-        {
-          "userJid": "62895611963546@s.whatsapp.net",
-          "receiptTimestamp": "1662069888"
-        },
-        {
-          "userJid": "6289503402488@s.whatsapp.net",
-          "receiptTimestamp": "1662069888"
-        },
-        {
-          "userJid": "6282296012562@s.whatsapp.net",
-          "receiptTimestamp": "1662069895"
-        }
-      ]
+      "participant": "62895611963535:35@s.whatsapp.net"
     }
   },
   "GRTUSDT": {
@@ -5877,7 +5849,7 @@
     }
   },
   "SFPUSDT": {
-    "timeStamp": 1662163453619,
+    "timeStamp": 1662178720514,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
@@ -6514,7 +6486,7 @@
     }
   },
   "KLAYUSDT": {
-    "timeStamp": 1662170874507,
+    "timeStamp": 1662178799251,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
@@ -7170,7 +7142,7 @@
     }
   },
   "CTSIUSDT": {
-    "timeStamp": 1662170881178,
+    "timeStamp": 1662178599182,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
@@ -7255,7 +7227,7 @@
     }
   },
   "INJUSDT": {
-    "timeStamp": 1662146634053,
+    "timeStamp": 1662178729028,
     "msg": {
       "key": {
         "remoteJid": "120363023114788849@g.us",
