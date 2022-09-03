@@ -36,7 +36,6 @@ interface AlertType {
 }
 
 type Events = {
-    alert: (data: { symbol: string; currentPrice: number; alert: AlertType }) => void;
     streamedSymbol: (data: { symbol: string; currentPrice: number }) => void;
 };
 
@@ -90,12 +89,6 @@ export class BinanceClient {
                 });
             });
         }
-    }
-
-    private async onAlert(cb: (data: { symbol: string; currentPrice: number; alert: AlertType }) => void) {
-        this.evt.on("alert", (data) => {
-            cb(data);
-        });
     }
 
     async addAlert(symbol: string, price: number, msg: proto.IWebMessageInfo) {
@@ -519,21 +512,6 @@ export class BinanceClient {
             // 	this.rsis.set(symbol, rsi);
             // 	console.log("RSI", symbol, rsi[rsi.length - 1]);
             // }
-        });
-    }
-
-    private async getFuturesTickers() {
-        const ts: string[] = [];
-        this.binanceClient.ws.futuresAllTickers((tickers) => {
-            for (const ticker of tickers) {
-                if (ts.includes(ticker.symbol)) {
-                    console.log("duplicate", ticker.symbol);
-                    continue;
-                }
-                ts.push(ticker.symbol);
-                console.log("ticker", ticker.symbol, ts.length);
-            }
-            writeFileSync("tickers.json", JSON.stringify(ts));
         });
     }
 
