@@ -26,10 +26,11 @@ export const toRoundedImage = async (file: string | Buffer, radius: number) => {
     const img = await loadImage(file);
     // radius = radius + img.height * 2 + img.width * 2;
     // radius = radius + img.width / 2 - img.height / 2;
+    const x = Math.min(img.width, img.height);
     radius /= 100;
     radius = Math.max(radius, 0);
     radius = Math.min(radius, 1);
-    radius = ((img.width ^ 2) + ((img.height * 2) / img.height) * 2) * 0.4 * radius; // unknown equation
+    radius = ((x ^ 2) + ((x * 2) / x) * 2) * 0.5 * radius; // unknown calculation
     console.log(img.width, img.height, radius);
     const canvas = createCanvas(img.width, img.height);
     const ctx = canvas.getContext("2d");
