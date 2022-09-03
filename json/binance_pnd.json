@@ -52,8 +52,8 @@
     "lastPrice": 0.8731
   },
   "XLMUSDT": {
-    "createdAt": 1662179702326,
-    "lastPrice": 0.10523
+    "createdAt": 1662180303150,
+    "lastPrice": 0.1051
   },
   "SRMUSDT": {
     "createdAt": 1662180069342,
@@ -404,8 +404,8 @@
     "lastPrice": 1.179
   },
   "DASHUSDT": {
-    "createdAt": 1662179703900,
-    "lastPrice": 45.97
+    "createdAt": 1662180304177,
+    "lastPrice": 45.94
   },
   "XMRUSDT": {
     "createdAt": 1662179802250,
@@ -460,7 +460,7 @@
     "lastPrice": 0.1682
   },
   "LPTUSDT": {
-    "createdAt": 1662179702121,
+    "createdAt": 1662180302122,
     "lastPrice": 10.061
   },
   "ETCUSDT": {

@@ -175,7 +175,7 @@
     }
   },
   "ZECUSDT": {
-    "countdown": 7,
+    "countdown": 6,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1825,7 +1825,7 @@
     }
   },
   "COTIUSDT": {
-    "countdown": 4,
+    "countdown": 3,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3593,7 +3593,7 @@
     }
   },
   "DASHUSDT": {
-    "countdown": 6,
+    "countdown": 5,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -4638,7 +4638,7 @@
     }
   },
   "NKNUSDT": {
-    "countdown": 7,
+    "countdown": 6,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
