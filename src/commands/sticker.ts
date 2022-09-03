@@ -13,7 +13,7 @@ import { toRoundedImage } from "../lib/canvas";
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
-        // console.log(JSON.stringify(M.quoted, null, 2));
+        // console.log(JSON.stringify(M.quoted, null, 2), M.type);
         let buffer: Buffer | undefined;
         // if (M.quoted) {
         //     const messageKeys = Object.keys(M.quoted.message);
@@ -34,19 +34,25 @@ export default class extends BaseCommand {
         //         const stickerBUffer = await sticker.toBuffer();
         //         return M.reply(stickerBUffer, "sticker");
         //     } else {
-        //         return M.reply("This command only works on images");
+        //         return M.reply("Hanya gambar/video yang dapat diubah menjadi stiker!");
         //     }
         // }
-        if (M.type === "imageMessage") {
+        let notImage = false;
+        if (M.type === "imageMessage" || M.type === "videoMessage") {
+            notImage = M.type === "videoMessage";
             buffer = (await downloadMediaMessage(M.message, "buffer", {})) as Buffer;
         } else if (M.quoted) {
-            const messageKeys = Object.keys(M.quoted.message);
-            console.log("messageKeys", messageKeys);
-            //@ts-ignore
-            if (M.quoted.message[messageKeys[0]]?.mimetype?.startsWith("image/")) {
+            const type = Object.keys(M.quoted.message)[0] as keyof proto.IMessage;
+            // console.log("messageKeys", messageKeys);
+            if (
+                (type === "videoMessage" || type === "imageMessage") &&
+                (M.quoted.message[type]?.mimetype?.startsWith("image/") ||
+                    M.quoted.message[type]?.mimetype?.startsWith("video/"))
+            ) {
+                notImage = M.quoted.message[type]?.mimetype?.startsWith("video/") ?? false;
                 buffer = await M.downloadMediaMessage(M.quoted.message);
-            } else return M.reply("This command only works on images");
-        } else return M.reply("This command only works on images");
+            } else return M.reply("Hanya gambar/video yang dapat diubah menjadi stiker!");
+        } else return M.reply("Hanya gambar/video yang dapat diubah menjadi stiker!");
 
         if (!buffer) return M.reply("Gagal mengunduh gambar!");
 
@@ -57,7 +63,7 @@ export default class extends BaseCommand {
                 return true;
             }
         });
-        if (radiusArg) {
+        if (radiusArg && !notImage) {
             args.args.splice(index, 1);
             try {
                 const value = radiusArg.split(":")[1] ?? "20";
@@ -71,13 +77,27 @@ export default class extends BaseCommand {
         const author = args.args[0] || "";
         const packName = args.args[1] || "";
 
-        const sticker = new Sticker(buffer)
-            .setPack(packName)
-            .setAuthor(author)
-            .setType(StickerTypes.FULL)
-            .setQuality(70);
+        const sticker = new Sticker(buffer).setPack(packName).setAuthor(author).setType(StickerTypes.FULL);
+        // .setQuality(70);
+        if (notImage) {
+            sticker.setQuality(20);
+            M.reply("_Membuat sticker..._");
+        } else {
+            sticker.setQuality(70);
+        }
 
-        const stickerBUffer = await sticker.toBuffer();
-        return M.reply(stickerBUffer, "sticker");
+        const result = await new Promise<Buffer | string>(async (res) => {
+            setTimeout(() => {
+                res("Waktu pemrosesan terlalu lama!\nMembatalkan...");
+            }, 1000 * 30);
+            const buffer = await sticker.toBuffer();
+            res(buffer);
+        });
+        if (typeof result === "string") {
+            return M.reply(result);
+        } else {
+            return M.reply(result, "sticker");
+        }
+        // return M.reply(stickerBUffer, "sticker");
     };
 }
