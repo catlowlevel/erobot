@@ -213,7 +213,7 @@ export class BinanceClient {
         const avg = totalPercent / count;
         const currentPercent = getPercentageChange(current!.close, current!.open);
 
-        if (currentPercent > avg * 7 && Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 10) {
+        if (currentPercent > avg * 10 && Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 10) {
             // console.log(data.symbol, avg.toFixed(2), currentPercent.toFixed(2));
             const pompom = current.close > current.open;
 
