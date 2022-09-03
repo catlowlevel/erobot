@@ -80,7 +80,7 @@ export default class extends BaseCommand {
         const sticker = new Sticker(buffer).setPack(packName).setAuthor(author).setType(StickerTypes.FULL);
         // .setQuality(70);
         if (notImage) {
-            sticker.setQuality(20);
+            sticker.setQuality(30);
             M.reply("_Membuat sticker..._");
         } else {
             sticker.setQuality(70);
