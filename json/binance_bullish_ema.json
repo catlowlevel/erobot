@@ -70,36 +70,35 @@
     }
   },
   "CHZUSDT": {
-    "countdown": 0,
+    "countdown": 1,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5D05F9624865B"
+        "id": "BAE5C8D5C8E63AE0"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "CHZUSDT LONG | 1.46%\nCurrent Price : $0.22203",
+          "text": "CHZUSDT LONG | 0.40%\nCurrent Price : $0.22275",
           "contextInfo": {
-            "stanzaId": "BAE5849E903D097D",
+            "stanzaId": "BAE52963B78D472E",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "CHZUSDT LONG | 0.20%\nCurrent Price : $0.2181"
+                "text": "CHZUSDT LONG | 0.97%\nCurrent Price : $0.22196"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662166800",
+      "messageTimestamp": "1662187200",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662166801",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662187201"
         }
       ]
     }
@@ -140,70 +139,63 @@
     }
   },
   "MATICUSDT": {
+    "countdown": 10,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5C3F2DECA6306"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "MATICUSDT LONG | 0.43%\nCurrent Price : $0.8822",
+          "contextInfo": {
+            "stanzaId": "BAE5DFD0E9738604",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "MATICUSDT LONG | 0.57%\nCurrent Price : $0.9019"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662189900",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net"
+    }
+  },
+  "ZECUSDT": {
     "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5DFD0E9738604"
+        "id": "BAE54B317FA4121C"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "MATICUSDT LONG | 0.57%\nCurrent Price : $0.9019",
+          "text": "ZECUSDT LONG | 0.31%\nCurrent Price : $61.35",
           "contextInfo": {
-            "stanzaId": "BAE508404E6D4896",
+            "stanzaId": "BAE5699F39FA06CB",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "MATICUSDT LONG"
+                "text": "ZECUSDT LONG | 0.93%\nCurrent Price : $61.15"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662124200",
+      "messageTimestamp": "1662185100",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662124201",
-          "readTimestamp": "1662127872"
-        }
-      ]
-    }
-  },
-  "ZECUSDT": {
-    "countdown": 6,
-    "msg": {
-      "key": {
-        "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": true,
-        "id": "BAE5562F14DD1297"
-      },
-      "message": {
-        "extendedTextMessage": {
-          "text": "ZECUSDT LONG | 0.28%\nCurrent Price : $60.52",
-          "contextInfo": {
-            "stanzaId": "BAE53585DB485706",
-            "participant": "62895611963535@s.whatsapp.net",
-            "quotedMessage": {
-              "extendedTextMessage": {
-                "text": "ZECUSDT LONG | 0.08%\nCurrent Price : $60.26"
-              }
-            },
-            "remoteJid": "62895611963535-1631537374@g.us"
-          }
-        }
-      },
-      "messageTimestamp": "1662179101",
-      "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662179103"
+          "receiptTimestamp": "1662185101"
         }
       ]
     }
@@ -243,42 +235,62 @@
     }
   },
   "ARUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5760F54D804BB"
+        "id": "BAE5C63E37963A7F"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "ARUSDT LONG | 0.45%\nCurrent Price : $10.506",
+          "text": "ARUSDT LONG | 1.12%\nCurrent Price : $10.183",
           "contextInfo": {
-            "stanzaId": "BAE54A991DC80871",
+            "stanzaId": "BAE5760F54D804BB",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "ARUSDT LONG | 1.41%\nCurrent Price : $10.476"
+                "text": "ARUSDT LONG | 0.45%\nCurrent Price : $10.506"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662132900",
+      "messageTimestamp": "1662189300",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662132901",
-          "readTimestamp": "1662133242"
+          "receiptTimestamp": "1662189335"
         }
       ]
     }
   },
   "SFPUSDT": {
-    "countdown": 0
+    "countdown": 0,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE50F69EA2C688B"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "SFPUSDT LONG | 0.19%\nCurrent Price : $0.3755"
+        }
+      },
+      "messageTimestamp": "1662185700",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662185701"
+        }
+      ]
+    }
   },
   "GRTUSDT": {
     "countdown": 0,
@@ -423,31 +435,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE51D9C67348D4A"
+        "id": "BAE5C8328B8AF624"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "CTKUSDT LONG | 0.77%\nCurrent Price : $1.0051",
+          "text": "CTKUSDT LONG | 0.83%\nCurrent Price : $1.0066",
           "contextInfo": {
-            "stanzaId": "BAE509A2D60581D7",
+            "stanzaId": "BAE51D9C67348D4A",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "CTKUSDT LONG | 0.08%\nCurrent Price : $1.0012"
+                "text": "CTKUSDT LONG | 0.77%\nCurrent Price : $1.0051"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662163200",
+      "messageTimestamp": "1662182100",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662163200",
-          "readTimestamp": "1662163688"
+          "receiptTimestamp": "1662182101",
+          "readTimestamp": "1662182421"
         }
       ]
     }
@@ -558,35 +570,35 @@
     }
   },
   "FILUSDT": {
-    "countdown": 5,
+    "countdown": 3,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE52E72DA9382B2"
+        "id": "BAE5A8B038046BA2"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "FILUSDT LONG | 1.30%\nCurrent Price : $5.939",
+          "text": "FILUSDT LONG | 1.07%\nCurrent Price : $6.525",
           "contextInfo": {
-            "stanzaId": "BAE50E43FC05DA14",
+            "stanzaId": "BAE5066983545FC6",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "FILUSDT LONG | 0.17%\nCurrent Price : $5.857"
+                "text": "FILUSDT LONG | 2.60%\nCurrent Price : $6.471"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662178800",
+      "messageTimestamp": "1662187800",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662178801"
+          "receiptTimestamp": "1662187805"
         }
       ]
     }
@@ -597,55 +609,64 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5329508ABCF4C"
+        "id": "BAE5F684173023C1"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "XRPUSDT LONG | 0.03%\nCurrent Price : $0.3302"
-        }
-      },
-      "messageTimestamp": "1662157200",
-      "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662157202",
-          "readTimestamp": "1662163688"
-        }
-      ]
-    }
-  },
-  "C98USDT": {
-    "countdown": 9,
-    "msg": {
-      "key": {
-        "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": true,
-        "id": "BAE5B07397C5B8F6"
-      },
-      "message": {
-        "extendedTextMessage": {
-          "text": "C98USDT LONG | 0.44%\nCurrent Price : $0.4357",
+          "text": "XRPUSDT LONG | 0.03%\nCurrent Price : $0.3297",
           "contextInfo": {
-            "stanzaId": "BAE5E654E0DBAF03",
+            "stanzaId": "BAE5329508ABCF4C",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "C98USDT LONG | 0.16%\nCurrent Price : $0.4352"
+                "text": "XRPUSDT LONG | 0.03%\nCurrent Price : $0.3302"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662180000",
+      "messageTimestamp": "1662185400",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662180001"
+          "receiptTimestamp": "1662185401"
+        }
+      ]
+    }
+  },
+  "C98USDT": {
+    "countdown": 1,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5B3AA32C36D7C"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "C98USDT LONG | 1.04%\nCurrent Price : $0.4421",
+          "contextInfo": {
+            "stanzaId": "BAE55999E37EB337",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "C98USDT LONG | 0.21%\nCurrent Price : $0.4378"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662187200",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662187202"
         }
       ]
     }
@@ -656,31 +677,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE58DFCC6D18AEC"
+        "id": "BAE56EECC6E5DFA5"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "APEUSDT LONG | 0.02%\nCurrent Price : $4.83",
+          "text": "APEUSDT LONG | 0.57%\nCurrent Price : $4.753",
           "contextInfo": {
-            "stanzaId": "BAE532CAABF84D01",
+            "stanzaId": "BAE58DFCC6D18AEC",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "APEUSDT LONG | 0.81%\nCurrent Price : $4.833"
+                "text": "APEUSDT LONG | 0.02%\nCurrent Price : $4.83"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662133502",
+      "messageTimestamp": "1662185100",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662133503",
-          "readTimestamp": "1662133927"
+          "receiptTimestamp": "1662185100"
         }
       ]
     }
@@ -691,31 +711,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5AC14C056C587"
+        "id": "BAE5744C6B8F3FF0"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "ALGOUSDT LONG | 0.07%\nCurrent Price : $0.3011",
+          "text": "ALGOUSDT LONG | 0.20%\nCurrent Price : $0.3024",
           "contextInfo": {
-            "stanzaId": "BAE5E4A5736D326C",
+            "stanzaId": "BAE5AC14C056C587",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "ALGOUSDT LONG | 0.07%\nCurrent Price : $0.3042"
+                "text": "ALGOUSDT LONG | 0.07%\nCurrent Price : $0.3011"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662157201",
+      "messageTimestamp": "1662184801",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662157202",
-          "readTimestamp": "1662163688"
+          "receiptTimestamp": "1662184801"
         }
       ]
     }
@@ -831,55 +850,65 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE55E2B76C2E993"
+        "id": "BAE56B6CEFCD720A"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "LTCUSDT LONG | 0.38%\nCurrent Price : $61.06",
+          "text": "LTCUSDT LONG | 1.11%\nCurrent Price : $61.89",
           "contextInfo": {
-            "stanzaId": "BAE5FBAE3F5A3069",
+            "stanzaId": "BAE55E2B76C2E993",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "LTCUSDT LONG | 0.34%\nCurrent Price : $61.73"
+                "text": "LTCUSDT LONG | 0.38%\nCurrent Price : $61.06"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662174300",
+      "messageTimestamp": "1662181800",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662174302"
+          "receiptTimestamp": "1662181801",
+          "readTimestamp": "1662182421"
         }
       ]
     }
   },
   "LITUSDT": {
-    "countdown": 0,
+    "countdown": 2,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE557D3C8B9BDEC"
+        "id": "BAE52B994F13988F"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "LITUSDT LONG | 0.68%\nCurrent Price : $0.732"
+          "text": "LITUSDT LONG | 0.14%\nCurrent Price : $0.708",
+          "contextInfo": {
+            "stanzaId": "BAE557D3C8B9BDEC",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "LITUSDT LONG | 0.68%\nCurrent Price : $0.732"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
         }
       },
-      "messageTimestamp": "1662130802",
+      "messageTimestamp": "1662187500",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662130803",
-          "readTimestamp": "1662133240"
+          "receiptTimestamp": "1662187655"
         }
       ]
     }
@@ -890,31 +919,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5829BE00A931E"
+        "id": "BAE55E02D9F90592"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "STMXUSDT LONG | 0.38%\nCurrent Price : $0.00783",
+          "text": "STMXUSDT LONG | 0.52%\nCurrent Price : $0.00774",
           "contextInfo": {
-            "stanzaId": "BAE533DE47F1D67C",
+            "stanzaId": "BAE5829BE00A931E",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "STMXUSDT LONG | 0.89%\nCurrent Price : $0.00785"
+                "text": "STMXUSDT LONG | 0.38%\nCurrent Price : $0.00783"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662132900",
+      "messageTimestamp": "1662183900",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662132901",
-          "readTimestamp": "1662133242"
+          "receiptTimestamp": "1662183902",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -1170,30 +1199,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE555EC7CD3F3B6"
+        "id": "BAE56D1AF1AEC52E"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "GMTUSDT LONG | 0.53%\nCurrent Price : $0.6931",
+          "text": "GMTUSDT LONG | 0.16%\nCurrent Price : $0.6771",
           "contextInfo": {
-            "stanzaId": "BAE592315DBEF736",
+            "stanzaId": "BAE555EC7CD3F3B6",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "GMTUSDT LONG | 0.71%\nCurrent Price : $0.6934"
+                "text": "GMTUSDT LONG | 0.53%\nCurrent Price : $0.6931"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130510",
+      "messageTimestamp": "1662185701",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133228"
+          "receiptTimestamp": "1662185702"
         }
       ]
     }
@@ -1204,31 +1233,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE57D7C37779871"
+        "id": "BAE5B45FD896EEA3"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "LRCUSDT LONG | 0.50%\nCurrent Price : $0.3632",
+          "text": "LRCUSDT LONG | 0.22%\nCurrent Price : $0.3571",
           "contextInfo": {
-            "stanzaId": "BAE524347796B9FE",
+            "stanzaId": "BAE57D7C37779871",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "LRCUSDT LONG | 0.55%\nCurrent Price : $0.3643"
+                "text": "LRCUSDT LONG | 0.50%\nCurrent Price : $0.3632"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662134401",
+      "messageTimestamp": "1662185100",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662134401",
-          "readTimestamp": "1662139831"
+          "receiptTimestamp": "1662185101"
         }
       ]
     }
@@ -1273,31 +1301,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE56FFFB3702A7E"
+        "id": "BAE51C37D40BC3EC"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "COMPUSDT LONG | 0.11%\nCurrent Price : $47.59",
+          "text": "COMPUSDT LONG | 0.39%\nCurrent Price : $46.71",
           "contextInfo": {
-            "stanzaId": "BAE5C95B2E290EFE",
+            "stanzaId": "BAE56FFFB3702A7E",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "COMPUSDT LONG | 0.42%\nCurrent Price : $47.55"
+                "text": "COMPUSDT LONG | 0.11%\nCurrent Price : $47.59"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662134402",
+      "messageTimestamp": "1662184800",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662134403",
-          "readTimestamp": "1662139831"
+          "receiptTimestamp": "1662184801"
         }
       ]
     }
@@ -1308,30 +1335,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE597ED464D5864"
+        "id": "BAE5B8FDF4327360"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "DOGEUSDT LONG | 0.51%\nCurrent Price : $0.06249",
+          "text": "DOGEUSDT LONG | 1.71%\nCurrent Price : $0.06309",
           "contextInfo": {
-            "stanzaId": "BAE5DEDE675CA278",
+            "stanzaId": "BAE597ED464D5864",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "DOGEUSDT LONG | 0.10%\nCurrent Price : $0.06224"
+                "text": "DOGEUSDT LONG | 0.51%\nCurrent Price : $0.06249"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130508",
+      "messageTimestamp": "1662184500",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133225"
+          "receiptTimestamp": "1662184500"
         }
       ]
     }
@@ -1342,31 +1369,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE52CB030ED45CF"
+        "id": "BAE5AC44224E529A"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "AXSUSDT LONG | 1.41%\nCurrent Price : $14.23",
+          "text": "AXSUSDT LONG | 0.91%\nCurrent Price : $14.21",
           "contextInfo": {
-            "stanzaId": "BAE548C95382CABF",
+            "stanzaId": "BAE52CB030ED45CF",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "AXSUSDT LONG | 0.00%\nCurrent Price : $14.27"
+                "text": "AXSUSDT LONG | 1.41%\nCurrent Price : $14.23"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662168000",
+      "messageTimestamp": "1662184800",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662168001",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662184801"
         }
       ]
     }
@@ -1406,7 +1432,38 @@
     }
   },
   "HNTUSDT": {
-    "countdown": 0
+    "countdown": 5,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE53BED60716C9C"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "HNTUSDT LONG | 0.41%\nCurrent Price : $4.595",
+          "contextInfo": {
+            "stanzaId": "BAE5C77EACAA90FB",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "HNTUSDT LONG | 1.32%\nCurrent Price : $4.612"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662188400",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662188408"
+        }
+      ]
+    }
   },
   "ENSUSDT": {
     "countdown": 0,
@@ -1484,31 +1541,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5E3CFD3DB5838"
+        "id": "BAE5FD26A08A46AC"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "BCHUSDT LONG | 0.60%\nCurrent Price : $119.23",
+          "text": "BCHUSDT LONG | 1.05%\nCurrent Price : $118.14",
           "contextInfo": {
-            "stanzaId": "BAE571399E3E420A",
+            "stanzaId": "BAE5E3CFD3DB5838",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "BCHUSDT LONG | 0.41%\nCurrent Price : $118.6"
+                "text": "BCHUSDT LONG | 0.60%\nCurrent Price : $119.23"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662136500",
+      "messageTimestamp": "1662182400",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662136501",
-          "readTimestamp": "1662139831"
+          "receiptTimestamp": "1662182401",
+          "readTimestamp": "1662182421"
         }
       ]
     }
@@ -1519,31 +1576,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5C7BD39A7AB47"
+        "id": "BAE507728B2C0B5D"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "EOSUSDT LONG | 0.06%\nCurrent Price : $1.55",
+          "text": "EOSUSDT LONG | 0.88%\nCurrent Price : $1.59",
           "contextInfo": {
-            "stanzaId": "BAE55278FA7896F2",
+            "stanzaId": "BAE55B28E1759EAC",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "EOSUSDT LONG | 0.65%\nCurrent Price : $1.55"
+                "text": "EOSUSDT LONG | 2.29%\nCurrent Price : $1.575"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662163500",
+      "messageTimestamp": "1662185100",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662163501",
-          "readTimestamp": "1662163688"
+          "receiptTimestamp": "1662185101"
         }
       ]
     }
@@ -1554,30 +1610,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5F53BC8E9F108"
+        "id": "BAE5D3B8955B8361"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "THETAUSDT LONG | 0.68%\nCurrent Price : $1.173",
+          "text": "THETAUSDT LONG | 0.18%\nCurrent Price : $1.142",
           "contextInfo": {
-            "stanzaId": "BAE5B5F45968634D",
+            "stanzaId": "BAE5F53BC8E9F108",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "THETAUSDT LONG | 0.68%\nCurrent Price : $1.174"
+                "text": "THETAUSDT LONG | 0.68%\nCurrent Price : $1.173"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130513",
+      "messageTimestamp": "1662185402",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133232"
+          "receiptTimestamp": "1662185402"
         }
       ]
     }
@@ -1688,35 +1744,35 @@
     }
   },
   "GALAUSDT": {
-    "countdown": 0,
+    "countdown": 9,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE59532AA2D7CF8"
+        "id": "BAE5413D04C8C6E9"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "GALAUSDT LONG | 1.00%\nCurrent Price : $0.05114",
+          "text": "GALAUSDT LONG | 0.12%\nCurrent Price : $0.05013",
           "contextInfo": {
-            "stanzaId": "BAE5DB01A95731E8",
+            "stanzaId": "BAE543A526334459",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "GALAUSDT LONG | 0.10%\nCurrent Price : $0.05076"
+                "text": "GALAUSDT LONG | 0.26%\nCurrent Price : $0.05017"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130502",
+      "messageTimestamp": "1662189600",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133217"
+          "receiptTimestamp": "1662189769"
         }
       ]
     }
@@ -1795,66 +1851,65 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5F82EAE848415"
+        "id": "BAE5A42F649B2BE7"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "CVCUSDT LONG | 0.38%\nCurrent Price : $0.14412",
+          "text": "CVCUSDT LONG | 0.37%\nCurrent Price : $0.14193",
           "contextInfo": {
-            "stanzaId": "BAE5C947AB8B1423",
+            "stanzaId": "BAE5F82EAE848415",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "CVCUSDT LONG | 1.17%\nCurrent Price : $0.14471"
+                "text": "CVCUSDT LONG | 0.38%\nCurrent Price : $0.14412"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662133503",
+      "messageTimestamp": "1662185700",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662133504",
-          "readTimestamp": "1662133927"
+          "receiptTimestamp": "1662185701"
         }
       ]
     }
   },
   "COTIUSDT": {
-    "countdown": 3,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5D3F038A6282B"
+        "id": "BAE5035B2222370B"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "COTIUSDT LONG | 0.38%\nCurrent Price : $0.09359",
+          "text": "COTIUSDT LONG | 0.03%\nCurrent Price : $0.0954",
           "contextInfo": {
-            "stanzaId": "BAE56D07833850E5",
+            "stanzaId": "BAE5610624213429",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "COTIUSDT LONG | 0.21%\nCurrent Price : $0.09307"
+                "text": "COTIUSDT LONG | 0.99%\nCurrent Price : $0.09454"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662178202",
+      "messageTimestamp": "1662184200",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662178204",
-          "readTimestamp": "1662178281"
+          "receiptTimestamp": "1662184202",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -1959,21 +2014,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5386EAB322D8B"
+        "id": "BAE571852A96CA9F"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "TRBUSDT LONG | 0.05%\nCurrent Price : $19.93"
+          "text": "TRBUSDT LONG | 1.56%\nCurrent Price : $19.29",
+          "contextInfo": {
+            "stanzaId": "BAE5386EAB322D8B",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "TRBUSDT LONG | 0.05%\nCurrent Price : $19.93"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
         }
       },
-      "messageTimestamp": "1662133505",
+      "messageTimestamp": "1662185700",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662133506",
-          "readTimestamp": "1662133927"
+          "receiptTimestamp": "1662185701"
         }
       ]
     }
@@ -2176,7 +2240,7 @@
     }
   },
   "BNXUSDT": {
-    "countdown": 1,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -2251,66 +2315,64 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE58A46BE9CC059"
+        "id": "BAE54350914209FA"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "ROSEUSDT LONG | 0.80%\nCurrent Price : $0.06649",
+          "text": "ROSEUSDT LONG | 0.91%\nCurrent Price : $0.06585",
           "contextInfo": {
-            "stanzaId": "BAE503406C213E0A",
+            "stanzaId": "BAE58A46BE9CC059",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "ROSEUSDT LONG | 0.64%\nCurrent Price : $0.06563"
+                "text": "ROSEUSDT LONG | 0.80%\nCurrent Price : $0.06649"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662133504",
+      "messageTimestamp": "1662185101",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662133505",
-          "readTimestamp": "1662133927"
+          "receiptTimestamp": "1662185101"
         }
       ]
     }
   },
   "IOTXUSDT": {
-    "countdown": 0,
+    "countdown": 9,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5754878C20FB7"
+        "id": "BAE56BDB29DA1197"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "IOTXUSDT LONG | 0.33%\nCurrent Price : $0.03025",
+          "text": "IOTXUSDT LONG | 0.03%\nCurrent Price : $0.02949",
           "contextInfo": {
-            "stanzaId": "BAE5B11DDB9E9CC0",
+            "stanzaId": "BAE5754878C20FB7",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "IOTXUSDT LONG | 0.99%\nCurrent Price : $0.03035"
+                "text": "IOTXUSDT LONG | 0.33%\nCurrent Price : $0.03025"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662133507",
+      "messageTimestamp": "1662189602",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662133508",
-          "readTimestamp": "1662133927"
+          "receiptTimestamp": "1662189770"
         }
       ]
     }
@@ -2415,31 +2477,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE55D31FC87D06C"
+        "id": "BAE58B31B35C4C58"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "SUSHIUSDT LONG | 0.80%\nCurrent Price : $1.131",
+          "text": "SUSHIUSDT LONG | 0.80%\nCurrent Price : $1.123",
           "contextInfo": {
-            "stanzaId": "BAE5DEE024D4D37B",
+            "stanzaId": "BAE55D31FC87D06C",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "SUSHIUSDT LONG | 0.80%\nCurrent Price : $1.123"
+                "text": "SUSHIUSDT LONG | 0.80%\nCurrent Price : $1.131"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662170400",
+      "messageTimestamp": "1662183600",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662170400",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662183601",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -2450,30 +2512,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE598A5D5C4CBC5"
+        "id": "BAE5AA861A892019"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "AUDIOUSDT LONG | 0.35%\nCurrent Price : $0.2864",
+          "text": "AUDIOUSDT LONG | 0.28%\nCurrent Price : $0.2829",
           "contextInfo": {
-            "stanzaId": "BAE587D25B1E0C7A",
+            "stanzaId": "BAE598A5D5C4CBC5",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "AUDIOUSDT LONG | 1.22%\nCurrent Price : $0.2873"
+                "text": "AUDIOUSDT LONG | 0.35%\nCurrent Price : $0.2864"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130512",
+      "messageTimestamp": "1662184500",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133231"
+          "receiptTimestamp": "1662184501"
         }
       ]
     }
@@ -2484,31 +2546,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5BE5DA5BA6498"
+        "id": "BAE5D947D00D93AD"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "BALUSDT LONG | 0.35%\nCurrent Price : $7.672",
+          "text": "BALUSDT LONG | 0.27%\nCurrent Price : $7.717",
           "contextInfo": {
-            "stanzaId": "BAE5F5D78FA01172",
+            "stanzaId": "BAE5BE5DA5BA6498",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "BALUSDT LONG | 0.40%\nCurrent Price : $7.682"
+                "text": "BALUSDT LONG | 0.35%\nCurrent Price : $7.672"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662162300",
+      "messageTimestamp": "1662184201",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662162334",
-          "readTimestamp": "1662163688"
+          "receiptTimestamp": "1662184202",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -2624,30 +2686,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE57902EB7E2F66"
+        "id": "BAE5CECF08E023D4"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "OGNUSDT LONG | 0.64%\nCurrent Price : $0.1723",
+          "text": "OGNUSDT LONG | 0.47%\nCurrent Price : $0.1702",
           "contextInfo": {
-            "stanzaId": "BAE5956381B930FB",
+            "stanzaId": "BAE57902EB7E2F66",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "OGNUSDT LONG | 0.23%\nCurrent Price : $0.1719"
+                "text": "OGNUSDT LONG | 0.64%\nCurrent Price : $0.1723"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130516",
+      "messageTimestamp": "1662185402",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133240"
+          "receiptTimestamp": "1662185403"
         }
       ]
     }
@@ -2658,31 +2720,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE50B36FCFA91AC"
+        "id": "BAE5F0010CC7320F"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "RVNUSDT LONG | 0.03%\nCurrent Price : $0.02907",
+          "text": "RVNUSDT LONG | 0.04%\nCurrent Price : $0.02852",
           "contextInfo": {
-            "stanzaId": "BAE534762F72BA36",
+            "stanzaId": "BAE50B36FCFA91AC",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "RVNUSDT LONG | 0.79%\nCurrent Price : $0.02907"
+                "text": "RVNUSDT LONG | 0.03%\nCurrent Price : $0.02907"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662133502",
+      "messageTimestamp": "1662185701",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662133503",
-          "readTimestamp": "1662133927"
+          "receiptTimestamp": "1662185702"
         }
       ]
     }
@@ -2752,31 +2813,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5CBFF56AA6A69"
+        "id": "BAE539F7511F5AFF"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "PEOPLEUSDT LONG | 0.49%\nCurrent Price : $0.02028",
+          "text": "PEOPLEUSDT LONG | 0.97%\nCurrent Price : $0.02052",
           "contextInfo": {
-            "stanzaId": "BAE5181E335AD095",
+            "stanzaId": "BAE5CBFF56AA6A69",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "PEOPLEUSDT LONG | 0.10%\nCurrent Price : $0.02084"
+                "text": "PEOPLEUSDT LONG | 0.49%\nCurrent Price : $0.02028"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662169203",
+      "messageTimestamp": "1662183602",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662169204",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662183602",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -2822,99 +2883,99 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5F1A83168BE9A"
+        "id": "BAE5B0FB86F5EA38"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "DGBUSDT LONG | 0.85%\nCurrent Price : $0.01065",
+          "text": "DGBUSDT LONG | 0.09%\nCurrent Price : $0.01055",
           "contextInfo": {
-            "stanzaId": "BAE584E42F767F51",
+            "stanzaId": "BAE5DF4A49B50CE9",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "DGBUSDT LONG | 0.09%\nCurrent Price : $0.01061"
+                "text": "DGBUSDT LONG | 0.38%\nCurrent Price : $0.01052"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662129900",
+      "messageTimestamp": "1662185702",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662129901"
+          "receiptTimestamp": "1662185702"
         }
       ]
     }
   },
   "ADAUSDT": {
-    "countdown": 8,
-    "msg": {
-      "key": {
-        "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": true,
-        "id": "BAE517FEB5CAD924"
-      },
-      "message": {
-        "extendedTextMessage": {
-          "text": "ADAUSDT LONG | 2.28%\nCurrent Price : $0.4691",
-          "contextInfo": {
-            "stanzaId": "BAE5D6B216D40964",
-            "participant": "62895611963535@s.whatsapp.net",
-            "quotedMessage": {
-              "extendedTextMessage": {
-                "text": "ADAUSDT LONG | 0.39%\nCurrent Price : $0.4595"
-              }
-            },
-            "remoteJid": "62895611963535-1631537374@g.us"
-          }
-        }
-      },
-      "messageTimestamp": "1662179700",
-      "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662179702"
-        }
-      ]
-    }
-  },
-  "DYDXUSDT": {
     "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE58E70B51B81F8"
+        "id": "BAE5AE433E37E1B5"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "DYDXUSDT LONG | 0.70%\nCurrent Price : $1.58",
+          "text": "ADAUSDT LONG | 0.53%\nCurrent Price : $0.4735",
           "contextInfo": {
-            "stanzaId": "BAE59DDD7E2405A1",
+            "stanzaId": "BAE517FEB5CAD924",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "DYDXUSDT LONG | 0.44%\nCurrent Price : $1.575"
+                "text": "ADAUSDT LONG | 2.28%\nCurrent Price : $0.4691"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662131400",
+      "messageTimestamp": "1662182700",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662131401",
-          "readTimestamp": "1662133241"
+          "receiptTimestamp": "1662182700",
+          "readTimestamp": "1662184341"
+        }
+      ]
+    }
+  },
+  "DYDXUSDT": {
+    "countdown": 9,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5EE1ACFA3025A"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "DYDXUSDT LONG | 0.06%\nCurrent Price : $1.547",
+          "contextInfo": {
+            "stanzaId": "BAE58E70B51B81F8",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "DYDXUSDT LONG | 0.70%\nCurrent Price : $1.58"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1662189600",
+      "status": "PENDING",
+      "participant": "62895611963535:35@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1662189769"
         }
       ]
     }
@@ -3019,20 +3080,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE551136A3E0C3E"
+        "id": "BAE5F0B4FF8658AC"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "WOOUSDT LONG | 1.38%\nCurrent Price : $0.15463"
+          "text": "WOOUSDT LONG | 0.07%\nCurrent Price : $0.15197",
+          "contextInfo": {
+            "stanzaId": "BAE551136A3E0C3E",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "WOOUSDT LONG | 1.38%\nCurrent Price : $0.15463"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
         }
       },
-      "messageTimestamp": "1662130507",
+      "messageTimestamp": "1662184201",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133224"
+          "receiptTimestamp": "1662184202",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -3043,31 +3115,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5FF3D601DD8F0"
+        "id": "BAE5E8B86C0CEA4A"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "TRXUSDT LONG | 0.19%\nCurrent Price : $0.06341",
+          "text": "TRXUSDT LONG | 0.11%\nCurrent Price : $0.06292",
           "contextInfo": {
-            "stanzaId": "BAE502F7B7104944",
+            "stanzaId": "BAE5FF3D601DD8F0",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "TRXUSDT LONG | 0.11%\nCurrent Price : $0.06329"
+                "text": "TRXUSDT LONG | 0.19%\nCurrent Price : $0.06341"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130800",
+      "messageTimestamp": "1662183600",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662130801",
-          "readTimestamp": "1662133240"
+          "receiptTimestamp": "1662183601",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -3147,31 +3219,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE57E2F51594BB8"
+        "id": "BAE5A84C8798DEA5"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "XLMUSDT LONG | 0.05%\nCurrent Price : $0.10506",
+          "text": "XLMUSDT LONG | 0.34%\nCurrent Price : $0.10555",
           "contextInfo": {
-            "stanzaId": "BAE5FC55FA937F8A",
+            "stanzaId": "BAE5D800079A13EA",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "XLMUSDT LONG | 0.35%\nCurrent Price : $0.105"
+                "text": "XLMUSDT LONG | 0.15%\nCurrent Price : $0.10503"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662169801",
+      "messageTimestamp": "1662183600",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662169802",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662183601",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -3251,31 +3323,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE520BA4CCA9D3D"
+        "id": "BAE5109172E6F7CC"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "SKLUSDT LONG | 0.38%\nCurrent Price : $0.04956",
+          "text": "SKLUSDT LONG | 0.08%\nCurrent Price : $0.0486",
           "contextInfo": {
-            "stanzaId": "BAE5788E46489588",
+            "stanzaId": "BAE520BA4CCA9D3D",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "SKLUSDT LONG | 0.08%\nCurrent Price : $0.04928"
+                "text": "SKLUSDT LONG | 0.38%\nCurrent Price : $0.04956"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662135900",
+      "messageTimestamp": "1662186002",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662135901",
-          "readTimestamp": "1662139831"
+          "receiptTimestamp": "1662186003"
         }
       ]
     }
@@ -3286,30 +3357,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5855819E046E1"
+        "id": "BAE509CAC151A52A"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "FOOTBALLUSDT LONG | 0.54%\nCurrent Price : $1228.24",
+          "text": "FOOTBALLUSDT LONG | 1.13%\nCurrent Price : $1236.07",
           "contextInfo": {
-            "stanzaId": "BAE595BBDD0CC210",
+            "stanzaId": "BAE5855819E046E1",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "FOOTBALLUSDT LONG | 0.16%\nCurrent Price : $1209.69"
+                "text": "FOOTBALLUSDT LONG | 0.54%\nCurrent Price : $1228.24"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662177000",
+      "messageTimestamp": "1662182102",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662177001"
+          "receiptTimestamp": "1662182102",
+          "readTimestamp": "1662182421"
         }
       ]
     }
@@ -3420,36 +3492,35 @@
     }
   },
   "UNFIUSDT": {
-    "countdown": 0,
+    "countdown": 1,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5AF805E1B429E"
+        "id": "BAE5AD56F9706674"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "UNFIUSDT LONG | 0.91%\nCurrent Price : $7.624",
+          "text": "UNFIUSDT LONG | 0.14%\nCurrent Price : $7.697",
           "contextInfo": {
-            "stanzaId": "BAE5B34A4DD3FB18",
+            "stanzaId": "BAE5974710AB0131",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "UNFIUSDT LONG | 0.78%\nCurrent Price : $7.725"
+                "text": "UNFIUSDT LONG | 0.40%\nCurrent Price : $7.685"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662168600",
+      "messageTimestamp": "1662187200",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662168601",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662187202"
         }
       ]
     }
@@ -3460,31 +3531,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE565D96C1BC86C"
+        "id": "BAE5029BF7EFD835"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "XMRUSDT LONG | 0.35%\nCurrent Price : $153.34",
+          "text": "XMRUSDT LONG | 0.38%\nCurrent Price : $153.51",
           "contextInfo": {
-            "stanzaId": "BAE5E0725829D794",
+            "stanzaId": "BAE565D96C1BC86C",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "XMRUSDT LONG | 0.24%\nCurrent Price : $152.91"
+                "text": "XMRUSDT LONG | 0.35%\nCurrent Price : $153.34"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662168002",
+      "messageTimestamp": "1662183600",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662168003",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662183600",
+          "readTimestamp": "1662184341"
         }
       ]
     }
@@ -3495,31 +3566,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5225DB1F1E41A"
+        "id": "BAE512C401770A14"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "HOTUSDT LONG | 0.38%\nCurrent Price : $0.002078",
+          "text": "HOTUSDT LONG | 0.05%\nCurrent Price : $0.002056",
           "contextInfo": {
-            "stanzaId": "BAE5FE0F46462F46",
+            "stanzaId": "BAE5225DB1F1E41A",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "HOTUSDT LONG | 0.29%\nCurrent Price : $0.00207"
+                "text": "HOTUSDT LONG | 0.38%\nCurrent Price : $0.002078"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130804",
+      "messageTimestamp": "1662185701",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662130805",
-          "readTimestamp": "1662133240"
+          "receiptTimestamp": "1662185701"
         }
       ]
     }
@@ -3564,64 +3634,65 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5924E18B62E9A"
+        "id": "BAE50CD2F9BBA242"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "ARPAUSDT LONG | 0.53%\nCurrent Price : $0.0358",
+          "text": "ARPAUSDT LONG | 0.59%\nCurrent Price : $0.03549",
           "contextInfo": {
-            "stanzaId": "BAE56854C9CCCB4B",
+            "stanzaId": "BAE5924E18B62E9A",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "ARPAUSDT LONG | 0.17%\nCurrent Price : $0.03571"
+                "text": "ARPAUSDT LONG | 0.53%\nCurrent Price : $0.0358"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130513",
+      "messageTimestamp": "1662183902",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133232"
+          "receiptTimestamp": "1662183902",
+          "readTimestamp": "1662184341"
         }
       ]
     }
   },
   "DASHUSDT": {
-    "countdown": 5,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5A9E4D4EF5D3F"
+        "id": "BAE5AFD3BFE58091"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "DASHUSDT LONG | 0.07%\nCurrent Price : $45.77",
+          "text": "DASHUSDT LONG | 0.00%\nCurrent Price : $46.08",
           "contextInfo": {
-            "stanzaId": "BAE527B7C22E25E7",
+            "stanzaId": "BAE5F5A5B4825FCE",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "DASHUSDT LONG | 0.26%\nCurrent Price : $45.58"
+                "text": "DASHUSDT LONG | 0.63%\nCurrent Price : $46.11"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662178800",
+      "messageTimestamp": "1662184802",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662178802"
+          "receiptTimestamp": "1662184802"
         }
       ]
     }
@@ -3697,36 +3768,35 @@
     }
   },
   "DUSKUSDT": {
-    "countdown": 0,
+    "countdown": 2,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE54D37BA077903"
+        "id": "BAE5356A22B3F708"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "DUSKUSDT LONG | 1.28%\nCurrent Price : $0.13611",
+          "text": "DUSKUSDT LONG | 0.04%\nCurrent Price : $0.1357",
           "contextInfo": {
-            "stanzaId": "BAE55B348F281755",
+            "stanzaId": "BAE566D17FD41C0B",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "DUSKUSDT LONG | 0.41%\nCurrent Price : $0.13816"
+                "text": "DUSKUSDT LONG | 0.01%\nCurrent Price : $0.13564"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662166200",
+      "messageTimestamp": "1662187500",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662166201",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662187655"
         }
       ]
     }
@@ -3737,31 +3807,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5C1D0E8C63910"
+        "id": "BAE5FB3DE4662C4E"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "DARUSDT LONG | 0.32%\nCurrent Price : $0.2499",
+          "text": "DARUSDT LONG | 0.20%\nCurrent Price : $0.2465",
           "contextInfo": {
-            "stanzaId": "BAE5BD60D9A93B19",
+            "stanzaId": "BAE57F94A5613B57",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "DARUSDT LONG | 0.68%\nCurrent Price : $0.2493"
+                "text": "DARUSDT LONG | 0.49%\nCurrent Price : $0.2462"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662134700",
+      "messageTimestamp": "1662185101",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662134701",
-          "readTimestamp": "1662139831"
+          "receiptTimestamp": "1662185102"
         }
       ]
     }
@@ -3877,30 +3946,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE50AD102E40D41"
+        "id": "BAE57ED91437437C"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "SRMUSDT LONG | 0.50%\nCurrent Price : $0.803",
+          "text": "SRMUSDT LONG | 0.13%\nCurrent Price : $0.784",
           "contextInfo": {
-            "stanzaId": "BAE5698C6EDCEAF5",
+            "stanzaId": "BAE50AD102E40D41",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "SRMUSDT LONG | 0.25%\nCurrent Price : $0.799"
+                "text": "SRMUSDT LONG | 0.50%\nCurrent Price : $0.803"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662130504",
+      "messageTimestamp": "1662186002",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662133220"
+          "receiptTimestamp": "1662186003"
         }
       ]
     }
@@ -3911,31 +3980,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5CBD02FF8B097"
+        "id": "BAE58988508D7BB6"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "BLZUSDT LONG | 1.23%\nCurrent Price : $0.09824",
+          "text": "BLZUSDT LONG | 0.13%\nCurrent Price : $0.0967",
           "contextInfo": {
-            "stanzaId": "BAE548CC81EF4128",
+            "stanzaId": "BAE5CBD02FF8B097",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "BLZUSDT LONG | 2.44%\nCurrent Price : $0.09914"
+                "text": "BLZUSDT LONG | 1.23%\nCurrent Price : $0.09824"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662138001",
+      "messageTimestamp": "1662185400",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662138003",
-          "readTimestamp": "1662139831"
+          "receiptTimestamp": "1662185401"
         }
       ]
     }
@@ -4190,31 +4258,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE502430F9498BB"
+        "id": "BAE55C1F8CB7CA45"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "BANDUSDT LONG | 0.74%\nCurrent Price : $1.3141",
+          "text": "BANDUSDT LONG | 0.86%\nCurrent Price : $1.3295",
           "contextInfo": {
-            "stanzaId": "BAE5B3408FB59D26",
+            "stanzaId": "BAE55379FF4BEE5C",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "BANDUSDT LONG | 0.14%\nCurrent Price : $1.333"
+                "text": "BANDUSDT LONG | 0.06%\nCurrent Price : $1.3172"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662167100",
+      "messageTimestamp": "1662185101",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662167102",
-          "readTimestamp": "1662172549"
+          "receiptTimestamp": "1662185102"
         }
       ]
     }
@@ -4395,69 +4462,70 @@
     }
   },
   "CHRUSDT": {
-    "countdown": 5,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE51BD1E504A07A"
+        "id": "BAE5F9DEB03775D4"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "CHRUSDT LONG | 1.00%\nCurrent Price : $0.1801",
+          "text": "CHRUSDT LONG | 0.78%\nCurrent Price : $0.1803",
           "contextInfo": {
-            "stanzaId": "BAE5C657AE4D0711",
+            "stanzaId": "BAE51BD1E504A07A",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "CHRUSDT LONG | 0.39%\nCurrent Price : $0.1798"
+                "text": "CHRUSDT LONG | 1.00%\nCurrent Price : $0.1801"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662178800",
+      "messageTimestamp": "1662184202",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662178802"
+          "receiptTimestamp": "1662184203",
+          "readTimestamp": "1662184341"
         }
       ]
     }
   },
   "GTCUSDT": {
-    "countdown": 5,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE557DCAD9D82F9"
+        "id": "BAE56411D2D96EA8"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "GTCUSDT LONG | 0.41%\nCurrent Price : $2.202",
+          "text": "GTCUSDT LONG | 1.10%\nCurrent Price : $2.264",
           "contextInfo": {
-            "stanzaId": "BAE5A2D96E70BD7C",
+            "stanzaId": "BAE519082360BCA5",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "GTCUSDT LONG | 0.80%\nCurrent Price : $2.251"
+                "text": "GTCUSDT LONG | 1.43%\nCurrent Price : $2.237"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662178800",
+      "messageTimestamp": "1662184800",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662178802"
+          "receiptTimestamp": "1662184801"
         }
       ]
     }
@@ -4503,31 +4571,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5FD3C7250C46D"
+        "id": "BAE58A69F3BC57F5"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "KSMUSDT LONG | 0.02%\nCurrent Price : $48.94",
+          "text": "KSMUSDT LONG | 1.03%\nCurrent Price : $48.57",
           "contextInfo": {
-            "stanzaId": "BAE5526162A29073",
+            "stanzaId": "BAE5FD3C7250C46D",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "KSMUSDT LONG | 0.27%\nCurrent Price : $48.94"
+                "text": "KSMUSDT LONG | 0.02%\nCurrent Price : $48.94"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662134403",
+      "messageTimestamp": "1662185402",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662134403",
-          "readTimestamp": "1662139831"
+          "receiptTimestamp": "1662185403"
         }
       ]
     }
@@ -4638,35 +4705,35 @@
     }
   },
   "NKNUSDT": {
-    "countdown": 6,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE533BA299A4C0D"
+        "id": "BAE575268CEA0A46"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "NKNUSDT LONG | 0.07%\nCurrent Price : $0.09865",
+          "text": "NKNUSDT LONG | 0.24%\nCurrent Price : $0.10019",
           "contextInfo": {
-            "stanzaId": "BAE5212EBD257B1F",
+            "stanzaId": "BAE5AD4BD2C2FDE5",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "NKNUSDT LONG | 0.11%\nCurrent Price : $0.10029"
+                "text": "NKNUSDT LONG | 1.41%\nCurrent Price : $0.10023"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662179102",
+      "messageTimestamp": "1662185101",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662179103"
+          "receiptTimestamp": "1662185102"
         }
       ]
     }
@@ -4707,36 +4774,35 @@
     }
   },
   "FLMUSDT": {
-    "countdown": 0,
+    "countdown": 9,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE578822E5BE5C6"
+        "id": "BAE5AC8C66CE4379"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "FLMUSDT LONG | 0.17%\nCurrent Price : $0.119",
+          "text": "FLMUSDT LONG | 3.52%\nCurrent Price : $0.1221",
           "contextInfo": {
-            "stanzaId": "BAE5CED8E7BA1A16",
+            "stanzaId": "BAE5E2E06EE21359",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "FLMUSDT LONG | 0.08%\nCurrent Price : $0.1192"
+                "text": "FLMUSDT LONG | 0.25%\nCurrent Price : $0.1178"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1662135600",
+      "messageTimestamp": "1662189600",
       "status": "PENDING",
       "participant": "62895611963535:35@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662135601",
-          "readTimestamp": "1662139831"
+          "receiptTimestamp": "1662189769"
         }
       ]
     }
