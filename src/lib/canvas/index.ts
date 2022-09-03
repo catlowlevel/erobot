@@ -1,5 +1,6 @@
 import { CanvasRenderingContext2D, createCanvas, loadImage } from "canvas";
 
+//https://stackoverflow.com/a/19593950
 function roundedImage(
     ctx: CanvasRenderingContext2D,
     x: number,
