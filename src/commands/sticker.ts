@@ -50,9 +50,17 @@ export default class extends BaseCommand {
 
         if (!buffer) return M.reply("Gagal mengunduh gambar!");
 
-        if (args.context.startsWith("r:")) {
+        let index = -1;
+        const radiusArg = args.args.find((arg, i) => {
+            if (arg.startsWith("r:")) {
+                index = i;
+                return true;
+            }
+        });
+        if (radiusArg) {
+            args.args.splice(index, 1);
             try {
-                const value = args.context.split(":")[1] ?? "20";
+                const value = radiusArg.split(":")[1] ?? "20";
                 const radius = Number(value);
                 buffer = await toRoundedImage(buffer, radius);
             } catch (error) {
