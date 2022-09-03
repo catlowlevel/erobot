@@ -30,6 +30,7 @@
         "@types/debounce": "^1.2.1",
         "@types/node": "^18.7.2",
         "binance-api-node": "^0.11.43",
+        "canvas": "^2.9.3",
         "chalk": "4.1.2",
         "cheerio": "^1.0.0-rc.12",
         "debounce": "^1.2.1",
