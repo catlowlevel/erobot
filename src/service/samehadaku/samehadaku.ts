@@ -16,6 +16,15 @@ type Resolution = {
     [res: string]: { server: string; url: string; title: string }[];
 };
 
+export interface SearchPost {
+    link: string;
+    title: string;
+    poster: string;
+    rating: string;
+    sinopsis: string;
+    genres: string[];
+}
+
 export class Samehadaku {
     BASE_URL = "https://194.163.183.129/";
     private postAdapter = new JSONFile<Post[]>(`${ROOT_DIR}/json/samehadaku_posts.json`);
@@ -94,6 +103,42 @@ export class Samehadaku {
             { quoted: reply }
         );
     }
+    async searchPosts(query: string) {
+        // https://194.163.183.129/?s=ojisan
+        const url = `${this.BASE_URL}?s=${query}`;
+        console.log("url", url);
+        const response = await fetch(url);
+        const html = await response.text();
+        const $ = cheerio.load(html);
+        const main = $("main[role='main']");
+        const results = main.find(".animepost");
+
+        const searchResults: SearchPost[] = [];
+        results.each((i, post) => {
+            const a = $(post).find("a").first();
+            const link = a.attr("href") ?? "";
+            const title = a.attr("title") ?? "";
+            const poster = a.find("img").attr("src") ?? "";
+            const rating = $(post).find(".score")?.text()?.trim() ?? "";
+            const sinopsis = $(post).find(".ttls")?.text()?.trim() ?? "";
+
+            const mta = $(post).find(".genres>.mta");
+            const genres: string[] = [];
+            mta.children().each((i, a) => {
+                if ($(a).text()) genres.push($(a).text().trim());
+            });
+            searchResults.push({
+                title,
+                link,
+                poster,
+                rating,
+                sinopsis,
+                genres,
+            });
+        });
+        return searchResults;
+    }
+
     async getPosts() {
         const response = await fetch(this.BASE_URL);
         const html = await response.text();
