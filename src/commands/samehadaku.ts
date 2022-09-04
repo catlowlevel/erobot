@@ -34,7 +34,13 @@ export default class extends BaseCommand {
     // }
 
     private getOptions(flags: string[]) {
-        const type = this.getFlag(flags, "--type", ["sinopsis", "download", "other_episodes"], "default") ?? "default";
+        const type =
+            this.getFlag(
+                flags,
+                "--type",
+                ["sinopsis", "download", "other_episodes", "anime_post", "default"],
+                "other"
+            ) ?? "other";
         const url = this.getFlag(flags, "--url") ?? "";
         return {
             type,
@@ -42,7 +48,7 @@ export default class extends BaseCommand {
         };
     }
 
-    public override execute = async (M: Message, { flags }: IArgs): Promise<any> => {
+    public override execute = async (M: Message, { flags, args }: IArgs): Promise<any> => {
         flags = flags.filter(
             (flag) => flag.startsWith("--url=") || flag.startsWith("--type=") || flag.startsWith("--title=")
         );
@@ -55,23 +61,73 @@ export default class extends BaseCommand {
                 return this.handleSinopsis(M, options);
             case "other_episodes":
                 return this.handleOtherEpisodes(M, options);
-            case "default":
-                break;
-        }
-        const url = this.getFlag(flags, "--url");
-        let post: Post | undefined;
-        if (!url) post = this.samehadaku.db.data?.[0];
-        else {
-            try {
-                post = await this.samehadaku.getPost(url);
-            } catch (error) {
-                console.log("error", error);
+            case "anime_post":
+                return this.handleAnimePost(M, options);
+            case "default": {
+                const url = this.getFlag(flags, "--url");
+                console.log("url", url);
+                let post: Post | undefined;
+                if (!url) post = this.samehadaku.db.data?.[0];
+                else {
+                    try {
+                        post = await this.samehadaku.getPost(url);
+                    } catch (error) {
+                        console.log("error", error);
+                    }
+                }
+
+                if (!post) return M.reply("There's no recent post");
+                return this.samehadaku.sendPost(M.from, post, M.message);
+            }
+            case "other": {
+                const query = args[0];
+                const results = await this.samehadaku.searchPosts(query);
+                if (results.length <= 0) return M.reply("Tidak ada hasil pencarian untuk " + query);
+                const sections: proto.Message.ListMessage.ISection[] = [{ title: "Hasil pencarian", rows: [] }];
+                results.forEach((res) => {
+                    sections[0].rows?.push({
+                        title: res.title,
+                        description: res.genres.join().replace(/,/g, " | "),
+                        rowId: `.samehadaku --url=${res.link} --type=anime_post`,
+                    });
+                });
+                return this.client.sendMessage(
+                    M.from,
+                    {
+                        text: `Query : *${query}*`,
+                        buttonText: "Hasil Pencarian",
+                        sections,
+                    },
+                    { quoted: M.message }
+                );
             }
         }
-
-        if (!post) return M.reply("There's no recent post");
-        return this.samehadaku.sendPost(M.from, post, M.message);
     };
+
+    async handleAnimePost(M: Message, options: ReturnType<typeof this.getOptions>) {
+        const eps = await this.samehadaku.getOtherEpisodes(options.url);
+        if (eps.length > 50) {
+            eps.splice(50, eps.length - 50);
+        }
+        console.log("eps[0]", eps[0]);
+        const sections: proto.Message.ListMessage.ISection[] = [{ title: "Episode List", rows: [] }];
+        eps.forEach((ep) => {
+            sections[0].rows?.push({
+                title: ep.title,
+                rowId: `.samehadaku --type=default --url=${ep.url} --title=${ep.title}`,
+            });
+        });
+        return this.client.sendMessage(
+            M.from,
+            {
+                text: `*${M.message.message?.listResponseMessage?.title}*`,
+                buttonText: "List Episode",
+                sections,
+            },
+            { quoted: M.message }
+        );
+    }
+
     async handleDownload(M: Message, options: ReturnType<typeof this.getOptions>) {
         const post = await this.samehadaku.getPost(options.url);
         const downloadLinks = await this.samehadaku.getDownloadLinks(post.url, post.title);
