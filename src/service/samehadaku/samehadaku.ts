@@ -264,6 +264,8 @@ export class Samehadaku {
         });
         return dlData;
     };
+
+    //TODO : Some url breaks, fix required
     getPost = async (url: string) => {
         const cache = this.htmlCacheMap.get(url);
         let html = "";
@@ -280,7 +282,7 @@ export class Samehadaku {
 
         const $ = cheerio.load(html);
 
-        const otherA = $(`[href="${url}"]`);
+        const otherA = $(`[href="${url}"]`); //breaks for some url
         const imgEl = $(otherA).find("img");
         const thumb = $(imgEl).attr("src") ?? "";
         const title = $(imgEl).attr("title") ?? "";
