@@ -46,6 +46,7 @@
         "queue": "^6.0.2",
         "technicalindicators": "^3.1.0",
         "telegram": "^2.10.7",
+        "tiktok-scraper": "^1.4.36",
         "timeago.js": "^4.0.2",
         "tradingview-ws": "^0.0.3",
         "wa-sticker-formatter": "^4.3.2",
