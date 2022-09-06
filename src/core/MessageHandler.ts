@@ -66,7 +66,7 @@ export class MessageHandler {
             if (!max) break;
             M.content = M.content.replace(" ", "");
         }
-        const args = M.content.split(" ");
+        const args = M.content.split(/[ ,\n]/gm);
         const title = M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
         if (!args[0] || !args[0].startsWith(prefix) || M.content.length <= 1) {
             return M.simplify().then((M) => {
@@ -74,7 +74,7 @@ export class MessageHandler {
                 return console.log(`${M.sender.username}@${title} => ${M.content}`);
             });
         }
-        const cmd = M.content.slice(1).trim().split(/ +/).shift()?.toLowerCase() || "";
+        const cmd = args[0].toLowerCase().slice(prefix.length);
         const command = this.commands?.get(cmd) || this.aliases?.get(cmd);
         if (!command) return M.reply("Perintah tidak dikenal!");
         const color = getRandomColor();
