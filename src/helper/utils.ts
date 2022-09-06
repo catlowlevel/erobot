@@ -117,3 +117,13 @@ const colors: (keyof typeof chalk)[] = ["blue", "red", "green", "cyan", "magenta
 export const getRandomColor = () => {
     return colors[(colors.length * Math.random()) | 0];
 };
+
+export function countDecimalPlaces(num: number) {
+    let str = "" + num;
+    let index = str.indexOf(".");
+    if (index >= 0) {
+        return str.length - index - 1;
+    } else {
+        return 0;
+    }
+}
