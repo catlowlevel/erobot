@@ -36,6 +36,19 @@ interface AlertType {
     resolved: boolean;
     message?: string;
 }
+interface AlertPrice {
+    price: number;
+    hit: boolean;
+    greater?: boolean;
+}
+interface Trade {
+    id: string;
+    symbol: string;
+    entries: AlertPrice[];
+    tp: AlertPrice[];
+    sl: AlertPrice;
+    msg?: proto.IWebMessageInfo | proto.WebMessageInfo;
+}
 
 type Events = {
     streamedSymbol: (data: { symbol: string; currentPrice: number }) => void;
@@ -47,6 +60,7 @@ export class BinanceClient {
     bullishEmaDb: LowDB<{ [symbol: string]: { countdown: number; msg?: proto.IWebMessageInfo } }>;
     avgDb: LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>;
     dbPnd: LowDB<Record<string, { createdAt: number; lastPrice: number }>>;
+    dbTrade: LowDB<Trade[]>;
 
     binanceClient: Binance;
     evt: TypedEmitter<Events>;
@@ -63,6 +77,7 @@ export class BinanceClient {
             {}
         );
         this.db = new LowDB<AlertType[]>(`${ROOT_DIR}/json/binance_alerts.json`, []);
+        this.dbTrade = new LowDB<Trade[]>(`${ROOT_DIR}/json/binance_trades.json`, []);
         this.avgDb = new LowDB<{ [symbol: string]: { timeStamp: number; msg?: proto.IWebMessageInfo } }>(
             `${ROOT_DIR}/json/binance_avgpnd.json`,
             {}
@@ -79,6 +94,7 @@ export class BinanceClient {
                 this.streamCandles(symbols, "5m", 200, (data) => {
                     const currentPrice = data.candles[data.candles.length - 1].close;
                     this.handleAlert(data.symbol, currentPrice);
+                    this.handleTrades(data.symbol, currentPrice);
                     this.handlePnD(data.symbol, currentPrice); //Pump And Dump
                     //this.handleBnB(data); //Bullish And Bearish
                     this.handleAvgPnD(data);
@@ -133,40 +149,136 @@ export class BinanceClient {
         }
     }
 
-    async getSymbolData(symbol: string) {
-        if (!this.streamingCandles) {
-            throw new Error("Not streaming candles");
-        }
-        let timeout: string | number | NodeJS.Timeout | undefined;
-        return new Promise<{ symbol: string; currentPrice: number }>((res, rej) => {
-            this.evt.on("streamedSymbol", ({ symbol: pair, currentPrice }) => {
-                if (pair === symbol) {
-                    res({
-                        symbol: pair,
-                        currentPrice,
-                    });
+    async addTrade(
+        jid: string,
+        symbol: string,
+        entries: number[],
+        tp: number[],
+        sl: number,
+        direction: "LONG" | "SHORT" = "LONG"
+    ) {
+        const data = await this.getSymbolData(symbol);
+        const precision = countDecimalPlaces(data.currentPrice);
+        entries = entries.map((p) => Number(p.toFixed(precision)));
+        tp = tp.map((p) => Number(p.toFixed(precision)));
+        sl = Number(sl.toFixed(precision));
+        const trade: Trade = {
+            symbol,
+            tp: tp.map((tp) => ({ hit: false, price: tp, greater: tp > data.currentPrice })),
+            entries: entries.map((entries) => ({ hit: false, price: entries, greater: entries > data.currentPrice })),
+            sl: { hit: false, price: sl, greater: sl > data.currentPrice },
+            id: this.dbTrade.data.length.toString(),
+        };
+        console.log("trade", JSON.stringify(trade, null, 2));
+        let text = `===| *${data.symbol}* | LONG |===\n`;
+        text += `Current Price : $${data.currentPrice}\n`;
+        text += `SL : $${sl}\n`;
+        entries.forEach((p, i) => {
+            text += `Entry ${i + 1} : $${p}\n`;
+        });
+        tp.forEach((p, i) => {
+            text += `TP ${i + 1} : $${p}\n`;
+        });
+
+        return this.client.sendMessageQueue(jid, { text }, {}, (msg) => {
+            trade.msg = msg;
+            this.dbTrade.data.push(trade);
+            this.dbTrade.write();
+        });
+    }
+
+    private async handleTrades(symbol: string, currentPrice: number) {
+        this.dbTrade.data.forEach((trade) => {
+            if (trade.symbol !== symbol) return;
+            if (trade.sl.hit) return;
+            const hitAllTp = trade.tp.reduce((acc, curr) => acc && curr.hit, true);
+            trade.entries.forEach((alert, index) => {
+                if (alert.hit) return;
+                if (alert.greater === undefined) {
+                    alert.greater = alert.price > currentPrice;
+                    this.db.write().then(() => console.log("saved alert on greater"));
+                }
+
+                const percentChange = getPercentageChange(currentPrice, alert.price);
+                const crossOrClose = alert.greater === false ? currentPrice <= alert.price : currentPrice > alert.price;
+
+                if (percentChange <= 0.01 || crossOrClose) {
+                    const hitAllEntry = trade.entries.reduce((acc, curr) => acc && curr.hit, true);
+                    alert.hit = true;
+                    const num = index + 1;
+                    console.log(`Entry ${num} ${symbol}`);
+                    let text = hitAllEntry ? `All entry target achieved!\n` : "";
+                    text += `⏰ ${trade.symbol} *Entry ${num}* | $${alert.price}⏰\nCurrent Price : ${currentPrice}`;
+                    this.client
+                        .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
+                        .then((msg) => {
+                            trade.msg = msg;
+                        })
+                        .catch(() => {
+                            alert.hit = false;
+                        })
+                        .finally(() => this.dbTrade.write());
                 }
             });
-            if (timeout !== undefined) {
-                clearTimeout(timeout);
-                console.log(`Clearing timeout | ${symbol}`);
+
+            trade.tp.forEach((alert, index) => {
+                if (alert.hit) return;
+                if (alert.greater === undefined) {
+                    alert.greater = alert.price > currentPrice;
+                    this.db.write().then(() => console.log("saved alert on greater"));
+                }
+
+                const percentChange = getPercentageChange(currentPrice, alert.price);
+                const crossOrClose = alert.greater === false ? currentPrice <= alert.price : currentPrice > alert.price;
+
+                if (percentChange <= 0.01 || crossOrClose) {
+                    alert.hit = true;
+                    const num = index + 1;
+                    console.log(`TP ${num} ${symbol}`);
+                    const hitBeforeEntry = trade.entries.some((al) => al.hit);
+                    let text = hitBeforeEntry
+                        ? `Target achieved before entry!\n`
+                        : hitAllTp
+                        ? `✨ All Take-profit target achieved! ✨\n`
+                        : "";
+                    text += `📈 ${symbol} *Take-profit ${num}* | $${alert.price}📈 \nCurrent Price : ${currentPrice}`;
+                    this.client
+                        .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
+                        .then((msg) => {
+                            trade.msg = msg;
+                        })
+                        .catch(() => {
+                            alert.hit = false;
+                        })
+                        .finally(() => this.dbTrade.write());
+                }
+            });
+            const alert = trade.sl;
+
+            if (alert.greater === undefined) {
+                alert.greater = alert.price > currentPrice;
+                this.db.write().then(() => console.log("saved alert on greater"));
             }
-            timeout = setTimeout(() => {
-                this.binanceClient
-                    .futuresCandles({ interval: "5m", symbol, limit: 1 })
-                    .then((candles) => {
-                        res({
-                            symbol,
-                            currentPrice: Number(candles[candles.length - 1].close),
-                        });
+
+            const percentChange = getPercentageChange(currentPrice, alert.price);
+            const crossOrClose = alert.greater === false ? currentPrice <= alert.price : currentPrice > alert.price;
+
+            if (percentChange <= 0.01 || crossOrClose) {
+                console.log(`SL ${symbol}`);
+                alert.hit = true;
+                const hitTp = trade.tp.some((al) => al.hit);
+                let text = hitTp ? `Stop-lost hit after take-profit!\n` : "";
+                text += `📉 ${symbol} *Stop-lost* | $${alert.price}📉\nCurrent Price for : ${currentPrice}`;
+                this.client
+                    .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
+                    .then((msg) => {
+                        trade.msg = msg;
                     })
-                    .catch((err) => {
-                        rej(err);
-                    });
-                setTimeout(() => {
-                    rej("Timeout");
-                }, 1000 * 5);
-            }, 1000 * 5);
+                    .catch(() => {
+                        alert.hit = false;
+                    })
+                    .finally(() => this.dbTrade.write());
+            }
         });
     }
 
@@ -234,31 +346,34 @@ export class BinanceClient {
             // console.log(candles.length, data.candles.length);
             const precision = countDecimalPlaces(currentPrice);
             const alertPrice = (current.ema99 + current.ema25 + current.ema7) / 3;
+            const entries = [current.ema7, alertPrice, current.ema99].filter((p) => p < currentPrice);
             const slPrice = percentageCalculator(1.5, alertPrice, "-");
             const tpPrice = percentageCalculator(1.5, alertPrice, "+");
-            let text = `${data.symbol} LONG | ${percentGap.toFixed(2)}%\n`;
-            if (data.symbol !== "BTCDOMUSDT") {
-                text += `Entry : $${alertPrice.toFixed(precision)} - $${current.ema99}\nSL : $${slPrice.toFixed(
-                    precision
-                )}\nTP : $${tpPrice.toFixed(precision)}\n`;
-            }
-            text += `Current Price : $${currentPrice}`;
-            this.client.sendMessageQueue(
-                "62895611963535-1631537374@g.us",
-                {
-                    text,
-                },
-                { quoted: db[data.symbol].msg },
-                (msg) => {
-                    db[data.symbol].msg = msg;
-                    this.bullishEmaDb.write();
-                    if (data.symbol === "BTCDOMUSDT") return;
-                    this.addAlert(data.symbol, alertPrice, msg as proto.IWebMessageInfo, "Entry 1", false);
-                    this.addAlert(data.symbol, current.ema99, msg as proto.IWebMessageInfo, "Entry 2", false);
-                    this.addAlert(data.symbol, slPrice, msg as proto.IWebMessageInfo, "Stop-lost", false);
-                    this.addAlert(data.symbol, tpPrice, msg as proto.IWebMessageInfo, "Take-profit", false);
-                }
-            );
+            this.addTrade("62895611963535-1631537374@g.us", data.symbol, entries, [tpPrice], slPrice);
+            //let text = `${data.symbol} LONG | ${percentGap.toFixed(2)}%\n`;
+            //if (data.symbol !== "BTCDOMUSDT") {
+            //    text += `Entry : $${alertPrice.toFixed(precision)} - $${current.ema99.toFixed(
+            //        precision
+            //    )}\nSL : $${slPrice.toFixed(precision)}\nTP : $${tpPrice.toFixed(precision)}\n`;
+            //}
+            //text += `Current Price : $${currentPrice}`;
+            //this.client.sendMessageQueue(
+            //    "62895611963535-1631537374@g.us",
+            //    {
+            //        text,
+            //    },
+            //    { quoted: db[data.symbol].msg },
+            //    (msg) => {
+            //        db[data.symbol].msg = msg;
+            //        this.bullishEmaDb.write();
+            //        if (data.symbol === "BTCDOMUSDT") return;
+            //        this.addTrade(data.symbol, [current.ema7, alertPrice, current.ema99], [tpPrice], slPrice, msg!);
+            //        //this.addAlert(data.symbol, alertPrice, msg as proto.IWebMessageInfo, "Entry 1", false);
+            //        //this.addAlert(data.symbol, current.ema99, msg as proto.IWebMessageInfo, "Entry 2", false);
+            //        //this.addAlert(data.symbol, slPrice, msg as proto.IWebMessageInfo, "Stop-lost", false);
+            //        //this.addAlert(data.symbol, tpPrice, msg as proto.IWebMessageInfo, "Take-profit", false);
+            //    }
+            //);
         }
         await this.bullishEmaDb.write();
     }
@@ -595,6 +710,43 @@ export class BinanceClient {
             // 	this.rsis.set(symbol, rsi);
             // 	console.log("RSI", symbol, rsi[rsi.length - 1]);
             // }
+        });
+    }
+
+    async getSymbolData(symbol: string) {
+        if (!this.streamingCandles) {
+            throw new Error("Not streaming candles");
+        }
+        let timeout: string | number | NodeJS.Timeout | undefined;
+        return new Promise<{ symbol: string; currentPrice: number }>((res, rej) => {
+            this.evt.on("streamedSymbol", ({ symbol: pair, currentPrice }) => {
+                if (pair === symbol) {
+                    res({
+                        symbol: pair,
+                        currentPrice,
+                    });
+                }
+            });
+            if (timeout !== undefined) {
+                clearTimeout(timeout);
+                console.log(`Clearing timeout | ${symbol}`);
+            }
+            timeout = setTimeout(() => {
+                this.binanceClient
+                    .futuresCandles({ interval: "5m", symbol, limit: 1 })
+                    .then((candles) => {
+                        res({
+                            symbol,
+                            currentPrice: Number(candles[candles.length - 1].close),
+                        });
+                    })
+                    .catch((err) => {
+                        rej(err);
+                    });
+                setTimeout(() => {
+                    rej("Timeout");
+                }, 1000 * 5);
+            }, 1000 * 5);
         });
     }
 
