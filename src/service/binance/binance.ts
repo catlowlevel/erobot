@@ -91,30 +91,40 @@ export class BinanceClient {
         }
     }
 
-    async addAlert(symbol: string, price: number, msg: proto.IWebMessageInfo) {
+    async addAlert(
+        symbol: string,
+        price: number,
+        msg: proto.IWebMessageInfo,
+        message?: string,
+        sendMessage: boolean = true
+    ) {
         try {
             const data = await this.getSymbolData(symbol);
-            console.log("addAlert data", data);
+            const precision = countDecimalPlaces(data.currentPrice);
+            console.log("addAlert data", { ...data, alertPrice: price, message });
             const alert: AlertType = {
-                alertPrice: price.toString(),
+                alertPrice: price.toFixed(precision),
                 symbol,
                 done: false,
                 msg,
                 resolved: false,
                 amGreater: price > data.currentPrice,
+                message,
             };
             this.db.data?.push(alert);
             this.db.write();
             const gap = getPercentageChange(price, data.currentPrice);
-            return this.client.sendMessage(
-                msg.key.remoteJid!,
-                {
-                    text: `Alert added for ${symbol} at ${price}\nCurrent price: ${
-                        data.currentPrice
-                    }\nGap : ${gap.toFixed(2)}%`,
-                },
-                { quoted: msg }
-            );
+            return sendMessage
+                ? this.client.sendMessageQueue(
+                      msg.key.remoteJid!,
+                      {
+                          text: `Alert added for ${symbol} at ${alert.alertPrice}\n${
+                              alert.message ? `*${alert.message}*\n` : ``
+                          }Current price: ${data.currentPrice}\nGap : ${gap.toFixed(2)}%`,
+                      },
+                      { quoted: msg }
+                  )
+                : void null;
         } catch (error) {
             console.log(error);
             throw error;
