@@ -5,12 +5,13 @@ import { debounce } from "debounce";
 import EventEmitter from "events";
 import { writeFileSync } from "fs";
 import pMap from "p-map";
+import Queue from "queue";
 import { ema } from "technicalindicators";
 import TypedEmitter from "typed-emitter";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
 import { LowDB } from "../../core/LowDB";
-import { getPercentageChange } from "../../helper/utils";
+import { countDecimalPlaces, getPercentageChange, percentageCalculator } from "../../helper/utils";
 // prettier-ignore
 export type Interval = "1m" | "3m" | "5m" | "15m" | "30m" | "1h" | "2h" | "4h" | "6h" | "8h" | "12h" | "1d" | "3d" | "1w" | "1M";
 
@@ -33,6 +34,7 @@ interface AlertType {
     amGreater?: boolean | undefined;
     msg: proto.IWebMessageInfo;
     resolved: boolean;
+    message?: string;
 }
 
 type Events = {
@@ -173,38 +175,88 @@ export class BinanceClient {
         const db = this.bullishEmaDb.data;
         if (!db[data.symbol]) db[data.symbol] = { countdown: 0 };
 
-        let MAX_INDEX = 10;
+        const MAX_INDEX = 19;
+        const INDEX = data.candles.length - 10;
+
         const ema25 = ema({ period: 25, values: data.candles.map((c) => c.close) }).reverse();
         const ema99 = ema({ period: 99, values: data.candles.map((c) => c.close) }).reverse();
+        const ema7 = ema({ period: 7, values: data.candles.map((c) => c.close) }).reverse();
 
         const candles = data.candles
-            .slice(0)
+            .slice(INDEX - 9, INDEX + MAX_INDEX - 9)
             .reverse()
-            .map((c, i) => ({ close: c.close, ema25: ema25[i], ema99: ema99[i] }))
-            .filter((_c, i) => i < MAX_INDEX)
+            .map((c, i) => ({ close: c.close, ema25: ema25[i], ema7: ema7[i], ema99: ema99[i] }))
             .reverse();
 
-        let bullish = true;
+        // .slice(0)
+        // .reverse()
+        // .map((c, i) => ({ close: c.close, ema25: ema25[i], ema99: ema99[i] }))
+        // .filter((_c, i) => i < MAX_INDEX)
+        // .reverse();
 
-        for (const candle of candles) {
-            if (candle.close > candle.ema25 && candle.ema25 > candle.ema99) continue;
+        let bullish = true;
+        for (const candle of candles.slice(candles.length - 11, candles.length - 1)) {
+            // if (candle.close > candle.ema25 && candle.ema25 > candle.ema99) continue;
+            if (candle.ema7 > candle.ema25 && candle.ema25 > candle.ema99) continue;
             bullish = false;
+        }
+
+        if (bullish) {
+            let bullish2 = false;
+            for (const candle of candles.slice(0, 9)) {
+                if (candle.ema99 > candle.ema25 && candle.ema25 > candle.ema7) {
+                    bullish2 = true;
+                }
+            }
+            bullish = bullish2;
+            //if (bullish && db[data.symbol].countdown <= 0) {
+            //    const currentPrice = candles[candles.length - 1].close;
+            //    console.log(`====================${data.symbol} | ${currentPrice}=====================`);
+            //    this.client.sendMessageQueue(
+            //        "62895611963535-1631537374@g.us",
+            //        { text: `|======|${data.symbol}|======|\nCurrent Price : $${currentPrice}` },
+            //        { quoted: db[data.symbol].msg },
+            //        (msg) => {
+            //            db[data.symbol].msg = msg;
+            //            this.bullishEmaDb.write();
+            //        }
+            //    );
+            //}
         }
         if (db[data.symbol].countdown-- <= 0) db[data.symbol].countdown = 0;
         if (bullish && db[data.symbol].countdown <= 0) {
             this.bullishEmaDb.data[data.symbol].countdown = 10;
-            const currentPrice = candles[candles.length - 1].close;
+            const current = candles[candles.length - 1];
+            const currentPrice = current.close;
             const lastPrice = candles[0].close;
             const percentGap = getPercentageChange(currentPrice, lastPrice);
             console.log(`${data.symbol} LONG!`);
             // console.log(candles.length, data.candles.length);
+            const precision = countDecimalPlaces(currentPrice);
+            const alertPrice = (current.ema99 + current.ema25 + current.ema7) / 3;
+            const slPrice = percentageCalculator(1.5, alertPrice, "-");
+            const tpPrice = percentageCalculator(1.5, alertPrice, "+");
+            let text = `${data.symbol} LONG | ${percentGap.toFixed(2)}%\n`;
+            if (data.symbol !== "BTCDOMUSDT") {
+                text += `Entry : $${alertPrice.toFixed(precision)} - $${current.ema99}\nSL : $${slPrice.toFixed(
+                    precision
+                )}\nTP : $${tpPrice.toFixed(precision)}\n`;
+            }
+            text += `Current Price : $${currentPrice}`;
             this.client.sendMessageQueue(
                 "62895611963535-1631537374@g.us",
-                { text: `${data.symbol} LONG | ${percentGap.toFixed(2)}%\nCurrent Price : $${currentPrice}` },
+                {
+                    text,
+                },
                 { quoted: db[data.symbol].msg },
                 (msg) => {
                     db[data.symbol].msg = msg;
                     this.bullishEmaDb.write();
+                    if (data.symbol === "BTCDOMUSDT") return;
+                    this.addAlert(data.symbol, alertPrice, msg as proto.IWebMessageInfo, "Entry 1", false);
+                    this.addAlert(data.symbol, current.ema99, msg as proto.IWebMessageInfo, "Entry 2", false);
+                    this.addAlert(data.symbol, slPrice, msg as proto.IWebMessageInfo, "Stop-lost", false);
+                    this.addAlert(data.symbol, tpPrice, msg as proto.IWebMessageInfo, "Take-profit", false);
                 }
             );
         }
@@ -217,10 +269,11 @@ export class BinanceClient {
             await this.avgDb.write();
         }
         const MAX_INDEX = 8;
-        const candles = data.candles
-            .slice(0)
-            .reverse()
-            .filter((_c, i) => i < MAX_INDEX);
+        const INDEX = data.candles.length - MAX_INDEX;
+        const candles = data.candles.slice(INDEX, INDEX + MAX_INDEX);
+        // .slice(0)
+        // .reverse()
+        // .filter((_c, i) => i < MAX_INDEX);
 
         const current = candles[0];
         let totalPercent = 0;
@@ -246,7 +299,7 @@ export class BinanceClient {
             console.log(text);
             // console.log(data.candles.map((c) => c.close));
             if (pompom) {
-                const msg = await this.client.sendMessage(
+                const msg = await this.client.sendMessageQueue(
                     "120363023114788849@g.us",
                     {
                         text: `Average Pump! *${data.symbol}* => ${currentPercent.toFixed(2)}%\nCurrent Price : $${
@@ -412,7 +465,9 @@ export class BinanceClient {
                         alert.msg.key.remoteJid!,
                         {
                             // text: `Alert for ${symbol} at ${alertPrice} triggered at ${currentPrice}`,
-                            text: `⏰ Alert triggered! ⏰\nFor ${symbol} at ${alertPrice}\nCurrent Price : ${currentPrice}`,
+                            text: `⏰ Alert triggered! ⏰\nFor ${symbol} at ${alertPrice}\n${
+                                alert.message ? `*${alert.message}*\n` : ``
+                            }Current Price : $${currentPrice}`,
                         },
                         { quoted: alert.msg }
                     )
