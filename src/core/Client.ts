@@ -87,17 +87,21 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         options?: MiscMessageGenerationOptions | undefined,
         sentCb?: (msg: proto.WebMessageInfo | undefined) => void
     ) {
-        this.msgQueue.push((cb) => {
-            this.client
-                .sendMessage(jid, content, options)
-                .then((msg) => {
-                    sentCb?.(msg);
-                    cb?.();
-                })
-                .catch((err) => {
-                    console.log("error on messageQueue", err);
-                    cb?.();
-                });
+        return new Promise<proto.WebMessageInfo | undefined>((res) => {
+            this.msgQueue.push((cb) => {
+                this.client
+                    .sendMessage(jid, content, options)
+                    .then((msg) => {
+                        sentCb?.(msg);
+                        res(msg);
+                        cb?.();
+                    })
+                    .catch((err) => {
+                        console.log("error on messageQueue", err);
+                        res(undefined);
+                        cb?.();
+                    });
+            });
         });
     }
 
