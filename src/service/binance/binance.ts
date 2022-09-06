@@ -135,6 +135,7 @@ export class BinanceClient {
         if (!this.streamingCandles) {
             throw new Error("Not streaming candles");
         }
+        let timeout: string | number | NodeJS.Timeout | undefined;
         return new Promise<{ symbol: string; currentPrice: number }>((res, rej) => {
             this.evt.on("streamedSymbol", ({ symbol: pair, currentPrice }) => {
                 if (pair === symbol) {
@@ -144,8 +145,25 @@ export class BinanceClient {
                     });
                 }
             });
-            setTimeout(() => {
-                rej("Timeout");
+            if (timeout !== undefined) {
+                clearTimeout(timeout);
+                console.log(`Clearing timeout | ${symbol}`);
+            }
+            timeout = setTimeout(() => {
+                this.binanceClient
+                    .futuresCandles({ interval: "5m", symbol, limit: 1 })
+                    .then((candles) => {
+                        res({
+                            symbol,
+                            currentPrice: Number(candles[candles.length - 1].close),
+                        });
+                    })
+                    .catch((err) => {
+                        rej(err);
+                    });
+                setTimeout(() => {
+                    rej("Timeout");
+                }, 1000 * 5);
             }, 1000 * 5);
         });
     }
