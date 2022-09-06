@@ -85,20 +85,20 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         jid: string,
         content: AnyMessageContent,
         options?: MiscMessageGenerationOptions | undefined,
-        sentCb?: (msg: proto.WebMessageInfo | undefined) => void
+        sentCb?: (msg: proto.WebMessageInfo) => void
     ) {
-        return new Promise<proto.WebMessageInfo | undefined>((res) => {
+        return new Promise<proto.WebMessageInfo>((res, rej) => {
             this.msgQueue.push((cb) => {
                 this.client
                     .sendMessage(jid, content, options)
                     .then((msg) => {
-                        sentCb?.(msg);
-                        res(msg);
+                        sentCb?.(msg!);
+                        res(msg!);
                         cb?.();
                     })
                     .catch((err) => {
                         console.log("error on messageQueue", err);
-                        res(undefined);
+                        rej(err);
                         cb?.();
                     });
             });
