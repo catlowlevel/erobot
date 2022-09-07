@@ -15,7 +15,7 @@ async function stream2buffer(stream: Stream): Promise<Buffer> {
 }
 export const downloadVideo = async (link: string) => {
     console.log("Downloading video");
-    const stream = ytdl.execStream([link, "-f", "bestvideo+bestaudio"]);
+    const stream = ytdl.execStream([link, "-f", "bestvideo+bestaudio", "--cookies", `~/fb-cookies.txt`]); //TODO : make this more generic
     stream.on("end", () => console.log("Done"));
     return stream2buffer(stream);
 };
