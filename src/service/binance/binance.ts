@@ -347,10 +347,14 @@ export class BinanceClient {
             // console.log(candles.length, data.candles.length);
             const precision = countDecimalPlaces(currentPrice);
             const alertPrice = (current.ema99 + current.ema25 + current.ema7) / 3;
-            const entries = [current.ema7, alertPrice, current.ema99].filter((p) => p < currentPrice);
-            const slPrice = percentageCalculator(1.5, alertPrice, "-");
-            const tpPrice = percentageCalculator(1.5, alertPrice, "+");
-            this.addTrade("62895611963535-1631537374@g.us", data.symbol, entries, [tpPrice], slPrice);
+            const entry3 = percentageCalculator(1.5, alertPrice, "-");
+            const entries = [current.ema7, current.ema99, entry3].filter((p) => p < currentPrice);
+            const tp1 = percentageCalculator(1.5, alertPrice, "+");
+            const tp2 = percentageCalculator(2.0, alertPrice, "+");
+            const tp3 = percentageCalculator(2.5, alertPrice, "+");
+            let slPrice = entries.reduce((acc, curr) => acc + curr, 0) / entries.length;
+            slPrice = Number(percentageCalculator(2, slPrice, "-").toFixed(precision));
+            this.addTrade("62895611963535-1631537374@g.us", data.symbol, entries, [tp1, tp2, tp3], slPrice);
             //let text = `${data.symbol} LONG | ${percentGap.toFixed(2)}%\n`;
             //if (data.symbol !== "BTCDOMUSDT") {
             //    text += `Entry : $${alertPrice.toFixed(precision)} - $${current.ema99.toFixed(
