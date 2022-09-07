@@ -208,7 +208,7 @@ export class BinanceClient {
                     const num = index + 1;
                     console.log(`Entry ${num} ${symbol}`);
                     let text = hitAllEntry ? `All entry target achieved!\n` : "";
-                    text += `⏰ ${trade.symbol} *Entry ${num}* | $${alert.price}⏰\nCurrent Price : ${currentPrice}`;
+                    text += `⏰ ${trade.symbol} *Entry ${num}* | $${alert.price} ⏰\nCurrent Price : ${currentPrice}`;
                     this.client
                         .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
                         .then((msg) => {
@@ -241,7 +241,7 @@ export class BinanceClient {
                         : hitAllTp
                         ? `✨ All Take-profit target achieved! ✨\n`
                         : "";
-                    text += `📈 ${symbol} *Take-profit ${num}* | $${alert.price}📈 \nCurrent Price : ${currentPrice}`;
+                    text += `📈 ${symbol} *Take-profit ${num}* | $${alert.price} 📈 \nCurrent Price : ${currentPrice}`;
                     this.client
                         .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
                         .then((msg) => {
@@ -268,7 +268,7 @@ export class BinanceClient {
                 alert.hit = true;
                 const hitTp = trade.tp.some((al) => al.hit);
                 let text = hitTp ? `Stop-lost hit after take-profit!\n` : "";
-                text += `📉 ${symbol} *Stop-lost* | $${alert.price}📉\nCurrent Price for : ${currentPrice}`;
+                text += `📉 ${symbol} *Stop-lost* | $${alert.price} 📉\nCurrent Price for : ${currentPrice}`;
                 this.client
                     .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
                     .then((msg) => {
