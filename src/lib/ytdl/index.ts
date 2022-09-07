@@ -22,6 +22,7 @@ export const downloadVideo = async (link: string) => {
 
 //Before : https://web.facebook.com/story.php?story_fbid=pfbid0JyChERXDuq5u4SC9od6eiyDRjyUppRtQg7KZcg4DYJtur89mn9W6P5YSRd4P876El&id=100075459038925&sfnsn=wiwspwawes
 //After  : https://www.facebook.com/100075459038925/videos/1114156399506856/
+//This link give better quality ^
 const convertUrlVideos = async (link: string) => {
     console.log("Convert url => " + link);
     const html = await fetch(link, {
@@ -50,8 +51,8 @@ const convertUrlVideos = async (link: string) => {
 };
 
 export const downloadFacebook = async (link: string) => {
-    if (link.includes("m.facebook.com")) link = link.replace("m.facebook.com", "web.facebook.com");
-    if (!link.includes("videos")) link = await convertUrlVideos(link);
+    //if (link.includes("m.facebook.com")) link = link.replace("m.facebook.com", "web.facebook.com");
+    //if (!link.includes("videos")) link = await convertUrlVideos(link);
     console.log("link :>> ", link);
     return downloadVideo(link);
 };
