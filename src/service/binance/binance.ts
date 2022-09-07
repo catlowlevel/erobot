@@ -295,7 +295,8 @@ export class BinanceClient {
         const ema7 = ema({ period: 7, values: data.candles.map((c) => c.close) }).reverse();
 
         const candles = data.candles
-            .slice(INDEX - 9, INDEX + MAX_INDEX - 9)
+            //.slice(INDEX - 9, INDEX + MAX_INDEX - 9)
+            .slice(data.candles.length - MAX_INDEX)
             .reverse()
             .map((c, i) => ({ close: c.close, ema25: ema25[i], ema7: ema7[i], ema99: ema99[i] }))
             .reverse();
