@@ -505,6 +505,7 @@ export class BinanceClient {
         if (!current && !symbol.endsWith("BUSD")) {
             console.log("New symbol", symbol);
             this.pnd[symbol] = { createdAt: Date.now(), lastPrice: currentPrice };
+            this.client.sendMessage("120363023114788849@g.us", { text: `New Symbol *${symbol}*` });
             await this.dbPnd.write();
             return;
         } else if (current) {
@@ -535,7 +536,10 @@ export class BinanceClient {
                     }\nCurrent Price : $${currentPrice}`.trim(),
                 });
 
-                delete this.pnd[symbol];
+                this.pnd[symbol] = {
+                    createdAt: Date.now(),
+                    lastPrice: currentPrice,
+                };
                 await this.dbPnd.write();
                 console.log("pnd saved");
             }
