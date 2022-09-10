@@ -255,35 +255,5 @@
     "resolved": false,
     "amGreater": false,
     "message": "Stop-lost"
-  },
-  {
-    "alertPrice": "159.92",
-    "symbol": "XMRUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": true,
-        "id": "BAE5C38530E4FEFD"
-      },
-      "message": {
-        "extendedTextMessage": {
-          "text": "XMRUSDT LONG | 0.75%\nEntry : $157.56 - $157.0940381953804\nSL : $155.19\nTP : $159.92\nCurrent Price : $158.45"
-        }
-      },
-      "messageTimestamp": "1662424200",
-      "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662424218",
-          "readTimestamp": "1662428963"
-        }
-      ]
-    },
-    "resolved": false,
-    "amGreater": true,
-    "message": "Take-profit"
   }
 ]

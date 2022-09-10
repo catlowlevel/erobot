@@ -139,7 +139,7 @@
     }
   },
   "MATICUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3127,7 +3127,7 @@
     }
   },
   "1000SHIBUSDT": {
-    "countdown": 0,
+    "countdown": 2,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -4340,6 +4340,12 @@
     }
   },
   "SPELLUSDT": {
+    "countdown": 0
+  },
+  "1000LUNCUSDT": {
+    "countdown": 0
+  },
+  "LUNA2USDT": {
     "countdown": 0
   }
 }
