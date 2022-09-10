@@ -1,7 +1,9 @@
 import puppeteer from "puppeteer";
 
 export const ss = async (url: string, width: number, height: number) => {
-    const browser = await puppeteer.launch({});
+    const browser = await puppeteer.launch({
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
     page.setViewport({ height, width });
     await page.goto(url, { waitUntil: "load" });
