@@ -7,6 +7,7 @@ import { writeFileSync } from "fs";
 import pMap from "p-map";
 import Queue from "queue";
 import { ema } from "technicalindicators";
+import { format } from "timeago.js";
 import TypedEmitter from "typed-emitter";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
@@ -47,6 +48,8 @@ interface Trade {
     entries: AlertPrice[];
     tp: AlertPrice[];
     sl: AlertPrice;
+    entry?: number;
+    timestamp?: number;
     msg?: proto.IWebMessageInfo | proto.WebMessageInfo;
 }
 
@@ -91,13 +94,13 @@ export class BinanceClient {
         this.evt = new EventEmitter() as TypedEmitter<Events>;
         if (streamCandles) {
             this.getFuturesSymbols().then((symbols) => {
-                this.streamCandles(symbols, "5m", 200, (data) => {
+                this.streamCandles(symbols, "5m", 500, (data) => {
                     const currentPrice = data.candles[data.candles.length - 1].close;
                     this.handleAlert(data.symbol, currentPrice);
                     this.handleTrades(data.symbol, currentPrice);
                     this.handlePnD(data.symbol, currentPrice); //Pump And Dump
                     //this.handleBnB(data); //Bullish And Bearish
-                    this.handleAvgPnD(data);
+                    //this.handleAvgPnD(data);
                     this.handleAboveEma(data);
 
                     this.evt.emit("streamedSymbol", {
@@ -168,6 +171,8 @@ export class BinanceClient {
             entries: entries.map((entries) => ({ hit: false, price: entries, greater: entries > data.currentPrice })),
             sl: { hit: false, price: sl, greater: sl > data.currentPrice },
             id: this.dbTrade.data.length.toString(),
+            timestamp: Date.now(),
+            entry: data.currentPrice,
         };
         console.log("trade", JSON.stringify(trade, null, 2));
         let text = `===| *${data.symbol}* | LONG |===\n`;
@@ -203,12 +208,28 @@ export class BinanceClient {
                 const crossOrClose = alert.greater === false ? currentPrice <= alert.price : currentPrice > alert.price;
 
                 if (percentChange <= 0.01 || crossOrClose) {
-                    const hitAllEntry = trade.entries.reduce((acc, curr) => acc && curr.hit, true);
                     alert.hit = true;
+                    const hitAllEntry = trade.entries.reduce((acc, curr) => acc && curr.hit, true);
+                    const entries = trade.entries.filter((a) => a.hit);
+                    const precision = countDecimalPlaces(entries[0].price);
+                    trade.entry =
+                        entries.length > 0
+                            ? Number(
+                                  (entries.reduce((acc, curr) => acc + curr.price, 0) / entries.length).toFixed(
+                                      precision
+                                  )
+                              )
+                            : trade.entry;
                     const num = index + 1;
-                    console.log(`Entry ${num} ${symbol}`);
+                    console.log(`Entry ${num} ${symbol} | $${trade.entry}`);
                     let text = hitAllEntry ? `All entry target achieved!\n` : "";
                     text += `⏰ ${trade.symbol} *Entry ${num}* | $${alert.price} ⏰\nCurrent Price : ${currentPrice}`;
+
+                    if (trade.timestamp) {
+                        const timeago = format(new Date(trade.timestamp));
+                        const period = timeago.replace(" ago", "");
+                        text += `\nPeriod : ${period}`;
+                    }
                     this.client
                         .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
                         .then((msg) => {
@@ -235,13 +256,26 @@ export class BinanceClient {
                     alert.hit = true;
                     const num = index + 1;
                     console.log(`TP ${num} ${symbol}`);
-                    const hitBeforeEntry = trade.entries.some((al) => al.hit);
+                    const hitAllTp = trade.tp.reduce((acc, curr) => acc && curr.hit, true);
+                    const hitBeforeEntry = !trade.entries.some((al) => al.hit);
                     let text = hitBeforeEntry
                         ? `Target achieved before entry!\n`
                         : hitAllTp
                         ? `✨ All Take-profit target achieved! ✨\n`
                         : "";
-                    text += `📈 ${symbol} *Take-profit ${num}* | $${alert.price} 📈 \nCurrent Price : ${currentPrice}`;
+                    text += `📈 ${symbol} *Take-profit ${num}* | $${alert.price} 📈`;
+                    if (trade.entry) {
+                        const percentGap = getPercentageChange(trade.entry, currentPrice).toFixed(2);
+                        text += `\nGain : ${percentGap}%`;
+                    } else {
+                        text += `\nCurrent Price : ${currentPrice}`;
+                    }
+                    if (trade.timestamp) {
+                        const timeago = format(new Date(trade.timestamp));
+                        const period = timeago.replace(" ago", "");
+                        text += `\nPeriod : ${period}`;
+                    }
+
                     this.client
                         .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
                         .then((msg) => {
@@ -268,7 +302,13 @@ export class BinanceClient {
                 alert.hit = true;
                 const hitTp = trade.tp.some((al) => al.hit);
                 let text = hitTp ? `Stop-lost hit after take-profit!\n` : "";
-                text += `📉 ${symbol} *Stop-lost* | $${alert.price} 📉\nCurrent Price for : ${currentPrice}`;
+                text += `📉 ${symbol} *Stop-lost* | $${alert.price} 📉`;
+                if (trade.entry) {
+                    const percentGap = getPercentageChange(trade.entry, currentPrice).toFixed(2);
+                    text += `\nLoss : ${percentGap}%`;
+                } else {
+                    text += `\nCurrent Price : ${currentPrice}`;
+                }
                 this.client
                     .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
                     .then((msg) => {
@@ -350,11 +390,31 @@ export class BinanceClient {
             const entry3 = percentageCalculator(1.5, alertPrice, "-");
             const entries = [current.ema7, current.ema99, entry3].filter((p) => p < currentPrice);
             const tp1 = percentageCalculator(1.5, alertPrice, "+");
-            const tp2 = percentageCalculator(2.0, alertPrice, "+");
-            const tp3 = percentageCalculator(2.5, alertPrice, "+");
+            const tp2 = percentageCalculator(2.2, alertPrice, "+");
+            const tp3 = percentageCalculator(2.9, alertPrice, "+");
+            const tp4 = percentageCalculator(3.6, alertPrice, "+");
+            const tp5 = percentageCalculator(4.2, alertPrice, "+");
+            const tp6 = percentageCalculator(5.0, alertPrice, "+");
+            const tp7 = percentageCalculator(5.9, alertPrice, "+");
+            const tp8 = percentageCalculator(6.9, alertPrice, "+");
+            const tp9 = percentageCalculator(7.5, alertPrice, "+");
+            const tp10 = percentageCalculator(8.7, alertPrice, "+");
+            const tp11 = percentageCalculator(9.9, alertPrice, "+");
+            const tp12 = percentageCalculator(11.5, alertPrice, "+");
+            const tp13 = percentageCalculator(12.8, alertPrice, "+");
+            const tp14 = percentageCalculator(14.5, alertPrice, "+");
+            const tp15 = percentageCalculator(16.3, alertPrice, "+");
             let slPrice = entries.reduce((acc, curr) => acc + curr, 0) / entries.length;
             slPrice = Number(percentageCalculator(2, slPrice, "-").toFixed(precision));
-            this.addTrade("62895611963535-1631537374@g.us", data.symbol, entries, [tp1, tp2, tp3], slPrice);
+            this.addTrade(
+                "120363023114788849@g.us",
+                data.symbol,
+                entries,
+                [tp1, tp2, tp3, tp4, tp5, tp6, tp7, tp8, tp9, tp10, tp11, tp12, tp13, tp14, tp15].filter(
+                    (p) => p > currentPrice
+                ),
+                slPrice
+            );
             //let text = `${data.symbol} LONG | ${percentGap.toFixed(2)}%\n`;
             //if (data.symbol !== "BTCDOMUSDT") {
             //    text += `Entry : $${alertPrice.toFixed(precision)} - $${current.ema99.toFixed(
@@ -390,7 +450,7 @@ export class BinanceClient {
         }
         const MAX_INDEX = 8;
         const INDEX = data.candles.length - MAX_INDEX;
-        const candles = data.candles.slice(INDEX, INDEX + MAX_INDEX);
+        const candles = data.candles.slice(INDEX).reverse();
         // .slice(0)
         // .reverse()
         // .filter((_c, i) => i < MAX_INDEX);
