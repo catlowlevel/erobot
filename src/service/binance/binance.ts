@@ -427,7 +427,7 @@ export class BinanceClient {
             let slPrice = entries.reduce((acc, curr) => acc + curr, 0) / entries.length;
             slPrice = Number(percentageCalculator(2, slPrice, "-").toFixed(precision));
             this.addTrade(
-                "120363023114788849@g.us",
+                "62895611963535-1631537374@g.us",
                 data.symbol,
                 entries,
                 [tp1, tp2, tp3, tp4, tp5, tp6, tp7, tp8, tp9, tp10, tp11, tp12, tp13, tp14, tp15].filter(
