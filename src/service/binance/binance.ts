@@ -183,11 +183,26 @@ export class BinanceClient {
             text += `TP ${i + 1} : $${p}\n`;
         });
 
-        return this.client.sendMessageQueue(jid, { text }, {}, (msg) => {
-            trade.msg = msg;
-            this.dbTrade.data.push(trade);
-            this.dbTrade.write();
-        });
+        return this.client.sendMessageQueue(
+            jid,
+            {
+                text,
+                buttons: [
+                    {
+                        buttonText: { displayText: "Follow" },
+                        buttonId: `.trade --symbol=${data.symbol} --direction=${direction} --entry=${
+                            entries[0]
+                        } --sl=${sl} --size=50 --timestamp=${Date.now()} --id=${trade.id}`,
+                    },
+                ],
+            },
+            {},
+            (msg) => {
+                trade.msg = msg;
+                this.dbTrade.data.push(trade);
+                this.dbTrade.write();
+            }
+        );
     }
 
     private async handleTrades(symbol: string, currentPrice: number) {
