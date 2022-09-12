@@ -1,11 +1,9 @@
 import { proto } from "@adiwajshing/baileys";
-import { JSONFile, Low } from "@commonify/lowdb";
-import binanceApiNode, { Binance } from "binance-api-node";
+import binanceApiNode, { Binance, OrderSide_LT, PositionSide_LT } from "binance-api-node";
 import { debounce } from "debounce";
 import EventEmitter from "events";
-import { writeFileSync } from "fs";
+import nanoid from "nanoid";
 import pMap from "p-map";
-import Queue from "queue";
 import { ema } from "technicalindicators";
 import { format } from "timeago.js";
 import TypedEmitter from "typed-emitter";
