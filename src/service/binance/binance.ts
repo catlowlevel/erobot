@@ -237,7 +237,13 @@ export class BinanceClient {
                     const num = index + 1;
                     console.log(`Entry ${num} ${symbol} | $${trade.entry}`);
                     let text = hitAllEntry ? `All entry target achieved!\n` : "";
-                    text += `⏰ ${trade.symbol} *Entry ${num}* | $${alert.price} ⏰\nCurrent Price : ${currentPrice}`;
+                    text += `⏰ ${trade.symbol} *Entry ${num}* | $${alert.price} ⏰`;
+
+                    if (trade.entry) {
+                        text += `\nAverage price : $${trade.entry}`;
+                    } else {
+                        text += `\nCurrent Price : ${currentPrice}`;
+                    }
 
                     if (trade.timestamp) {
                         const timeago = format(new Date(trade.timestamp));
