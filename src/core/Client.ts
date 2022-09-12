@@ -26,6 +26,7 @@ import { ROOT_DIR } from "..";
 import { BinanceClient } from "../service/binance/binance";
 import { Coindar } from "../service/coindar/coindar";
 import { Samehadaku } from "../service/samehadaku/samehadaku";
+import nanoid from "nanoid";
 export type client = ReturnType<typeof Baileys>;
 
 type Events = {
@@ -52,6 +53,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     constructor() {
         super();
         config();
+        console.log(nanoid());
         this.msgQueue = Queue({ autostart: true, concurrency: 1 });
         this.store = makeInMemoryStore({ logger: P({ level: "fatal" }) });
         this.store.readFromFile(join(ROOT_DIR, "store", "stores.json"));
