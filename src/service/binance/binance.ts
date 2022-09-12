@@ -168,7 +168,7 @@ export class BinanceClient {
             tp: tp.map((tp) => ({ hit: false, price: tp, greater: tp > data.currentPrice })),
             entries: entries.map((entries) => ({ hit: false, price: entries, greater: entries > data.currentPrice })),
             sl: { hit: false, price: sl, greater: sl > data.currentPrice },
-            id: this.dbTrade.data.length.toString(),
+            id: nanoid(5),
             timestamp: Date.now(),
             entry: data.currentPrice,
         };
