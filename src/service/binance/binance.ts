@@ -210,6 +210,7 @@ export class BinanceClient {
             if (trade.symbol !== symbol) return;
             if (trade.sl.hit) return;
             const hitAllTp = trade.tp.reduce((acc, curr) => acc && curr.hit, true);
+            if (hitAllTp) return;
             trade.entries.forEach((alert, index) => {
                 if (alert.hit) return;
                 if (alert.greater === undefined) {
