@@ -567,10 +567,10 @@ bignumber.js@^9.0.0:
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.1.0.tgz#8d340146107fe3a6cb8d40699643c302e8773b62"
   integrity sha512-4LwHK4nfDOraBCtst+wOWIHbu1vhvAPJK8g8nROd4iuc3PSEjWif/qwbkh8jwCJz6yDBvtU4KPynETgrfh7y3A==
 
-binance-api-node@^0.11.43:
-  version "0.11.43"
-  resolved "https://registry.yarnpkg.com/binance-api-node/-/binance-api-node-0.11.43.tgz#0afe04287099e0411910352c674203c0b2de429a"
-  integrity sha512-yYT/4nrNLlUBCz6MMtQi28feKdIDy/DzputdTJYcLb2Q6uQfg172ql+4VD1BW4JFCx0bgeyrZskTVkXX+E9lpA==
+binance-api-node@^0.11.47:
+  version "0.11.47"
+  resolved "https://registry.yarnpkg.com/binance-api-node/-/binance-api-node-0.11.47.tgz#c77231af4bb561ce0aa3def7a4b2dc0961dd231c"
+  integrity sha512-hMXKDBCm4ub+tVNa5c1Cy7MVSdz1ybdgzIv4Fte5+pnAvaTU/v+3Rk60sdjJmGQJxNVVlH/j5tL5OMEDbHzQEQ==
   dependencies:
     https-proxy-agent "^5.0.0"
     isomorphic-fetch "^3.0.0"
