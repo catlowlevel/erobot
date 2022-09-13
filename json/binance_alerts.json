@@ -60,26 +60,6 @@
     "amGreater": true
   },
   {
-    "alertPrice": "2",
-    "symbol": "KNCUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "120363023114788849@g.us",
-        "fromMe": false,
-        "id": "D792A0EEEE90FD4508B9B00469BA4B8F",
-        "participant": "62895611963546@s.whatsapp.net"
-      },
-      "messageTimestamp": 1660775699,
-      "pushName": "ARXMIKU",
-      "message": {
-        "conversation": ".alert knc 2"
-      }
-    },
-    "resolved": false,
-    "amGreater": true
-  },
-  {
     "alertPrice": "23700",
     "symbol": "BTCUSDT",
     "done": false,
@@ -186,45 +166,6 @@
     },
     "resolved": false,
     "amGreater": false
-  },
-  {
-    "alertPrice": "1202.5",
-    "symbol": "BTCDOMUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": true,
-        "id": "BAE5162DF65C4FD2"
-      },
-      "message": {
-        "extendedTextMessage": {
-          "text": "Alert added for BTCDOMUSDT at 1167.0\n*Stop-lost*\nCurrent price: 1185.3\nGap : 1.57%",
-          "contextInfo": {
-            "stanzaId": "BAE5FC85FB8D438E",
-            "participant": "62895611963535@s.whatsapp.net",
-            "quotedMessage": {
-              "extendedTextMessage": {
-                "text": "Alert added for BTCDOMUSDT at 1183.9\n*Entry 2*\nCurrent price: 1185.3\nGap : 0.12%"
-              }
-            },
-            "remoteJid": "62895611963535-1631537374@g.us"
-          }
-        }
-      },
-      "messageTimestamp": "1662366318",
-      "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "readTimestamp": "1662366319"
-        }
-      ]
-    },
-    "resolved": false,
-    "amGreater": true,
-    "message": "Take-profit"
   },
   {
     "alertPrice": "1.631",

@@ -139,7 +139,7 @@
     }
   },
   "MATICUSDT": {
-    "countdown": 8,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -629,7 +629,7 @@
     }
   },
   "APEUSDT": {
-    "countdown": 0,
+    "countdown": 7,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3127,7 +3127,7 @@
     }
   },
   "1000SHIBUSDT": {
-    "countdown": 2,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
