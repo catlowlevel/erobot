@@ -27,7 +27,7 @@ export default class extends BaseCommand {
         }
         if (limit > this.client.binance.MAX_CANDLE_LIMIT) return M.reply("Maximal candle 500!");
 
-        const symbols = await this.client.binance.getFuturesSymbols();
+        const symbols = (await this.client.binance.getFuturesSymbols()).map((s) => s.symbol);
         const tickers = await this.client.binance.getCandles(symbols, tf, limit, true);
         const green = (close: number, open: number) => close > open;
         const red = (close: number, open: number) => close < open;

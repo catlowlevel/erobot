@@ -10,7 +10,7 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         const binance = this.client.binance;
-        const symbols = await binance.getFuturesSymbols();
+        const symbols = (await binance.getFuturesSymbols()).map((s) => s.symbol);
 
         let symbol;
         let price: number | undefined;
