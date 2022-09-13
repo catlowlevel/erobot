@@ -1,5 +1,5 @@
 import { proto } from "@adiwajshing/baileys";
-import binanceApiNode, { Binance, OrderSide_LT, PositionSide_LT } from "binance-api-node";
+import binanceApiNode, { Binance, FuturesOrderType_LT, OrderSide_LT, PositionSide_LT, Symbol } from "binance-api-node";
 import { debounce } from "debounce";
 import EventEmitter from "events";
 import nanoid from "nanoid";
@@ -68,8 +68,10 @@ export class BinanceClient {
 
     tickers = new Map<string, Candle[]>();
     // rsis = new Map<string, number[]>();
-    symbols: string[];
 
+    symbolData: Record<string, { leverage: number; pricePrecision: number; quantityPrecision: number }>;
+
+    private symbols: Symbol<FuturesOrderType_LT>[];
     private streamingCandles = false;
     constructor(public client: Client, streamCandles: boolean = false) {
         this.bullishDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish.json`, {});
@@ -88,24 +90,47 @@ export class BinanceClient {
             {}
         );
 
-        this.binanceClient = binanceApiNode({});
+        this.binanceClient = binanceApiNode({
+            apiKey: process.env.BINANCE_APIKEY,
+            apiSecret: process.env.BINANCE_APISECRET,
+        });
+        this.symbolData = {};
         this.evt = new EventEmitter() as TypedEmitter<Events>;
         if (streamCandles) {
             this.getFuturesSymbols().then((symbols) => {
-                this.streamCandles(symbols, "5m", 500, (data) => {
-                    const currentPrice = data.candles[data.candles.length - 1].close;
-                    this.handleAlert(data.symbol, currentPrice);
-                    this.handleTrades(data.symbol, currentPrice);
-                    this.handlePnD(data.symbol, currentPrice); //Pump And Dump
-                    //this.handleBnB(data); //Bullish And Bearish
-                    //this.handleAvgPnD(data);
-                    this.handleAboveEma(data);
-
-                    this.evt.emit("streamedSymbol", {
-                        symbol: data.symbol,
-                        currentPrice,
+                this.binanceClient.futuresLeverageBracket({ recvWindow: 10_000 }).then((res) => {
+                    res.forEach((data) => {
+                        const symbol = symbols.find((s) => s.symbol === data.symbol);
+                        if (!symbol) return;
+                        this.symbolData[data.symbol] = {
+                            leverage: data.brackets[0].initialLeverage,
+                            //@ts-ignore
+                            pricePrecision: symbol.pricePrecision,
+                            //@ts-ignore
+                            quantityPrecision: symbol.quantityPrecision,
+                        };
                     });
+                    this.client.log("Got all symbols data", "yellow");
                 });
+                this.streamCandles(
+                    symbols.map((s) => s.symbol),
+                    "5m",
+                    500,
+                    (data) => {
+                        const currentPrice = data.candles[data.candles.length - 1].close;
+                        this.handleAlert(data.symbol, currentPrice);
+                        this.handleTrades(data.symbol, currentPrice);
+                        this.handlePnD(data.symbol, currentPrice); //Pump And Dump
+                        //this.handleBnB(data); //Bullish And Bearish
+                        //this.handleAvgPnD(data);
+                        this.handleAboveEma(data);
+
+                        this.evt.emit("streamedSymbol", {
+                            symbol: data.symbol,
+                            currentPrice,
+                        });
+                    }
+                );
             });
         }
     }
@@ -119,7 +144,7 @@ export class BinanceClient {
     ) {
         try {
             const data = await this.getSymbolData(symbol);
-            const precision = countDecimalPlaces(data.currentPrice);
+            const precision = this.symbolData[data.symbol].pricePrecision;
             console.log("addAlert data", { ...data, alertPrice: price, message });
             const alert: AlertType = {
                 alertPrice: price.toFixed(precision),
@@ -159,7 +184,7 @@ export class BinanceClient {
         direction: "LONG" | "SHORT" = "LONG"
     ) {
         const data = await this.getSymbolData(symbol);
-        const precision = countDecimalPlaces(data.currentPrice);
+        const precision = this.symbolData[data.symbol].pricePrecision;
         entries = entries.map((p) => Number(p.toFixed(precision)));
         tp = tp.map((p) => Number(p.toFixed(precision)));
         sl = Number(sl.toFixed(precision));
@@ -173,7 +198,8 @@ export class BinanceClient {
             entry: data.currentPrice,
         };
         console.log("trade", JSON.stringify(trade, null, 2));
-        let text = `===| *${data.symbol}* | LONG |===\n`;
+        const leverage = this.symbolData[symbol].leverage;
+        let text = `===| *${data.symbol}* | LONG | x${leverage} |===\n`;
         text += `Current Price : $${data.currentPrice}\n`;
         text += `SL : $${sl}\n`;
         entries.forEach((p, i) => {
@@ -192,7 +218,7 @@ export class BinanceClient {
                         buttonText: { displayText: "Follow" },
                         buttonId: `.trade --symbol=${data.symbol} --direction=${direction} --entry=${
                             entries[0]
-                        } --sl=${sl} --size=50 --timestamp=${Date.now()} --id=${trade.id}`,
+                        } --sl=${sl} --size=20 --timestamp=${Date.now()} --id=${trade.id}`,
                     },
                 ],
             },
@@ -225,7 +251,7 @@ export class BinanceClient {
                     alert.hit = true;
                     const hitAllEntry = trade.entries.reduce((acc, curr) => acc && curr.hit, true);
                     const entries = trade.entries.filter((a) => a.hit);
-                    const precision = countDecimalPlaces(entries[0].price);
+                    const precision = this.symbolData[symbol].pricePrecision;
                     trade.entry =
                         entries.length > 0
                             ? Number(
@@ -285,8 +311,9 @@ export class BinanceClient {
                         : "";
                     text += `📈 ${symbol} *Take-profit ${num}* | $${alert.price} 📈`;
                     if (trade.entry) {
-                        const percentGap = getPercentageChange(trade.entry, currentPrice).toFixed(2);
-                        text += `\nGain : ${percentGap}%`;
+                        const percentGap = getPercentageChange(trade.entry, currentPrice);
+                        const profit = percentGap * this.symbolData[symbol].leverage;
+                        text += `\nGain : ${profit.toFixed(2)}%`;
                     } else {
                         text += `\nCurrent Price : ${currentPrice}`;
                     }
@@ -324,8 +351,9 @@ export class BinanceClient {
                 let text = hitTp ? `Stop-lost hit after take-profit!\n` : "";
                 text += `📉 ${symbol} *Stop-lost* | $${alert.price} 📉`;
                 if (trade.entry) {
-                    const percentGap = getPercentageChange(trade.entry, currentPrice).toFixed(2);
-                    text += `\nLoss : ${percentGap}%`;
+                    const percentGap = getPercentageChange(trade.entry, currentPrice);
+                    const loss = percentGap * this.symbolData[symbol].leverage;
+                    text += `\nLoss : ${loss.toFixed(2)}%`;
                 } else {
                     text += `\nCurrent Price : ${currentPrice}`;
                 }
@@ -405,32 +433,38 @@ export class BinanceClient {
             const percentGap = getPercentageChange(currentPrice, lastPrice);
             console.log(`${data.symbol} LONG!`);
             // console.log(candles.length, data.candles.length);
-            const precision = countDecimalPlaces(currentPrice);
+            const precision = this.symbolData[data.symbol].pricePrecision;
             const alertPrice = (current.ema99 + current.ema25 + current.ema7) / 3;
             const entry3 = percentageCalculator(1.5, alertPrice, "-");
             const entries = [current.ema7, current.ema99, entry3].filter((p) => p < currentPrice);
             const tp1 = percentageCalculator(1.5, alertPrice, "+");
             const tp2 = percentageCalculator(2.2, alertPrice, "+");
-            const tp3 = percentageCalculator(2.9, alertPrice, "+");
+            //const tp3 = percentageCalculator(2.9, alertPrice, "+");
             const tp4 = percentageCalculator(3.6, alertPrice, "+");
-            const tp5 = percentageCalculator(4.2, alertPrice, "+");
+            //const tp5 = percentageCalculator(4.2, alertPrice, "+");
             const tp6 = percentageCalculator(5.0, alertPrice, "+");
-            const tp7 = percentageCalculator(5.9, alertPrice, "+");
+            //const tp7 = percentageCalculator(5.9, alertPrice, "+");
             const tp8 = percentageCalculator(6.9, alertPrice, "+");
             const tp9 = percentageCalculator(7.5, alertPrice, "+");
-            const tp10 = percentageCalculator(8.7, alertPrice, "+");
+            //const tp10 = percentageCalculator(8.7, alertPrice, "+");
             const tp11 = percentageCalculator(9.9, alertPrice, "+");
-            const tp12 = percentageCalculator(11.5, alertPrice, "+");
+            //const tp12 = percentageCalculator(11.5, alertPrice, "+");
             const tp13 = percentageCalculator(12.8, alertPrice, "+");
-            const tp14 = percentageCalculator(14.5, alertPrice, "+");
+            //const tp14 = percentageCalculator(14.5, alertPrice, "+");
             const tp15 = percentageCalculator(16.3, alertPrice, "+");
+            const tp16 = percentageCalculator(18, alertPrice, "+");
+            const tp17 = percentageCalculator(19.3, alertPrice, "+");
+            const tp18 = percentageCalculator(21.1, alertPrice, "+");
+            const tp19 = percentageCalculator(22.8, alertPrice, "+");
+            const tp20 = percentageCalculator(24.5, alertPrice, "+");
             let slPrice = entries.reduce((acc, curr) => acc + curr, 0) / entries.length;
             slPrice = Number(percentageCalculator(2, slPrice, "-").toFixed(precision));
             this.addTrade(
                 "62895611963535-1631537374@g.us",
                 data.symbol,
                 entries,
-                [tp1, tp2, tp3, tp4, tp5, tp6, tp7, tp8, tp9, tp10, tp11, tp12, tp13, tp14, tp15].filter(
+                //[tp1, tp2, tp3, tp4, tp5, tp6, tp7, tp8, tp9, tp10, tp11, tp12, tp13, tp14, tp15].filter(
+                [tp1, tp2, tp4, tp6, tp8, tp9, tp11, tp13, tp15, tp16, tp17, tp18, tp19, tp20].filter(
                     (p) => p > currentPrice
                 ),
                 slPrice
@@ -842,10 +876,64 @@ export class BinanceClient {
 
     async getFuturesSymbols() {
         const exchangeInfo = await this.binanceClient.futuresExchangeInfo();
-        if (!this.symbols) this.symbols = exchangeInfo.symbols.map((s) => s.symbol);
+        if (!this.symbols) this.symbols = exchangeInfo.symbols;
         return this.symbols.filter(
-            (s) => !["ICPUSDT", "BTSUSDT", "BTCSTUSDT", "SCUSDT", "TLMUSDT"].includes(s) && s.endsWith("USDT")
+            (s) =>
+                !["ICPUSDT", "BTSUSDT", "BTCSTUSDT", "SCUSDT", "TLMUSDT"].includes(s.symbol) &&
+                s.symbol.endsWith("USDT")
         );
+    }
+
+    async createLimitOrder(
+        symbol: string,
+        side: OrderSide_LT,
+        price: number,
+        quantity: number,
+        sl?: number,
+        tp?: number
+    ) {
+        const positionSide: PositionSide_LT = side === "BUY" ? "LONG" : "SHORT";
+        const oppositeSide: OrderSide_LT = side === "BUY" ? "SELL" : "BUY";
+        const ordersResult: { limit?: {}; sl?: {}; tp?: {} } = {};
+        const order = await this.binanceClient.futuresOrder({
+            symbol: symbol,
+            side: side,
+            positionSide: positionSide,
+            quantity: quantity.toString(),
+            price: price.toString(),
+            type: "LIMIT",
+            timeInForce: "GTC",
+        });
+
+        if (sl) {
+            const stopOrder = await this.binanceClient.futuresOrder({
+                symbol: symbol,
+                side: oppositeSide,
+                type: "STOP_MARKET",
+                positionSide: positionSide,
+                stopPrice: sl.toString(),
+                closePosition: "true",
+                timeInForce: "GTC",
+                priceProtect: "TRUE",
+            });
+            ordersResult.sl = stopOrder;
+        }
+
+        if (tp) {
+            const stopOrder = await this.binanceClient.futuresOrder({
+                symbol: symbol,
+                side: oppositeSide,
+                type: "TAKE_PROFIT_MARKET",
+                positionSide: positionSide,
+                stopPrice: tp.toString(),
+                closePosition: "true",
+                timeInForce: "GTC",
+                priceProtect: "TRUE",
+            });
+            ordersResult.tp = stopOrder;
+        }
+        ordersResult.limit = order;
+        return ordersResult;
     }
 
     public get pnd() {
