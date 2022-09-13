@@ -9,10 +9,21 @@ import { IArgs } from "../core/MessageHandler";
     aliases: ["js"],
 })
 export default class extends BaseCommand {
+    //https://stackoverflow.com/a/40109254
+    evalInContext(scr: string, context: any) {
+        // execute script in private context
+        //return new Function("with(this) { return " + scr + "}").call(context);
+        return new Function("with(this) { return eval('" + scr + "'); }").call(context);
+    }
     public override execute = async (M: Message, { context }: IArgs): Promise<any> => {
         let out!: string;
         try {
-            const result = eval(context);
+            const obj = {
+                getPercent: (initial: number, final: number) => {
+                    return ((initial - final) / initial) * 100;
+                },
+            };
+            const result = this.evalInContext(context, obj);
             out = JSON.stringify(result, null, "\t") || "Evaluated JavaScript";
         } catch (error) {
             out = (error as any).message;
