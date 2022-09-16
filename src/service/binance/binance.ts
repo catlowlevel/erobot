@@ -112,11 +112,21 @@ export class BinanceClient {
                     });
                     this.client.log("Got all symbols data", "yellow");
                 });
+                const cache: Record<string, boolean> = {};
                 this.streamCandles(
                     symbols.map((s) => s.symbol),
                     "5m",
                     500,
                     (data) => {
+                        if (!cache[data.symbol]) {
+                            cache[data.symbol] = true;
+                            const longest = data.candles
+                                .slice(data.candles.length - 10)
+                                .map((c) => c.close)
+                                .sort((a, b) => (a.toString().length < b.toString().length ? 1 : -1))[0];
+                            const precision = countDecimalPlaces(longest);
+                            this.symbolData[data.symbol].pricePrecision = precision;
+                        }
                         const currentPrice = data.candles[data.candles.length - 1].close;
                         this.handleAlert(data.symbol, currentPrice);
                         this.handleTrades(data.symbol, currentPrice);
@@ -227,6 +237,13 @@ export class BinanceClient {
                 trade.msg = msg;
                 this.dbTrade.data.push(trade);
                 this.dbTrade.write();
+                //this.client.sendMessageQueue(
+                //"62895611963535-1631537374@g.us",
+                //{
+                //text: `${symbol}`,
+                //},
+                //{ quoted: msg }
+                //);
             }
         );
     }
@@ -648,7 +665,7 @@ export class BinanceClient {
                     seconds = Math.floor(time / 1000);
                     ago = seconds;
                 }
-                this.client.sendMessage("120363023114788849@g.us", {
+                this.client.sendMessageQueue("120363023114788849@g.us", {
                     text: `${pompom ? "📈📈📈 Pump" : "📉📉📉 Dump"} alert for *${symbol}*\n${
                         pompom ? "" : "-"
                     }${percentGap.toFixed(2)}%\nLast Price (${ago} ${useSecond ? "seconds" : "minutes"} ago): $${
@@ -700,7 +717,7 @@ export class BinanceClient {
                 // this.evt.emit("alert", { symbol, currentPrice, alert });
                 alert.done = true;
                 this.client
-                    .sendMessage(
+                    .sendMessageQueue(
                         alert.msg.key.remoteJid!,
                         {
                             // text: `Alert for ${symbol} at ${alertPrice} triggered at ${currentPrice}`,
