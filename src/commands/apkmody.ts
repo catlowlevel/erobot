@@ -16,6 +16,7 @@ export default class extends BaseCommand {
         const name = args.context;
         console.log("name :>> ", name);
         const posts = await apkmody.search(name);
+        M.reply(`Mengunduh ${posts[0].title}\n${posts[0].version}`);
         const dl = await apkmody.getDownloadLink(posts[0].link);
         console.log("dl :>> ", dl);
         const arrayBuffer = await fetch(dl).then((res) => res.arrayBuffer());
