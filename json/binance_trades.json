@@ -123764,7 +123764,7 @@
         "greater": true
       },
       {
-        "hit": false,
+        "hit": true,
         "price": 0.4485,
         "greater": true
       },
@@ -123818,33 +123818,26 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5A0EFAFB11932"
+        "id": "BAE5F1241DA85ACA"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "📈 C98USDT *Take-profit 7* | $0.437 📈\nGain : 289.12%\nPeriod : 1 day",
+          "text": "📈 C98USDT *Take-profit 8* | $0.4485 📈\nGain : 363.80%\nPeriod : 1 day",
           "contextInfo": {
-            "stanzaId": "BAE5C213177F6040",
+            "stanzaId": "BAE5A0EFAFB11932",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "📈 C98USDT *Take-profit 6* | $0.4275 📈\nGain : 228.49%\nPeriod : 1 day"
+                "text": "📈 C98USDT *Take-profit 7* | $0.437 📈\nGain : 289.12%\nPeriod : 1 day"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1663358276",
+      "messageTimestamp": "1663395601",
       "status": "PENDING",
-      "participant": "62895611963535:37@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1663358286",
-          "readTimestamp": "1663383215"
-        }
-      ]
+      "participant": "62895611963535:37@s.whatsapp.net"
     }
   },
   {
@@ -142503,7 +142496,7 @@
         "greater": true
       },
       {
-        "hit": false,
+        "hit": true,
         "price": 1.945,
         "greater": true
       },
@@ -142597,42 +142590,26 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5B46CC6FC8BD1"
+        "id": "BAE50D29A369B034"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "Target achieved before entry!\n📈 KNCUSDT *Take-profit 1* | $1.931 📈\nGain : 57.59%\nPeriod : 21 minutes",
+          "text": "Target achieved before entry!\n📈 KNCUSDT *Take-profit 2* | $1.945 📈\nGain : 91.62%\nPeriod : 37 minutes",
           "contextInfo": {
-            "stanzaId": "BAE5D32868452BA6",
+            "stanzaId": "BAE5B46CC6FC8BD1",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
-              "buttonsMessage": {
-                "contentText": "===| *KNCUSDT* | LONG | x50 |===\nCurrent Price : $1.91\nSL : $1.855\nEntry 1 : $1.907\nEntry 2 : $1.899\nEntry 3 : $1.874\nTP 1 : $1.931\nTP 2 : $1.945\nTP 3 : $1.971\nTP 4 : $1.998\nTP 5 : $2.034\nTP 6 : $2.045\nTP 7 : $2.091\nTP 8 : $2.146\nTP 9 : $2.213\nTP 10 : $2.245\nTP 11 : $2.27\nTP 12 : $2.304\nTP 13 : $2.336\nTP 14 : $2.369\n",
-                "buttons": [
-                  {
-                    "buttonId": ".trade --symbol=KNCUSDT --direction=LONG --entry=1.907 --sl=1.855 --size=20 --timestamp=1663392600154 --id=eE-Fy",
-                    "buttonText": {
-                      "displayText": "Follow"
-                    },
-                    "type": "RESPONSE"
-                  }
-                ],
-                "headerType": "EMPTY"
+              "extendedTextMessage": {
+                "text": "Target achieved before entry!\n📈 KNCUSDT *Take-profit 1* | $1.931 📈\nGain : 57.59%\nPeriod : 21 minutes"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1663393875",
+      "messageTimestamp": "1663394876",
       "status": "PENDING",
-      "participant": "62895611963535:37@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1663394040"
-        }
-      ]
+      "participant": "62895611963535:37@s.whatsapp.net"
     }
   },
   {
@@ -142711,7 +142688,7 @@
     ],
     "entries": [
       {
-        "hit": false,
+        "hit": true,
         "price": 2.9974,
         "greater": false
       }
@@ -142723,43 +142700,45 @@
     },
     "id": "tB0Wk",
     "timestamp": 1663393500626,
-    "entry": 3.035,
+    "entry": 2.9974,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE53D24027E9EE0"
+        "id": "BAE5C8088CCC6B64"
       },
       "message": {
-        "viewOnceMessage": {
-          "message": {
-            "messageContextInfo": {
-              "deviceListMetadata": {},
-              "deviceListMetadataVersion": 2
+        "extendedTextMessage": {
+          "text": "All entry target achieved!\n⏰ LUNA2USDT *Entry 1* | $2.9974 ⏰\nAverage price : $2.9974\nPeriod : 18 minutes",
+          "contextInfo": {
+            "stanzaId": "BAE53D24027E9EE0",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "buttonsMessage": {
+                "contentText": "===| *LUNA2USDT* | LONG | x25 |===\nCurrent Price : $3.035\nSL : $2.9375\nEntry 1 : $2.9974\nTP 1 : $3.0887\nTP 2 : $3.11\nTP 3 : $3.1526\nTP 4 : $3.1952\nTP 5 : $3.253\nTP 6 : $3.2713\nTP 7 : $3.3443\nTP 8 : $3.4326\nTP 9 : $3.5391\nTP 10 : $3.5908\nTP 11 : $3.6304\nTP 12 : $3.6852\nTP 13 : $3.7369\nTP 14 : $3.7886\n",
+                "buttons": [
+                  {
+                    "buttonId": ".trade --symbol=LUNA2USDT --direction=LONG --entry=2.9974 --sl=2.9375 --size=20 --timestamp=1663393500626 --id=tB0Wk",
+                    "buttonText": {
+                      "displayText": "Follow"
+                    },
+                    "type": "RESPONSE"
+                  }
+                ],
+                "headerType": "EMPTY"
+              }
             },
-            "buttonsMessage": {
-              "contentText": "===| *LUNA2USDT* | LONG | x25 |===\nCurrent Price : $3.035\nSL : $2.9375\nEntry 1 : $2.9974\nTP 1 : $3.0887\nTP 2 : $3.11\nTP 3 : $3.1526\nTP 4 : $3.1952\nTP 5 : $3.253\nTP 6 : $3.2713\nTP 7 : $3.3443\nTP 8 : $3.4326\nTP 9 : $3.5391\nTP 10 : $3.5908\nTP 11 : $3.6304\nTP 12 : $3.6852\nTP 13 : $3.7369\nTP 14 : $3.7886\n",
-              "buttons": [
-                {
-                  "buttonId": ".trade --symbol=LUNA2USDT --direction=LONG --entry=2.9974 --sl=2.9375 --size=20 --timestamp=1663393500626 --id=tB0Wk",
-                  "buttonText": {
-                    "displayText": "Follow"
-                  },
-                  "type": "RESPONSE"
-                }
-              ],
-              "headerType": "EMPTY"
-            }
+            "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1663393500",
+      "messageTimestamp": "1663394636",
       "status": "PENDING",
       "participant": "62895611963535:37@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1663394040"
+          "receiptTimestamp": "1663394640"
         }
       ]
     }
