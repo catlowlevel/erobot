@@ -3102,7 +3102,7 @@
     }
   },
   "KNCUSDT": {
-    "countdown": 0,
+    "countdown": 5,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -4346,6 +4346,6 @@
     "countdown": 0
   },
   "LUNA2USDT": {
-    "countdown": 0
+    "countdown": 8
   }
 }
