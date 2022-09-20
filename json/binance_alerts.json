@@ -98,35 +98,5 @@
     },
     "resolved": false,
     "amGreater": true
-  },
-  {
-    "alertPrice": "1.631",
-    "symbol": "KNCUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "62895611963535-1631537374@g.us",
-        "fromMe": true,
-        "id": "BAE5CCED05E1FEDB"
-      },
-      "message": {
-        "extendedTextMessage": {
-          "text": "KNCUSDT LONG | 0.06%\nEntry : $1.656 - $1.6552005607696443\nSL : $1.631\nTP : $1.681\nCurrent Price : $1.654"
-        }
-      },
-      "messageTimestamp": "1662413102",
-      "status": "PENDING",
-      "participant": "62895611963535:35@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1662413102",
-          "readTimestamp": "1662428955"
-        }
-      ]
-    },
-    "resolved": false,
-    "amGreater": false,
-    "message": "Stop-lost"
   }
 ]

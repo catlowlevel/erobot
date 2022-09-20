@@ -266,7 +266,7 @@
     }
   },
   "SFPUSDT": {
-    "countdown": 3,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1813,7 +1813,7 @@
     }
   },
   "ETCUSDT": {
-    "countdown": 3,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3996,7 +3996,7 @@
     }
   },
   "BTCDOMUSDT": {
-    "countdown": 0,
+    "countdown": 7,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
