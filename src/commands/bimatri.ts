@@ -35,7 +35,7 @@ export default class extends BaseCommand {
             case "add-number": {
                 if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
                 await M.reply("Kirim nomor tri kamu\nEx : 6289**********");
-                const messages = await this.handler.getNewMessages(M.from, 1, 2000 * 60);
+                const messages = await this.handler.getNewMessages(M, 1, 2000 * 60, true);
                 if (messages.length <= 0) return M.reply("Kamu tidak mengirim nomor tri kamu\nMembatalkan...");
                 const nohpMsg = messages[0];
                 const nohp = nohpMsg.content;
@@ -47,7 +47,7 @@ export default class extends BaseCommand {
                     return M.reply("Gagal meminta OTP!");
                 }
                 await nohpMsg.reply("Kirim kode OTP yang kamu terima");
-                const otpMessages = await this.handler.getNewMessages(M.from, 1, 2000 * 60);
+                const otpMessages = await this.handler.getNewMessages(M, 1, 2000 * 60, true);
                 if (messages.length <= 0) return M.reply("Kamu tidak mengirim kode OTP\nMembatalkan...");
                 const otpMsg = otpMessages[0];
                 const otp = otpMsg.content;

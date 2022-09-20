@@ -10,8 +10,9 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         if (args.args[0].startsWith("process")) {
-            const messages = await this.handler.getNewMessages(M.from, 3, 1000 * 15);
-            return M.reply(messages[0].content);
+            const messages = await this.handler.getNewMessages(M, 5, 1000 * 15, true);
+            messages.forEach((m) => m.replyQueue(m.content));
+            return;
         }
         if (M.quoted) {
             console.log(JSON.stringify(M.quoted, null, 2));
