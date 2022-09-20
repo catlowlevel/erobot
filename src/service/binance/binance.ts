@@ -207,7 +207,7 @@ export class BinanceClient {
             timestamp: Date.now(),
             entry: data.currentPrice,
         };
-        console.log("trade", JSON.stringify(trade, null, 2));
+        console.log("trade", trade.symbol);
         const leverage = this.symbolData[symbol].leverage;
         let text = `===| *${data.symbol}* | LONG | x${leverage} |===\n`;
         text += `Current Price : $${data.currentPrice}\n`;
