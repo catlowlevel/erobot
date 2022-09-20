@@ -16,7 +16,12 @@ export class Message {
         this.message = this.M;
         this.from = M.key.remoteJid || "";
         this.chat = this.from.endsWith("@s.whatsapp.net") ? "dm" : "group";
-        const jid = M.key.remoteJid!;
+        const jid =
+            this.chat === "dm" && this.M.key.fromMe
+                ? this.client.correctJid(this.client.user?.id || "")
+                : this.chat === "group"
+                ? this.client.correctJid(M.key.participant || "")
+                : this.client.correctJid(this.from);
         const username = "Test";
         this.sender = {
             jid,
