@@ -3996,7 +3996,7 @@
     }
   },
   "BTCDOMUSDT": {
-    "countdown": 7,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
