@@ -66,8 +66,9 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
 
     async initService() {
         await new Promise<void>((res) => {
-            setInterval(() => {
+            const interval = setInterval(() => {
                 if (this.condition === "connected") {
+                    clearInterval(interval);
                     res();
                 }
             }, 500);
