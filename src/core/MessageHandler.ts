@@ -34,7 +34,10 @@ export class MessageHandler {
     commands = new Map<string, ICommand>();
     aliases = new Map<string, ICommand>();
 
-    private processMsg = new Map<string, { max: number; timeoutMs: number; messages: Message[] }>();
+    private processMsg = new Map<
+        string,
+        { msg: Message; max: number; timeoutMs: number; messages: Message[]; matchSender: boolean }
+    >();
     private path = [ROOT_DIR, "src", "commands"];
     constructor(private client: Client) {
         //prettier-ignore
@@ -60,32 +63,32 @@ export class MessageHandler {
         client.log("==============================", "blue");
     }
 
-    public getNewMessages(jid: string, max: number, timeoutMs: number) {
+    public getNewMessages(M: Message, max: number, timeoutMs: number, matchSender: boolean = false) {
         console.log("Fetching new messages...");
-        if (this.processMsg.get(jid)) throw new Error("Already fetching new messages!");
-        this.processMsg.set(jid, { max, timeoutMs, messages: [] });
+        if (this.processMsg.get(M.from)) throw new Error("Already fetching new messages!");
+        this.processMsg.set(M.from, { msg: M, max, timeoutMs, messages: [], matchSender });
         return new Promise<Message[]>((res, rej) => {
             try {
                 const timeout = setTimeout(() => {
-                    const process = this.processMsg.get(jid);
+                    const process = this.processMsg.get(M.from);
                     if (process) {
                         const msg = process.messages;
                         console.log("New messages(timeout), " + msg.length);
-                        this.processMsg.delete(jid);
+                        this.processMsg.delete(M.from);
                         res(msg);
                     }
                 }, timeoutMs);
                 const interval = setInterval(() => {
-                    const process = this.processMsg.get(jid);
+                    const process = this.processMsg.get(M.from);
                     if (process && process.messages.length > process.max - 1) {
                         const msg = process.messages;
                         console.log("New messages, " + msg.length);
-                        this.processMsg.delete(jid);
+                        this.processMsg.delete(M.from);
                         clearInterval(interval);
                         clearTimeout(timeout);
                         res(msg);
                     }
-                }, 100);
+                }, 50);
             } catch (error) {
                 rej(error);
             }
@@ -105,8 +108,13 @@ export class MessageHandler {
         if (!args[0] || !args[0].startsWith(prefix) || M.content.length <= 1) {
             const process = this.processMsg.get(M.from);
             if (process) {
-                this.client.readMessages([M.message.key]);
-                process.messages.push(M);
+                if (process.matchSender && process.msg.sender.jid === M.sender.jid) {
+                    process.messages.push(M);
+                    this.client.readMessages([M.message.key]);
+                } else if (!process.matchSender) {
+                    process.messages.push(M);
+                    this.client.readMessages([M.message.key]);
+                }
                 console.log("Processing", process.messages.length + " of " + process.max);
             }
 
