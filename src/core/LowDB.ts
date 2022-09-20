@@ -6,7 +6,19 @@ export class LowDB<T> implements Low<T> {
     read!: Low<T>["read"];
     adapter!: Low<T>["adapter"];
     private low: Low<T>;
+    private initialized: boolean;
+    waitInit() {
+        return new Promise<void>((res) => {
+            const interval = setInterval(() => {
+                if (this.initialized) {
+                    clearInterval(interval);
+                    res();
+                }
+            }, 100);
+        });
+    }
     constructor(filename: string, initialIfNull: T, onRead?: (data: T) => void) {
+        this.initialized = false;
         this.low = new Low(new JSONFile<T>(filename));
         this["data"] = this.low["data"] as T;
         this["adapter"] = this.low["adapter"];
@@ -22,6 +34,7 @@ export class LowDB<T> implements Low<T> {
                 await this.write();
             }
             this.data ||= initialIfNull;
+            this.initialized = true;
             onRead?.(this.data);
         });
     }
