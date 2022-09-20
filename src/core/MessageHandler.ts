@@ -33,6 +33,8 @@ export interface ICommand {
 export class MessageHandler {
     commands = new Map<string, ICommand>();
     aliases = new Map<string, ICommand>();
+
+    private processMsg = new Map<string, { max: number; timeoutMs: number; messages: Message[] }>();
     private path = [ROOT_DIR, "src", "commands"];
     constructor(private client: Client) {
         //prettier-ignore
@@ -58,6 +60,38 @@ export class MessageHandler {
         client.log("==============================", "blue");
     }
 
+    public getNewMessages(jid: string, max: number, timeoutMs: number) {
+        console.log("Fetching new messages...");
+        if (this.processMsg.get(jid)) throw new Error("Already fetching new messages!");
+        this.processMsg.set(jid, { max, timeoutMs, messages: [] });
+        return new Promise<Message[]>((res, rej) => {
+            try {
+                const timeout = setTimeout(() => {
+                    const process = this.processMsg.get(jid);
+                    if (process) {
+                        const msg = process.messages;
+                        console.log("New messages(timeout), " + msg.length);
+                        this.processMsg.delete(jid);
+                        res(msg);
+                    }
+                }, timeoutMs);
+                const interval = setInterval(() => {
+                    const process = this.processMsg.get(jid);
+                    if (process && process.messages.length > process.max - 1) {
+                        const msg = process.messages;
+                        console.log("New messages, " + msg.length);
+                        this.processMsg.delete(jid);
+                        clearInterval(interval);
+                        clearTimeout(timeout);
+                        res(msg);
+                    }
+                }, 100);
+            } catch (error) {
+                rej(error);
+            }
+        });
+    }
+
     public handleMessage = (M: Message) => {
         const prefix = ".";
         let max = 3;
@@ -69,6 +103,13 @@ export class MessageHandler {
         const args = M.content.split(/[ ,\n]/gm);
         const title = M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
         if (!args[0] || !args[0].startsWith(prefix) || M.content.length <= 1) {
+            const process = this.processMsg.get(M.from);
+            if (process) {
+                this.client.readMessages([M.message.key]);
+                process.messages.push(M);
+                console.log("Processing", process.messages.length + " of " + process.max);
+            }
+
             return M.simplify().then((M) => {
                 const title = M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
                 return console.log(`${M.sender.username}@${title} => ${M.content}`);
