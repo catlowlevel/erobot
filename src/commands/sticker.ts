@@ -87,10 +87,11 @@ export default class extends BaseCommand {
         }
 
         const result = await new Promise<Buffer | string>(async (res) => {
-            setTimeout(() => {
+            const timeout = setTimeout(() => {
                 res("Waktu pemrosesan terlalu lama!\nMembatalkan...");
             }, 1000 * 30);
             const buffer = await sticker.toBuffer();
+            clearTimeout(timeout);
             res(buffer);
         });
         if (typeof result === "string") {
