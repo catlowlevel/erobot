@@ -177,6 +177,49 @@ export class Message {
         );
     };
 
+    public replyQueue = async (
+        content: string | Buffer,
+        type: "text" | "image" | "video" | "audio" | "sticker" | "document" = "text",
+        gif?: boolean,
+        mimetype?: string,
+        caption?: string,
+        mentions?: string[],
+        externalAdReply?: proto.IContextInfo["externalAdReply"],
+        thumbnail?: Buffer,
+        fileName?: string,
+        options: {
+            sections?: proto.Message.ListMessage.ISection[];
+            buttonText?: string;
+            title?: string;
+        } = {}
+    ): Promise<ReturnType<typeof this.client.sendMessage>> => {
+        if (type === "text" && Buffer.isBuffer(content)) throw new Error("Cannot send Buffer as a text message");
+        return this.client.sendMessageQueue(
+            this.from,
+            {
+                [type]: content,
+                gifPlayback: gif,
+                caption,
+                mimetype,
+                mentions,
+                fileName,
+                jpegThumbnail: thumbnail ? thumbnail.toString("base64") : undefined,
+                contextInfo: externalAdReply
+                    ? {
+                          externalAdReply,
+                      }
+                    : undefined,
+                footer: options.sections?.length ? `EroBot` : undefined,
+                sections: options.sections,
+                title: options.title,
+                buttonText: options.buttonText,
+            } as unknown as AnyMessageContent,
+            {
+                quoted: this.M,
+            }
+        );
+    };
+
     public react = async (
         emoji: string,
         key: proto.IMessageKey = this.M.key
