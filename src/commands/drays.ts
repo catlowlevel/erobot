@@ -62,6 +62,7 @@ export default class extends BaseCommand {
             const query = args.join(" ");
             console.log("query", query);
             const posts = await drays.searchPosts(query);
+            if (posts.length <= 0) return M.reply(`Tidak ada hasil pencarian untuk *${query}*`);
             const sections: proto.Message.ListMessage.ISection[] = [{ rows: [], title: "Hasil Pencarian" }];
             posts.forEach((p) => {
                 sections[0].rows?.push({
