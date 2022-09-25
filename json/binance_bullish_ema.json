@@ -2044,7 +2044,7 @@
     }
   },
   "OCEANUSDT": {
-    "countdown": 8,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -4090,7 +4090,7 @@
     }
   },
   "INJUSDT": {
-    "countdown": 8,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",

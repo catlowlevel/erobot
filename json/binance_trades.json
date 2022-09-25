@@ -27775,7 +27775,7 @@
       }
     ],
     "sl": {
-      "hit": false,
+      "hit": true,
       "price": 1.666,
       "greater": false
     },
@@ -27786,30 +27786,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE54746BB671C45"
+        "id": "BAE56EEFE87E0870"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "All entry target achieved!\n⏰ FLOWUSDT *Entry 2* | $1.689 ⏰\nAverage price : $1.7\nPeriod : 7 hours",
+          "text": "📉 FLOWUSDT *Stop-lost* | $1.666 📉\nLoss : 50.00%",
           "contextInfo": {
-            "stanzaId": "BAE53193B3912312",
+            "stanzaId": "BAE54746BB671C45",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "⏰ FLOWUSDT *Entry 1* | $1.711 ⏰\nAverage price : $1.711\nPeriod : 14 minutes"
+                "text": "All entry target achieved!\n⏰ FLOWUSDT *Entry 2* | $1.689 ⏰\nAverage price : $1.7\nPeriod : 7 hours"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1664054439",
+      "messageTimestamp": "1664075058",
       "status": "PENDING",
       "participant": "62895611963535:39@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1664058018"
+          "receiptTimestamp": "1664075060",
+          "readTimestamp": "1664077986"
         }
       ]
     }
@@ -30537,12 +30538,12 @@
     "symbol": "GRTUSDT",
     "tp": [
       {
-        "hit": false,
+        "hit": true,
         "price": 0.1036,
         "greater": true
       },
       {
-        "hit": false,
+        "hit": true,
         "price": 0.10431,
         "greater": true
       },
@@ -30636,30 +30637,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE57BF142422DA3"
+        "id": "BAE58BDF46E2B788"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "All entry target achieved!\n⏰ GRTUSDT *Entry 3* | $0.10054 ⏰\nAverage price : $0.10156\nPeriod : 5 hours",
+          "text": "📈 GRTUSDT *Take-profit 2* | $0.10431 📈\nGain : 134.90%\nPeriod : 11 hours",
           "contextInfo": {
-            "stanzaId": "BAE5E8EB8712F86A",
+            "stanzaId": "BAE52D819A86D83E",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "⏰ GRTUSDT *Entry 2* | $0.10192 ⏰\nAverage price : $0.10207\nPeriod : 57 minutes"
+                "text": "📈 GRTUSDT *Take-profit 1* | $0.1036 📈\nGain : 100.93%\nPeriod : 11 hours"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1664059742",
+      "messageTimestamp": "1664079188",
       "status": "PENDING",
       "participant": "62895611963535:39@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1664059744"
+          "receiptTimestamp": "1664079190"
         }
       ]
     }
@@ -31186,7 +31187,7 @@
     "symbol": "FOOTBALLUSDT",
     "tp": [
       {
-        "hit": false,
+        "hit": true,
         "price": 1157.79,
         "greater": true
       },
@@ -31280,30 +31281,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE59E6D5286F134"
+        "id": "BAE541B6F6D28478"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "All entry target achieved!\n⏰ FOOTBALLUSDT *Entry 2* | $1123.57 ⏰\nAverage price : $1130.63\nPeriod : 5 hours",
+          "text": "📈 FOOTBALLUSDT *Take-profit 1* | $1157.79 📈\nGain : 61.03%\nPeriod : 11 hours",
           "contextInfo": {
-            "stanzaId": "BAE57B6A3A13FF9C",
+            "stanzaId": "BAE59E6D5286F134",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "⏰ FOOTBALLUSDT *Entry 1* | $1137.7 ⏰\nAverage price : $1137.7\nPeriod : 2 hours"
+                "text": "All entry target achieved!\n⏰ FOOTBALLUSDT *Entry 2* | $1123.57 ⏰\nAverage price : $1130.63\nPeriod : 5 hours"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1664060414",
+      "messageTimestamp": "1664081725",
       "status": "PENDING",
       "participant": "62895611963535:39@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1664060416"
+          "receiptTimestamp": "1664081728"
         }
       ]
     }
@@ -32355,7 +32356,7 @@
         "greater": true
       },
       {
-        "hit": false,
+        "hit": true,
         "price": 0.04156,
         "greater": true
       },
@@ -32434,30 +32435,31 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5B04DCFC42BCE"
+        "id": "BAE571BBADF83329"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "Target achieved before entry!\n📈 RVNUSDT *Take-profit 4* | $0.04082 📈\nGain : 194.71%\nPeriod : 19 minutes",
+          "text": "Target achieved before entry!\n📈 RVNUSDT *Take-profit 5* | $0.04156 📈\nGain : 290.15%\nPeriod : 6 hours",
           "contextInfo": {
-            "stanzaId": "BAE506B463A911C8",
+            "stanzaId": "BAE5B04DCFC42BCE",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
               "extendedTextMessage": {
-                "text": "Target achieved before entry!\n📈 RVNUSDT *Take-profit 3* | $0.04027 📈\nGain : 124.71%\nPeriod : 16 minutes"
+                "text": "Target achieved before entry!\n📈 RVNUSDT *Take-profit 4* | $0.04082 📈\nGain : 194.71%\nPeriod : 19 minutes"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1664048992",
+      "messageTimestamp": "1664072566",
       "status": "PENDING",
       "participant": "62895611963535:39@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1664052426"
+          "receiptTimestamp": "1664072568",
+          "readTimestamp": "1664077986"
         }
       ]
     }
@@ -33388,7 +33390,7 @@
         "greater": true
       },
       {
-        "hit": false,
+        "hit": true,
         "price": 0.5784,
         "greater": true
       },
@@ -33472,40 +33474,30 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE5E3065F4FFDB0"
+        "id": "BAE5A279E5FF48E3"
       },
       "message": {
         "extendedTextMessage": {
-          "text": "Target achieved before entry!\n📈 STGUSDT *Take-profit 1* | $0.5707 📈\nGain : 7.03%\nPeriod : 25 seconds",
+          "text": "Target achieved before entry!\n📈 STGUSDT *Take-profit 2* | $0.5784 📈\nGain : 40.85%\nPeriod : 4 hours",
           "contextInfo": {
-            "stanzaId": "BAE5BA8061CC1814",
+            "stanzaId": "BAE5E3065F4FFDB0",
             "participant": "62895611963535@s.whatsapp.net",
             "quotedMessage": {
-              "buttonsMessage": {
-                "contentText": "===| *STGUSDT* | LONG | x25 |===\nCurrent Price : $0.5691\nSL : $0.5376\nEntry 1 : $0.5583\nEntry 2 : $0.5447\nEntry 3 : $0.5426\nTP 1 : $0.5707\nTP 2 : $0.5784\nTP 3 : $0.5889\nTP 4 : $0.5922\nTP 5 : $0.6054\nTP 6 : $0.6214\nTP 7 : $0.6407\nTP 8 : $0.6501\nTP 9 : $0.6572\nTP 10 : $0.6671\nTP 11 : $0.6765\nTP 12 : $0.6859\n",
-                "buttons": [
-                  {
-                    "buttonId": ".trade --symbol=STGUSDT --direction=LONG --entry=0.5583 --sl=0.5376 --size=20 --timestamp=1664065200240 --id=AsJxd",
-                    "buttonText": {
-                      "displayText": "Follow"
-                    },
-                    "type": "RESPONSE"
-                  }
-                ],
-                "headerType": "EMPTY"
+              "extendedTextMessage": {
+                "text": "Target achieved before entry!\n📈 STGUSDT *Take-profit 1* | $0.5707 📈\nGain : 7.03%\nPeriod : 25 seconds"
               }
             },
             "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1664065225",
+      "messageTimestamp": "1664079877",
       "status": "PENDING",
       "participant": "62895611963535:39@s.whatsapp.net",
       "userReceipt": [
         {
           "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1664065227"
+          "receiptTimestamp": "1664079878"
         }
       ]
     }
@@ -33514,7 +33506,7 @@
     "symbol": "INJUSDT",
     "tp": [
       {
-        "hit": false,
+        "hit": true,
         "price": 1.655,
         "greater": true
       },
@@ -33603,34 +33595,43 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE535B2AF3D4821"
+        "id": "BAE5A5663C0D551D"
       },
       "message": {
-        "viewOnceMessage": {
-          "message": {
-            "messageContextInfo": {
-              "deviceListMetadata": {},
-              "deviceListMetadataVersion": 2
+        "extendedTextMessage": {
+          "text": "Target achieved before entry!\n📈 INJUSDT *Take-profit 1* | $1.655 📈\nGain : 44.56%\nPeriod : 1 hour",
+          "contextInfo": {
+            "stanzaId": "BAE535B2AF3D4821",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "buttonsMessage": {
+                "contentText": "===| *INJUSDT* | LONG | x25 |===\nCurrent Price : $1.627\nSL : $1.574\nEntry 1 : $1.606\nTP 1 : $1.655\nTP 2 : $1.666\nTP 3 : $1.689\nTP 4 : $1.712\nTP 5 : $1.743\nTP 6 : $1.752\nTP 7 : $1.792\nTP 8 : $1.839\nTP 9 : $1.896\nTP 10 : $1.924\nTP 11 : $1.945\nTP 12 : $1.974\nTP 13 : $2.002\nTP 14 : $2.03\n",
+                "buttons": [
+                  {
+                    "buttonId": ".trade --symbol=INJUSDT --direction=LONG --entry=1.606 --sl=1.574 --size=20 --timestamp=1664070900173 --id=4qGNf",
+                    "buttonText": {
+                      "displayText": "Follow"
+                    },
+                    "type": "RESPONSE"
+                  }
+                ],
+                "headerType": "EMPTY"
+              }
             },
-            "buttonsMessage": {
-              "contentText": "===| *INJUSDT* | LONG | x25 |===\nCurrent Price : $1.627\nSL : $1.574\nEntry 1 : $1.606\nTP 1 : $1.655\nTP 2 : $1.666\nTP 3 : $1.689\nTP 4 : $1.712\nTP 5 : $1.743\nTP 6 : $1.752\nTP 7 : $1.792\nTP 8 : $1.839\nTP 9 : $1.896\nTP 10 : $1.924\nTP 11 : $1.945\nTP 12 : $1.974\nTP 13 : $2.002\nTP 14 : $2.03\n",
-              "buttons": [
-                {
-                  "buttonId": ".trade --symbol=INJUSDT --direction=LONG --entry=1.606 --sl=1.574 --size=20 --timestamp=1664070900173 --id=4qGNf",
-                  "buttonText": {
-                    "displayText": "Follow"
-                  },
-                  "type": "RESPONSE"
-                }
-              ],
-              "headerType": "EMPTY"
-            }
+            "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1664070900",
+      "messageTimestamp": "1664075938",
       "status": "PENDING",
-      "participant": "62895611963535:39@s.whatsapp.net"
+      "participant": "62895611963535:39@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1664075940",
+          "readTimestamp": "1664077986"
+        }
+      ]
     }
   },
   {
@@ -33709,12 +33710,12 @@
     ],
     "entries": [
       {
-        "hit": false,
+        "hit": true,
         "price": 0.16215,
         "greater": false
       },
       {
-        "hit": false,
+        "hit": true,
         "price": 0.16085,
         "greater": false
       },
@@ -33731,12 +33732,268 @@
     },
     "id": "gYri6",
     "timestamp": 1664070901013,
-    "entry": 0.16251,
+    "entry": 0.1615,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE567D50B84B8A5"
+        "id": "BAE5B7A9A792E62C"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "⏰ OCEANUSDT *Entry 2* | $0.16085 ⏰\nAverage price : $0.1615\nPeriod : 3 hours",
+          "contextInfo": {
+            "stanzaId": "BAE5A782361E305A",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "⏰ OCEANUSDT *Entry 1* | $0.16215 ⏰\nAverage price : $0.16215\nPeriod : 1 hour"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1664083397",
+      "status": "PENDING",
+      "participant": "62895611963535:39@s.whatsapp.net"
+    }
+  },
+  {
+    "symbol": "INJUSDT",
+    "tp": [
+      {
+        "hit": false,
+        "price": 1.665,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.677,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.7,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.723,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.754,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.764,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.803,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.851,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.908,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.936,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.958,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 1.987,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 2.015,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 2.043,
+        "greater": true
+      }
+    ],
+    "entries": [
+      {
+        "hit": true,
+        "price": 1.632,
+        "greater": false
+      },
+      {
+        "hit": false,
+        "price": 1.616,
+        "greater": false
+      }
+    ],
+    "sl": {
+      "hit": false,
+      "price": 1.592,
+      "greater": false
+    },
+    "id": "PpE3T",
+    "timestamp": 1664076900172,
+    "entry": 1.632,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE53DA8A89F724C"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "⏰ INJUSDT *Entry 1* | $1.632 ⏰\nAverage price : $1.632\nPeriod : 1 hour",
+          "contextInfo": {
+            "stanzaId": "BAE5DCC510BA4159",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "buttonsMessage": {
+                "contentText": "===| *INJUSDT* | LONG | x25 |===\nCurrent Price : $1.649\nSL : $1.592\nEntry 1 : $1.632\nEntry 2 : $1.616\nTP 1 : $1.665\nTP 2 : $1.677\nTP 3 : $1.7\nTP 4 : $1.723\nTP 5 : $1.754\nTP 6 : $1.764\nTP 7 : $1.803\nTP 8 : $1.851\nTP 9 : $1.908\nTP 10 : $1.936\nTP 11 : $1.958\nTP 12 : $1.987\nTP 13 : $2.015\nTP 14 : $2.043\n",
+                "buttons": [
+                  {
+                    "buttonId": ".trade --symbol=INJUSDT --direction=LONG --entry=1.632 --sl=1.592 --size=20 --timestamp=1664076900172 --id=PpE3T",
+                    "buttonText": {
+                      "displayText": "Follow"
+                    },
+                    "type": "RESPONSE"
+                  }
+                ],
+                "headerType": "EMPTY"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1664083376",
+      "status": "PENDING",
+      "participant": "62895611963535:39@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1664083377"
+        }
+      ]
+    }
+  },
+  {
+    "symbol": "LINKUSDT",
+    "tp": [
+      {
+        "hit": false,
+        "price": 7.84,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 7.894,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 8.002,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 8.11,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 8.257,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 8.303,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 8.489,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 8.712,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 8.983,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 9.114,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 9.215,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 9.354,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 9.485,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 9.616,
+        "greater": true
+      }
+    ],
+    "entries": [
+      {
+        "hit": false,
+        "price": 7.707,
+        "greater": false
+      },
+      {
+        "hit": false,
+        "price": 7.608,
+        "greater": false
+      }
+    ],
+    "sl": {
+      "hit": false,
+      "price": 7.504,
+      "greater": false
+    },
+    "id": "t2aG5",
+    "timestamp": 1664079001925,
+    "entry": 7.739,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE504691CF0375D"
       },
       "message": {
         "viewOnceMessage": {
@@ -33746,10 +34003,10 @@
               "deviceListMetadataVersion": 2
             },
             "buttonsMessage": {
-              "contentText": "===| *OCEANUSDT* | LONG | x50 |===\nCurrent Price : $0.16251\nSL : $0.15747\nEntry 1 : $0.16215\nEntry 2 : $0.16085\nEntry 3 : $0.15905\nTP 1 : $0.16389\nTP 2 : $0.16502\nTP 3 : $0.16728\nTP 4 : $0.16954\nTP 5 : $0.17261\nTP 6 : $0.17358\nTP 7 : $0.17746\nTP 8 : $0.18214\nTP 9 : $0.18779\nTP 10 : $0.19054\nTP 11 : $0.19264\nTP 12 : $0.19554\nTP 13 : $0.19829\nTP 14 : $0.20103\n",
+              "contentText": "===| *LINKUSDT* | LONG | x75 |===\nCurrent Price : $7.739\nSL : $7.504\nEntry 1 : $7.707\nEntry 2 : $7.608\nTP 1 : $7.84\nTP 2 : $7.894\nTP 3 : $8.002\nTP 4 : $8.11\nTP 5 : $8.257\nTP 6 : $8.303\nTP 7 : $8.489\nTP 8 : $8.712\nTP 9 : $8.983\nTP 10 : $9.114\nTP 11 : $9.215\nTP 12 : $9.354\nTP 13 : $9.485\nTP 14 : $9.616\n",
               "buttons": [
                 {
-                  "buttonId": ".trade --symbol=OCEANUSDT --direction=LONG --entry=0.16215 --sl=0.15747 --size=20 --timestamp=1664070901013 --id=gYri6",
+                  "buttonId": ".trade --symbol=LINKUSDT --direction=LONG --entry=7.707 --sl=7.504 --size=20 --timestamp=1664079001926 --id=t2aG5",
                   "buttonText": {
                     "displayText": "Follow"
                   },
@@ -33761,9 +34018,544 @@
           }
         }
       },
-      "messageTimestamp": "1664070901",
+      "messageTimestamp": "1664079001",
       "status": "PENDING",
-      "participant": "62895611963535:39@s.whatsapp.net"
+      "participant": "62895611963535:39@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1664079004"
+        }
+      ]
+    }
+  },
+  {
+    "symbol": "GMTUSDT",
+    "tp": [
+      {
+        "hit": false,
+        "price": 0.6508,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.6553,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.6643,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.6732,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.6854,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.6893,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.7046,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.7232,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.7457,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.7566,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.7649,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.7765,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.7874,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.7983,
+        "greater": true
+      }
+    ],
+    "entries": [
+      {
+        "hit": true,
+        "price": 0.6431,
+        "greater": false
+      },
+      {
+        "hit": true,
+        "price": 0.6394,
+        "greater": false
+      },
+      {
+        "hit": true,
+        "price": 0.6316,
+        "greater": false
+      }
+    ],
+    "sl": {
+      "hit": false,
+      "price": 0.6253,
+      "greater": false
+    },
+    "id": "P0_B2",
+    "timestamp": 1664079300898,
+    "entry": 0.638,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5F1CD54391A92"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "All entry target achieved!\n⏰ GMTUSDT *Entry 3* | $0.6316 ⏰\nAverage price : $0.638\nPeriod : 1 hour",
+          "contextInfo": {
+            "stanzaId": "BAE572F7AE86A146",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "⏰ GMTUSDT *Entry 2* | $0.6394 ⏰\nAverage price : $0.6412\nPeriod : 1 hour"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1664083392",
+      "status": "PENDING",
+      "participant": "62895611963535:39@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1664083393"
+        }
+      ]
+    }
+  },
+  {
+    "symbol": "STORJUSDT",
+    "tp": [
+      {
+        "hit": false,
+        "price": 0.4804,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.4837,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.4903,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.4969,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5059,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5088,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5201,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5338,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5504,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5585,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5646,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5731,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5812,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.5892,
+        "greater": true
+      }
+    ],
+    "entries": [
+      {
+        "hit": true,
+        "price": 0.4748,
+        "greater": false
+      },
+      {
+        "hit": true,
+        "price": 0.4718,
+        "greater": false
+      },
+      {
+        "hit": false,
+        "price": 0.4662,
+        "greater": false
+      }
+    ],
+    "sl": {
+      "hit": false,
+      "price": 0.4615,
+      "greater": false
+    },
+    "id": "4Kp9u",
+    "timestamp": 1664079602085,
+    "entry": 0.4733,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5437C18940A03"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "⏰ STORJUSDT *Entry 2* | $0.4718 ⏰\nAverage price : $0.4733\nPeriod : 1 hour",
+          "contextInfo": {
+            "stanzaId": "BAE5F2DC70797B3B",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "⏰ STORJUSDT *Entry 1* | $0.4748 ⏰\nAverage price : $0.4748\nPeriod : 29 seconds"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1664083386",
+      "status": "PENDING",
+      "participant": "62895611963535:39@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1664083387"
+        }
+      ]
+    }
+  },
+  {
+    "symbol": "CTSIUSDT",
+    "tp": [
+      {
+        "hit": false,
+        "price": 0.1425,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1435,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1455,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1474,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1501,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1509,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1543,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1584,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1633,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1657,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1675,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.17,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1724,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 0.1748,
+        "greater": true
+      }
+    ],
+    "entries": [
+      {
+        "hit": true,
+        "price": 0.1402,
+        "greater": false
+      },
+      {
+        "hit": false,
+        "price": 0.1383,
+        "greater": false
+      }
+    ],
+    "sl": {
+      "hit": false,
+      "price": 0.1365,
+      "greater": false
+    },
+    "id": "SreUB",
+    "timestamp": 1664080502133,
+    "entry": 0.1402,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5889DEA64D71E"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "⏰ CTSIUSDT *Entry 1* | $0.1402 ⏰\nAverage price : $0.1402\nPeriod : 47 minutes",
+          "contextInfo": {
+            "stanzaId": "BAE596E4CC2206EC",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "buttonsMessage": {
+                "contentText": "===| *CTSIUSDT* | LONG | x25 |===\nCurrent Price : $0.1405\nSL : $0.1365\nEntry 1 : $0.1402\nEntry 2 : $0.1383\nTP 1 : $0.1425\nTP 2 : $0.1435\nTP 3 : $0.1455\nTP 4 : $0.1474\nTP 5 : $0.1501\nTP 6 : $0.1509\nTP 7 : $0.1543\nTP 8 : $0.1584\nTP 9 : $0.1633\nTP 10 : $0.1657\nTP 11 : $0.1675\nTP 12 : $0.17\nTP 13 : $0.1724\nTP 14 : $0.1748\n",
+                "buttons": [
+                  {
+                    "buttonId": ".trade --symbol=CTSIUSDT --direction=LONG --entry=0.1402 --sl=0.1365 --size=20 --timestamp=1664080502133 --id=SreUB",
+                    "buttonText": {
+                      "displayText": "Follow"
+                    },
+                    "type": "RESPONSE"
+                  }
+                ],
+                "headerType": "EMPTY"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1664083342",
+      "status": "PENDING",
+      "participant": "62895611963535:39@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1664083343"
+        }
+      ]
+    }
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "tp": [
+      {
+        "hit": false,
+        "price": 18.02,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 18.15,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 18.4,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 18.65,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 18.98,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 19.09,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 19.52,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 20.03,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 20.65,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 20.95,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 21.19,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 21.51,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 21.81,
+        "greater": true
+      },
+      {
+        "hit": false,
+        "price": 22.11,
+        "greater": true
+      }
+    ],
+    "entries": [
+      {
+        "hit": true,
+        "price": 17.78,
+        "greater": false
+      },
+      {
+        "hit": true,
+        "price": 17.74,
+        "greater": false
+      },
+      {
+        "hit": false,
+        "price": 17.49,
+        "greater": false
+      }
+    ],
+    "sl": {
+      "hit": false,
+      "price": 17.32,
+      "greater": false
+    },
+    "id": "Vh9d2",
+    "timestamp": 1664081102105,
+    "entry": 17.76,
+    "msg": {
+      "key": {
+        "remoteJid": "62895611963535-1631537374@g.us",
+        "fromMe": true,
+        "id": "BAE5280E323EB68F"
+      },
+      "message": {
+        "extendedTextMessage": {
+          "text": "⏰ AVAXUSDT *Entry 2* | $17.74 ⏰\nAverage price : $17.76\nPeriod : 37 minutes",
+          "contextInfo": {
+            "stanzaId": "BAE56E4A53807F3D",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "extendedTextMessage": {
+                "text": "⏰ AVAXUSDT *Entry 1* | $17.78 ⏰\nAverage price : $17.78\nPeriod : 33 minutes"
+              }
+            },
+            "remoteJid": "62895611963535-1631537374@g.us"
+          }
+        }
+      },
+      "messageTimestamp": "1664083322",
+      "status": "PENDING",
+      "participant": "62895611963535:39@s.whatsapp.net",
+      "userReceipt": [
+        {
+          "userJid": "6282293787977@s.whatsapp.net",
+          "receiptTimestamp": "1664083324"
+        }
+      ]
     }
   }
 ]

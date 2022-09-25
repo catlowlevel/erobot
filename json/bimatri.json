@@ -28,5 +28,21 @@
       "profileColor": "#f40000",
       "status": true
     }
+  ],
+  "6289668705354@s.whatsapp.net": [
+    {
+      "profileTime": 30,
+      "secretKey": "SUyPAj0WTzlfk0kQdIUe6Q==skBxbqoIaW0KUwMLNUSG6X8HVijjn5lDmuV",
+      "subscriberType": "Prepaid",
+      "language": "0",
+      "accessToken": "w6gt2gprpgb8u3bq8u4n3yvq",
+      "appsflyerMsisdn": "SUyPAj0WTzlfk0kQdIUe6Q",
+      "callPlan": "SP MINI AON",
+      "balance": "Rp 5,451",
+      "creditLimit": "-",
+      "msisdn": "6289668705354",
+      "profileColor": "#f8cb16",
+      "status": true
+    }
   ]
 }
