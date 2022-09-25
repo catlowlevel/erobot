@@ -33899,7 +33899,7 @@
     "symbol": "LINKUSDT",
     "tp": [
       {
-        "hit": false,
+        "hit": true,
         "price": 7.84,
         "greater": true
       },
@@ -33993,40 +33993,36 @@
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
         "fromMe": true,
-        "id": "BAE504691CF0375D"
+        "id": "BAE5B3A249637F99"
       },
       "message": {
-        "viewOnceMessage": {
-          "message": {
-            "messageContextInfo": {
-              "deviceListMetadata": {},
-              "deviceListMetadataVersion": 2
+        "extendedTextMessage": {
+          "text": "Target achieved before entry!\n📈 LINKUSDT *Take-profit 1* | $7.84 📈\nGain : 97.88%\nPeriod : 1 hour",
+          "contextInfo": {
+            "stanzaId": "BAE504691CF0375D",
+            "participant": "62895611963535@s.whatsapp.net",
+            "quotedMessage": {
+              "buttonsMessage": {
+                "contentText": "===| *LINKUSDT* | LONG | x75 |===\nCurrent Price : $7.739\nSL : $7.504\nEntry 1 : $7.707\nEntry 2 : $7.608\nTP 1 : $7.84\nTP 2 : $7.894\nTP 3 : $8.002\nTP 4 : $8.11\nTP 5 : $8.257\nTP 6 : $8.303\nTP 7 : $8.489\nTP 8 : $8.712\nTP 9 : $8.983\nTP 10 : $9.114\nTP 11 : $9.215\nTP 12 : $9.354\nTP 13 : $9.485\nTP 14 : $9.616\n",
+                "buttons": [
+                  {
+                    "buttonId": ".trade --symbol=LINKUSDT --direction=LONG --entry=7.707 --sl=7.504 --size=20 --timestamp=1664079001926 --id=t2aG5",
+                    "buttonText": {
+                      "displayText": "Follow"
+                    },
+                    "type": "RESPONSE"
+                  }
+                ],
+                "headerType": "EMPTY"
+              }
             },
-            "buttonsMessage": {
-              "contentText": "===| *LINKUSDT* | LONG | x75 |===\nCurrent Price : $7.739\nSL : $7.504\nEntry 1 : $7.707\nEntry 2 : $7.608\nTP 1 : $7.84\nTP 2 : $7.894\nTP 3 : $8.002\nTP 4 : $8.11\nTP 5 : $8.257\nTP 6 : $8.303\nTP 7 : $8.489\nTP 8 : $8.712\nTP 9 : $8.983\nTP 10 : $9.114\nTP 11 : $9.215\nTP 12 : $9.354\nTP 13 : $9.485\nTP 14 : $9.616\n",
-              "buttons": [
-                {
-                  "buttonId": ".trade --symbol=LINKUSDT --direction=LONG --entry=7.707 --sl=7.504 --size=20 --timestamp=1664079001926 --id=t2aG5",
-                  "buttonText": {
-                    "displayText": "Follow"
-                  },
-                  "type": "RESPONSE"
-                }
-              ],
-              "headerType": "EMPTY"
-            }
+            "remoteJid": "62895611963535-1631537374@g.us"
           }
         }
       },
-      "messageTimestamp": "1664079001",
+      "messageTimestamp": "1664084360",
       "status": "PENDING",
-      "participant": "62895611963535:39@s.whatsapp.net",
-      "userReceipt": [
-        {
-          "userJid": "6282293787977@s.whatsapp.net",
-          "receiptTimestamp": "1664079004"
-        }
-      ]
+      "participant": "62895611963535:39@s.whatsapp.net"
     }
   },
   {
