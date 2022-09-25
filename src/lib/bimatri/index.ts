@@ -21,7 +21,7 @@ export class Bimatri {
         this.db = new LowDB<DBType>(`${ROOT_DIR}/json/bimatri.json`, {});
     }
 
-    async accountData(nohp: string, loginData: LoginData) {
+    async accountData(loginData: LoginData) {
         const url = "https://bima.tri.co.id/apibima/profile/profile";
         const { accessToken, appsflyerMsisdn, balance, creditLimit, profileColor, profileTime, status, ...rest } =
             loginData;
