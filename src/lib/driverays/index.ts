@@ -1,5 +1,7 @@
 import * as cheerio from "cheerio";
 import fetch from "node-fetch-commonjs";
+import { ROOT_DIR } from "../..";
+import { LowDB } from "../../core/LowDB";
 
 const loadCheerio = async (url: string) => {
     try {
@@ -30,12 +32,20 @@ interface Data {
 }
 export class Driverays {
     private BASE_URL = "https://167.86.71.48/";
-    constructor() {}
+    dbData: LowDB<{ [post_link: string]: Data[] }>;
+
+    constructor() {
+        this.dbData = new LowDB<{ [post_link: string]: Data[] }>(`${ROOT_DIR}/json/drays_posts.json`, {});
+    }
 
     async getPostDetails(post_link: string) {
         console.log("Getting post details...");
+        const details: Data[] = this.dbData.data?.[post_link] ?? [];
+        if (details.length > 0) {
+            console.log("cached");
+            return details;
+        }
 
-        const details: Data[] = [];
         const $ = await loadCheerio(post_link);
 
         const tBodys = $("#main-content > div.text-sm.my-4.mb-4 > table > tbody");
@@ -54,6 +64,8 @@ export class Driverays {
                 });
             });
         }
+        this.dbData.data[post_link] = details;
+        await this.dbData.write();
         return details;
     }
     async searchPosts(query: string) {
