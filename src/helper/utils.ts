@@ -127,3 +127,18 @@ export function countDecimalPlaces(num: number) {
         return 0;
     }
 }
+
+//groupBy with typed typescript
+export function groupBy<T, K extends keyof T>(array: T[], key: K): { [key: string]: T[] } {
+    return array.reduce((acc: { [key: string]: T[] }, curr) => {
+        const keyValue = curr[key];
+        //@ts-ignore
+        if (!acc[keyValue]) {
+            //@ts-ignore
+            acc[keyValue] = [];
+        }
+        //@ts-ignore
+        acc[keyValue].push(curr);
+        return acc;
+    }, {});
+}
