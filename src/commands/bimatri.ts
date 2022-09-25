@@ -6,17 +6,46 @@ import { IArgs } from "../core/MessageHandler";
 import { Bimatri } from "../lib/bimatri";
 import { LoginData } from "../lib/bimatri/types";
 
+type Options = ReturnType<Cmd["getOptions"]>;
+
 @Command("bimatri", {
     description: "",
     usage: "",
     aliases: ["bima", "3", "tri"],
 })
-export default class extends BaseCommand {
-    async handleGetAccount(
-        M: Message,
-        bima: Bimatri,
-        opts: { type: "add-number" | "get-account" | undefined; id: string | undefined; nohp: string | undefined }
-    ) {
+export default class Cmd extends BaseCommand {
+    async handleReset(M: Message, bima: Bimatri, opts: Options) {
+        if (!M.sender.jid) throw new Error("sender jid is not defined!");
+        if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
+        const data = bima.db.data[M.sender.jid];
+        if (!data)
+            return this.client.sendMessage(
+                M.from,
+                {
+                    text: "Kamu tidak punya nomor yang tersimpan!",
+                    buttons: [
+                        {
+                            buttonText: { displayText: "Tambahkan nomor 3" },
+                            buttonId: `.bimatri --type=add-number --id=${M.sender.jid}`,
+                            type: 0,
+                        },
+                    ],
+                },
+                { quoted: M.message }
+            );
+
+        await M.reply("Balas YES untuk konfirmasi!");
+        const messages = await this.handler.getNewMessages(M, 1, 1000 * 30, true);
+        if (messages.length <= 0) return M.reply("Gagal melakukan konfirmasi!");
+        const confirmMsg = messages[0];
+        if (confirmMsg.content.toLocaleLowerCase() !== "yes") return confirmMsg.reply("Gagal melakukan konfirmasi!");
+
+        const numbers = data.map((d) => d.msisdn);
+        delete bima.db.data[M.sender.jid];
+        await bima.db.write();
+        return confirmMsg.reply(`${numbers.join(", ")} berhasil dihapus dari database!`);
+    }
+    async handleGetAccount(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
         if (!opts.nohp) return M.reply("No HP diperlukan!");
@@ -52,7 +81,7 @@ export default class extends BaseCommand {
             { quoted: M.message }
         );
     }
-    async handleAddNumber(M: Message, bima: Bimatri, opts: ReturnType<typeof this.getOptions>) {
+    async handleAddNumber(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action!");
         const data = bima.db.data[M.sender.jid];
@@ -71,7 +100,7 @@ export default class extends BaseCommand {
             await bima.requestOtp(nohp);
         } catch (error) {
             console.log("error", error);
-            return M.reply("Gagal meminta OTP!");
+            return nohpMsg.reply("Gagal meminta OTP!");
         }
         await nohpMsg.reply("Kirim kode OTP yang kamu terima");
         const otpMessages = await this.handler.getNewMessages(M, 1, 2000 * 60, true);
@@ -83,14 +112,14 @@ export default class extends BaseCommand {
             if (!data) bima.db.data[M.sender.jid] = [];
             bima.db.data[M.sender.jid].push(loginData);
             await bima.db.write();
-            return this.handleAccount(M, bima, loginData);
+            return this.handleAccount(otpMsg, bima, loginData);
         } catch (error) {
             console.log("error", error);
-            return M.reply("Gagal Login!");
+            return otpMsg.reply("Gagal Login!");
         }
     }
     getOptions(flags: string[]) {
-        const type = this.getFlag(flags, "--type", ["add-number", "get-account"]);
+        const type = this.getFlag(flags, "--type", ["add-number", "get-account", "reset"]);
         const id = this.getFlag(flags, "--id");
         const nohp = this.getFlag(flags, "--nohp");
         return { type, id, nohp };
@@ -112,12 +141,15 @@ export default class extends BaseCommand {
             case "get-account": {
                 return this.handleGetAccount(M, bima, opts);
             }
+            case "reset": {
+                return this.handleReset(M, bima, opts);
+            }
 
             default: {
             }
         }
 
-        let text = data ? `Pilih nomor yang tersimpan` : "Kamu tidak punya nomor yang tersimpan!";
+        let text = data?.length > 0 ? `Pilih nomor yang tersimpan` : "Kamu tidak punya nomor yang tersimpan!";
 
         const sections: proto.Message.ListMessage.ISection[] = [{ rows: [], title: "Nomor tersimpan" }];
         data?.forEach((d) => {
@@ -130,6 +162,10 @@ export default class extends BaseCommand {
         sections[0].rows!.push({
             title: "Tambahkan nomor 3",
             rowId: `.bimatri --type=add-number --id=${M.sender.jid}`,
+        });
+        sections[0].rows!.push({
+            title: "Reset",
+            rowId: `.bimatri --type=reset --id=${M.sender.jid}`,
         });
 
         return this.client.sendMessage(
