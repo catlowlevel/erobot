@@ -56,30 +56,51 @@ export default class Cmd extends BaseCommand {
         return this.handleAccount(M, bima, loginData);
     }
     async handleAccount(M: Message, bima: Bimatri, loginData: LoginData) {
-        const account = await bima.accountData(loginData);
-        const pulsa = account.balanceTotal;
-        let text = `Sisa pulsa : ${pulsa}\n`;
-        text += `Aktif sampai : ${account.validity}\n=======================\n`;
-        account.packageList.forEach((paket) => {
-            text += `${paket.name}\n`;
-            paket.detail.forEach((d) => {
-                text += `${d.value} | ${d.validity}\n`;
+        try {
+            const account = await bima.accountData(loginData);
+            const pulsa = account.balanceTotal;
+            let text = `Sisa pulsa : ${pulsa}\n`;
+            text += `Aktif sampai : ${account.validity}\n=======================\n`;
+            account.packageList.forEach((paket) => {
+                text += `${paket.name}\n`;
+                paket.detail.forEach((d) => {
+                    text += `${d.value} | ${d.validity}\n`;
+                });
+                text += `=======================\n`;
             });
-            text += `=======================\n`;
-        });
-        return this.client.sendMessage(
-            M.from,
-            {
-                text,
-                buttons: [
-                    {
-                        buttonText: { displayText: "Cek lagi" },
-                        buttonId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
-                    },
-                ],
-            },
-            { quoted: M.message }
-        );
+            return this.client.sendMessage(
+                M.from,
+                {
+                    text,
+                    buttons: [
+                        {
+                            buttonText: { displayText: "Cek lagi" },
+                            buttonId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
+                        },
+                    ],
+                },
+                { quoted: M.message }
+            );
+        } catch (error) {
+            console.error("error", error);
+            return this.client.sendMessage(
+                M.from,
+                {
+                    text: "Terjadi kesalahan saat mencoba mendapatkan data akun",
+                    buttons: [
+                        {
+                            buttonText: { displayText: "Coba lagi" },
+                            buttonId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
+                        },
+                        //{
+                        //buttonText: { displayText: "Relog" },
+                        //buttonId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
+                        //},
+                    ],
+                },
+                { quoted: M.message }
+            );
+        }
     }
     async handleAddNumber(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
