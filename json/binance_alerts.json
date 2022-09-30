@@ -98,5 +98,67 @@
     },
     "resolved": false,
     "amGreater": true
+  },
+  {
+    "alertPrice": "20500.0",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "120363023114788849@g.us",
+        "fromMe": false,
+        "id": "A1B98D5C09D29084C58E07E4D1D954DC",
+        "participant": "6282293787977@s.whatsapp.net"
+      },
+      "messageTimestamp": 1664237792,
+      "pushName": "-",
+      "message": {
+        "extendedTextMessage": {
+          "text": ".alert btc 20500",
+          "previewType": "NONE",
+          "inviteLinkGroupTypeV2": "DEFAULT"
+        }
+      }
+    },
+    "resolved": false,
+    "amGreater": true
+  },
+  {
+    "alertPrice": "18800.0",
+    "symbol": "BTCUSDT",
+    "done": false,
+    "msg": {
+      "key": {
+        "remoteJid": "6282293787977@s.whatsapp.net",
+        "fromMe": false,
+        "id": "C1EF4F182CD9AFF7330C9FCF73A11961"
+      },
+      "messageTimestamp": 1664461626,
+      "pushName": "-",
+      "message": {
+        "extendedTextMessage": {
+          "text": ".alert btc 18800",
+          "previewType": "NONE",
+          "contextInfo": {
+            "expiration": 0,
+            "ephemeralSettingTimestamp": "1661312694",
+            "disappearingMode": {
+              "initiator": "CHANGED_IN_CHAT"
+            }
+          },
+          "inviteLinkGroupTypeV2": "DEFAULT"
+        },
+        "messageContextInfo": {
+          "deviceListMetadata": {
+            "senderTimestamp": "1663307817",
+            "recipientKeyHash": "r1tGm+8JXhw6Ng==",
+            "recipientTimestamp": "1663969094"
+          },
+          "deviceListMetadataVersion": 2
+        }
+      }
+    },
+    "resolved": false,
+    "amGreater": false
   }
 ]

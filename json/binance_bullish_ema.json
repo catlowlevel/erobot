@@ -1413,7 +1413,7 @@
     }
   },
   "BCHUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -4343,7 +4343,7 @@
     "countdown": 0
   },
   "1000LUNCUSDT": {
-    "countdown": 0
+    "countdown": 10
   },
   "LUNA2USDT": {
     "countdown": 0
