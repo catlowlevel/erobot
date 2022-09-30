@@ -59,14 +59,17 @@ export default class Cmd extends BaseCommand {
         try {
             const account = await bima.accountData(loginData);
             const pulsa = account.balanceTotal;
-            let text = `Sisa pulsa : ${pulsa}\n`;
-            text += `Aktif sampai : ${account.validity}\n=======================\n`;
+            let text = `Nomor tri : ${account.msisdn}\n`;
+            text += `Sisa pulsa : ${pulsa}\n`;
+            text += `Aktif sampai : ${account.validity}\n=======================`;
             account.packageList.forEach((paket) => {
-                text += `${paket.name}\n`;
-                paket.detail.forEach((d) => {
-                    text += `${d.value} | ${d.validity}\n`;
-                });
-                text += `=======================\n`;
+                if (paket.detail.length > 0) {
+                    text += `\n${paket.name}`;
+                    paket.detail.forEach((d) => {
+                        text += `\n${d.value} | ${d.validity}\n`;
+                    });
+                    text += `=======================`;
+                }
             });
             return this.client.sendMessage(
                 M.from,
