@@ -403,7 +403,7 @@ export class BinanceClient {
             //.slice(INDEX - 9, INDEX + MAX_INDEX - 9)
             .slice(data.candles.length - MAX_INDEX)
             .reverse()
-            .map((c, i) => ({ close: c.close, ema25: ema25[i], ema7: ema7[i], ema99: ema99[i] }))
+            .map((c, i) => ({ ...c, ema25: ema25[i], ema7: ema7[i], ema99: ema99[i] }))
             .reverse();
 
         // .slice(0)
@@ -445,7 +445,15 @@ export class BinanceClient {
         if (bullish && db[data.symbol].countdown <= 0) {
             this.bullishEmaDb.data[data.symbol].countdown = 10;
             const current = candles[candles.length - 1];
+            const current2 = candles[candles.length - 2];
             const currentPrice = current.close;
+
+            if (current2.close > current2.open) {
+                this.client.sendMessageQueue("62895611963535-1631537374@g.us", {
+                    text: `${data.symbol}@$${currentPrice} GREEN`,
+                });
+            }
+
             const lastPrice = candles[0].close;
             const percentGap = getPercentageChange(currentPrice, lastPrice);
             console.log(`${data.symbol} LONG!`);
