@@ -53,6 +53,6 @@
         "tradingview-ws": "^0.0.3",
         "wa-sticker-formatter": "^4.3.2",
         "yt-dlp-wrap": "^2.3.11",
-        "ytdl-core": "^4.11.1"
+        "ytdl-core": "^4.11.2"
     }
 }
