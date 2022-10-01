@@ -13,56 +13,78 @@ export const extractNumbers = (content: string): number[] => {
     if (search !== null) return search.map((string) => parseInt(string));
     return [];
 };
-function timeSinceRecursive(date: Date, depth = 1) {
+function timeSinceRecursive(
+    date: Date,
+    depth = 1,
+    localization?: {
+        year?: string;
+        month?: string;
+        day?: string;
+        hour?: string;
+        minute?: string;
+        second?: string;
+    }
+) {
     let seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
-    let intervalType;
+    seconds = Math.abs(seconds);
+    let intervalType: string = "";
     let remainder = 0;
     let extra = "";
 
     let interval = Math.floor(seconds / 31536000);
     if (interval >= 1) {
         remainder = seconds % 31536000;
-        intervalType = "year";
+        intervalType = localization ? localization.year ?? "year" : "year";
     } else {
         interval = Math.floor(seconds / 2592000);
         if (interval >= 1) {
             remainder = seconds % 2592000;
-            intervalType = "month";
+            intervalType = localization ? localization.month ?? "month" : "month";
         } else {
             interval = Math.floor(seconds / 86400);
             if (interval >= 1) {
                 remainder = seconds % 86400;
-                intervalType = "day";
+                intervalType = localization ? localization.day ?? "day" : "day";
             } else {
                 interval = Math.floor(seconds / 3600);
                 if (interval >= 1) {
                     remainder = seconds % 3600;
-                    intervalType = "hour";
+                    intervalType = localization ? localization.hour ?? "hour" : "hour";
                 } else {
                     interval = Math.floor(seconds / 60);
                     if (interval >= 1) {
                         remainder = seconds % 60;
-                        intervalType = "minute";
+                        intervalType = localization ? localization.minute ?? "minute" : "minute";
                     } else {
                         interval = seconds;
-                        intervalType = "second";
+                        intervalType = localization ? localization.second ?? "second" : "second";
                     }
                 }
             }
         }
     }
 
-    if (interval > 1 || interval === 0) {
+    if ((interval > 1 || interval === 0) && !localization) {
         intervalType += "s";
     }
-    if (depth <= 0) return interval + " " + intervalType;
     if (remainder > 0 && depth > 1) {
-        extra = timeSinceRecursive(new Date(Date.now() - 1000 * remainder), depth - 1);
+        extra = timeSinceRecursive(new Date(Date.now() - 1000 * remainder), depth - 1, localization);
     }
     return interval + " " + intervalType + " " + extra;
 }
-export const timeSince = (date: Date, depth: number = 1) => {
-    return timeSinceRecursive(date, depth);
+export const timeSince = (
+    date: Date,
+    depth: number = 1,
+    localization?: {
+        year?: string;
+        month?: string;
+        day?: string;
+        hour?: string;
+        minute?: string;
+        second?: string;
+    }
+) => {
+    return timeSinceRecursive(date, depth, localization);
 };
 
 export const formatNumber = (num: number, fixed = 2) => {
