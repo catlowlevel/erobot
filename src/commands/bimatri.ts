@@ -3,6 +3,7 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
+import { timeSince } from "../helper/utils";
 import { Bimatri } from "../lib/bimatri";
 import { LoginData } from "../lib/bimatri/types";
 
@@ -61,7 +62,15 @@ export default class Cmd extends BaseCommand {
             const pulsa = account.balanceTotal;
             let text = `Nomor tri : ${account.msisdn}\n`;
             text += `Sisa pulsa : ${pulsa}\n`;
-            text += `Aktif sampai : ${account.validity}\n=======================`;
+            const validity = timeSince(new Date(account.validity), 2, {
+                day: "hari",
+                hour: "jam",
+                minute: "menit",
+                month: "bulan",
+                second: "detik",
+                year: "tahun",
+            });
+            text += `Masa aktif : ${validity}\n=======================`;
             account.packageList.forEach((paket) => {
                 if (paket.detail.length > 0) {
                     text += `\n${paket.name}`;
