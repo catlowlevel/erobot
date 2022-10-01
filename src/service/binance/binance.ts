@@ -10,7 +10,7 @@ import TypedEmitter from "typed-emitter";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
 import { LowDB } from "../../core/LowDB";
-import { countDecimalPlaces, getPercentageChange, percentageCalculator } from "../../helper/utils";
+import { countDecimalPlaces, getPercentageChange, percentageCalculator, timeSince } from "../../helper/utils";
 // prettier-ignore
 export type Interval = "1m" | "3m" | "5m" | "15m" | "30m" | "1h" | "2h" | "4h" | "6h" | "8h" | "12h" | "1d" | "3d" | "1w" | "1M";
 
@@ -289,8 +289,7 @@ export class BinanceClient {
                     }
 
                     if (trade.timestamp) {
-                        const timeago = format(new Date(trade.timestamp));
-                        const period = timeago.replace(" ago", "");
+                        const period = timeSince(new Date(trade.timestamp), 2);
                         text += `\nPeriod : ${period}`;
                     }
                     this.client
@@ -335,8 +334,7 @@ export class BinanceClient {
                         text += `\nCurrent Price : ${currentPrice}`;
                     }
                     if (trade.timestamp) {
-                        const timeago = format(new Date(trade.timestamp));
-                        const period = timeago.replace(" ago", "");
+                        const period = timeSince(new Date(trade.timestamp), 2);
                         text += `\nPeriod : ${period}`;
                     }
 
