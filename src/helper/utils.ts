@@ -13,29 +13,56 @@ export const extractNumbers = (content: string): number[] => {
     if (search !== null) return search.map((string) => parseInt(string));
     return [];
 };
-export const timeSince = (date: Date) => {
-    const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+function timeSinceRecursive(date: Date, depth = 1) {
+    let seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+    let intervalType;
+    let remainder = 0;
+    let extra = "";
+
     let interval = Math.floor(seconds / 31536000);
-    if (interval > 1) {
-        return `${interval} years`;
+    if (interval >= 1) {
+        remainder = seconds % 31536000;
+        intervalType = "year";
+    } else {
+        interval = Math.floor(seconds / 2592000);
+        if (interval >= 1) {
+            remainder = seconds % 2592000;
+            intervalType = "month";
+        } else {
+            interval = Math.floor(seconds / 86400);
+            if (interval >= 1) {
+                remainder = seconds % 86400;
+                intervalType = "day";
+            } else {
+                interval = Math.floor(seconds / 3600);
+                if (interval >= 1) {
+                    remainder = seconds % 3600;
+                    intervalType = "hour";
+                } else {
+                    interval = Math.floor(seconds / 60);
+                    if (interval >= 1) {
+                        remainder = seconds % 60;
+                        intervalType = "minute";
+                    } else {
+                        interval = seconds;
+                        intervalType = "second";
+                    }
+                }
+            }
+        }
     }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return `${interval} months`;
+
+    if (interval > 1 || interval === 0) {
+        intervalType += "s";
     }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return `${interval} days`;
+    if (depth <= 0) return interval + " " + intervalType;
+    if (remainder > 0 && depth > 1) {
+        extra = timeSinceRecursive(new Date(Date.now() - 1000 * remainder), depth - 1);
     }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return `${interval} hours`;
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return `${interval} minutes`;
-    }
-    return `${Math.floor(seconds)} seconds`;
+    return interval + " " + intervalType + " " + extra;
+}
+export const timeSince = (date: Date, depth: number = 1) => {
+    return timeSinceRecursive(date, depth);
 };
 
 export const formatNumber = (num: number, fixed = 2) => {
