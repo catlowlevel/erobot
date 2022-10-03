@@ -191,7 +191,8 @@ export class BinanceClient {
         entries: number[],
         tp: number[],
         sl: number,
-        direction: "LONG" | "SHORT" = "LONG"
+        direction: "LONG" | "SHORT" = "LONG",
+        extraMsg?: { text: string; location: "TOP" | "BOTTOM" }
     ) {
         const data = await this.getSymbolData(symbol);
         const precision = this.symbolData[data.symbol].pricePrecision;
@@ -209,7 +210,11 @@ export class BinanceClient {
         };
         console.log("trade", trade.symbol);
         const leverage = this.symbolData[symbol].leverage;
-        let text = `===| *${data.symbol}* | LONG | x${leverage} |===\n`;
+        let text = "";
+        if (extraMsg && extraMsg.location === "TOP") {
+            text += `${extraMsg.text}\n`;
+        }
+        text += `===| *${data.symbol}* | LONG | x${leverage} |===\n`;
         text += `Current Price : $${data.currentPrice}\n`;
         text += `SL : $${sl}\n`;
         entries.forEach((p, i) => {
@@ -218,7 +223,9 @@ export class BinanceClient {
         tp.forEach((p, i) => {
             text += `TP ${i + 1} : $${p}\n`;
         });
-
+        if (extraMsg && extraMsg.location === "BOTTOM") {
+            text += `${extraMsg.text}\n`;
+        }
         return this.client.sendMessageQueue(
             jid,
             {
@@ -229,6 +236,12 @@ export class BinanceClient {
                         buttonId: `.trade --symbol=${data.symbol} --direction=${direction} --entry=${
                             entries[0]
                         } --sl=${sl} --size=20 --timestamp=${Date.now()} --id=${trade.id}`,
+                        type: 2,
+                    },
+                    {
+                        buttonText: { displayText: "Chart (5m)" },
+                        buttonId: `.tv 5m ${data.symbol}`,
+                        type: 2,
                     },
                 ],
             },
@@ -446,15 +459,11 @@ export class BinanceClient {
             const current2 = candles[candles.length - 2];
             const currentPrice = current.close;
 
-            if (current2.close > current2.open) {
-                this.client.sendMessageQueue("62895611963535-1631537374@g.us", {
-                    text: `${data.symbol}@$${currentPrice} GREEN`,
-                });
-            }
+            const greens = candles.filter((d) => d.close > d.open);
+            const reds = candles.filter((d) => d.close < d.open);
 
             const lastPrice = candles[0].close;
             const percentGap = getPercentageChange(currentPrice, lastPrice);
-            console.log(`${data.symbol} LONG!`);
             // console.log(candles.length, data.candles.length);
             const precision = this.symbolData[data.symbol].pricePrecision;
             const alertPrice = (current.ema99 + current.ema25 + current.ema7) / 3;
@@ -490,7 +499,9 @@ export class BinanceClient {
                 [tp1, tp2, tp4, tp6, tp8, tp9, tp11, tp13, tp15, tp16, tp17, tp18, tp19, tp20].filter(
                     (p) => p > currentPrice
                 ),
-                slPrice
+                slPrice,
+                "LONG",
+                { location: "TOP", text: `🟢${greens.length}|🔴${reds.length}` }
             );
             //let text = `${data.symbol} LONG | ${percentGap.toFixed(2)}%\n`;
             //if (data.symbol !== "BTCDOMUSDT") {
