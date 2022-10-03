@@ -5,7 +5,7 @@ import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { timeSince } from "../helper/utils";
 import { Bimatri } from "../lib/bimatri";
-import { LoginData } from "../lib/bimatri/types";
+import { LoginData, OtpData } from "../lib/bimatri/types";
 
 type Options = ReturnType<Cmd["getOptions"]>;
 
@@ -41,7 +41,17 @@ export default class Cmd extends BaseCommand {
         const confirmMsg = messages[0];
         if (confirmMsg.content.toLocaleLowerCase() !== "yes") return confirmMsg.reply("Gagal melakukan konfirmasi!");
 
-        const numbers = data.map((d) => d.msisdn);
+        const logoutResult: LoginData[] = [];
+        for (const loginData of data) {
+            try {
+                const result = await bima.logout(loginData);
+                logoutResult.push(result);
+            } catch (error) {
+                console.log(`${loginData.msisdn} fail to logout, ${error}`);
+            }
+        }
+        console.log("logoutResult", logoutResult);
+        const numbers = logoutResult.map((d) => d.msisdn);
         delete bima.db.data[M.sender.jid];
         await bima.db.write();
         return confirmMsg.reply(`${numbers.join(", ")} berhasil dihapus dari database!`);

@@ -1,6 +1,6 @@
 import { ROOT_DIR } from "../..";
 import { LowDB } from "../../core/LowDB";
-import { LoginData, AccountData, OtpData } from "./types";
+import { LoginData, AccountData, OtpData, Data } from "./types";
 
 type DBType = { [id: string]: LoginData[] };
 
@@ -87,5 +87,34 @@ export class Bimatri {
         if (!result.status) throw new Error("Terjadi kesalahan!" + " " + result.message);
 
         return result as LoginData;
+    }
+    async logout(loginData: LoginData) {
+        const url = "https://bima.tri.co.id/apibima/login/logout";
+        const { accessToken, appsflyerMsisdn, balance, creditLimit, profileColor, profileTime, status, ...rest } =
+            loginData;
+        const response = await fetch(url, {
+            headers: {
+                "content-type": "application/json",
+                Authorization: "Bearer " + loginData.accessToken,
+            },
+            //payload["imei"] = "WebSelfcare"
+            //payload["language"] = data["language"]
+            //payload["callPlan"] = data["callPlan"]
+            //payload["msisdn"] = data["msisdn"]
+            //payload["secretKey"] = data["secretKey"]
+            //payload["subscriberType"] = data["subscriberType"]
+            //payload["lastId"] = 0
+            body: JSON.stringify({
+                imei: "WebSelfcare",
+                ...rest,
+            }),
+            method: "POST",
+        });
+        if (response.status !== 200) throw new Error("Gagal mendapatkan data Akun!, " + response.statusText);
+
+        const result = (await response.json()) as OtpData | Data;
+        if (!result.status) throw new Error("Terjadi kesalahan!" + " " + result.message);
+        console.log("result", result);
+        return loginData;
     }
 }
