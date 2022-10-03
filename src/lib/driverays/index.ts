@@ -24,24 +24,35 @@ interface Post {
     quality: string;
     releaseYear: string;
 }
-interface Data {
+interface DownloadData {
     type: string;
     subType: string;
     server: string;
     link: string;
 }
+interface PostDetail {
+    synopsis: string;
+    country: string;
+    runTime: string;
+    dlData: DownloadData[];
+}
 export class Driverays {
     private BASE_URL = "https://167.86.71.48/";
-    dbData: LowDB<{ [post_link: string]: Data[] }>;
+    dbData: LowDB<{ [post_link: string]: PostDetail }>;
 
     constructor() {
-        this.dbData = new LowDB<{ [post_link: string]: Data[] }>(`${ROOT_DIR}/json/drays_posts.json`, {});
+        this.dbData = new LowDB<{ [post_link: string]: PostDetail }>(`${ROOT_DIR}/json/drays_posts.json`, {});
     }
 
     async getPostDetails(post_link: string) {
         console.log("Getting post details...");
-        const details: Data[] = this.dbData.data?.[post_link] ?? [];
-        if (details.length > 0) {
+        let details: PostDetail = this.dbData.data?.[post_link] ?? {
+            dlData: [],
+            country: "",
+            runTime: "",
+            synopsis: "",
+        };
+        if (details.dlData.length > 0) {
             console.log("cached");
             return details;
         }
@@ -51,19 +62,23 @@ export class Driverays {
         const tBodys = $("#main-content > div.text-sm.my-4.mb-4 > table > tbody");
         tBodys.each((i, tbody) => {
             const trs = $(tbody).find("tr");
-            this.extractSeriesData(trs, $, (data: Data) => {
-                details.push(data);
+            this.extractSeriesData(trs, $, (data: DownloadData) => {
+                details.dlData.push(data);
             });
         });
         if (tBodys.length <= 0) {
             const divs = $("#dl_tab");
             divs.each((i, div) => {
                 const children = $(div).children();
-                this.extractMovieData(children, $, (data: Data) => {
-                    details.push(data);
+                this.extractMovieData(children, $, (data: DownloadData) => {
+                    details.dlData.push(data);
                 });
             });
         }
+        const synopsis = $("#tab-1 > p:nth-child(1)").text().trim() ?? "";
+        const country = $("div.mr-4:nth-child(2) > a:nth-child(1)").text().trim() ?? "";
+        const runTime = $("div.mr-4:nth-child(3)").text().trim() ?? "";
+        details = { ...details, synopsis, country, runTime };
         this.dbData.data[post_link] = details;
         await this.dbData.write();
         return details;
@@ -108,12 +123,12 @@ export class Driverays {
     private async extractSeriesData(
         elem: cheerio.Cheerio<cheerio.Element>,
         $: cheerio.CheerioAPI,
-        onExtract: (download: Data) => void
+        onExtract: (download: DownloadData) => void
     ) {
         const extractTds = (
             tds: cheerio.Cheerio<cheerio.Element>,
             type: string,
-            onExtract: (download: Data) => void
+            onExtract: (download: DownloadData) => void
         ) => {
             var tdFirst = true;
             var tdType = "";
@@ -126,7 +141,7 @@ export class Driverays {
                     as.each((i, a) => {
                         const aLink = $(a).attr("href") ?? "";
                         const aServer = $(a).text() ?? "";
-                        const data: Data = {
+                        const data: DownloadData = {
                             type: type,
                             subType: tdType,
 
@@ -157,9 +172,9 @@ export class Driverays {
     private async extractMovieData(
         elem: cheerio.Cheerio<cheerio.Element>,
         $: cheerio.CheerioAPI,
-        onExtract: (download: Data) => void
+        onExtract: (download: DownloadData) => void
     ) {
-        const details: Data[] = [];
+        const details: DownloadData[] = [];
         var first = true;
         var type = "";
         elem.each((i, div) => {
