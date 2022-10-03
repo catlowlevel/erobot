@@ -35,7 +35,7 @@
     }
   },
   "BTCUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -104,7 +104,7 @@
     }
   },
   "ETHUSDT": {
-    "countdown": 0,
+    "countdown": 10,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -394,7 +394,7 @@
     }
   },
   "CTKUSDT": {
-    "countdown": 0,
+    "countdown": 5,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -782,7 +782,7 @@
     }
   },
   "LTCUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -910,7 +910,7 @@
     }
   },
   "BNBUSDT": {
-    "countdown": 0,
+    "countdown": 9,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1413,7 +1413,7 @@
     }
   },
   "BCHUSDT": {
-    "countdown": 8,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1506,7 +1506,7 @@
     }
   },
   "AAVEUSDT": {
-    "countdown": 0,
+    "countdown": 10,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1610,7 +1610,7 @@
     }
   },
   "GALAUSDT": {
-    "countdown": 0,
+    "countdown": 10,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -2836,7 +2836,7 @@
     }
   },
   "WOOUSDT": {
-    "countdown": 0,
+    "countdown": 10,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3388,7 +3388,7 @@
     }
   },
   "API3USDT": {
-    "countdown": 0,
+    "countdown": 7,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -4021,7 +4021,7 @@
     }
   },
   "CHRUSDT": {
-    "countdown": 0,
+    "countdown": 9,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -4343,7 +4343,7 @@
     "countdown": 0
   },
   "1000LUNCUSDT": {
-    "countdown": 10
+    "countdown": 0
   },
   "LUNA2USDT": {
     "countdown": 0
