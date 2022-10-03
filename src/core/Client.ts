@@ -143,7 +143,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             getMessage: async (key) => {
                 this.log("Handling retries!", "red");
                 if (this.store) {
-                    const msg = await this.store.loadMessage(key.remoteJid!, key.id!, undefined);
+                    const msg = await this.store.loadMessage(key.remoteJid!, key.id!);
                     return msg?.message || undefined;
                 }
 
@@ -259,7 +259,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     public refreshMediaConn!: client["refreshMediaConn"];
     public relayMessage!: client["relayMessage"];
     public resyncAppState!: client["resyncAppState"];
-    public resyncMainAppState!: client["resyncMainAppState"];
+    //public resyncMainAppState!: client["resyncMainAppState"];
+    public rejectCall!: client["rejectCall"];
     public sendMessageAck!: client["sendMessageAck"];
     public sendNode!: client["sendNode"];
     public sendRawMessage!: client["sendRawMessage"];
