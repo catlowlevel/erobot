@@ -7,7 +7,9 @@
         "start": "npm run build && node dist/index.js",
         "dev": "nodemon --exitcrash --watch src --ext js,ts --exec node --no-warnings --loader ts-node/esm src/index.ts --color",
         "build": "tsc",
-        "format": "prettier --write --config .prettierrc \"src/**/*.ts\""
+        "format": "prettier --write --config .prettierrc \"src/**/*.ts\"",
+        "check-updates": "ncu",
+        "check-updates:upgrade": "ncu -u --filterVersion '^*'"
     },
     "keywords": [],
     "author": "",
@@ -17,6 +19,7 @@
         "@types/node": "^18.8.0",
         "input": "^1.0.1",
         "nodemon": "^2.0.20",
+        "npm-check-updates": "^16.3.8",
         "prettier": "^2.7.1",
         "ts-node": "^10.9.1",
         "typed-emitter": "^2.1.0",
