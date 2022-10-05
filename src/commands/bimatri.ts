@@ -36,7 +36,7 @@ export default class Cmd extends BaseCommand {
             );
 
         await M.reply("Balas YES untuk konfirmasi!");
-        const messages = await this.handler.getNewMessages(M, 1, 1000 * 30, true);
+        const messages = await M.collectMessages({ timeout: 2000 * 60, max: 1, senderOnly: true });
         if (messages.length <= 0) return M.reply("Gagal melakukan konfirmasi!");
         const confirmMsg = messages[0];
         if (confirmMsg.content.toLocaleLowerCase() !== "yes") return confirmMsg.reply("Gagal melakukan konfirmasi!");
@@ -133,7 +133,7 @@ export default class Cmd extends BaseCommand {
             numbers = data.map((d) => d.msisdn);
         }
         await M.reply("Kirim nomor tri kamu\nEx : 6289**********");
-        const messages = await this.handler.getNewMessages(M, 1, 2000 * 60, true);
+        const messages = await M.collectMessages({ timeout: 2000 * 60, max: 1, senderOnly: true });
         if (messages.length <= 0) return M.reply("Kamu tidak mengirim nomor tri kamu\nMembatalkan...");
 
         const nohpMsg = messages[0];
@@ -146,7 +146,7 @@ export default class Cmd extends BaseCommand {
             return nohpMsg.reply("Gagal meminta OTP!");
         }
         await nohpMsg.reply("Kirim kode OTP yang kamu terima");
-        const otpMessages = await this.handler.getNewMessages(M, 1, 2000 * 60, true);
+        const otpMessages = await M.collectMessages({ timeout: 2000 * 60, max: 1, senderOnly: true });
         if (messages.length <= 0) return M.reply("Kamu tidak mengirim kode OTP\nMembatalkan...");
         const otpMsg = otpMessages[0];
         const otp = otpMsg.content;
