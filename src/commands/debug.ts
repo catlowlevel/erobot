@@ -24,11 +24,6 @@ export default class extends BaseCommand {
             });
             return M.reply(`Total collected : ${messages.length}`);
         }
-        if (args.args.length > 0 && args.args?.[0].startsWith("process")) {
-            const messages = await this.handler.getNewMessages(M, 5, 1000 * 15, true);
-            messages.forEach((m) => m.replyQueue(m.content));
-            return;
-        }
         if (args.args.length > 0 && args.args[0].startsWith("log")) {
             return new Promise<void>((res, rej) => {
                 exec("pm2 logs erobot --raw --nostream", async (err, out) => {
