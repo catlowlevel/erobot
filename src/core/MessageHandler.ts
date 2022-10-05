@@ -35,29 +35,37 @@ export class MessageHandler {
     aliases = new Map<string, ICommand>();
 
     private path = [ROOT_DIR, "src", "commands"];
-    constructor(private client: Client) {
-        //prettier-ignore
+    constructor(private client: Client) {}
 
-        client.log("=====Loading commands========", "blue");
-        const files = readdirSync(join(...this.path));
-        for (const file of files.filter((file) => file.startsWith("_") === false)) {
-            this.path.push(file);
-            const command: BaseCommand = new (require(join(...this.path)).default)();
-            if (!command) {
-                console.log(`Command ${chalk.red(file)} fail to load`);
-                continue;
+    private loadCommand = (path: string) =>
+        new Promise<void>((res) => {
+            try {
+                const command: BaseCommand = new (require(path).default)();
+                command.client = this.client;
+                command.handler = this;
+                this.commands.set(command.name, command);
+                if (command.config.aliases) command.config.aliases.forEach((a) => this.aliases.set(a, command));
+
+                const color = getRandomColor();
+                console.log(`Command ${chalk.keyword(color)(command.name)} loaded!`);
+                res();
+            } catch (error) {
+                console.log(`Command ${chalk.red(path)} fail to load. Reason : ${error}`);
+                res();
             }
-            command.client = this.client;
-            command.handler = this;
-            this.commands.set(command.name, command);
-            if (command.config.aliases) command.config.aliases.forEach((a) => this.aliases.set(a, command));
+        });
 
-            const color = getRandomColor();
-            console.log(`Command ${chalk.keyword(color)(command.name)} loaded!`);
-            this.path.splice(this.path.indexOf(file), 1);
-        }
-        client.log("==============================", "blue");
-    }
+    public loadCommands = async () => {
+        this.client.log("=====Loading commands========", "blue");
+        const files = readdirSync(join(...this.path));
+        files
+            .filter((file) => file.startsWith("_") === false)
+            .map(async (file) => {
+                const commandPath = join(...[...this.path, file]);
+                await this.loadCommand(commandPath);
+            });
+        this.client.log("==============================", "blue");
+    };
 
     public handleMessage = (M: Message) => {
         const prefix = ".";

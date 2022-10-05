@@ -9,7 +9,8 @@ register("id_ID", id_ID);
     const client = new Client();
     await client.start();
 
-    const { handleMessage } = new MessageHandler(client);
+    const { handleMessage, loadCommands } = new MessageHandler(client);
+    await loadCommands();
 
     client.on("new_message", handleMessage);
 })();
