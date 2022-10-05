@@ -11,13 +11,14 @@ import {
 // import getUrls from 'get-urls'
 import { extractNumbers } from "../helper/utils";
 import { Client } from "./Client";
+import TypedEmitter from "typed-emitter";
+import EventEmitter from "events";
 
 interface CollectOption {
     timeout: number;
     max?: number;
     senderOnly?: boolean;
 }
-
 export class Message {
     constructor(private M: proto.IWebMessageInfo, private client: Client) {
         this.message = this.M;
@@ -116,13 +117,30 @@ export class Message {
     /**
      *
      * @param options Options
-     * @param newMessageCB Process new messages, return true to collect the message
-     * @returns Messages[]
+     * @param newMessageCB Process new messages, return undefined to NOT collect the message
+     * @returns Collected messages
      */
-    public collectMessages = (options: CollectOption, newMessageCB?: (M: Message) => boolean | Promise<boolean>) => {
+    public collectMessages = (options: CollectOption, newMessageCB?: (M: Message) => any | Promise<any>) => {
+        if (options.timeout < 1000) throw new Error("timeout must be greater than 1000ms");
         console.log("Collecting messages");
         return new Promise<Message[]>((res, rej) => {
             const messages: Message[] = [];
+
+            const timeout = setTimeout(() => {
+                done();
+            }, options.timeout);
+
+            const done = () => {
+                try {
+                    clearTimeout(timeout);
+                    this.client.ev.off("messages.upsert", messageHandler);
+                    console.log(`Collect done : ${messages.length} collected`);
+                    res(messages);
+                } catch (error) {
+                    rej(error);
+                }
+            };
+
             const messageHandler = async ({
                 messages: msgs,
                 type,
@@ -142,44 +160,41 @@ export class Message {
                     if (options.senderOnly) {
                         if (M.sender.jid !== this.sender.jid) return void null;
                     }
+                    M.markAsRead();
                     if (newMessageCB) {
                         const result = await newMessageCB(M);
-                        if (result) messages.push(M);
+                        if (result !== undefined) {
+                            messages.push(M);
+                            console.log(`${messages.length} message${messages.length > 1 ? "s" : ""} collected`);
+                        }
                     } else {
                         messages.push(M);
+                        console.log(`${messages.length} message${messages.length > 1 ? "s" : ""} collected`);
                     }
-                    console.log(`${messages.length} message${messages.length > 1 ? "s" : ""} collected`);
+                    if (options.max) {
+                        if (messages.length >= options.max) {
+                            done();
+                        }
+                    }
                 }
             };
             this.client.ev.on("messages.upsert", messageHandler);
 
-            const done = () => {
-                try {
-                    this.client.ev.off("messages.upsert", messageHandler);
-                    console.log(`Collect done : ${messages.length} collected`);
-                    res(messages);
-                } catch (error) {
-                    rej(error);
-                }
-            };
-            const timeout = setTimeout(() => {
-                done();
-            }, options.timeout);
-            const interval = setInterval(() => {
-                try {
-                    if (options.max) {
-                        if (messages.length >= options.max) {
-                            clearInterval(interval);
-                            clearTimeout(timeout);
-                            done();
-                        }
-                    } else {
-                        clearInterval(interval);
-                    }
-                } catch (error) {
-                    rej(error);
-                }
-            }, 100);
+            //const interval = setInterval(() => {
+            //try {
+            //if (options.max) {
+            //if (messages.length >= options.max) {
+            //clearInterval(interval);
+            //clearTimeout(timeout);
+            //done();
+            //}
+            //} else {
+            //clearInterval(interval);
+            //}
+            //} catch (error) {
+            //rej(error);
+            //}
+            //}, 100);
         });
     };
 
@@ -296,6 +311,8 @@ export class Message {
             }
         );
     };
+
+    public markAsRead = async () => this.client.readMessages([this.message.key]);
 
     public react = async (
         emoji: string,
