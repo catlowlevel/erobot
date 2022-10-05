@@ -10,6 +10,13 @@ import { IArgs } from "../core/MessageHandler";
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
+        if (args.args.length > 0 && args.args?.[0].startsWith("collect")) {
+            const messages = await M.collectMessages({ timeout: 1000 * 30, max: 5, senderOnly: true }, (M) => {
+                M.reply(M.content);
+                return true;
+            });
+            return M.reply(`Total collected : ${messages.length}`);
+        }
         if (args.args.length > 0 && args.args?.[0].startsWith("process")) {
             const messages = await this.handler.getNewMessages(M, 5, 1000 * 15, true);
             messages.forEach((m) => m.replyQueue(m.content));
