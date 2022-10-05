@@ -5,11 +5,18 @@ import {
     GroupMetadata,
     MediaType,
     MessageType,
+    MessageUpsertType,
     proto,
 } from "@adiwajshing/baileys";
 // import getUrls from 'get-urls'
 import { extractNumbers } from "../helper/utils";
 import { Client } from "./Client";
+
+interface CollectOption {
+    timeout: number;
+    max?: number;
+    senderOnly?: boolean;
+}
 
 export class Message {
     constructor(private M: proto.IWebMessageInfo, private client: Client) {
@@ -105,6 +112,76 @@ export class Message {
             }
         }
     }
+
+    /**
+     *
+     * @param options Options
+     * @param newMessageCB Process new messages, return true to collect the message
+     * @returns Messages[]
+     */
+    public collectMessages = (options: CollectOption, newMessageCB?: (M: Message) => boolean | Promise<boolean>) => {
+        console.log("Collecting messages");
+        return new Promise<Message[]>((res, rej) => {
+            const messages: Message[] = [];
+            const messageHandler = async ({
+                messages: msgs,
+                type,
+            }: {
+                messages: proto.IWebMessageInfo[];
+                type: MessageUpsertType;
+            }) => {
+                for (const msg of msgs) {
+                    const M: Message = new Message(msg, this.client);
+
+                    // if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return void null;
+
+                    if (type !== "notify") return void null;
+                    if (msg.key.remoteJid === "status@broadcast") return void null;
+
+                    if (M.stubType && M.stubParameters) return void null;
+                    if (options.senderOnly) {
+                        if (M.sender.jid !== this.sender.jid) return void null;
+                    }
+                    if (newMessageCB) {
+                        const result = await newMessageCB(M);
+                        if (result) messages.push(M);
+                    } else {
+                        messages.push(M);
+                    }
+                    console.log(`${messages.length} message${messages.length > 1 ? "s" : ""} collected`);
+                }
+            };
+            this.client.ev.on("messages.upsert", messageHandler);
+
+            const done = () => {
+                try {
+                    this.client.ev.off("messages.upsert", messageHandler);
+                    console.log(`Collect done : ${messages.length} collected`);
+                    res(messages);
+                } catch (error) {
+                    rej(error);
+                }
+            };
+            const timeout = setTimeout(() => {
+                done();
+            }, options.timeout);
+            const interval = setInterval(() => {
+                try {
+                    if (options.max) {
+                        if (messages.length >= options.max) {
+                            clearInterval(interval);
+                            clearTimeout(timeout);
+                            done();
+                        }
+                    } else {
+                        clearInterval(interval);
+                    }
+                } catch (error) {
+                    rej(error);
+                }
+            }, 100);
+        });
+    };
 
     public typing = async (): Promise<void> => {
         await this.client.presenceSubscribe(this.from);
