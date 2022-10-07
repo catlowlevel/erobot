@@ -45,7 +45,7 @@ export default class extends BaseCommand {
             const type = Object.keys(M.quoted.message)[0] as keyof proto.IMessage;
             // console.log("messageKeys", messageKeys);
             if (
-                (type === "videoMessage" || type === "imageMessage") &&
+                (type === "videoMessage" || type === "imageMessage" || type === "documentMessage") &&
                 (M.quoted.message[type]?.mimetype?.startsWith("image/") ||
                     M.quoted.message[type]?.mimetype?.startsWith("video/"))
             ) {
