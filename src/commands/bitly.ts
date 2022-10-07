@@ -1,8 +1,8 @@
-import { shortenUrl } from "../lib/bitly/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
+import { shortenUrl } from "../lib/bitly/api";
 
 @Command("bitly", {
     description: "Shorten url",

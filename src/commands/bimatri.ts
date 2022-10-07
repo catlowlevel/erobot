@@ -5,7 +5,7 @@ import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { timeSince } from "../helper/utils";
 import { Bimatri } from "../lib/bimatri";
-import { LoginData, OtpData } from "../lib/bimatri/types";
+import { LoginData } from "../lib/bimatri/types";
 
 type Options = ReturnType<Cmd["getOptions"]>;
 

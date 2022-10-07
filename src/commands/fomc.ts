@@ -1,9 +1,9 @@
 import { format } from "timeago.js";
-import { getCalendar } from "../lib/investing/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
+import { getCalendar } from "../lib/investing/api";
 @Command("fomc", {
     description: "Economic calendar",
     usage: "fomc",

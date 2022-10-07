@@ -1,9 +1,9 @@
-import { getPrices, searchSymbol } from "../lib/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { getPercentageChange } from "../helper/utils";
+import { getPrices, searchSymbol } from "../lib/tradingview/api";
 
 @Command("price", {
     description: "Harga coin",

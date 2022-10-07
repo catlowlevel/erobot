@@ -1,6 +1,6 @@
 import { ROOT_DIR } from "../..";
 import { LowDB } from "../../core/LowDB";
-import { LoginData, AccountData, OtpData, Data } from "./types";
+import { AccountData, Data, LoginData, OtpData } from "./types";
 
 type DBType = { [id: string]: LoginData[] };
 

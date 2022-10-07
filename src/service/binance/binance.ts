@@ -5,7 +5,6 @@ import EventEmitter from "events";
 import nanoid from "nanoid";
 import pMap from "p-map";
 import { ema } from "technicalindicators";
-import { format } from "timeago.js";
 import TypedEmitter from "typed-emitter";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";

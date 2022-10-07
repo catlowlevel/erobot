@@ -11,8 +11,6 @@ import {
 // import getUrls from 'get-urls'
 import { extractNumbers } from "../helper/utils";
 import { Client } from "./Client";
-import TypedEmitter from "typed-emitter";
-import EventEmitter from "events";
 
 interface CollectOption {
     timeout: number;

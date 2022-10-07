@@ -1,9 +1,9 @@
-import { validTf } from "../lib/chartimg/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { getPercentageChange } from "../helper/utils";
+import { validTf } from "../lib/chartimg/api";
 import { Interval } from "../service/binance/binance";
 
 @Command("hedge", {

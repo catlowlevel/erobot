@@ -1,9 +1,9 @@
-import { getChartImg, validIndicator, validTf } from "../lib/chartimg/api";
-import { getPrices, searchSymbol } from "../lib/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
+import { getChartImg, validIndicator, validTf } from "../lib/chartimg/api";
+import { getPrices, searchSymbol } from "../lib/tradingview/api";
 
 @Command("tv", {
     description: "Gambar chart dari tradingview",

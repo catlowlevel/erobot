@@ -17,6 +17,7 @@ import TypedEmitter from "typed-emitter";
 // import { connect } from "mongoose";
 import { Boom } from "@hapi/boom";
 import chalk, { ChalkFunction } from "chalk";
+import nanoid from "nanoid";
 import { join } from "path";
 import P from "pino";
 import Queue from "queue";
@@ -26,7 +27,6 @@ import { ROOT_DIR } from "..";
 import { BinanceClient } from "../service/binance/binance";
 import { Coindar } from "../service/coindar/coindar";
 import { Samehadaku } from "../service/samehadaku/samehadaku";
-import nanoid from "nanoid";
 export type client = ReturnType<typeof Baileys>;
 
 type Events = {

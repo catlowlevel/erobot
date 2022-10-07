@@ -1,9 +1,9 @@
-import { getMiniChartImg, validTf } from "../lib/chartimg/api";
-import { searchSymbol } from "../lib/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
+import { getMiniChartImg, validTf } from "../lib/chartimg/api";
+import { searchSymbol } from "../lib/tradingview/api";
 
 @Command("tvm", {
     description: "Gambar mini chart dari tradingview",

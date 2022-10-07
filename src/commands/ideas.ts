@@ -1,11 +1,11 @@
 import fetch from "node-fetch-commonjs";
 import { format as timeago } from "timeago.js";
-import { shortenUrl } from "../lib/bitly/api";
-import { getIdeas, getPrices, searchSymbol } from "../lib/tradingview/api";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
+import { shortenUrl } from "../lib/bitly/api";
+import { getIdeas, getPrices, searchSymbol } from "../lib/tradingview/api";
 
 @Command("ideas", {
     description: "Ideas dari tradingview;",

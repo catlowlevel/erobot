@@ -1,5 +1,4 @@
 import { proto } from "@adiwajshing/baileys";
-import Queue from "queue";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
@@ -26,6 +25,7 @@ export default class extends BaseCommand {
                                 { optionName: "4" },
                                 { optionName: "5" },
                             ],
+                            selectableOptionsCount: 5,
                         },
                     },
                     {}
