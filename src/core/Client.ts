@@ -220,6 +220,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         this.client.ev.on("creds.update", saveCreds);
         return this.client;
     }
+    public getMessageFromStore = (jid: string, msgId: string) => this.store.messages[jid].get(msgId);
     public condition!: "connected" | "connecting" | "logged_out";
 
     public end!: client["end"];
