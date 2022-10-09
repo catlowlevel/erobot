@@ -5,7 +5,6 @@ import {
     GroupMetadata,
     MediaType,
     MessageType,
-    MessageUpsertType,
     proto,
 } from "@adiwajshing/baileys";
 // import getUrls from 'get-urls'
@@ -131,7 +130,7 @@ export class Message {
             const done = () => {
                 try {
                     clearTimeout(timeout);
-                    this.client.ev.off("messages.upsert", messageHandler);
+                    this.client.off("new_message", messageHandler);
                     console.log(`Collect done : ${messages.length} collected`);
                     res(messages);
                 } catch (error) {
@@ -139,44 +138,28 @@ export class Message {
                 }
             };
 
-            const messageHandler = async ({
-                messages: msgs,
-                type,
-            }: {
-                messages: proto.IWebMessageInfo[];
-                type: MessageUpsertType;
-            }) => {
-                for (const msg of msgs) {
-                    const M: Message = new Message(msg, this.client);
-
-                    // if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return void null;
-
-                    if (type !== "notify") return void null;
-                    if (msg.key.remoteJid === "status@broadcast") return void null;
-
-                    if (M.stubType && M.stubParameters) return void null;
-                    if (options.senderOnly) {
-                        if (M.sender.jid !== this.sender.jid) return void null;
-                    }
-                    M.markAsRead();
-                    if (newMessageCB) {
-                        const result = await newMessageCB(M);
-                        if (result !== undefined) {
-                            messages.push(M);
-                            console.log(`${messages.length} message${messages.length > 1 ? "s" : ""} collected`);
-                        }
-                    } else {
+            const messageHandler = async (M: Message) => {
+                if (options.senderOnly) {
+                    if (M.sender.jid !== this.sender.jid) return void null;
+                }
+                M.markAsRead();
+                if (newMessageCB) {
+                    const result = await newMessageCB(M);
+                    if (result !== undefined) {
                         messages.push(M);
                         console.log(`${messages.length} message${messages.length > 1 ? "s" : ""} collected`);
                     }
-                    if (options.max) {
-                        if (messages.length >= options.max) {
-                            done();
-                        }
+                } else {
+                    messages.push(M);
+                    console.log(`${messages.length} message${messages.length > 1 ? "s" : ""} collected`);
+                }
+                if (options.max) {
+                    if (messages.length >= options.max) {
+                        done();
                     }
                 }
             };
-            this.client.ev.on("messages.upsert", messageHandler);
+            this.client.on("new_message", messageHandler);
 
             //const interval = setInterval(() => {
             //try {
