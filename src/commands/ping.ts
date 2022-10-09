@@ -12,6 +12,24 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         if (args.args.length > 0) {
+            if (args.args[0].startsWith("all")) {
+                const groupMetadata = (await M.simplify()).groupMetadata!;
+                const participants = groupMetadata.participants.map((p) => p.id);
+                return this.client
+                    .relayMessage(
+                        M.from,
+                        {
+                            extendedTextMessage: { text: "TEST", contextInfo: { mentionedJid: participants } },
+                        },
+                        {}
+                    )
+                    .then((msgId) =>
+                        console.log(
+                            "msg",
+                            this.client.store.messages[M.from].array.find((all) => all.key.id === msgId)
+                        )
+                    );
+            }
             if (args.args[0].startsWith("v")) {
                 return this.client.relayMessage(
                     M.from,
