@@ -191,3 +191,21 @@ export function groupBy<T, K extends keyof T>(array: T[], key: K): { [key: strin
         return acc;
     }, {});
 }
+
+//https://stackoverflow.com/a/51712612
+/**
+ *
+ * @param input ex : "bluebird"
+ * @param pattern ex : "*bird"
+ * @returns true or false, true based on example
+ */
+export const wildcardCheck = function (input: string, pattern: string) {
+    var regExpEscape = function (s: string) {
+        return s.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
+    };
+    const re = new RegExp("^" + pattern.toLowerCase().split(/\*+/).map(regExpEscape).join(".*") + "$");
+    const match = input.toLowerCase().match(re);
+    if (match && match.length >= 1) return true;
+    return false;
+    //return input.match(re) !== null && input.match(re).length >= 1;
+};
