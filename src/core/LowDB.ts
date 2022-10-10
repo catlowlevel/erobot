@@ -9,6 +9,7 @@ export class LowDB<T> implements Low<T> {
     private initialized: boolean;
     waitInit() {
         return new Promise<void>((res) => {
+            if (this.initialized) res();
             const interval = setInterval(() => {
                 if (this.initialized) {
                     clearInterval(interval);
