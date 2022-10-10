@@ -209,3 +209,62 @@ export const wildcardCheck = function (input: string, pattern: string) {
     return false;
     //return input.match(re) !== null && input.match(re).length >= 1;
 };
+//https://github.com/jonatanpedersen/quoted/blob/e72a980b600d07477ecc9e7028c8a5a62886faf6/index.js#L48
+function quotedRegExp(str: string) {
+    const expression = /(["'])(?:(?=(\\?))\2.)*?\1/gm;
+    const texts = [];
+    const emptyString = "";
+    var match;
+    while ((match = expression.exec(str))) {
+        const text = match[0].slice(1, -1);
+        if (text !== emptyString) {
+            texts.push(text);
+        }
+    }
+
+    return texts;
+}
+
+//https://github.com/jonatanpedersen/quoted/blob/e72a980b600d07477ecc9e7028c8a5a62886faf6/index.js#L5
+export function quoted(str: string) {
+    const backslash = "\\";
+    const doubleQuote = '"';
+    const singleQuote = "'";
+    const emptyString = "";
+    const texts = [];
+    var quote;
+    var escaping;
+    var recording;
+    var text;
+
+    for (var i = 0; i < str.length; i++) {
+        const char = str[i];
+
+        escaping = char === backslash && !escaping;
+
+        if (!escaping) {
+            if (!recording) {
+                if (char === singleQuote || char === doubleQuote) {
+                    quote = char;
+                    recording = true;
+                    text = emptyString;
+                }
+            } else {
+                if (char === quote) {
+                    quote = emptyString;
+                    recording = false;
+
+                    if (text !== emptyString) {
+                        texts.push(text);
+                    }
+                } else {
+                    text += char;
+                }
+            }
+        } else {
+            text += char;
+        }
+    }
+
+    return texts;
+}
