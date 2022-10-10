@@ -17,6 +17,7 @@ interface CollectOption {
     senderOnly?: boolean;
 }
 export class Message {
+    static PREFIX = ".";
     constructor(private M: proto.IWebMessageInfo, private client: Client) {
         this.message = this.M;
         this.from = M.key.remoteJid || "";
@@ -326,6 +327,18 @@ export class Message {
         }
         return buffer;
     };
+
+    public get isCommand(): boolean {
+        let max = 3;
+        //handle whitespace after prefix: <prefix>  <command> => <prefix><command>
+        while (this.content.startsWith(Message.PREFIX) && this.content.at(1) === " " && max-- > 0) {
+            if (!max) break;
+            this.content = this.content.replace(" ", "");
+        }
+        const args = this.content.split(/[ ,\n]/gm);
+        if (!args[0] || !args[0].startsWith(Message.PREFIX) || this.content.length <= 1) return false;
+        return true;
+    }
 
     public from: string;
     public sender: { username?: string | null; jid?: string };
