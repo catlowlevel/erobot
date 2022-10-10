@@ -40,7 +40,9 @@ export class MessageHandler {
     private path = [ROOT_DIR, "src", "commands"];
 
     constructor(private client: Client) {
-        this.autoReply = new AutoReply(client, this);
+        client.waitConnected().then(() => {
+            this.autoReply = new AutoReply(client, this);
+        });
     }
 
     private loadCommand = (path: string) =>
