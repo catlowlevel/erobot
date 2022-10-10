@@ -223,6 +223,17 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         return this.client;
     }
     public getMessageFromStore = (jid: string, msgId: string) => this.store.messages[jid].get(msgId);
+    public waitConnected = () =>
+        new Promise<void>((res) => {
+            if (this.condition === "connected") res();
+            const interval = setInterval(() => {
+                if (this.condition === "connected") {
+                    clearInterval(interval);
+                    res();
+                }
+            }, 100);
+        });
+
     public condition!: "connected" | "connecting" | "logged_out";
 
     public end!: client["end"];
