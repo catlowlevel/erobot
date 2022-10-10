@@ -1,0 +1,50 @@
+{
+  "62895611963535-1631537374@g.us": [
+    {
+      "pattern": "*hu*i*",
+      "replyMsg": "Uhui"
+    },
+    {
+      "pattern": "*ad* ka*",
+      "replyMsg": "Ada"
+    }
+  ],
+  "6289668705354@s.whatsapp.net": [
+    {
+      "pattern": "*h*h*h*",
+      "replyMsg": "🤣😂😂😹"
+    },
+    {
+      "pattern": "*hhh*",
+      "replyMsg": "🤣😂😂😹"
+    },
+    {
+      "pattern": "*ha*h*",
+      "replyMsg": "🤣😂😹"
+    }
+  ],
+  "6282293787977@s.whatsapp.net": [
+    {
+      "pattern": "*gas*",
+      "replyMsg": "⛽"
+    },
+    {
+      "pattern": "hhh",
+      "replyMsg": "🤣"
+    }
+  ],
+  "6282293787977-1527865416@g.us": [
+    {
+      "pattern": "*gas*",
+      "replyMsg": "⛽"
+    },
+    {
+      "pattern": "*ha*h*h*",
+      "replyMsg": "🤣😹😂"
+    },
+    {
+      "pattern": "*h*h*h*",
+      "replyMsg": "😹🤣😂"
+    }
+  ]
+}

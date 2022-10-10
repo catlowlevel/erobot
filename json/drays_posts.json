@@ -1323,5 +1323,42 @@
     "country": "US",
     "runTime": "52 Minutes/Eps",
     "synopsis": "Setelah mencuri Tesseract selama peristiwa “Avengers: Endgame,” versi alternatif Loki dibawa ke Time Variance Authority yang misterius, sebuah organisasi birokrasi yang ada di luar ruang dan waktu dan memantau garis waktu. Mereka memberi Loki pilihan: wajah dihapus dari keberadaan karena menjadi “varian waktu” atau membantu memperbaiki garis waktu dan menghentikan ancaman yang lebih besar."
+  },
+  "https://167.86.71.48/frozen-ii-2019-bluray/": {
+    "dlData": [
+      {
+        "type": "|Server|Link Download|Size|",
+        "subType": "GDrive",
+        "server": "BluRay 480p",
+        "link": "https://acefile.co/f/30643590/frozen-ii-2k19-bluray-480p-x264-drays-mkv"
+      },
+      {
+        "type": "|Server|Link Download|Size|",
+        "subType": "GDrive",
+        "server": "BluRay 720p",
+        "link": "https://acefile.co/f/30643593/frozen-ii-2k19-bluray-720p-x264-drays-mkv"
+      },
+      {
+        "type": "|Server|Link Download|Size|",
+        "subType": "GDrive",
+        "server": "BluRay 1080p",
+        "link": "https://acefile.co/f/30643596/frozen-ii-2k19-bluray-1080p-x264-drays-mkv"
+      },
+      {
+        "type": "|Server|Link Download|Size|",
+        "subType": "Subscene",
+        "server": "Subtitle Only",
+        "link": "https://subscene.com/subtitles/frozen-2"
+      },
+      {
+        "type": "|Server|Link Download|Size|",
+        "subType": "Subscene Mirror",
+        "server": "Subtitle Only",
+        "link": "https://subscene.icu/subtitles/frozen-2"
+      }
+    ],
+    "country": "US",
+    "runTime": "104 Minutes",
+    "synopsis": "Elsa, Anna, Kristoff, dan Olaf pergi jauh ke dalam hutan untuk mempelajari kebenaran tentang misteri kuno kerajaan mereka."
   }
 }

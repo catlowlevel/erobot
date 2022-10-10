@@ -35,7 +35,7 @@
     }
   },
   "BTCUSDT": {
-    "countdown": 8,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -104,7 +104,7 @@
     }
   },
   "ETHUSDT": {
-    "countdown": 10,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -394,7 +394,7 @@
     }
   },
   "CTKUSDT": {
-    "countdown": 5,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -782,7 +782,7 @@
     }
   },
   "LTCUSDT": {
-    "countdown": 8,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -910,7 +910,7 @@
     }
   },
   "BNBUSDT": {
-    "countdown": 9,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1250,7 +1250,7 @@
     }
   },
   "AXSUSDT": {
-    "countdown": 0,
+    "countdown": 1,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1506,7 +1506,7 @@
     }
   },
   "AAVEUSDT": {
-    "countdown": 10,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1610,7 +1610,7 @@
     }
   },
   "GALAUSDT": {
-    "countdown": 10,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -2836,7 +2836,7 @@
     }
   },
   "WOOUSDT": {
-    "countdown": 10,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3388,7 +3388,7 @@
     }
   },
   "API3USDT": {
-    "countdown": 7,
+    "countdown": 3,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -4021,7 +4021,7 @@
     }
   },
   "CHRUSDT": {
-    "countdown": 9,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
