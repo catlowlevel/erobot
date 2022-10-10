@@ -158,40 +158,42 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         this.store.bind(this.client.ev);
 
         this.client.ev.on("messages.upsert", ({ messages, type }) => {
-            const M: Message = new Message(messages[0], this);
+            for (const message of messages) {
+                const M: Message = new Message(message, this);
 
-            // if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return void null;
+                // if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return void null;
 
-            if (type !== "notify") return void null;
-            if (messages[0].key.remoteJid === "status@broadcast") return void null;
+                if (type !== "notify") return void null;
+                if (message.key.remoteJid === "status@broadcast") return void null;
 
-            if (M.stubType && M.stubParameters) {
-                const emitParticipantsUpdate = (action: ParticipantAction): boolean =>
-                    this.emit("participants_update", {
-                        jid: M.from,
-                        participants: M.stubParameters as string[],
-                        action,
-                    });
-                switch (M.stubType) {
-                    case proto.WebMessageInfo.StubType.GROUP_CREATE:
-                        return void this.emit("new_group_joined", {
+                if (M.stubType && M.stubParameters) {
+                    const emitParticipantsUpdate = (action: ParticipantAction): boolean =>
+                        this.emit("participants_update", {
                             jid: M.from,
-                            subject: M.stubParameters[0],
+                            participants: M.stubParameters as string[],
+                            action,
                         });
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD:
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_INVITE:
-                        return void emitParticipantsUpdate("add");
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_LEAVE:
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_REMOVE:
-                        return void emitParticipantsUpdate("remove");
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_DEMOTE:
-                        return void emitParticipantsUpdate("demote");
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_PROMOTE:
-                        return void emitParticipantsUpdate("promote");
+                    switch (M.stubType) {
+                        case proto.WebMessageInfo.StubType.GROUP_CREATE:
+                            return void this.emit("new_group_joined", {
+                                jid: M.from,
+                                subject: M.stubParameters[0],
+                            });
+                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD:
+                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
+                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_INVITE:
+                            return void emitParticipantsUpdate("add");
+                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_LEAVE:
+                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_REMOVE:
+                            return void emitParticipantsUpdate("remove");
+                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_DEMOTE:
+                            return void emitParticipantsUpdate("demote");
+                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_PROMOTE:
+                            return void emitParticipantsUpdate("promote");
+                    }
                 }
+                return void this.emit("new_message", M);
             }
-            return void this.emit("new_message", M);
         });
         this.client.ev.on("connection.update", (update) => {
             const { connection, lastDisconnect } = update;
