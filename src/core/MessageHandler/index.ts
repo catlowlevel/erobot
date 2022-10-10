@@ -1,11 +1,12 @@
 import chalk from "chalk";
 import { readdirSync } from "fs";
 import { join } from "path";
-import { ROOT_DIR } from "..";
-import { getRandomColor } from "../helper/utils";
-import { BaseCommand } from "./BaseCommand";
-import { Client } from "./Client";
-import { Message } from "./Message";
+import { ROOT_DIR } from "../..";
+import { getRandomColor } from "../../helper/utils";
+import { BaseCommand } from "../BaseCommand";
+import { Client } from "../Client";
+import { Message } from "../Message";
+import { AutoReply } from "./AutoReply";
 export interface IArgs {
     context: string;
     args: string[];
@@ -34,8 +35,11 @@ export class MessageHandler {
     commands = new Map<string, ICommand>();
     aliases = new Map<string, ICommand>();
 
+
     private path = [ROOT_DIR, "src", "commands"];
-    constructor(private client: Client) {}
+
+    constructor(private client: Client) {
+    }
 
     private loadCommand = (path: string) =>
         new Promise<void>((res) => {
@@ -68,16 +72,11 @@ export class MessageHandler {
     };
 
     public handleMessage = (M: Message) => {
-        const prefix = ".";
-        let max = 3;
-        while (M.content.startsWith(prefix) && M.content.at(1) === " " && max-- > 0) {
-            console.log("max", max, M.content);
-            if (!max) break;
-            M.content = M.content.replace(" ", "");
-        }
+        const prefix = Message.PREFIX;
+        const isCommand = M.isCommand; // calling this here is necessary
         const args = M.content.split(/[ ,\n]/gm);
         const title = M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
-        if (!args[0] || !args[0].startsWith(prefix) || M.content.length <= 1) {
+        if (!isCommand) {
             return M.simplify().then((M) => {
                 const title = M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
                 return console.log(`${M.sender.username}@${title} => ${M.content}`);
