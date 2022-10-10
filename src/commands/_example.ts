@@ -1,7 +1,4 @@
-import { Message } from "../core";
-import { BaseCommand } from "../core/BaseCommand";
-import { Command } from "../core/Command";
-import { IArgs } from "../core/MessageHandler";
+import { BaseCommand, Command, IArgs, Message } from "../core";
 
 @Command("sample", {
     description: "",
