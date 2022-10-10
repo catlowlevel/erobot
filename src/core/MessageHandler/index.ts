@@ -35,10 +35,12 @@ export class MessageHandler {
     commands = new Map<string, ICommand>();
     aliases = new Map<string, ICommand>();
 
+    autoReply: AutoReply;
 
     private path = [ROOT_DIR, "src", "commands"];
 
     constructor(private client: Client) {
+        this.autoReply = new AutoReply(client, this);
     }
 
     private loadCommand = (path: string) =>
