@@ -222,7 +222,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         this.client.ev.on("creds.update", saveCreds);
         return this.client;
     }
-    public getMessageFromStore = (jid: string, msgId: string) => this.store.messages[jid].get(msgId);
+    public getMessageFromStore = (jid: string, msgId: string) => this.store.messages[jid]?.get(msgId);
     public waitConnected = () =>
         new Promise<void>((res) => {
             if (this.condition === "connected") res();
