@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { readdirSync } from "fs";
 import { join } from "path";
-import { ROOT_DIR } from "../..";
+import { INDEX_DIR } from "../..";
 import { getRandomColor } from "../../helper/utils";
 import { BaseCommand } from "../BaseCommand";
 import { Client } from "../Client";
@@ -37,7 +37,7 @@ export class MessageHandler {
 
     autoReply: AutoReply;
 
-    private path = [ROOT_DIR, "src", "commands"];
+    private path = [INDEX_DIR, "commands"];
 
     constructor(private client: Client) {
         client.waitConnected().then(() => {
