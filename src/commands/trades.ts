@@ -12,6 +12,25 @@ export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         const binance = this.client.binance;
         const trades = binance.dbTrade.data;
+        if (args.args.length && args.args[0] === "clean") {
+            await M.reply("Are you sure?\nReply with YES to confirm");
+            const messages = await M.collectMessages({ timeout: 1000 * 30, max: 1, senderOnly: true });
+            if (messages.length <= 0) return M.reply("Request is not confirmed\nAborting...");
+            const msg = messages[0];
+            if (msg.content.toLowerCase() === "yes") {
+                const finishedTrades = trades.filter((t) => t.sl.hit || t.tp.some((a) => a.hit === false));
+                const unfinishedTrades = trades.filter((t) => !(t.sl.hit || t.tp.some((a) => a.hit === false)));
+                const totalTrades = trades.length - finishedTrades.length;
+                const allTradesCount = trades.length;
+                console.log(`Before : ${binance.dbTrade.data.length}`);
+                //binance.dbTrade.data = unfinishedTrades;
+                console.log(`After : ${binance.dbTrade.data.length}`);
+                await binance.dbTrade.write();
+                return msg.reply(`Total of ${totalTrades}/${allTradesCount} finished trades is deleted from database!`);
+            } else {
+                return msg.reply("Confirmation failed!");
+            }
+        }
         let symbols = trades.map((t) => t.symbol);
         console.log(symbols.length);
         symbols = [...new Set(symbols)];

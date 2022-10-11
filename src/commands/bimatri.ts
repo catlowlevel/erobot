@@ -81,15 +81,17 @@ export default class Cmd extends BaseCommand {
                 year: "tahun",
             });
             text += `Masa aktif : ${validity}\n=======================`;
-            account.packageList.forEach((paket) => {
-                if (paket.detail.length > 0) {
-                    text += `\n${paket.name}`;
-                    paket.detail.forEach((d) => {
-                        text += `\n${d.value} | ${d.validity}\n`;
-                    });
-                    text += `=======================`;
-                }
-            });
+            account.packageList
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .forEach((paket) => {
+                    if (paket.detail.length > 0) {
+                        text += `\n${paket.name}`;
+                        paket.detail.forEach((d) => {
+                            text += `\n${d.value} | ${d.validity}\n`;
+                        });
+                        text += `=======================`;
+                    }
+                });
             return this.client.sendMessage(
                 M.from,
                 {

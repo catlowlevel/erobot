@@ -23,12 +23,9 @@ export default class extends BaseCommand {
                         },
                         {}
                     )
-                    .then((msgId) =>
-                        console.log(
-                            "msg",
-                            this.client.store.messages[M.from].array.find((all) => all.key.id === msgId)
-                        )
-                    );
+                    .then((msgId) => {
+                        console.log("msgId", msgId);
+                    });
             }
             if (args.args[0].startsWith("v")) {
                 return this.client.relayMessage(
