@@ -5,7 +5,7 @@ import { Client } from "../Client";
 import { LowDB } from "../LowDB";
 
 interface AutoReplyType {
-    [jid: string]: { pattern: string; replyMsg: string }[];
+    [jid: string]: { pattern: string; replyMsg: string; type: "text" | "image" }[];
 }
 export class AutoReply {
     db: LowDB<AutoReplyType>;
