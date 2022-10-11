@@ -1078,7 +1078,7 @@
     }
   },
   "GMTUSDT": {
-    "countdown": 0,
+    "countdown": 4,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1216,7 +1216,7 @@
     }
   },
   "DOGEUSDT": {
-    "countdown": 0,
+    "countdown": 6,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -2624,7 +2624,7 @@
     }
   },
   "ANTUSDT": {
-    "countdown": 0,
+    "countdown": 2,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3474,7 +3474,7 @@
     }
   },
   "MASKUSDT": {
-    "countdown": 0,
+    "countdown": 7,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
