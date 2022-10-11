@@ -1250,7 +1250,7 @@
     }
   },
   "AXSUSDT": {
-    "countdown": 1,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3388,7 +3388,7 @@
     }
   },
   "API3USDT": {
-    "countdown": 3,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",

@@ -2,49 +2,64 @@
   "62895611963535-1631537374@g.us": [
     {
       "pattern": "*hu*i*",
-      "replyMsg": "Uhui"
+      "replyMsg": "Uhui",
+      "type": "text"
     },
     {
       "pattern": "*ad* ka*",
-      "replyMsg": "Ada"
+      "replyMsg": "Ada",
+      "type": "text"
     }
   ],
   "6289668705354@s.whatsapp.net": [
     {
       "pattern": "*h*h*h*",
-      "replyMsg": "🤣😂😂😹"
+      "replyMsg": "🤣😂😂😹",
+      "type": "text"
     },
     {
       "pattern": "*hhh*",
-      "replyMsg": "🤣😂😂😹"
+      "replyMsg": "🤣😂😂😹",
+      "type": "text"
     },
     {
       "pattern": "*ha*h*",
-      "replyMsg": "🤣😂😹"
+      "replyMsg": "🤣😂😹",
+      "type": "text"
     }
   ],
   "6282293787977@s.whatsapp.net": [
     {
-      "pattern": "*gas*",
-      "replyMsg": "⛽"
+      "pattern": "*hu*i*",
+      "replyMsg": "Uhui",
+      "type": "text"
+    },
+    {
+      "pattern": "hh",
+      "replyMsg": "🤣",
+      "type": "text"
     },
     {
       "pattern": "hhh",
-      "replyMsg": "🤣"
+      "replyMsg": "🤣",
+      "type": "text"
+    },
+    {
+      "pattern": "*gas*",
+      "replyMsg": "⛽",
+      "type": "text"
     }
   ],
   "6282293787977-1527865416@g.us": [
     {
       "pattern": "*gas*",
-      "replyMsg": "⛽"
+      "replyMsg": "⛽",
+      "type": "text"
     },
     {
-      "pattern": "*ha*h*h*",
-      "replyMsg": "🤣😹😂"
-    },
-    {
-      "pattern": "*h*h*h*",
-      "replyMsg": "😹🤣😂"
+      "pattern": "*log*",
+      "replyMsg": "ok",
+      "type": "text"
     }
   ]
 }
