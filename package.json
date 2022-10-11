@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "npm run build && node dist/index.js",
+        "start:watch": "nodemon --exitcrash --watch dist --ext js,ts --exec node --no-warnings dist/index.js --color",
         "dev": "nodemon --exitcrash --watch src --ext js,ts --exec node --no-warnings --loader ts-node/esm src/index.ts --color",
         "build": "tsc",
         "format": "prettier --write --config .prettierrc \"src/**/*.ts\"",
