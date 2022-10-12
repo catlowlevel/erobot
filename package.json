@@ -9,6 +9,7 @@
         "dev": "nodemon --exitcrash --watch src --ext js,ts --exec node --no-warnings --loader ts-node/esm src/index.ts --color",
         "build": "tsc",
         "build:watch": "tsc -w",
+        "build:test": "tsc --noEmit",
         "format": "prettier --write --config .prettierrc \"src/**/*.ts\"",
         "check-updates": "ncu",
         "check-updates:upgrade": "ncu -u --filterVersion '^*'"
