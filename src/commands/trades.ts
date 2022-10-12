@@ -10,6 +10,7 @@ import { countDecimalPlaces, getPercentageChange } from "../helper/utils";
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
+        if (!this.client.binance) return console.log("binance is undefined");
         const binance = this.client.binance;
         const trades = binance.dbTrade.data;
         if (args.args.length && args.args[0] === "clean") {

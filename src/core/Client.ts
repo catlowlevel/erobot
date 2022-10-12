@@ -73,9 +73,14 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
                 }
             }, 500);
         });
-        this.binance = new BinanceClient(this, true);
+        if (process.env.BINANCE_APIKEY && process.env.BINANCE_APISECRET) this.binance = new BinanceClient(this, true);
+        else console.log("Binance env variable is not set!");
+
         this.samehadaku = new Samehadaku(this);
-        this.coindar = new Coindar(this);
+
+        if (process.env.COINDAR_ACCESSTOKEN && process.env.COINDAR_BASE_URL_API) this.coindar = new Coindar(this);
+        else console.log("Coindar env variable is not set!");
+
         this.log("Service loaded");
     }
 

@@ -11,6 +11,7 @@ export default class extends BaseCommand {
     name = "cancel";
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
         if (!M.quoted) return M.reply("Balas pesan yang ingin dibatalkan!");
+        if (!this.client.binance) return console.log("binance is undefined");
         const alerts = this.client.binance.db.data ?? [];
 
         const replyId = M.quoted.key.id;

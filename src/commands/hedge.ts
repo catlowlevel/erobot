@@ -12,6 +12,7 @@ import { Interval } from "../service/binance/binance";
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
+        if (!this.client.binance) return console.log("binance is undefined");
         let tf: Interval = "5m";
         let limit = 8;
 
