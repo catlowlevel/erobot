@@ -139,7 +139,7 @@
     }
   },
   "MATICUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -394,7 +394,7 @@
     }
   },
   "CTKUSDT": {
-    "countdown": 0,
+    "countdown": 10,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -463,7 +463,7 @@
     }
   },
   "SANDUSDT": {
-    "countdown": 0,
+    "countdown": 9,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -993,7 +993,7 @@
     }
   },
   "ONTUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1216,7 +1216,7 @@
     }
   },
   "DOGEUSDT": {
-    "countdown": 1,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1250,7 +1250,7 @@
     }
   },
   "AXSUSDT": {
-    "countdown": 0,
+    "countdown": 7,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -1882,7 +1882,7 @@
     }
   },
   "NEOUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -2318,7 +2318,7 @@
     }
   },
   "AUDIOUSDT": {
-    "countdown": 10,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -2556,7 +2556,7 @@
     }
   },
   "CELOUSDT": {
-    "countdown": 3,
+    "countdown": 0,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
@@ -3024,7 +3024,7 @@
     }
   },
   "WAVESUSDT": {
-    "countdown": 0,
+    "countdown": 8,
     "msg": {
       "key": {
         "remoteJid": "62895611963535-1631537374@g.us",
