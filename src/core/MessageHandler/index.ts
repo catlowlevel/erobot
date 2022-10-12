@@ -97,7 +97,7 @@ export class MessageHandler {
         return M.typing().then(async () => {
             try {
                 if (M.from !== this.client.user?.id) {
-                    this.client.readMessages([M.message.key]);
+                    M.markAsRead();
                 }
                 await command.execute(M, this.formatArgs(args));
                 const timeTaken = Date.now() - lastTime;
