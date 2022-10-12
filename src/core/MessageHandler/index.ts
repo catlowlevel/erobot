@@ -24,8 +24,8 @@ export interface ICommand {
     name: string;
     /**The client of WhatsApp */
     client: Client;
-    /**Handler of message */
     config: ICommandConfig;
+    /**Handler of message */
     handler: MessageHandler;
     /**Method for executing the command */
     execute(M: Message, args: IArgs): Promise<void | never>;
