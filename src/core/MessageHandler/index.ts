@@ -88,7 +88,7 @@ export class MessageHandler {
         }
         const cmd = args[0].toLowerCase().slice(prefix.length);
         const command = this.commands?.get(cmd) || this.aliases?.get(cmd);
-        if (!command) return M.reply("Perintah tidak dikenal!");
+        if (!command) return; //M.reply("Perintah tidak dikenal!");
         const color = getRandomColor();
         const color2 = getRandomColor();
         this.client.log(`Executing command ${chalk.keyword(color2)(cmd)} from ${title} by ${M.sender.username}`, color);
