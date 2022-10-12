@@ -238,7 +238,7 @@ export class BinanceClient {
                         type: 2,
                     },
                     {
-                        buttonText: { displayText: "Chart (5m)" },
+                        buttonText: { displayText: `${data.symbol} Chart (5m)` },
                         buttonId: `.tv 5m ${data.symbol}`,
                         type: 2,
                     },
