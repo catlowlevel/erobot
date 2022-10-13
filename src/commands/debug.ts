@@ -64,7 +64,7 @@ export default class extends BaseCommand {
             //});
             //});
 
-            const messages = await M.collectMessages({ timeout: 1000 * 30, max: 5, senderOnly: true }, (M) => {
+            const { messages } = await M.collectMessages({ timeout: 1000 * 30, max: 5, senderOnly: true }, (M) => {
                 M.reply(M.content);
                 return;
             });

@@ -18,13 +18,14 @@ export default class extends BaseCommand {
 
         const img = await readFile(image.path);
         await M.reply(img, "image", undefined, undefined, "Waktu menjawab : 30 detik");
-        const messages = await M.collectMessages({ timeout: 1000 * 30 }, async (M, done) => {
+        const { isTimeout } = await M.collectMessages({ timeout: 1000 * 30 }, async (M, stopCollect) => {
+            if (M.content.startsWith("nyerah")) stopCollect();
             if (M.content.toUpperCase() === image.name) {
                 await M.reply("Benar!");
-                done();
+                stopCollect();
             }
         });
-        if (messages.length === 0) return M.reply(`Waktu habis, jawaban yang benar\n${image.name}`);
+        if (isTimeout) return M.reply(`Waktu habis, jawaban yang benar\n${image.name}`);
         //else
         //return this.client.relayMessage(
         //    M.from,

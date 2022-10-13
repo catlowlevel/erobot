@@ -15,7 +15,7 @@ export default class extends BaseCommand {
         const trades = binance.dbTrade.data;
         if (args.args.length && args.args[0] === "clean") {
             await M.reply("Are you sure?\nReply with YES to confirm");
-            const messages = await M.collectMessages({ timeout: 1000 * 30, max: 1, senderOnly: true });
+            const { messages } = await M.collectMessages({ timeout: 1000 * 30, max: 1, senderOnly: true });
             if (messages.length <= 0) return M.reply("Request is not confirmed\nAborting...");
             const msg = messages[0];
             if (msg.content.toLowerCase() === "yes") {
