@@ -3,7 +3,7 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { ss } from "../lib/puppeteer";
+import { ssQueue } from "../lib/puppeteer";
 
 @Command("ss", {
     description: "",
@@ -32,7 +32,10 @@ export default class extends BaseCommand {
         }
         const url = urls.values().next().value;
         console.log("url", url);
-        const buffer = await ss(url, width, height);
+        const buffer = await ssQueue(url, width, height, (n) => {
+            console.log(n);
+            if (n > 0) M.reply(`Queue : ${n}`);
+        });
         return M.reply(buffer, "image");
     };
 }
