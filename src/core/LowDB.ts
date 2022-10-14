@@ -27,17 +27,18 @@ export class LowDB<T> implements Low<T> {
         this["read"] = this.low["read"];
 
         this.write().then(async () => {
+            let error: string | undefined;
             try {
                 await this.read();
             } catch (err) {
+                error = err;
                 console.log(`File ${filename} =>`, "Something went wrong while trying to read the file, resetting!"); //TODO: maybe make a backup first
+            } finally {
                 this.data ||= initialIfNull;
                 this.initialized = true;
-                await this.write();
+                onRead?.(this.data);
+                if (error) await this.write();
             }
-            this.data ||= initialIfNull;
-            this.initialized = true;
-            onRead?.(this.data);
         });
     }
 }
