@@ -32,6 +32,7 @@ export class LowDB<T> implements Low<T> {
             } catch (err) {
                 console.log(`File ${filename} =>`, "Something went wrong while trying to read the file, resetting!");
                 this.data ||= initialIfNull;
+                this.initialized = true;
                 await this.write();
             }
             this.data ||= initialIfNull;
