@@ -17,6 +17,7 @@ import TypedEmitter from "typed-emitter";
 // import { connect } from "mongoose";
 import { Boom } from "@hapi/boom";
 import chalk, { ChalkFunction } from "chalk";
+import { connect } from "mongoose";
 import nanoid from "nanoid";
 import { join } from "path";
 import P from "pino";
@@ -116,10 +117,11 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     public correctJid = (jid: string): string => `${jid.split("@")[0].split(":")[0]}@s.whatsapp.net`;
 
     async start() {
-        // if (!process.env.MONGO_URI) throw new Error("No mongo uri provided!");
-        // console.log("Connecting to database...");
-        // await connect(process.env.MONGO_URI);
-        // console.log("Connected to database!");
+        if (!process.env.MONGO_URI) throw new Error("No mongo uri provided!");
+        console.log("Connecting to database...");
+        await connect(process.env.MONGO_URI);
+        console.log("Connected to database!");
+
         const { saveCreds, state } = await useMultiFileAuthState(join(ROOT_DIR, "store", "auth"));
         // const { clearState, saveState, state } = await useDatabaseAuth();
         const { version, isLatest } = await fetchLatestBaileysVersion();

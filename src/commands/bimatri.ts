@@ -2,6 +2,7 @@ import { proto } from "@adiwajshing/baileys";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
+import { Databse } from "../core/Database";
 import { IArgs } from "../core/MessageHandler";
 import { timeSince } from "../helper/utils";
 import { Bimatri } from "../lib/bimatri";
@@ -15,6 +16,7 @@ type Options = ReturnType<Cmd["getOptions"]>;
     aliases: ["bima", "3", "tri"],
 })
 export default class Cmd extends BaseCommand {
+    database: Databse;
     async handleReset(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
@@ -52,8 +54,10 @@ export default class Cmd extends BaseCommand {
         }
         console.log("logoutResult", logoutResult);
         const numbers = logoutResult.map((d) => d.msisdn);
-        delete bima.db.data[M.sender.jid];
-        await bima.db.write();
+        const result = await this.database.bimaUser.deleteMany({ jid: M.sender.jid! });
+        console.log("result :>> ", result);
+        // delete bima.db.data[M.sender.jid];
+        // await bima.db.write();
         return confirmMsg.reply(`${numbers.join(", ")} berhasil dihapus dari database!`);
     }
     async handleGetAccount(M: Message, bima: Bimatri, opts: Options) {
@@ -61,9 +65,26 @@ export default class Cmd extends BaseCommand {
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
         if (!opts.nohp) return M.reply("No HP diperlukan!");
 
-        const data = bima.db.data[M.sender.jid];
-        const loginData = data.find((d) => d.msisdn === opts.nohp);
-        if (!loginData) return M.reply("Tidak dapat menemukan data!");
+        // const data = bima.db.data[M.sender.jid];
+        // const loginData = data.find((d) => d.msisdn === opts.nohp);
+        // if (!loginData) return M.reply("Tidak dapat menemukan data!");
+        const data = await this.database.bimaUser.findOne({ jidPlusId: `${M.sender.jid!}+${opts.nohp}` });
+        if (!data) return M.reply("Tidak dapat menemukan data!");
+        const loginData: LoginData = {
+            accessToken: data.accessToken,
+            appsflyerMsisdn: data.appsflyerMsisdn,
+            balance: data.balance,
+            callPlan: data.callPlan,
+            creditLimit: data.creditLimit,
+            language: data.language,
+            msisdn: data.msisdn,
+            profileColor: data.profileColor,
+            profileTime: data.profileTime,
+            secretKey: data.secretKey,
+            status: data.status,
+            subscriberType: data.subscriberType,
+        };
+
         return this.handleAccount(M, bima, loginData);
     }
     async handleAccount(M: Message, bima: Bimatri, loginData: LoginData) {
@@ -129,7 +150,7 @@ export default class Cmd extends BaseCommand {
     async handleAddNumber(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action!");
-        const data = bima.db.data[M.sender.jid];
+        const data = await this.database.bimaUser.find({ jid: M.sender.jid! });
         let numbers: string[] = [];
         if (data) {
             numbers = data.map((d) => d.msisdn);
@@ -154,6 +175,15 @@ export default class Cmd extends BaseCommand {
         const otp = otpMsg.content;
         try {
             const loginData = await bima.loginOtp(nohp, otp);
+            const bimaUser = new this.database.bimaUser({
+                ...loginData,
+                jidPlusId: `${M.sender.jid!}+${loginData.msisdn}`,
+                jid: M.sender.jid!,
+            });
+            console.log("Saving to database...");
+            await bimaUser.save();
+            console.log("Data saved to database!");
+
             if (!data) bima.db.data[M.sender.jid] = [];
             bima.db.data[M.sender.jid].push(loginData);
             await bima.db.write();
@@ -173,9 +203,12 @@ export default class Cmd extends BaseCommand {
     public override execute = async (M: Message, { args, flags }: IArgs): Promise<any> => {
         flags = flags.filter((f) => f.startsWith("--type") || f.startsWith("--id") || f.startsWith("--nohp"));
         if (!M.sender.jid) throw new Error("sender jid is not defined");
+        this.database = new Databse();
         const bima = new Bimatri();
         await bima.db.waitInit();
-        const data = bima.db.data[M.sender.jid];
+        // const data = bima.db.data[M.sender.jid];
+
+        const data = await this.database.bimaUser.find({ jid: M.sender.jid! });
 
         const opts = this.getOptions(flags);
         console.log("opts.id,M.sender.jid", opts.id, M.sender.jid);
@@ -213,11 +246,13 @@ export default class Cmd extends BaseCommand {
             rowId: `.bimatri --type=reset --id=${M.sender.jid}`,
         });
 
+        const dataAvailable = data.length > 0;
+
         return this.client.sendMessage(
             M.from,
             {
                 text,
-                buttons: data
+                buttons: dataAvailable
                     ? undefined
                     : [
                           {
@@ -226,7 +261,7 @@ export default class Cmd extends BaseCommand {
                               type: 0,
                           },
                       ],
-                sections: data ? sections : undefined,
+                sections: dataAvailable ? sections : undefined,
                 buttonText: "List Number",
             },
             { quoted: M.message }
