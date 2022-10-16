@@ -1,9 +1,9 @@
-import fetch from "node-fetch-commonjs";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { Apkmody } from "../lib/apkmody";
+import { downloadFile } from "../lib/downloader";
 
 @Command("apkmody", {
     description: "",
@@ -16,11 +16,15 @@ export default class extends BaseCommand {
         const name = args.context;
         console.log("name :>> ", name);
         const posts = await apkmody.search(name);
-        M.reply(`Mengunduh ${posts[0].title}\n${posts[0].version}`);
         const dl = await apkmody.getDownloadLink(posts[0].link);
-        console.log("dl :>> ", dl);
-        const arrayBuffer = await fetch(dl).then((res) => res.arrayBuffer());
-        const buffer = Buffer.from(arrayBuffer);
-        return M.reply(buffer, "document", undefined, "application/vnd.android.package-archive");
+        const url = await fetch(dl).then((r) => r.url);
+        console.log("url :>> ", url);
+        await downloadFile(url, async ({ fileName, size, sizeStr }) => {
+            await this.client.sendMessage(M.from, {
+                text: `Download *${fileName}*\nSize : *${sizeStr}*`,
+                buttons: [{ buttonText: { displayText: "Confirm" }, buttonId: `.download ${url}` }],
+            });
+            return false; // use download command to process the download
+        });
     };
 }
