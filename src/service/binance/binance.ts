@@ -128,11 +128,11 @@ export class BinanceClient {
                         }
                         const currentPrice = data.candles[data.candles.length - 1].close;
                         this.handleAlert(data.symbol, currentPrice);
-                        this.handleTrades(data.symbol, currentPrice);
+                        //this.handleTrades(data.symbol, currentPrice);
                         this.handlePnD(data.symbol, currentPrice); //Pump And Dump
                         //this.handleBnB(data); //Bullish And Bearish
                         //this.handleAvgPnD(data);
-                        this.handleAboveEma(data);
+                        //this.handleAboveEma(data);
 
                         this.evt.emit("streamedSymbol", {
                             symbol: data.symbol,
