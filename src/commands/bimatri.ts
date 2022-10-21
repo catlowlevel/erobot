@@ -3,8 +3,9 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { Databse } from "../core/Database";
+import { TBimaModel } from "../core/Database/Models/BimaUser";
 import { IArgs } from "../core/MessageHandler";
-import { timeSince } from "../helper/utils";
+import { formatNumber, timeSince } from "../helper/utils";
 import { Bimatri } from "../lib/bimatri";
 import { LoginData } from "../lib/bimatri/types";
 
@@ -16,8 +17,39 @@ type Options = ReturnType<Cmd["getOptions"]>;
     aliases: ["bima", "3", "tri"],
 })
 export default class Cmd extends BaseCommand {
+    handleListPaket(M: Message, bima: Bimatri, opts: Options): any {
+        const sections: proto.Message.ListMessage.ISection[] = [{ rows: [], title: "List Paket" }];
+        this.products.forEach((p) => {
+            sections[0].rows!.push({
+                title: `${p.name}`,
+                rowId: `.bimatri --type=beli --id=${M.sender.jid} --nohp=${opts.nohp} --productId=${p.id}`,
+                description: `Rp ${formatNumber(Number(p.price), 0)}`,
+            });
+        });
+        return this.client.sendMessage(M.from, { text: "Daftar paket", buttonText: "List Paket Murah", sections });
+    }
     async handleBeli(M: Message, bima: Bimatri, opts: Options) {
-        throw new Error("Method not implemented.");
+        if (!M.sender.jid) throw new Error("sender jid is not defined!");
+        if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
+        if (!opts.productId) return M.reply("Produk tidak tersedia!");
+        const product = await bima.checkProduct(opts.productId);
+        await M.reply(
+            `${product.product.productDescription}\n\nHarga => *Rp ${formatNumber(
+                Number(product.product.productPrice),
+                0
+            )}*\n\nBalas Y untuk konfirmasi`
+        );
+        const { messages, isTimeout } = await M.collectMessages({ timeout: 1000 * 30, senderOnly: true, max: 1 });
+        if (isTimeout || messages.length <= 0) return M.reply("Tidak dapat menkonfirmasi\nMembatalkan...");
+        const msg = messages[0];
+        if (!msg.content.toLowerCase().startsWith("y")) return M.reply("Membatalkan...");
+
+        const data = await this.database.bimaUser.find({ jid: M.sender.jid });
+        const current = data.find((d) => d.jidPlusId === `${M.sender.jid}+${opts.nohp}`);
+        if (!current) return M.reply(`Tidak dapat menemukan nomor ini : ${opts.nohp}`);
+        const loginData = this.toLoginData(current);
+        const result = await bima.beliPaket(loginData, opts.productId);
+        return M.reply(JSON.stringify(result, null, 2));
     }
     async handleRelog(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
@@ -25,6 +57,9 @@ export default class Cmd extends BaseCommand {
         const data = await this.database.bimaUser.find({ jid: M.sender.jid });
         const current = data.find((d) => d.jidPlusId === `${M.sender.jid}+${opts.nohp}`);
         if (!current) return M.reply(`Tidak dapat menemukan nomor ini : ${opts.nohp}`);
+        const loginData = this.toLoginData(current);
+        const result = await bima.logout(loginData);
+        console.log("result :>> ", result);
         return this.handleAddNumber(M, bima, opts);
     }
     async handleReset(M: Message, bima: Bimatri, opts: Options) {
@@ -132,6 +167,10 @@ export default class Cmd extends BaseCommand {
                             buttonText: { displayText: "Cek lagi" },
                             buttonId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
                         },
+                        {
+                            buttonText: { displayText: "List paket" },
+                            buttonId: `.bimatri --type=list-paket --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
+                        },
                     ],
                 },
                 { quoted: M.message }
@@ -208,14 +247,25 @@ export default class Cmd extends BaseCommand {
         }
     }
     getOptions(flags: string[]) {
-        const type = this.getFlag(flags, "--type", ["add-number", "get-account", "relog", "beli", "reset"]);
+        const type = this.getFlag(flags, "--type", [
+            "add-number",
+            "get-account",
+            "relog",
+            "list-paket",
+            "beli",
+            "reset",
+        ]);
         const id = this.getFlag(flags, "--id");
         const nohp = this.getFlag(flags, "--nohp");
-        return { type, id, nohp };
+        const productId = this.getFlag(flags, "--productId");
+        return { type, id, nohp, productId };
     }
 
     public override execute = async (M: Message, { args, flags }: IArgs): Promise<any> => {
-        flags = flags.filter((f) => f.startsWith("--type") || f.startsWith("--id") || f.startsWith("--nohp"));
+        flags = flags.filter(
+            (f) =>
+                f.startsWith("--type") || f.startsWith("--id") || f.startsWith("--nohp") || f.startsWith("--productId")
+        );
         if (!M.sender.jid) throw new Error("sender jid is not defined");
         this.database = new Databse();
         const bima = new Bimatri();
@@ -235,6 +285,9 @@ export default class Cmd extends BaseCommand {
             }
             case "relog": {
                 return this.handleRelog(M, bima, opts);
+            }
+            case "list-paket": {
+                return this.handleListPaket(M, bima, opts);
             }
             case "beli": {
                 return this.handleBeli(M, bima, opts);
@@ -288,6 +341,20 @@ export default class Cmd extends BaseCommand {
         );
     };
     database: Databse;
+    toLoginData = (data: TBimaModel): LoginData => ({
+        accessToken: data.accessToken,
+        appsflyerMsisdn: data.appsflyerMsisdn,
+        balance: data.balance,
+        callPlan: data.callPlan,
+        creditLimit: data.creditLimit,
+        language: data.language,
+        msisdn: data.msisdn,
+        profileColor: data.profileColor,
+        profileTime: data.profileTime,
+        secretKey: data.secretKey,
+        status: data.status,
+        subscriberType: data.subscriberType,
+    });
     products = [
         {
             name: "(NEW) 10GB 30 Hari",
