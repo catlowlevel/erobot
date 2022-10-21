@@ -16,7 +16,17 @@ type Options = ReturnType<Cmd["getOptions"]>;
     aliases: ["bima", "3", "tri"],
 })
 export default class Cmd extends BaseCommand {
-    database: Databse;
+    async handleBeli(M: Message, bima: Bimatri, opts: Options) {
+        throw new Error("Method not implemented.");
+    }
+    async handleRelog(M: Message, bima: Bimatri, opts: Options) {
+        if (!M.sender.jid) throw new Error("sender jid is not defined!");
+        if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
+        const data = await this.database.bimaUser.find({ jid: M.sender.jid });
+        const current = data.find((d) => d.jidPlusId === `${M.sender.jid}+${opts.nohp}`);
+        if (!current) return M.reply(`Tidak dapat menemukan nomor ini : ${opts.nohp}`);
+        return this.handleAddNumber(M, bima, opts);
+    }
     async handleReset(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
@@ -137,6 +147,10 @@ export default class Cmd extends BaseCommand {
                             buttonText: { displayText: "Coba lagi" },
                             buttonId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
                         },
+                        {
+                            buttonText: { displayText: "Relog" },
+                            buttonId: `.bimatri --type=relog --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
+                        },
                         //{
                         //buttonText: { displayText: "Relog" },
                         //buttonId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${loginData.msisdn}`,
@@ -194,7 +208,7 @@ export default class Cmd extends BaseCommand {
         }
     }
     getOptions(flags: string[]) {
-        const type = this.getFlag(flags, "--type", ["add-number", "get-account", "reset"]);
+        const type = this.getFlag(flags, "--type", ["add-number", "get-account", "relog", "beli", "reset"]);
         const id = this.getFlag(flags, "--id");
         const nohp = this.getFlag(flags, "--nohp");
         return { type, id, nohp };
@@ -218,6 +232,12 @@ export default class Cmd extends BaseCommand {
             }
             case "get-account": {
                 return this.handleGetAccount(M, bima, opts);
+            }
+            case "relog": {
+                return this.handleRelog(M, bima, opts);
+            }
+            case "beli": {
+                return this.handleBeli(M, bima, opts);
             }
             case "reset": {
                 return this.handleReset(M, bima, opts);
@@ -267,4 +287,102 @@ export default class Cmd extends BaseCommand {
             { quoted: M.message }
         );
     };
+    database: Databse;
+    products = [
+        {
+            name: "(NEW) 10GB 30 Hari",
+            id: "25245",
+            price: "15000",
+        },
+        {
+            name: "(NEW) 15GB 30 Hari",
+            id: "25459",
+            price: "20000",
+        },
+        {
+            name: "25GB 25rb (Diskon)",
+            id: "22648",
+            price: "25000",
+        },
+        {
+            name: "25GB 24 Jam 20 Hari",
+            id: "23160",
+            price: "25000",
+        },
+        {
+            name: "(NEW) 25GB 20 Hari",
+            id: "25254",
+            price: "25000",
+        },
+        {
+            name: "(NEW) 25GB 20 Hari",
+            id: "25264",
+            price: "25000",
+        },
+        {
+            name: "25GB 24 Jam 30 Hari",
+            id: "23164",
+            price: "29000",
+        },
+        {
+            name: "(NEW) 25GB 30 Hari",
+            id: "25267",
+            price: "29000",
+        },
+        {
+            name: "(NEW) 55GB 30 Hari",
+            id: "25469",
+            price: "50000",
+        },
+        {
+            name: "(NEW) 65GB 30 Hari",
+            id: "25690",
+            price: "60000",
+        },
+        {
+            name: "(NEW) 75GB 30 Hari",
+            id: "25247",
+            price: "75000",
+        },
+        {
+            name: "(NEW) 90GB 30 Hari",
+            id: "25476",
+            price: "90000",
+        },
+        {
+            name: "(NEW) 100GB 30 Hari",
+            id: "25693",
+            price: "90000",
+        },
+        {
+            name: "AON 20GB 55ribu",
+            id: "25340",
+            price: "55000",
+        },
+        {
+            name: "AON 50GB 99ribu",
+            id: "25341",
+            price: "99000",
+        },
+        {
+            name: "3GB 3hr 9rb (Lebih Murah)",
+            id: "22709",
+            price: "9000",
+        },
+        {
+            name: "52GB 65rb (Lebih Murah)",
+            id: "22707",
+            price: "65000",
+        },
+        {
+            name: "117GB 105rb (Lebih Murah)",
+            id: "22705",
+            price: "105000",
+        },
+        {
+            name: "150GB 135rb (Lebih Murah)",
+            id: "22704",
+            price: "135000",
+        },
+    ];
 }
