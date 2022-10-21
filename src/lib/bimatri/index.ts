@@ -1,6 +1,6 @@
 import { ROOT_DIR } from "../..";
 import { LowDB } from "../../core/LowDB";
-import { AccountData, Data, LoginData, OtpData } from "./types";
+import { AccountData, Data, LoginData, OtpData, ProductData } from "./types";
 
 type DBType = { [id: string]: LoginData[] };
 
@@ -19,6 +19,50 @@ export class Bimatri {
         //console.log("Done ");
         //});
         this.db = new LowDB<DBType>(`${ROOT_DIR}/json/bimatri.json`, {});
+    }
+    async beliPaket(loginData: LoginData, productId: string) {
+        const url = `https://bimaplus.tri.co.id/api/v1/purchase/purchase-product`;
+        const data = {
+            addonMenuCategory: "",
+            addonMenuSubCategory: "",
+            balance: "",
+            callPlan: loginData.callPlan,
+            deviceManufactur: "Samsung",
+            deviceModel: "SMG991B",
+            deviceOs: "Android",
+            imei: "Android 93488a982824b403",
+            language: 0,
+            menuCategory: "3",
+            menuCategoryName: "TriProduct",
+            menuIdSource: "",
+            menuSubCategory: "",
+            menuSubCategoryName: "",
+            msisdn: loginData.msisdn,
+            paymentMethod: "00",
+            productAddOnId: "",
+            productId: productId,
+            secretKey: loginData.secretKey,
+            servicePlan: "Default",
+            sms: true,
+            subscriberType: "Prepaid",
+            totalProductPrice: "",
+            utm: "",
+            utmCampaign: "",
+            utmContent: "",
+            utmMedium: "",
+            utmSource: "",
+            utmTerm: "",
+            vendorId: "11",
+        };
+        const response = await fetch(url, {
+            headers: {
+                "content-type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(data),
+        });
+        const json = await response.json();
+        return json;
     }
 
     async checkProduct(productId: string) {
