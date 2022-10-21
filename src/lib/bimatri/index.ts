@@ -21,6 +21,28 @@ export class Bimatri {
         this.db = new LowDB<DBType>(`${ROOT_DIR}/json/bimatri.json`, {});
     }
 
+    async checkProduct(productId: string) {
+        console.log(`Checking product id : ${productId}`);
+
+        const data = JSON.stringify({
+            imei: "WebSelfcare",
+            language: "",
+            callPlan: "",
+            msisdn: "",
+            secretKey: "",
+            subscriberType: "",
+            productId: productId,
+        });
+        const response = await fetch(`https://my.tri.co.id/apibima/product/product-detail`, {
+            headers: {
+                "content-type": "application/json",
+            },
+            method: "POST",
+            body: data,
+        });
+        const product = (await response.json()) as ProductData;
+        return product;
+    }
     async accountData(loginData: LoginData) {
         const url = "https://bima.tri.co.id/apibima/profile/profile";
         const { accessToken, appsflyerMsisdn, balance, creditLimit, profileColor, profileTime, status, ...rest } =

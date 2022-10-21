@@ -132,3 +132,82 @@ interface SumOfBonuses {
     Voice: string;
     SMS: string;
 }
+
+export interface ProductData {
+    rfu: boolean;
+    product: Product;
+    status: true;
+}
+
+interface Product {
+    productId: string;
+    productName: string;
+    productPrice: string;
+    productOriginalPrice: string;
+    productDescription: string;
+    productOtherInfo: null;
+    productHowTo: string;
+    productPricing: string;
+    productDetailsType: string;
+    productDetails: ProductDetails;
+    labelDescription: string;
+    labelHowTo: string;
+    labelPricing: string;
+    labelDetails: string;
+    labelOtherInfo: string;
+    buttonBuy: string;
+    bonstriPoints: null;
+    productRating: number;
+    productRatingTotalUser: number;
+    categoryId: null;
+    paymentMatrix: number[];
+    isRedirectToLink: boolean;
+    redirectLink: string;
+    isDownloadLink: boolean;
+    downloadLink: string;
+    metadata: { [key: string]: string };
+    vendorList: VendorList[];
+    paymentList: PaymentList[];
+    isInappBrowser: null;
+    isTransferable: number;
+    isShareable: number;
+    isAutoRenewable: number;
+    deeplink: null;
+    campaign: number;
+    tagDetail: null;
+    flagUrl: null;
+    flagType: null;
+    isArticle: boolean;
+    isBanner: boolean;
+    subMenuCategoryId: null;
+    articleTitle: null;
+    articleBody: null;
+    articleLayout: null;
+    isSquareBanner: null;
+    productLayout: null;
+    isInstallment: null;
+    isRedemption: boolean;
+    basePackage: null;
+    partnerId: null;
+    isProductRedirection: boolean;
+    isGamePartner: boolean;
+}
+
+interface PaymentList {
+    methodCode: string;
+    methodName: string;
+    rest: boolean;
+}
+
+interface ProductDetails {}
+
+interface VendorList {
+    vendorId: number;
+    vendorName: string;
+    priceList: PriceList[];
+}
+
+interface PriceList {
+    planName: string;
+    price: string;
+}
