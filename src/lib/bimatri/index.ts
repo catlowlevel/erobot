@@ -1,5 +1,6 @@
 import { ROOT_DIR } from "../..";
 import { LowDB } from "../../core/LowDB";
+import { extractNumber } from "../../helper/utils";
 import { AccountData, Data, LoginData, OtpData, ProductData } from "./types";
 
 type DBType = { [id: string]: LoginData[] };
@@ -20,32 +21,33 @@ export class Bimatri {
         //});
         this.db = new LowDB<DBType>(`${ROOT_DIR}/json/bimatri.json`, {});
     }
-    async beliPaket(loginData: LoginData, productId: string) {
+    async beliPaket(loginData: LoginData, product: ProductData) {
         const url = `https://bimaplus.tri.co.id/api/v1/purchase/purchase-product`;
         const data = {
             addonMenuCategory: "",
             addonMenuSubCategory: "",
-            balance: "",
+            balance: Number(extractNumber(loginData.balance)),
             callPlan: loginData.callPlan,
-            deviceManufactur: "Samsung",
-            deviceModel: "SMG991B",
+            deviceManufactur: "Xiaomi",
+            deviceModel: "M2102J20SG",
             deviceOs: "Android",
-            imei: "Android 93488a982824b403",
+            imei: "Android 4cfda44f4da0e587",
             language: 0,
-            menuCategory: "3",
-            menuCategoryName: "TriProduct",
+            menuCategory: "",
+            menuCategoryName: "",
             menuIdSource: "",
             menuSubCategory: "",
             menuSubCategoryName: "",
             msisdn: loginData.msisdn,
             paymentMethod: "00",
             productAddOnId: "",
-            productId: productId,
+            productId: product.product.productId,
+            productName: product.product.productName,
             secretKey: loginData.secretKey,
-            servicePlan: "Default",
+            servicePlan: product.product.vendorList[0].priceList[0].planName,
             sms: true,
-            subscriberType: "Prepaid",
-            totalProductPrice: "",
+            subscriberType: loginData.subscriberType,
+            totalProductPrice: Number(product.product.productPrice),
             utm: "",
             utmCampaign: "",
             utmContent: "",
@@ -54,9 +56,13 @@ export class Bimatri {
             utmTerm: "",
             vendorId: "11",
         };
+        console.log("data :>> ", data);
         const response = await fetch(url, {
             headers: {
                 "content-type": "application/json",
+                "Accept-Encoding": "gzip, deflate",
+                "User-Agent": "okhttp/4.9.0",
+                Host: "bimaplus.tri.co.id",
             },
             method: "POST",
             body: JSON.stringify(data),

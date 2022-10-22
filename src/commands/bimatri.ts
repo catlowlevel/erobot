@@ -48,7 +48,7 @@ export default class Cmd extends BaseCommand {
         const current = data.find((d) => d.jidPlusId === `${M.sender.jid}+${opts.nohp}`);
         if (!current) return M.reply(`Tidak dapat menemukan nomor ini : ${opts.nohp}`);
         const loginData = this.toLoginData(current);
-        const result = await bima.beliPaket(loginData, opts.productId);
+        const result = await bima.beliPaket(loginData, product);
         return M.reply(JSON.stringify(result, null, 2));
     }
     async handleRelog(M: Message, bima: Bimatri, opts: Options) {
