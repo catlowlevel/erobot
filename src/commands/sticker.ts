@@ -38,6 +38,7 @@ export default class extends BaseCommand {
         //     }
         // }
         let notImage = false;
+        let isSticker = false;
         if (M.type === "imageMessage" || M.type === "videoMessage") {
             notImage = M.type === "videoMessage";
             buffer = (await downloadMediaMessage(M.message, "buffer", {})) as Buffer;
@@ -45,11 +46,15 @@ export default class extends BaseCommand {
             const type = Object.keys(M.quoted.message)[0] as keyof proto.IMessage;
             // console.log("messageKeys", messageKeys);
             if (
-                (type === "videoMessage" || type === "imageMessage" || type === "documentMessage") &&
+                (type === "videoMessage" ||
+                    type === "imageMessage" ||
+                    type === "documentMessage" ||
+                    type === "stickerMessage") &&
                 (M.quoted.message[type]?.mimetype?.startsWith("image/") ||
                     M.quoted.message[type]?.mimetype?.startsWith("video/"))
             ) {
                 notImage = M.quoted.message[type]?.mimetype?.startsWith("video/") ?? false;
+                isSticker = type === "stickerMessage";
                 buffer = await M.downloadMediaMessage(M.quoted.message);
             } else return M.reply("Hanya gambar/video yang dapat diubah menjadi stiker!");
         } else return M.reply("Hanya gambar/video yang dapat diubah menjadi stiker!");
@@ -83,7 +88,7 @@ export default class extends BaseCommand {
             sticker.setQuality(30);
             M.reply("_Membuat sticker..._");
         } else {
-            sticker.setQuality(70);
+            if (!isSticker) sticker.setQuality(70);
         }
 
         const result = await new Promise<Buffer | string>(async (res) => {
