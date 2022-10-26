@@ -58,8 +58,15 @@ export default class Cmd extends BaseCommand {
         const current = data.find((d) => d.jidPlusId === `${M.sender.jid}+${opts.nohp}`);
         if (!current) return M.reply(`Tidak dapat menemukan nomor ini : ${opts.nohp}`);
         const loginData = this.toLoginData(current);
-        const result = await bima.logout(loginData);
-        console.log("result :>> ", result);
+        try {
+            console.log("Trying to logout...");
+            const result = await bima.logout(loginData);
+            console.log("result :>> ", result);
+        } catch (error) {
+            console.log("Logout failed!");
+        }
+        const result = await current.delete();
+        console.log("result", result);
         return this.handleAddNumber(M, bima, opts);
     }
     async handleReset(M: Message, bima: Bimatri, opts: Options) {
