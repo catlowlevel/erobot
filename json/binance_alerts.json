@@ -100,27 +100,40 @@
     "amGreater": true
   },
   {
-    "alertPrice": "20500.0",
+    "alertPrice": "19000.0",
     "symbol": "BTCUSDT",
     "done": false,
     "msg": {
       "key": {
-        "remoteJid": "120363023114788849@g.us",
+        "remoteJid": "6282293787977@s.whatsapp.net",
         "fromMe": false,
-        "id": "A1B98D5C09D29084C58E07E4D1D954DC",
-        "participant": "6282293787977@s.whatsapp.net"
+        "id": "8834175913961D5E76831436BABD3419"
       },
-      "messageTimestamp": 1664237792,
+      "messageTimestamp": 1666593750,
       "pushName": "-",
       "message": {
         "extendedTextMessage": {
-          "text": ".alert btc 20500",
+          "text": ".alert btc 19000",
           "previewType": "NONE",
+          "contextInfo": {
+            "expiration": 0,
+            "ephemeralSettingTimestamp": "1661312694",
+            "disappearingMode": {
+              "initiator": "CHANGED_IN_CHAT"
+            }
+          },
           "inviteLinkGroupTypeV2": "DEFAULT"
+        },
+        "messageContextInfo": {
+          "deviceListMetadata": {
+            "recipientKeyHash": "p7eaxNZixGWJDA==",
+            "recipientTimestamp": "1666532123"
+          },
+          "deviceListMetadataVersion": 2
         }
       }
     },
     "resolved": false,
-    "amGreater": true
+    "amGreater": false
   }
 ]
