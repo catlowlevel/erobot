@@ -1,10 +1,10 @@
 import { downloadMediaMessage, proto } from "@adiwajshing/baileys";
-import Sticker, { StickerTypes } from "wa-sticker-formatter/dist";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { toRoundedImage } from "../lib/canvas";
+import Sticker, { extractMetadata, StickerTypes } from "../lib/wa-sticker-formatter";
 
 @Command("sticker", {
     description: "Mengubah gambar menjadi sticker",
@@ -56,6 +56,10 @@ export default class extends BaseCommand {
                 notImage = M.quoted.message[type]?.mimetype?.startsWith("video/") ?? false;
                 isSticker = type === "stickerMessage";
                 buffer = await M.downloadMediaMessage(M.quoted.message);
+                if (isSticker) {
+                    const metaData = await extractMetadata(buffer);
+                    console.log("metaData", metaData);
+                }
             } else return M.reply("Hanya gambar/video yang dapat diubah menjadi stiker!");
         } else return M.reply("Hanya gambar/video yang dapat diubah menjadi stiker!");
 

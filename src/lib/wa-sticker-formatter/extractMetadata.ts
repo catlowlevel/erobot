@@ -1,0 +1,25 @@
+import { Image } from "node-webpmux";
+import { IRawMetadata } from ".";
+
+/**
+ * Extracts metadata from a WebP image.
+ * @param {Buffer}image - The image buffer to extract metadata from
+ */
+export const extractMetadata = async (image: Buffer): Promise<Partial<IRawMetadata>> => {
+    const img = new Image();
+    await img.load(image);
+    const exif = img.exif?.toString("utf-8") ?? "{}";
+    var bracesCount = exif.match(/{/g)?.length ?? 0;
+    if (bracesCount <= 0) {
+        console.log("bracesCount is 0");
+        return JSON.parse(exif.substring(exif.indexOf("{"), exif.lastIndexOf("}") + 1) ?? "{}") as IRawMetadata;
+    }
+
+    var index = 0;
+
+    for (let i = 0; i < bracesCount; i++) {
+        index = exif.indexOf("{", index + 1);
+    }
+
+    return JSON.parse(exif.substring(index, exif.lastIndexOf("}") + 1) ?? "{}") as IRawMetadata;
+};
