@@ -9,6 +9,7 @@ import { downloadFile } from "../lib/downloader";
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
+        const noConfirm = args.flags.filter((f) => f.startsWith("--no-confirm")).length > 0;
         const urls = getUrls(args.context);
         if (!urls) return M.reply("Url required!");
         const url = urls.values().next().value as string;
@@ -19,6 +20,14 @@ export default class extends BaseCommand {
             }
             if (size <= 0.5) {
                 M.reply(`Minimal size 500 KB\nFile size : *${sizeStr}*`);
+                return false;
+            }
+
+            if (!noConfirm) {
+                await this.client.sendMessage(M.from, {
+                    text: `Download *${fileName}*\nSize : *${sizeStr}*`,
+                    buttons: [{ buttonText: { displayText: "Confirm" }, buttonId: `.download ${url} --no-confirm` }],
+                });
                 return false;
             }
 

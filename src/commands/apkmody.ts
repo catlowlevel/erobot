@@ -22,7 +22,7 @@ export default class extends BaseCommand {
         await downloadFile(url, async ({ fileName, size, sizeStr }) => {
             await this.client.sendMessage(M.from, {
                 text: `Download *${fileName}*\nSize : *${sizeStr}*`,
-                buttons: [{ buttonText: { displayText: "Confirm" }, buttonId: `.download ${url}` }],
+                buttons: [{ buttonText: { displayText: "Confirm" }, buttonId: `.download ${url} --no-confirm` }],
             });
             return false; // use download command to process the download
         });
