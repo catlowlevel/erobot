@@ -26,7 +26,7 @@ export default class extends BaseCommand {
             return true;
         });
         if (!buffer) return;
-        await M.react("Download Completed\nUploading...");
+        await M.reply("Download Completed\nUploading...");
         M.reply(buffer, "document", undefined, mimeType, undefined, undefined, undefined, undefined, fileName);
     };
 }
