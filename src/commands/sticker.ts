@@ -1,5 +1,5 @@
 import { downloadMediaMessage, proto } from "@adiwajshing/baileys";
-import Sticker, { StickerTypes } from "wa-sticker-formatter/dist";
+import Sticker, { StickerTypes } from "wa-sticker-formatter";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
@@ -82,7 +82,11 @@ export default class extends BaseCommand {
         const author = args.args[0] || "";
         const packName = args.args[1] || "";
 
-        const sticker = new Sticker(buffer).setPack(packName).setAuthor(author).setType(StickerTypes.FULL);
+        const sticker = new Sticker(buffer)
+            .setPack(packName)
+            .setAuthor(author)
+            .setType(StickerTypes.FULL)
+            .setPlaystoreLink("https://play.google.com/store/apps/details?id=com.kiloo.subwaysurf");
         // .setQuality(70);
         if (notImage) {
             sticker.setQuality(30);

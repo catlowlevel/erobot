@@ -5061,10 +5061,9 @@ w3c-xmlserializer@^2.0.0:
   dependencies:
     xml-name-validator "^3.0.0"
 
-wa-sticker-formatter@^4.3.2:
+"wa-sticker-formatter@https://github.com/LZNOXP/wa-sticker-formatter/":
   version "4.3.2"
-  resolved "https://registry.yarnpkg.com/wa-sticker-formatter/-/wa-sticker-formatter-4.3.2.tgz#88c5bbb5266c696f7a82107fc6868c46f60fda50"
-  integrity sha512-PGSHmIXn20yds3t1bbTXMw/rayjoiDI7XOuYr6b9ZuqKN0JWH75LtF2a/KXZ2ePfjDPTGOzkSH70JaAfEModeQ==
+  resolved "https://github.com/LZNOXP/wa-sticker-formatter/#a71eb872dee0b8cb8a8d8147f64e25e3e20256b4"
   dependencies:
     axios "^0.21.1"
     file-type "^16.5.3"
