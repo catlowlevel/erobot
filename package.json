@@ -47,7 +47,6 @@
         "get-urls": "10.0.1",
         "mongoose": "^6.6.5",
         "nanoid": "2.1.11",
-        "node-fetch-commonjs": "^3.2.4",
         "p-map": "2.1.0",
         "pino": "^8.6.1",
         "pino-pretty": "^9.1.1",
@@ -60,6 +59,7 @@
         "tiktok-scraper": "^1.4.36",
         "timeago.js": "^4.0.2",
         "tradingview-ws": "^0.0.3",
+        "undici": "^5.12.0",
         "wa-sticker-formatter": "https://github.com/LZNOXP/wa-sticker-formatter/",
         "yt-dlp-wrap": "^2.3.11",
         "ytdl-core": "^4.11.2"
