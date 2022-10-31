@@ -1,7 +1,7 @@
 import { proto } from "@adiwajshing/baileys";
 import { JSONFile, Low } from "@commonify/lowdb";
 import * as cheerio from "cheerio";
-import fetch from "node-fetch-commonjs";
+import { fetch } from "undici";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
 import { extractNumber } from "../../helper/utils";

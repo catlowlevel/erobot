@@ -1,6 +1,6 @@
 import { load as Cheerio } from "cheerio";
-import fetch from "node-fetch-commonjs";
 import { connect, getCandles } from "tradingview-ws";
+import { fetch } from "undici";
 
 interface Data {
     symbol: string; //"BNBUSDT";

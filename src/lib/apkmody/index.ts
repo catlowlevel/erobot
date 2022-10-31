@@ -1,6 +1,6 @@
 import { load } from "cheerio";
 
-import fetch from "node-fetch-commonjs";
+import { fetch } from "undici";
 interface Post {
     title: string;
     version: string;

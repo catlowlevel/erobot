@@ -1,5 +1,5 @@
 import { JSONFile, Low } from "@commonify/lowdb";
-import fetch from "node-fetch-commonjs";
+import { fetch } from "undici";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
 

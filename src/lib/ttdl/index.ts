@@ -1,4 +1,4 @@
-import fetch from "node-fetch-commonjs";
+import { fetch } from "undici";
 
 interface Result {
     video?: Video;

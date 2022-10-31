@@ -1,5 +1,5 @@
-import fetch from "node-fetch-commonjs";
 import { getVideoMeta } from "tiktok-scraper";
+import { fetch } from "undici";
 
 export const downloadTiktok = async (url: string) => {
     url = await fetch(url).then((res) => res.url);

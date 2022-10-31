@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import fetch from "node-fetch-commonjs";
+import { fetch } from "undici";
 import { ROOT_DIR } from "../..";
 import { LowDB } from "../../core/LowDB";
 

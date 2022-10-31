@@ -1,6 +1,6 @@
 import { load } from "cheerio";
-import fetch from "node-fetch-commonjs";
 import { Stream } from "stream";
+import { fetch } from "undici";
 import YTDlpWrap from "yt-dlp-wrap";
 
 const ytdl = new YTDlpWrap();
