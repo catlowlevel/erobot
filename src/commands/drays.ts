@@ -78,7 +78,9 @@ export default class extends BaseCommand {
                                     title: d.subType,
                                     rowId: `.drays --type=download-link --url=${opts.url} --poster=${
                                         opts.poster
-                                    } --types=${key.split(" ").join("|")}::::${d.subType.split(" ").join("|")}`,
+                                    } --types=${key.split(" ").join("|")}::::${d.subType
+                                        .split(" ")
+                                        .join("|")}::::${d.server.split(" ").join("|")}`,
                                 };
                             });
                             return {
@@ -94,13 +96,16 @@ export default class extends BaseCommand {
                 console.log("opts", opts);
                 if (!opts.url) return M.reply("URL required!");
                 if (!opts.types) throw new Error("opts.types is not defined!");
-                const [type, subType] = opts.types.split("::::");
+                const [type, subType, server] = opts.types.split("::::");
                 console.log([type, subType]);
                 const details = await drays.getPostDetails(opts.url);
                 console.log("details", details);
 
                 const detail = details.dlData.find(
-                    (d) => d.type.split(" ").join("|") === type && d.subType.split(" ").join("|") === subType
+                    (d) =>
+                        d.type.split(" ").join("|") === type &&
+                        d.subType.split(" ").join("|") === subType &&
+                        d.server.split(" ").join("|") === server
                 );
                 if (!detail) return M.reply("Gagal mendapatkan download link!");
                 const link = await shortenUrl(detail.link);
