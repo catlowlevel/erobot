@@ -9,6 +9,7 @@ declare global {
       BINANCE_APISECRET: string;
       REMOVEBG_APIKEY: string;
       MONGO_URI: string;
+      BETA_CHARA_AI_TOKEN: string;
     }
   }
 }
