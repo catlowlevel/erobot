@@ -12,6 +12,7 @@ interface DBType {
 
 export class CharaAi {
     private token: string;
+    /** external_id */
     private historyId: string;
     private tgt: string;
     private cache: LowDB<DBType>;
@@ -52,8 +53,7 @@ export class CharaAi {
                 // "Sec-Fetch-Mode": "cors",
                 // "Sec-Fetch-Site": "same-origin",
             },
-            // referrer:
-            // "https://beta.character.ai/chat?char=UI68g1Msb3dinws1rin1unk2y97TizoZpYN5SHq0n-s",
+            // referrer: `https://beta.character.ai/chat?char=${this.charaId}`,
             body: JSON.stringify({
                 character_external_id: this.charaId,
                 // override_history_set: null,
@@ -90,6 +90,7 @@ export class CharaAi {
     /** Make sure to call create() method before calling this method */
     text = (text: string, streamCb?: (response: TextResponse) => void) => {
         if (!this.created) throw new Error("call create() before calling this method!");
+        console.log("sending text " + text);
         return fetch("https://beta.character.ai/chat/streaming/", {
             credentials: "include",
             headers: {
