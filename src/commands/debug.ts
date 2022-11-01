@@ -10,6 +10,9 @@ import { IArgs } from "../core/MessageHandler";
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<any> => {
+        if (args.args.length > 0 && args.args?.[0].startsWith("err")) {
+            throw new Error("debug error");
+        }
         if (args.args.length > 0 && args.args?.[0].startsWith("edit")) {
             const { imageMessage } = M.message.message!;
             const { caption, ...rest } = imageMessage!;
@@ -84,5 +87,9 @@ export default class extends BaseCommand {
             return;
         }
         console.log(JSON.stringify(M.message, null, 2));
+    };
+
+    public handleError = async (M: Message, err: Error): Promise<any> => {
+        return M.reply(err.message);
     };
 }

@@ -9,6 +9,9 @@ export class BaseCommand {
         throw new Error("Command method not implemented");
     };
 
+    public handleError = async (M: Message, err: any): Promise<void | never> => {
+        throw new Error("Handle error method not implemented");
+    };
     public client!: Client;
 
     public handler!: MessageHandler;

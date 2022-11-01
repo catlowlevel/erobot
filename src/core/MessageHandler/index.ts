@@ -29,6 +29,8 @@ export interface ICommand {
     handler: MessageHandler;
     /**Method for executing the command */
     execute(M: Message, args: IArgs): Promise<void | never>;
+    /**Method for catching error that exexcute throws */
+    handleError(M: Message, err: any): Promise<void | never>;
 }
 
 export class MessageHandler {
@@ -115,8 +117,16 @@ export class MessageHandler {
                     )}!\nReason : ${err}`,
                     "red"
                 );
-                console.trace(err);
-                await M.reply("Terjadi kesalahan.").catch(console.error);
+                // console.trace(err);
+                // if (command.handleError)
+                await command
+                    .handleError(M, err)
+                    .catch((error) => {
+                        console.log(`handle error throws an error : ${error}`);
+                        return M.reply("Terhadi kesalahan");
+                    })
+                    .catch(console.error);
+                // else await M.reply("Terjadi kesalahan.").catch(console.error);
             } finally {
                 return M.typingDone();
             }
