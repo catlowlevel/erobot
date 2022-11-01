@@ -78,7 +78,7 @@ export class MessageHandler {
     public handleMessage = (M: Message) => {
         const prefix = Message.PREFIX;
         const isCommand = M.isCommand; // calling this here is necessary
-        const args = M.content.split(/[ ,\n]/gm);
+        const args = M.content.split(" ");
         const title = M.chat === "group" ? M.groupMetadata?.subject || "Group" : "DM";
         if (!isCommand) {
             return M.simplify().then((M) => {
