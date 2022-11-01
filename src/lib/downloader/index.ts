@@ -11,7 +11,7 @@ export const downloadFile = async (
     // if (!contentLength) throw new Error(`This url is possibly not downloadable!\n${JSON.stringify(response)}`);
     const contentDisposition = response.headers.get("content-disposition");
     const parts = contentDisposition?.split(";");
-    let fileName = parts?.[1].split("=")[1];
+    let fileName = parts?.[1]?.split("=")[1];
     if (!fileName) fileName = url.substring(url.lastIndexOf("/") + 1);
     if (!fileName) fileName = generateRandomUniqueTag(10);
     console.log("filename :>> ", fileName);
