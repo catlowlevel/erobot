@@ -36,6 +36,11 @@ export default class extends BaseCommand {
         });
         if (!buffer) return;
         await M.reply("Download Completed\nUploading...");
-        M.reply(buffer, "document", undefined, mimeType, undefined, undefined, undefined, undefined, fileName);
+        const type: "text" | "image" | "video" | "audio" | "sticker" | "document" = mimeType.startsWith("video/")
+            ? "video"
+            : mimeType.startsWith("image/")
+            ? "image"
+            : "document";
+        return M.reply(buffer, type, undefined, mimeType, undefined, undefined, undefined, undefined, fileName);
     };
 }
