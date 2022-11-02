@@ -6,7 +6,7 @@ import { BaseCommand, Command, IArgs, Message } from "../core";
     aliases: ["del"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (!M.quoted) return M.reply("Quote a message!");
         await this.client.sendMessage(M.from, { delete: M.message.key });
         return this.client.sendMessage(M.from, { delete: M.quoted.key });

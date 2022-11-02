@@ -10,10 +10,12 @@ import { IArgs } from "../core/MessageHandler";
     aliases: ["p"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length > 0) {
             if (args.args[0].startsWith("all")) {
-                const groupMetadata = (await M.simplify()).groupMetadata!;
+                const groupMetadata = (await M.simplify()).groupMetadata;
+                if (!groupMetadata) return M.reply("Gagal mendapatkan informasi group!");
                 const participants = groupMetadata.participants.map((p) => p.id);
                 return this.client
                     .relayMessage(
@@ -116,12 +118,20 @@ export default class extends BaseCommand {
             }
             if (args.args[0].startsWith("q")) {
                 const count = Number(args.args[1]) ?? 2;
+                const proms = [];
                 for (let i = 0; i < count; i++) {
-                    this.client.sendMessageQueue(M.from, { text: "Pong! " + (i + 1) }, { quoted: M.message }, (msg) => {
-                        console.log(i, msg?.message?.extendedTextMessage?.text);
-                    });
+                    proms.push(
+                        this.client.sendMessageQueue(
+                            M.from,
+                            { text: "Pong! " + (i + 1) },
+                            { quoted: M.message },
+                            (msg) => {
+                                console.log(i, msg?.message?.extendedTextMessage?.text);
+                            }
+                        )
+                    );
                 }
-                return;
+                return Promise.all(proms);
             }
         }
 

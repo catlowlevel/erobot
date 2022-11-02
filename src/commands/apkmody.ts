@@ -11,7 +11,7 @@ import { downloadFile } from "../lib/downloader";
     usage: "",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length <= 0) return M.reply("Nama apk diperlukan!");
         const apkmody = new Apkmody();
         const name = args.context;

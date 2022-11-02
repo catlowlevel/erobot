@@ -28,9 +28,9 @@ export interface ICommand {
     /**Handler of message */
     handler: MessageHandler;
     /**Method for executing the command */
-    execute(M: Message, args: IArgs): Promise<void | never>;
+    execute(M: Message, args: IArgs): Promise<void | never | unknown>;
     /**Method for catching error that exexcute throws */
-    handleError(M: Message, err: any): Promise<void | never>;
+    handleError(M: Message, err: Error): Promise<void | never | unknown>;
 }
 
 export class MessageHandler {
@@ -50,6 +50,7 @@ export class MessageHandler {
     private loadCommand = (path: string) =>
         new Promise<void>((res) => {
             try {
+                // eslint-disable-next-line @typescript-eslint/no-var-requires
                 const command: BaseCommand = new (require(path).default)();
                 command.client = this.client;
                 command.handler = this;
@@ -128,7 +129,7 @@ export class MessageHandler {
                     .catch(console.error);
                 // else await M.reply("Terjadi kesalahan.").catch(console.error);
             } finally {
-                return M.typingDone();
+                await M.typingDone();
             }
         });
     };

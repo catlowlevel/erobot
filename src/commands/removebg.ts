@@ -11,7 +11,7 @@ import { removeBg } from "../lib/removebg";
     aliases: ["rebg", "remove", "nobg"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         try {
             if (!M.quoted) {
                 if (M.type !== "imageMessage") return M.reply("Image only!");

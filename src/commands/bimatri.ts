@@ -17,14 +17,16 @@ type Options = ReturnType<Cmd["getOptions"]>;
     aliases: ["bima", "3", "tri"],
 })
 export default class Cmd extends BaseCommand {
-    handleListPaket(M: Message, bima: Bimatri, opts: Options): any {
+    handleListPaket(M: Message, bima: Bimatri, opts: Options) {
         const sections: proto.Message.ListMessage.ISection[] = [{ rows: [], title: "List Paket" }];
         this.products.forEach((p) => {
-            sections[0].rows!.push({
-                title: `${p.name}`,
-                rowId: `.bimatri --type=beli --id=${M.sender.jid} --nohp=${opts.nohp} --productId=${p.id}`,
-                description: `Rp ${formatNumber(Number(p.price), 0)}`,
-            });
+            if (sections[0].rows) {
+                sections[0].rows.push({
+                    title: `${p.name}`,
+                    rowId: `.bimatri --type=beli --id=${M.sender.jid} --nohp=${opts.nohp} --productId=${p.id}`,
+                    description: `Rp ${formatNumber(Number(p.price), 0)}`,
+                });
+            }
         });
         return this.client.sendMessage(M.from, { text: "Daftar paket", buttonText: "List Paket Murah", sections });
     }
@@ -106,7 +108,7 @@ export default class Cmd extends BaseCommand {
         }
         console.log("logoutResult", logoutResult);
         const numbers = logoutResult.map((d) => d.msisdn);
-        const result = await this.database.bimaUser.deleteMany({ jid: M.sender.jid! });
+        const result = await this.database.bimaUser.deleteMany({ jid: M.sender.jid });
         console.log("result :>> ", result);
         // delete bima.db.data[M.sender.jid];
         // await bima.db.write();
@@ -120,7 +122,7 @@ export default class Cmd extends BaseCommand {
         // const data = bima.db.data[M.sender.jid];
         // const loginData = data.find((d) => d.msisdn === opts.nohp);
         // if (!loginData) return M.reply("Tidak dapat menemukan data!");
-        const data = await this.database.bimaUser.findOne({ jidPlusId: `${M.sender.jid!}+${opts.nohp}` });
+        const data = await this.database.bimaUser.findOne({ jidPlusId: `${M.sender.jid}+${opts.nohp}` });
         if (!data) return M.reply("Tidak dapat menemukan data!");
         const loginData: LoginData = {
             accessToken: data.accessToken,
@@ -210,7 +212,7 @@ export default class Cmd extends BaseCommand {
     async handleAddNumber(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action!");
-        const data = await this.database.bimaUser.find({ jid: M.sender.jid! });
+        const data = await this.database.bimaUser.find({ jid: M.sender.jid });
         let numbers: string[] = [];
         if (data) {
             numbers = data.map((d) => d.msisdn);
@@ -237,8 +239,8 @@ export default class Cmd extends BaseCommand {
             const loginData = await bima.loginOtp(nohp, otp);
             const bimaUser = new this.database.bimaUser({
                 ...loginData,
-                jidPlusId: `${M.sender.jid!}+${loginData.msisdn}`,
-                jid: M.sender.jid!,
+                jidPlusId: `${M.sender.jid}+${loginData.msisdn}`,
+                jid: M.sender.jid,
             });
             console.log("Saving to database...");
             await bimaUser.save();
@@ -268,7 +270,7 @@ export default class Cmd extends BaseCommand {
         return { type, id, nohp, productId };
     }
 
-    public override execute = async (M: Message, { args, flags }: IArgs): Promise<any> => {
+    public override execute = async (M: Message, { args, flags }: IArgs): Promise<unknown> => {
         flags = flags.filter(
             (f) =>
                 f.startsWith("--type") || f.startsWith("--id") || f.startsWith("--nohp") || f.startsWith("--productId")
@@ -279,7 +281,7 @@ export default class Cmd extends BaseCommand {
         await bima.db.waitInit();
         // const data = bima.db.data[M.sender.jid];
 
-        const data = await this.database.bimaUser.find({ jid: M.sender.jid! });
+        const data = await this.database.bimaUser.find({ jid: M.sender.jid });
 
         const opts = this.getOptions(flags);
         console.log("opts.id,M.sender.jid", opts.id, M.sender.jid);
@@ -302,29 +304,30 @@ export default class Cmd extends BaseCommand {
             case "reset": {
                 return this.handleReset(M, bima, opts);
             }
-
-            default: {
-            }
         }
 
-        let text = data?.length > 0 ? `Pilih nomor yang tersimpan` : "Kamu tidak punya nomor yang tersimpan!";
+        const text = data?.length > 0 ? `Pilih nomor yang tersimpan` : "Kamu tidak punya nomor yang tersimpan!";
 
         const sections: proto.Message.ListMessage.ISection[] = [{ rows: [], title: "Nomor tersimpan" }];
         data?.forEach((d) => {
-            sections[0].rows!.push({
-                title: d.msisdn,
-                rowId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${d.msisdn}`,
-            });
+            if (sections[0].rows) {
+                sections[0].rows.push({
+                    title: d.msisdn,
+                    rowId: `.bimatri --type=get-account --id=${M.sender.jid} --nohp=${d.msisdn}`,
+                });
+            }
         });
 
-        sections[0].rows!.push({
-            title: "Tambahkan nomor 3",
-            rowId: `.bimatri --type=add-number --id=${M.sender.jid}`,
-        });
-        sections[0].rows!.push({
-            title: "Reset",
-            rowId: `.bimatri --type=reset --id=${M.sender.jid}`,
-        });
+        if (sections[0].rows) {
+            sections[0].rows.push({
+                title: "Tambahkan nomor 3",
+                rowId: `.bimatri --type=add-number --id=${M.sender.jid}`,
+            });
+            sections[0].rows.push({
+                title: "Reset",
+                rowId: `.bimatri --type=reset --id=${M.sender.jid}`,
+            });
+        }
 
         const dataAvailable = data.length > 0;
 

@@ -20,7 +20,7 @@ export default class extends BaseCommand {
         return { url, quality, type };
     }
 
-    public override execute = async (M: Message, { args, flags }: IArgs): Promise<any> => {
+    public override execute = async (M: Message, { args, flags }: IArgs): Promise<unknown> => {
         if (args.length <= 0) return M.reply("No url provided!");
         const url = args[0];
         flags = flags.filter((f) => f.startsWith("--url=") || f.startsWith("--quality=") || f.startsWith("--type="));

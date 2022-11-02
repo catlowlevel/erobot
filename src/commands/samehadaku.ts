@@ -48,7 +48,7 @@ export default class extends BaseCommand {
         };
     }
 
-    public override execute = async (M: Message, { flags, args }: IArgs): Promise<any> => {
+    public override execute = async (M: Message, { flags, args }: IArgs): Promise<unknown> => {
         flags = flags.filter(
             (flag) => flag.startsWith("--url=") || flag.startsWith("--type=") || flag.startsWith("--title=")
         );

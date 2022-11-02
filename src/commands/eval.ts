@@ -10,12 +10,12 @@ import { IArgs } from "../core/MessageHandler";
 })
 export default class extends BaseCommand {
     //https://stackoverflow.com/a/40109254
-    evalInContext(scr: string, context: any) {
+    evalInContext(scr: string, context: unknown) {
         // execute script in private context
         //return new Function("with(this) { return " + scr + "}").call(context);
         return new Function("with(this) { return eval('" + scr + "'); }").call(context);
     }
-    public override execute = async (M: Message, { context }: IArgs): Promise<any> => {
+    public override execute = async (M: Message, { context }: IArgs): Promise<unknown> => {
         let out!: string;
         try {
             const obj = {
@@ -26,7 +26,7 @@ export default class extends BaseCommand {
             const result = this.evalInContext(context, obj);
             out = JSON.stringify(result, null, "\t") || "Evaluated JavaScript";
         } catch (error) {
-            out = (error as any).message;
+            out = (error as Error).message;
         }
         return M.reply(out);
     };

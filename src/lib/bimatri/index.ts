@@ -155,7 +155,7 @@ export class Bimatri {
             method: "POST",
         });
         if (response.status !== 200) throw new Error("Gagal login OTP!");
-        const result = (await response.json()) as any;
+        const result = (await response.json()) as LoginData | Data;
         if (!result.status) throw new Error("Terjadi kesalahan!" + " " + result.message);
 
         return result as LoginData;

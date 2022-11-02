@@ -12,7 +12,7 @@ import { toRoundedImage } from "../lib/canvas";
     aliases: ["s", "stiker"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         // console.log(JSON.stringify(M.quoted, null, 2), M.type);
         let buffer: Buffer | undefined;
         // if (M.quoted) {
@@ -95,13 +95,14 @@ export default class extends BaseCommand {
             if (!isSticker) sticker.setQuality(70);
         }
 
-        const result = await new Promise<Buffer | string>(async (res) => {
+        const result = await new Promise<Buffer | string>((res) => {
             const timeout = setTimeout(() => {
                 res("Waktu pemrosesan terlalu lama!\nMembatalkan...");
             }, 1000 * 30);
-            const buffer = await sticker.toBuffer();
-            clearTimeout(timeout);
-            res(buffer);
+            sticker.toBuffer().then((buffer) => {
+                clearTimeout(timeout);
+                res(buffer);
+            });
         });
         if (typeof result === "string") {
             return M.reply(result);

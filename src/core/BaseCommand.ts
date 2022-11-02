@@ -5,11 +5,11 @@ import { IArgs, ICommand, MessageHandler } from "./MessageHandler";
 export class BaseCommand {
     constructor(public name: string, public config: ICommand["config"]) {}
 
-    public execute = async (M: Message, args: IArgs): Promise<void | never> => {
+    public execute = async (M: Message, args: IArgs): Promise<void | never | unknown> => {
         throw new Error("Command method not implemented");
     };
 
-    public handleError = async (M: Message, err: any): Promise<void | never> => {
+    public handleError = async (M: Message, err: Error): Promise<void | never | unknown> => {
         throw new Error("Handle error method not implemented");
     };
     public client!: Client;

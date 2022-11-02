@@ -7,7 +7,7 @@ import { CharaAi } from "../lib/beta.character.ai/CharaAi";
     aliases: ["gai", "ai", "google"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, { context }: IArgs): Promise<any> => {
+    public override execute = async (M: Message, { context }: IArgs): Promise<unknown> => {
         if (!context) return M.reply("Tanyakan sesuatu...");
         const ai = new CharaAi("UI68g1Msb3dinws1rin1unk2y97TizoZpYN5SHq0n-s");
         await ai.create();

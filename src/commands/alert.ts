@@ -8,7 +8,7 @@ import { IArgs } from "../core/MessageHandler";
     usage: "alert [coin]",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const binance = this.client.binance;
         if (!binance) return console.log("binance is undefined");
         const symbols = (await binance.getFuturesSymbols()).map((s) => s.symbol);

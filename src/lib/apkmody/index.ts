@@ -9,7 +9,7 @@ interface Post {
 
 export class Apkmody {
     BASE = "https://apkmody.io/";
-    constructor() {}
+    // constructor() {}
 
     async getDownloadLink(postLink: Post["link"]) {
         const url = `${postLink}/download/0`;

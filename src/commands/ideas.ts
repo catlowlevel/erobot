@@ -13,7 +13,7 @@ import { getIdeas, getPrices, searchSymbol } from "../lib/tradingview/api";
     aliases: ["idea", "ide"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const result = await searchSymbol(args.args[0]);
         if (!result) throw new Error("Gagal mencari symbol!");
         if (result.length <= 0) return M.reply("Invalid symbol!");
@@ -27,7 +27,7 @@ export default class extends BaseCommand {
             shortenUrl(idea.data.published_url),
         ]);
         const imageBuffer = Buffer.from(imageArrayBuffer);
-        let message = `
+        const message = `
 		*${idea.data.short_name}* | $${price}\n
 		*Title* : ${idea.data.name}\n
 		*Date* : ${timeago(idea.timestamp * 1000)}\n

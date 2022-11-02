@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { proto } from "@adiwajshing/baileys";
-import binanceApiNode, { Binance, FuturesOrderType_LT, OrderSide_LT, PositionSide_LT, Symbol } from "binance-api-node";
+import binanceApiNode, {
+    Binance,
+    FuturesOrderType_LT,
+    OrderSide_LT,
+    PositionSide_LT,
+    Symbol as Simbol,
+} from "binance-api-node";
 import { debounce } from "debounce";
 import EventEmitter from "events";
 import nanoid from "nanoid";
@@ -70,9 +77,9 @@ export class BinanceClient {
 
     symbolData: Record<string, { leverage: number; pricePrecision: number; quantityPrecision: number }>;
 
-    private symbols: Symbol<FuturesOrderType_LT>[];
+    private symbols: Simbol<FuturesOrderType_LT>[];
     private streamingCandles = false;
-    constructor(public client: Client, streamCandles: boolean = false) {
+    constructor(public client: Client, streamCandles = false) {
         this.bullishDb = new LowDB<{ [symbol: string]: number }>(`${ROOT_DIR}/json/binance_bullish.json`, {});
         this.bullishEmaDb = new LowDB<{ [symbol: string]: { countdown: number; msg?: proto.IWebMessageInfo } }>(
             `${ROOT_DIR}/json/binance_bullish_ema.json`,
@@ -144,13 +151,7 @@ export class BinanceClient {
         }
     }
 
-    async addAlert(
-        symbol: string,
-        price: number,
-        msg: proto.IWebMessageInfo,
-        message?: string,
-        sendMessage: boolean = true
-    ) {
+    async addAlert(symbol: string, price: number, msg: proto.IWebMessageInfo, message?: string, sendMessage = true) {
         try {
             const data = await this.getSymbolData(symbol);
             const precision = this.symbolData[data.symbol].pricePrecision;
@@ -169,7 +170,7 @@ export class BinanceClient {
             const gap = getPercentageChange(price, data.currentPrice);
             return sendMessage
                 ? this.client.sendMessageQueue(
-                      msg.key.remoteJid!,
+                      msg.key.remoteJid,
                       {
                           text: `Alert added for ${symbol} at ${alert.alertPrice}\n${
                               alert.message ? `*${alert.message}*\n` : ``
@@ -305,7 +306,7 @@ export class BinanceClient {
                         text += `\nPeriod : ${period}`;
                     }
                     this.client
-                        .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
+                        .sendMessageQueue(trade.msg?.key.remoteJid, { text }, { quoted: trade.msg })
                         .then((msg) => {
                             trade.msg = msg;
                         })
@@ -351,7 +352,7 @@ export class BinanceClient {
                     }
 
                     this.client
-                        .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
+                        .sendMessageQueue(trade.msg?.key.remoteJid, { text }, { quoted: trade.msg })
                         .then((msg) => {
                             trade.msg = msg;
                         })
@@ -385,7 +386,7 @@ export class BinanceClient {
                     text += `\nCurrent Price : ${currentPrice}`;
                 }
                 this.client
-                    .sendMessageQueue(trade.msg?.key.remoteJid!, { text }, { quoted: trade.msg })
+                    .sendMessageQueue(trade.msg?.key.remoteJid, { text }, { quoted: trade.msg })
                     .then((msg) => {
                         trade.msg = msg;
                     })
@@ -552,7 +553,7 @@ export class BinanceClient {
             count++;
         });
         const avg = totalPercent / count;
-        const currentPercent = getPercentageChange(current!.close, current!.open);
+        const currentPercent = getPercentageChange(current.close, current.open);
 
         if (Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 10) {
             if (currentPercent > avg * 10) {
@@ -628,7 +629,7 @@ export class BinanceClient {
 
             let bullish = true;
             let count = 0; // error count
-            let MAX_INDEX = 7;
+            const MAX_INDEX = 7;
             const candles = data.candles
                 .slice(0)
                 .reverse()
@@ -734,7 +735,7 @@ export class BinanceClient {
                 alert.done = true;
                 this.client
                     .sendMessageQueue(
-                        alert.msg.key.remoteJid!,
+                        alert.msg.key.remoteJid,
                         {
                             // text: `Alert for ${symbol} at ${alertPrice} triggered at ${currentPrice}`,
                             text: `⏰ Alert triggered! ⏰\nFor ${symbol} at ${alertPrice}\n${
@@ -927,6 +928,7 @@ export class BinanceClient {
     ) {
         const positionSide: PositionSide_LT = side === "BUY" ? "LONG" : "SHORT";
         const oppositeSide: OrderSide_LT = side === "BUY" ? "SELL" : "BUY";
+        // eslint-disable-next-line @typescript-eslint/ban-types
         const ordersResult: { limit?: {}; sl?: {}; tp?: {} } = {};
         const order = await this.binanceClient.futuresOrder({
             symbol: symbol,
@@ -970,7 +972,7 @@ export class BinanceClient {
     }
 
     public get pnd() {
-        return this.dbPnd.data!;
+        return this.dbPnd.data;
     }
 
     public get MAX_CANDLE_LIMIT() {

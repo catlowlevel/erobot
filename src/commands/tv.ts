@@ -11,12 +11,12 @@ import { getPrices, searchSymbol } from "../lib/tradingview/api";
     aliases: ["chart"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length <= 0) return M.reply("Invalid arguments!");
         M.reply("_Wait..._");
-        let data: { symbol: string; description: string }[] = [];
+        const data: { symbol: string; description: string }[] = [];
         let tf = "1h";
-        let indicators: string[] = [];
+        const indicators: string[] = [];
         for (let arg of args.args) {
             arg = arg.toLowerCase();
             console.log("arg :>> ", arg);

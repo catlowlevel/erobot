@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { BaseCommand } from "./BaseCommand";
 import { ICommand } from "./MessageHandler";
 

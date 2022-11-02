@@ -9,7 +9,7 @@ import { BaseCommand, Command, IArgs, Message } from "../core";
     aliases: ["tg"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const paths = resolve(...[ROOT_DIR, "assets", "tebakgambar"]);
         const files = await readdir(paths);
         const images = files.map((file) => ({ path: join(...[paths, file]), name: file.split("@").join(" ") }));

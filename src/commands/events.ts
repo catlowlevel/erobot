@@ -14,7 +14,7 @@ export default class extends BaseCommand {
     get coindar() {
         return this.client.coindar;
     }
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (!this.client.coindar) return console.log("coindar is undefined");
         const coins: Coin[] = [];
         for (const arg of args.args) {

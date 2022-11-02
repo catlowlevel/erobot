@@ -9,7 +9,7 @@ import { shortenUrl } from "../lib/bitly/api";
     usage: "bitly [url]",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length <= 0) return M.reply("No url provided!");
         const url = args.args[0];
         const shorten = await shortenUrl(url);

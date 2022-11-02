@@ -12,13 +12,13 @@ import { tiktokDl } from "../lib/ttdl";
     aliases: ["tiktok"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length <= 0) return M.reply("Link diperlukan!");
         const urls = getUrls(args.context);
         if (!urls) return M.reply("Url required!");
         const url = urls.values().next().value as string;
         console.log("urls", urls);
-        const ttdl = await tiktokDl(url);
+        const ttdl = await tiktokDl(url, "dddtik");
         console.log("result", ttdl);
         if (ttdl.error) return M.reply(ttdl.error);
         if (!ttdl.video) throw new Error("ttdl.video is undefined");

@@ -38,7 +38,8 @@ export class Coindar {
     private db: Low<DB>;
 
     public get coins(): Coin[] {
-        return this.db.data?.coins!;
+        if (!this.db.data) throw new Error("db.data is not defined!");
+        return this.db.data.coins;
     }
 
     constructor(private client: Client) {

@@ -10,7 +10,7 @@ import { ssQueue } from "../lib/puppeteer";
     usage: "",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const urls = getUrls(args.context);
         if (urls.size <= 0) return M.reply("Url required!");
         let width = 1200;
@@ -20,14 +20,18 @@ export default class extends BaseCommand {
                 try {
                     const value = arg.split(":")[1];
                     width = Number(value);
-                } catch {}
+                } catch {
+                    continue;
+                }
             }
 
             if (arg.startsWith("h:")) {
                 try {
                     const value = arg.split(":")[1];
                     height = Number(value);
-                } catch {}
+                } catch {
+                    continue;
+                }
             }
         }
         const url = urls.values().next().value;

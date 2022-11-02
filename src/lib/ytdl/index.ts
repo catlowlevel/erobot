@@ -6,7 +6,7 @@ import YTDlpWrap from "yt-dlp-wrap";
 const ytdl = new YTDlpWrap();
 async function stream2buffer(stream: Stream): Promise<Buffer> {
     return new Promise<Buffer>((resolve, reject) => {
-        const _buf = Array<any>();
+        const _buf = Array<Uint8Array>();
 
         stream.on("data", (chunk) => _buf.push(chunk));
         stream.on("end", () => resolve(Buffer.concat(_buf)));
@@ -41,7 +41,7 @@ const convertUrlVideos = async (link: string) => {
         console.log("name,content :>> ", name, content);
         console.log(JSON.stringify($(el).attr(), null, 2));
         if (name === "twitter:player") {
-            href = content!;
+            href = content || "";
         }
     });
     const idx = href.indexOf("href=");
