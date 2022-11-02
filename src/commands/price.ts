@@ -10,7 +10,7 @@ import { getPrices, searchSymbol } from "../lib/tradingview/api";
     usage: "price [coin]",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const searchProms = args.args.map(async (arg) => {
             const data = await searchSymbol(arg, "BINANCE");
             if (data.length <= 0) return "";

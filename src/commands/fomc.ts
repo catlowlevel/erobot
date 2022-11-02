@@ -9,7 +9,7 @@ import { getCalendar } from "../lib/investing/api";
     usage: "fomc",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const results = await getCalendar();
         const upcoming = results.filter((r) => new Date(r.date).getDate() === new Date().getDate());
         const usd = upcoming.filter((u) => u.economy === "USD");

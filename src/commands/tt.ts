@@ -12,7 +12,7 @@ import { tiktokDl } from "../lib/ttdl";
     aliases: ["tiktok"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length <= 0) return M.reply("Link diperlukan!");
         const urls = getUrls(args.context);
         if (!urls) return M.reply("Url required!");

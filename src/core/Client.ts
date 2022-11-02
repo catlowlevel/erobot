@@ -91,19 +91,24 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     }
 
     sendMessageQueue(
-        jid: string,
+        jid: string | undefined | null,
         content: AnyMessageContent,
         options?: MiscMessageGenerationOptions | undefined,
         sentCb?: (msg: proto.WebMessageInfo) => void
     ) {
+        if (!jid) throw new Error("jid is undefined!");
         return new Promise<proto.WebMessageInfo>((res, rej) => {
             this.msgQueue.push((cb) => {
                 this.client
                     .sendMessage(jid, content, options)
                     .then((msg) => {
-                        sentCb?.(msg!);
-                        res(msg!);
-                        cb?.();
+                        if (msg) {
+                            sentCb?.(msg);
+                            res(msg);
+                            cb?.();
+                        } else {
+                            throw new Error("msg is undefined");
+                        }
                     })
                     .catch((err) => {
                         console.log("error on messageQueue", err);
@@ -150,8 +155,10 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             getMessage: async (key) => {
                 this.log("Handling retries!", "red");
                 if (this.store) {
-                    const msg = await this.store.loadMessage(key.remoteJid!, key.id!);
-                    return msg?.message || undefined;
+                    if (key.remoteJid && key.id) {
+                        const msg = await this.store.loadMessage(key.remoteJid, key.id);
+                        return msg?.message || undefined;
+                    }
                 }
 
                 // only if store is present
@@ -168,10 +175,10 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             for (const message of messages) {
                 const M: Message = new Message(message, this);
 
-                // if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return void null;
+                // if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return null;
 
-                if (type !== "notify") return void null;
-                if (message.key.remoteJid === "status@broadcast") return void null;
+                if (type !== "notify") return null;
+                if (message.key.remoteJid === "status@broadcast") return null;
 
                 if (M.stubType && M.stubParameters) {
                     const emitParticipantsUpdate = (action: ParticipantAction): boolean =>
@@ -182,24 +189,24 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
                         });
                     switch (M.stubType) {
                         case proto.WebMessageInfo.StubType.GROUP_CREATE:
-                            return void this.emit("new_group_joined", {
+                            return this.emit("new_group_joined", {
                                 jid: M.from,
                                 subject: M.stubParameters[0],
                             });
                         case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD:
                         case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
                         case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_INVITE:
-                            return void emitParticipantsUpdate("add");
+                            return emitParticipantsUpdate("add");
                         case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_LEAVE:
                         case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_REMOVE:
-                            return void emitParticipantsUpdate("remove");
+                            return emitParticipantsUpdate("remove");
                         case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_DEMOTE:
-                            return void emitParticipantsUpdate("demote");
+                            return emitParticipantsUpdate("demote");
                         case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_PROMOTE:
-                            return void emitParticipantsUpdate("promote");
+                            return emitParticipantsUpdate("promote");
                     }
                 }
-                return void this.emit("new_message", M);
+                return this.emit("new_message", M);
             }
         });
         this.client.ev.on("connection.update", (update) => {

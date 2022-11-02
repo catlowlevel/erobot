@@ -9,7 +9,7 @@ import { countDecimalPlaces, getPercentageChange } from "../helper/utils";
     usage: "",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (!this.client.binance) return console.log("binance is undefined");
         const binance = this.client.binance;
         const trades = binance.dbTrade.data;
@@ -42,7 +42,7 @@ export default class extends BaseCommand {
             .filter((t) => {
                 const current = candles.find((c) => c.symbol === t.symbol);
                 if (!current) return false;
-                const jid = t.msg?.key.remoteJid!;
+                const jid = t.msg?.key.remoteJid;
                 if (jid !== M.from) return false;
                 if (t.sl.hit) return false;
                 if (!current) {
@@ -56,7 +56,8 @@ export default class extends BaseCommand {
                 return true;
             })
             .map((t) => {
-                const current = candles.find((c) => c.symbol === t.symbol)!;
+                const current = candles.find((c) => c.symbol === t.symbol);
+                if (!current) throw new Error("current is undefined!");
                 const currentPrice = current.candles[current.candles.length - 1].close;
                 const precision = countDecimalPlaces(currentPrice);
                 const hitEntry = t.entries.some((a) => a.hit);

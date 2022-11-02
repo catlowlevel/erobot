@@ -10,6 +10,6 @@ export const shortenUrl = async (url: string): Promise<string> => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ long_url: url }),
-        }).then((res) => res.json())) as any
+        }).then((res) => res.json())) as { link: string }
     ).link;
 };

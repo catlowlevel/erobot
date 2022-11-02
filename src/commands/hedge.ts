@@ -11,7 +11,7 @@ import { Interval } from "../service/binance/binance";
     usage: "",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (!this.client.binance) return console.log("binance is undefined");
         let tf: Interval = "5m";
         let limit = 8;
@@ -24,7 +24,9 @@ export default class extends BaseCommand {
             try {
                 limit = Number(arg);
                 continue;
-            } catch (error) {}
+            } catch (error) {
+                continue;
+            }
         }
         if (limit > this.client.binance.MAX_CANDLE_LIMIT) return M.reply("Maximal candle 500!");
 

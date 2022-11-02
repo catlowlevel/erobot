@@ -9,7 +9,7 @@ import { IArgs } from "../core/MessageHandler";
 })
 export default class extends BaseCommand {
     name = "cancel";
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (!M.quoted) return M.reply("Balas pesan yang ingin dibatalkan!");
         if (!this.client.binance) return console.log("binance is undefined");
         const alerts = this.client.binance.db.data ?? [];
@@ -22,7 +22,7 @@ export default class extends BaseCommand {
         });
         if (!alert) return M.reply("Tidak dapat membatalkan pesan ini!");
 
-        this.client.binance.db.data = this.client.binance.db.data!.filter((al) => al.msg.key.id !== alert.msg.key.id);
+        this.client.binance.db.data = this.client.binance.db.data.filter((al) => al.msg.key.id !== alert.msg.key.id);
         this.client.binance.db.write().then(() => {
             console.log("Alert deleted");
         });

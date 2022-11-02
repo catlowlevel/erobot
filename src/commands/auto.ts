@@ -9,7 +9,7 @@ import { quoted } from "../helper/utils";
     usage: "",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, { args }: IArgs): Promise<any> => {
+    public override execute = async (M: Message, { args }: IArgs): Promise<unknown> => {
         if (args.length <= 0)
             return M.reply(
                 `Pattern and Repply message required!, "<pattern>" "<reply message>" (put inside double quotes)\nEx : .auto "*bird" "bluebird"`
@@ -18,12 +18,10 @@ export default class extends BaseCommand {
         const db = this.handler.autoReply.db;
         if (!db.data[M.from]) db.data[M.from] = [];
 
-        const isQuoted = M.quoted !== undefined;
-
         const [pattern, replyMsg] = quoted(M.content);
         if (!pattern) return M.reply("Pattern required");
-        if (isQuoted) {
-            const quotedMsg = M.quoted!;
+        if (M.quoted) {
+            const quotedMsg = M.quoted;
             const isText = quotedMsg.type === "conversation";
             if (!isText) return M.reply("Text only!");
             const text = quotedMsg.message.conversation;

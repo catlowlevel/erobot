@@ -52,7 +52,7 @@ export interface AccountData {
     email: string;
     customerSegmentation: CustomerSegmentation;
     statusSubscription: boolean;
-    packageProductList: any[];
+    packageProductList: unknown[];
     activePackages: null;
     subscriberType: string;
     emailHybrid: string;
@@ -149,7 +149,7 @@ interface Product {
     productHowTo: string;
     productPricing: string;
     productDetailsType: string;
-    productDetails: ProductDetails;
+    productDetails: unknown;
     labelDescription: string;
     labelHowTo: string;
     labelPricing: string;
@@ -199,7 +199,7 @@ interface PaymentList {
     rest: boolean;
 }
 
-interface ProductDetails {}
+// interface ProductDetails {}
 
 interface VendorList {
     vendorId: number;

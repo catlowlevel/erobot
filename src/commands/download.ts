@@ -8,7 +8,7 @@ import { downloadFile } from "../lib/downloader";
     aliases: ["dl", "u2f"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const noConfirm = args.flags.filter((f) => f.startsWith("--no-confirm")).length > 0;
         const urls = getUrls(args.context);
         if (!urls) return M.reply("Url required!");

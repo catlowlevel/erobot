@@ -20,7 +20,7 @@ interface CollectOption {
     senderOnly?: boolean;
 }
 
-type NewMessageType = (M: Message, stopCollect: (dontCollect?: boolean) => void) => any | Promise<any>;
+type NewMessageType = (M: Message, stopCollect: (dontCollect?: boolean) => void) => void | Promise<void>;
 
 export class Message {
     static PREFIX = ".";
@@ -151,7 +151,7 @@ export class Message {
 
             const messageHandler = async (M: Message) => {
                 if (options.senderOnly) {
-                    if (M.sender.jid !== this.sender.jid) return void null;
+                    if (M.sender.jid !== this.sender.jid) return null;
                 }
                 M.markAsRead();
                 const addNewMessage = () => {
@@ -331,6 +331,7 @@ export class Message {
                 msg = message.viewOnceMessage?.message;
                 type = Object.keys(msg || {})[0] as MessageType;
             } else type = Object.keys(msg || {})[1] as MessageType;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             msg = (msg as any)[type];
         }
         const stream = await downloadContentFromMessage(

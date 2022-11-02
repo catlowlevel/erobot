@@ -30,7 +30,7 @@ export class CharaAi {
         this.tgt = tgt;
     };
 
-    create = async (createNew: boolean = false) => {
+    create = async (createNew = false) => {
         if (!createNew) {
             await this.cache.waitInit();
             const cache = this.cache.data[this.charaId];

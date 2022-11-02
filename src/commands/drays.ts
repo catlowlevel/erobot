@@ -20,7 +20,7 @@ export default class extends BaseCommand {
         const types = this.getFlag(flags, "--types");
         return { type, url, poster, types };
     }
-    public override execute = async (M: Message, { flags, args }: IArgs): Promise<any> => {
+    public override execute = async (M: Message, { flags, args }: IArgs): Promise<unknown> => {
         flags = flags.filter(
             (f) =>
                 f.startsWith("--type") || f.startsWith("--url") || f.startsWith("--poster") || f.startsWith("--types")
@@ -40,7 +40,7 @@ export default class extends BaseCommand {
                         "https://assets.kompasiana.com/items/album/2021/08/14/images-6117992706310e0d285e54d2.jpeg?t=t&v=260"
                 ).then((r) => r.arrayBuffer());
                 const posterBuffer = Buffer.from(arrayBuffer);
-                let text = `*${details.runTime}* | *${details.country}*\n====== *Synopsis* ======\n\n${details.synopsis}`;
+                const text = `*${details.runTime}* | *${details.country}*\n====== *Synopsis* ======\n\n${details.synopsis}`;
                 return this.client.sendMessage(
                     M.from,
                     {

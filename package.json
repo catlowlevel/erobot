@@ -10,6 +10,7 @@
         "build": "tsc",
         "build:watch": "tsc -w",
         "build:test": "tsc --noEmit",
+        "lint": "yarn eslint .",
         "format": "prettier --write --config .prettierrc \"src/**/*.ts\"",
         "check-updates": "ncu",
         "check-updates:upgrade": "ncu -u --filterVersion '^*'"
@@ -20,6 +21,9 @@
     "devDependencies": {
         "@types/nanoid": "^2.1.0",
         "@types/node": "^18.11.0",
+        "@typescript-eslint/eslint-plugin": "^5.42.0",
+        "@typescript-eslint/parser": "^5.42.0",
+        "eslint": "^8.26.0",
         "input": "^1.0.1",
         "nodemon": "^2.0.20",
         "npm-check-updates": "^16.3.11",
@@ -34,6 +38,7 @@
         "@adiwajshing/keyed-db": "^0.2.4",
         "@commonify/lowdb": "^3.0.0",
         "@hapi/boom": "^10.0.0",
+        "@shineiichijo/nhentai-ts": "^1.0.0",
         "@typegoose/typegoose": "^9.12.1",
         "@types/debounce": "^1.2.1",
         "@types/node": "^18.11.0",

@@ -10,7 +10,7 @@ import { downloadFacebook } from "../lib/ytdl";
     aliases: ["facebook"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length <= 0) return M.reply("Link diperlukan!");
         const url = args.args[0];
         console.log("url :>> ", url);

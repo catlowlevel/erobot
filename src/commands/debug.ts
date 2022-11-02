@@ -9,14 +9,14 @@ import { IArgs } from "../core/MessageHandler";
     usage: "",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length > 0 && args.args?.[0].startsWith("err")) {
             throw new Error("debug error");
         }
         if (args.args.length > 0 && args.args?.[0].startsWith("edit")) {
-            const { imageMessage } = M.message.message!;
-            const { caption, ...rest } = imageMessage!;
-            return this.client.relayMessage(M.from, { imageMessage: { ...rest, caption: args.args[1] } }, {});
+            if (!M.message.message) throw new Error("message is undefined!");
+            const { imageMessage } = M.message.message;
+            return this.client.relayMessage(M.from, { imageMessage: { ...imageMessage, caption: args.args[1] } }, {});
         }
         if (args.args.length > 0 && args.args?.[0].startsWith("trace")) {
             if (!M.quoted) return M.reply("Quote a message!");
@@ -25,7 +25,7 @@ export default class extends BaseCommand {
             for (const arg of args.args) {
                 depth = Number(arg);
                 console.log("depth", depth);
-                if (depth === NaN) depth = 1;
+                if (isNaN(depth)) depth = 1;
             }
 
             let msg = this.client.getMessageFromStore(M.from, M.quoted.key.id);
@@ -89,7 +89,7 @@ export default class extends BaseCommand {
         console.log(JSON.stringify(M.message, null, 2));
     };
 
-    public handleError = async (M: Message, err: Error): Promise<any> => {
+    public handleError = async (M: Message, err: Error): Promise<unknown> => {
         return M.reply(err.message);
     };
 }

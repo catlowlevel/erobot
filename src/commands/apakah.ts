@@ -8,7 +8,7 @@ import { IArgs } from "../core/MessageHandler";
     usage: "",
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length <= 0) return M.reply("apaan?");
         const answers = ["iya", "tidak", "mungkin iya", "mungkin tidak", "tentu iya", "tentu tidak"];
         const answer = answers[Math.floor(Math.random() * answers.length)];

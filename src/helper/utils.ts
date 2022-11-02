@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import chalk from "chalk";
 
-export const generateRandomUniqueTag = (n: number = 4): string => {
+export const generateRandomUniqueTag = (n = 4): string => {
     let max = 11;
     if (n > max) return `${generateRandomUniqueTag(max)}${generateRandomUniqueTag(n - max)}`;
     max = Math.pow(10, n + 1);
@@ -27,7 +28,7 @@ function timeSinceRecursive(
 ) {
     let seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
     seconds = Math.abs(seconds);
-    let intervalType: string = "";
+    let intervalType = "";
     let remainder = 0;
     let extra = "";
 
@@ -74,7 +75,7 @@ function timeSinceRecursive(
 }
 export const timeSince = (
     date: Date,
-    depth: number = 1,
+    depth = 1,
     localization?: {
         year?: string;
         month?: string;
@@ -111,7 +112,9 @@ export const percentageCalculator = (percent: number, num: number, operation: "+
     }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const debounce = <T extends (...args: any) => any>(func: T, wait: number, immediate: boolean) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let timeout: any;
     return (...args: Parameters<T>) => {
         const later = () => {
@@ -127,10 +130,10 @@ export const debounce = <T extends (...args: any) => any>(func: T, wait: number,
 
 //https://stackoverflow.com/a/23593099/13069078
 export function formatDate(date: string | Date) {
-    var d = new Date(date),
+    const d = new Date(date),
         month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate(),
         year = d.getFullYear();
+    let day = "" + d.getDate();
 
     // if (month.length < 2) month =  month;
     if (day.length < 2) day = "0" + day;
@@ -138,7 +141,7 @@ export function formatDate(date: string | Date) {
     return [year, month, day].join("-");
 }
 
-export function objectToUrlQuery<T extends { [key: string]: any }>(obj: T): string {
+export function objectToUrlQuery<T extends { [key: string]: unknown }>(obj: T): string {
     return Object.keys(obj)
         .map((key) => {
             return encodeURIComponent(key) + "=" + obj[key];
@@ -146,7 +149,7 @@ export function objectToUrlQuery<T extends { [key: string]: any }>(obj: T): stri
         .join("&");
 }
 
-export const getDay = (plusDay: number = 0) => {
+export const getDay = (plusDay = 0) => {
     const date = new Date();
     date.setHours(0, 0, 0, 0);
     date.setDate(date.getDate() + plusDay);
@@ -168,8 +171,8 @@ export const getRandomColor = () => {
 };
 
 export function countDecimalPlaces(num: number) {
-    let str = "" + num;
-    let index = str.indexOf(".");
+    const str = "" + num;
+    const index = str.indexOf(".");
     if (index >= 0) {
         return str.length - index - 1;
     } else {
@@ -200,7 +203,7 @@ export function groupBy<T, K extends keyof T>(array: T[], key: K): { [key: strin
  * @returns true or false, true based on example
  */
 export const wildcardCheck = function (input: string, pattern: string) {
-    var regExpEscape = function (s: string) {
+    const regExpEscape = function (s: string) {
         return s.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
     };
     const re = new RegExp("^" + pattern.toLowerCase().split(/\*+/).map(regExpEscape).join(".*") + "$");
@@ -214,7 +217,7 @@ function quotedRegExp(str: string) {
     const expression = /(["'])(?:(?=(\\?))\2.)*?\1/gm;
     const texts = [];
     const emptyString = "";
-    var match;
+    let match;
     while ((match = expression.exec(str))) {
         const text = match[0].slice(1, -1);
         if (text !== emptyString) {
@@ -232,12 +235,12 @@ export function quoted(str: string) {
     const singleQuote = "'";
     const emptyString = "";
     const texts = [];
-    var quote;
-    var escaping;
-    var recording;
-    var text;
+    let quote;
+    let escaping;
+    let recording;
+    let text;
 
-    for (var i = 0; i < str.length; i++) {
+    for (let i = 0; i < str.length; i++) {
         const char = str[i];
 
         escaping = char === backslash && !escaping;

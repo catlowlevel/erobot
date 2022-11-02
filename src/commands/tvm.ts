@@ -11,7 +11,7 @@ import { searchSymbol } from "../lib/tradingview/api";
     aliases: ["chartmini"],
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, args: IArgs): Promise<any> => {
+    public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length <= 0) return M.reply("Invalid arguments!");
 
         let symbol: string | undefined;

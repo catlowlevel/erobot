@@ -4,17 +4,13 @@ import { ROOT_DIR } from "../..";
 import { LowDB } from "../../core/LowDB";
 
 const loadCheerio = async (url: string) => {
-    try {
-        const response = await fetch(url);
-        if (response.status === 200) {
-            const html = await response.text();
-            const $ = cheerio.load(html);
-            return $;
-        }
-        throw new Error("Failed to load page : error -> " + response.status);
-    } catch (error) {
-        throw error;
+    const response = await fetch(url);
+    if (response.status === 200) {
+        const html = await response.text();
+        const $ = cheerio.load(html);
+        return $;
     }
+    throw new Error("Failed to load page : error -> " + response.status);
 };
 interface Post {
     title: string;
@@ -130,8 +126,8 @@ export class Driverays {
             type: string,
             onExtract: (download: DownloadData) => void
         ) => {
-            var tdFirst = true;
-            var tdType = "";
+            let tdFirst = true;
+            let tdType = "";
             tds.each((i, td) => {
                 if (tdFirst) {
                     tdType = $(td).text();
@@ -154,8 +150,8 @@ export class Driverays {
             });
         };
 
-        var trFirst = true;
-        var trType = "";
+        let trFirst = true;
+        let trType = "";
         elem.each((i, tr) => {
             if (trFirst) {
                 trType = $(tr)
@@ -175,8 +171,8 @@ export class Driverays {
         onExtract: (download: DownloadData) => void
     ) {
         const details: DownloadData[] = [];
-        var first = true;
-        var type = "";
+        let first = true;
+        let type = "";
         elem.each((i, div) => {
             if (first) {
                 first = false;
