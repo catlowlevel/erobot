@@ -22,6 +22,8 @@ export default class extends BaseCommand {
                 getPercent: (initial: number, final: number) => {
                     return ((initial - final) / initial) * 100;
                 },
+                M,
+                ...this,
             };
             const result = this.evalInContext(context, obj);
             out = JSON.stringify(result, null, "\t") || "Evaluated JavaScript";
