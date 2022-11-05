@@ -18,7 +18,8 @@ export default class extends BaseCommand {
         if (!urls) return M.reply("Url required!");
         const url = urls.values().next().value as string;
         console.log("urls", urls);
-        const ttdl = await tiktokDl(url, "dddtik");
+        M.reply("_Tunggu..._");
+        const ttdl = await tiktokDl(url);
         console.log("result", ttdl);
         if (ttdl.error) return M.reply(ttdl.error);
         if (!ttdl.video) throw new Error("ttdl.video is undefined");
