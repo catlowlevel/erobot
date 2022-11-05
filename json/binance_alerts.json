@@ -80,26 +80,6 @@
     "amGreater": true
   },
   {
-    "alertPrice": "0.158",
-    "symbol": "NKNUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "120363023114788849@g.us",
-        "fromMe": false,
-        "id": "B83C9178914A358CD44EB04BA7AA7854",
-        "participant": "6282293787977@s.whatsapp.net"
-      },
-      "messageTimestamp": 1661052522,
-      "pushName": "|",
-      "message": {
-        "conversation": ".alert nkn 0.158"
-      }
-    },
-    "resolved": false,
-    "amGreater": true
-  },
-  {
     "alertPrice": "19000.0",
     "symbol": "BTCUSDT",
     "done": false,
