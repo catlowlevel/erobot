@@ -30,6 +30,8 @@ type Provider =
 export const tiktokDl = async (url: string, provider?: Provider) => {
     const params = new URLSearchParams({ url });
     if (provider) params.append("provider", provider);
+    params.append("rotateOnError", "true");
+    console.log(params);
 
     return fetch(`http://localhost:3123/api/download?${params}`).then((r) => r.json() as Promise<TikTokDL>); //https://github.com/hansputera/tiktok-dl
 };
