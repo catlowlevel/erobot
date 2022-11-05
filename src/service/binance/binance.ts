@@ -671,7 +671,7 @@ export class BinanceClient {
                     lastPrice: currentPrice,
                 };
                 await this.dbPnd.write();
-            } else if (percentGap > 5) {
+            } else if (percentGap > 10) {
                 const pompom = currentPrice > current.lastPrice;
                 const time = Date.now() - current.createdAt;
                 let ago = Math.floor(time / 1000 / 60);
