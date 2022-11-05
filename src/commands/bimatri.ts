@@ -36,10 +36,7 @@ export default class Cmd extends BaseCommand {
         if (!opts.productId) return M.reply("Produk tidak tersedia!");
         const product = await bima.checkProduct(opts.productId);
         await M.reply(
-            `${product.product.productDescription}\n\nHarga => *Rp ${formatNumber(
-                Number(product.product.productPrice),
-                0
-            )}*\n\nBalas Y untuk konfirmasi`
+            `${product.product.productDescription}\n\nHarga => *Rp ${product.product.productPrice}*\n\nBalas Y untuk konfirmasi`
         );
         const { messages, isTimeout } = await M.collectMessages({ timeout: 1000 * 30, senderOnly: true, max: 1 });
         if (isTimeout || messages.length <= 0) return M.reply("Tidak dapat menkonfirmasi\nMembatalkan...");
