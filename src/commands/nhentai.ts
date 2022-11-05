@@ -22,16 +22,19 @@ export default class command extends BaseCommand {
         );
         const options = this.getOptions(args.flags);
 
-        if (!options.id) return;
-
         const nhentai = new NHentai();
+        if (!isNaN(Number(args.args[0]))) {
+            const id = args.args[0];
+            options.type = "get";
+            options.id = id;
+        }
+
         switch (options.type) {
             case "search":
                 return await this.handleSearch(M, args, options, nhentai);
             case "get":
                 return await this.handleDownload(M, options, nhentai);
         }
-        if (options.id) return this.handleDownload(M, options, nhentai);
     };
     private handleSearch = async (
         M: Message,
@@ -145,7 +148,7 @@ export default class command extends BaseCommand {
     private getOptions = (flags: string[]) => {
         const type = this.getFlag(flags, "--type=", ["search", "get"], "search");
         const page = this.getFlag(flags, "--page=");
-        const id = this.getFlag(flags, "--id=", [], "");
+        const id: string | undefined = this.getFlag(flags, "--id=", [], "");
         const output = this.getFlag(flags, "--get=", ["zip", "pdf"]);
         return { type, page, id, output };
     };
