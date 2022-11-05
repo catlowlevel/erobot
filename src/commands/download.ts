@@ -18,8 +18,8 @@ export default class extends BaseCommand {
                 M.reply("This url is possibly not downloadable!");
                 return false;
             }
-            if (size <= 0.5) {
-                M.reply(`Minimal size 500 KB\nFile size : *${sizeStr}*`);
+            if (size <= 0.05) {
+                M.reply(`Minimal size 50 KB\nFile size : *${sizeStr}*`);
                 return false;
             }
 
