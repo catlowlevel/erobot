@@ -2,7 +2,6 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { getPercentageChange } from "../helper/utils";
 import { getPrices, searchSymbol } from "../lib/tradingview/api";
 
 @Command("price", {
@@ -25,10 +24,10 @@ export default class extends BaseCommand {
             let messages = `Harga *${symbol}* saat ini *$${price}*`;
             messages += "\nPerubahan :\n";
 
-            const last5MinChange = getPercentageChange(price, price10m).toFixed(2);
-            const lastHourChange = getPercentageChange(price, priceHour).toFixed(2);
-            const last4HourChange = getPercentageChange(price, price4Hour).toFixed(2);
-            const last24HourChange = getPercentageChange(price, price24Hour).toFixed(2);
+            const last5MinChange = this.client.utils.getPercentageChange(price, price10m).toFixed(2);
+            const lastHourChange = this.client.utils.getPercentageChange(price, priceHour).toFixed(2);
+            const last4HourChange = this.client.utils.getPercentageChange(price, price4Hour).toFixed(2);
+            const last24HourChange = this.client.utils.getPercentageChange(price, price24Hour).toFixed(2);
 
             messages += "10m : ";
             messages += price <= price10m ? `-${last5MinChange}%` : `${last5MinChange}%`;

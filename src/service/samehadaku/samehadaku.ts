@@ -4,7 +4,6 @@ import * as cheerio from "cheerio";
 import { fetch } from "undici";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
-import { extractNumber } from "../../helper/utils";
 export interface Post {
     title: string;
     eps: string;
@@ -154,7 +153,7 @@ export class Samehadaku {
             const releaseDate = spans.last()?.text()?.trim()?.split(":")[1];
             const thumb = post.find("img").attr("src") || "";
             const epsUrls: string[] = [];
-            const epsNumber = Number(extractNumber(eps));
+            const epsNumber = Number(this.client.utils.extractNumber(eps));
             if (epsNumber > 1) {
                 let maxEps = 20;
                 for (let i = epsNumber; i > 0; i--) {

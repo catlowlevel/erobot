@@ -1,6 +1,5 @@
 import { MessageHandler } from ".";
 import { ROOT_DIR } from "../..";
-import { wildcardCheck } from "../../helper/utils";
 import { Client } from "../Client";
 import { LowDB } from "../LowDB";
 
@@ -19,7 +18,7 @@ export class AutoReply {
                 if (!data) return;
 
                 for (const { pattern, replyMsg } of data.reverse()) {
-                    const match = wildcardCheck(M.content, pattern);
+                    const match = this.client.utils.wildcardCheck(M.content, pattern);
                     if (match || M.content.toLowerCase().includes(pattern.toLowerCase())) {
                         M.markAsRead();
                         M.replyQueue(replyMsg);

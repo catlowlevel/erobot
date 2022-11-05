@@ -8,7 +8,6 @@ import {
     proto,
 } from "@adiwajshing/baileys";
 // import getUrls from 'get-urls'
-import { extractNumbers } from "../helper/utils";
 import { Client } from "./Client";
 
 interface CollectOption {
@@ -67,7 +66,7 @@ export class Message {
         for (const mentioned of mentions) this.mentioned.push(mentioned);
         let text = this.content;
         for (const mentioned of this.mentioned) text = text.replace(mentioned.split("@")[0], "");
-        this.numbers = extractNumbers(text);
+        this.numbers = this.client.utils.extractNumbers(text);
         if (M.message?.[this.type as "extendedTextMessage"]?.contextInfo?.quotedMessage) {
             const { quotedMessage, participant, stanzaId } =
                 M.message?.[this.type as "extendedTextMessage"]?.contextInfo || {};

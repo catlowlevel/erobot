@@ -1,12 +1,13 @@
 import { ROOT_DIR } from "../..";
 import { LowDB } from "../../core/LowDB";
-import { extractNumber } from "../../helper/utils";
+import { Utils } from "../../helper/utils";
 import { AccountData, Data, LoginData, OtpData, ProductData } from "./types";
 
 type DBType = { [id: string]: LoginData[] };
 
 export class Bimatri {
     db: LowDB<DBType>;
+    utils = new Utils();
     constructor() {
         ////this.requestOtp(NOHP).then(() => {
         ////console.log("done");
@@ -26,7 +27,7 @@ export class Bimatri {
         const data = {
             addonMenuCategory: "",
             addonMenuSubCategory: "",
-            balance: Number(extractNumber(loginData.balance)),
+            balance: Number(this.utils.extractNumber(loginData.balance)),
             callPlan: loginData.callPlan,
             deviceManufactur: "Xiaomi",
             deviceModel: "M2102J20SG",

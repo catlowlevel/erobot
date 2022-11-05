@@ -25,6 +25,7 @@ import Queue from "queue";
 import { client } from "telegram";
 import { Message } from ".";
 import { ROOT_DIR } from "..";
+import { Utils } from "../helper/utils";
 import { BinanceClient } from "../service/binance/binance";
 import { Coindar } from "../service/coindar/coindar";
 import { Samehadaku } from "../service/samehadaku/samehadaku";
@@ -51,6 +52,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
 
     msgQueue: Queue;
     // public contact = new Contact(this);
+
+    utils = new Utils();
     constructor() {
         super();
         config();

@@ -2,7 +2,6 @@ import chalk from "chalk";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { INDEX_DIR } from "../..";
-import { getRandomColor } from "../../helper/utils";
 import { BaseCommand } from "../BaseCommand";
 import { Client } from "../Client";
 import { Message } from "../Message";
@@ -57,7 +56,7 @@ export class MessageHandler {
                 this.commands.set(command.name, command);
                 if (command.config.aliases) command.config.aliases.forEach((a) => this.aliases.set(a, command));
 
-                const color = getRandomColor();
+                const color = this.client.utils.getRandomColor();
                 console.log(`Command ${chalk.keyword(color)(command.name)} loaded!`);
                 res();
             } catch (error) {
@@ -92,8 +91,8 @@ export class MessageHandler {
         const cmd = args[0].toLowerCase().slice(prefix.length);
         const command = this.commands?.get(cmd) || this.aliases?.get(cmd);
         if (!command) return; //M.reply("Perintah tidak dikenal!");
-        const color = getRandomColor();
-        const color2 = getRandomColor();
+        const color = this.client.utils.getRandomColor();
+        const color2 = this.client.utils.getRandomColor();
         this.client.log(`Executing command ${chalk.keyword(color2)(cmd)} from ${title} by ${M.sender.username}`, color);
 
         const lastTime = Date.now();

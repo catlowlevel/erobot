@@ -2,7 +2,6 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { getPercentageChange } from "../helper/utils";
 import { validTf } from "../lib/chartimg/api";
 import { Interval } from "../service/binance/binance";
 
@@ -66,7 +65,7 @@ export default class extends BaseCommand {
             }
             const currentPrice = candles[candles.length - 1].close;
             const lastPrice = candles[0].close;
-            const percentGap = getPercentageChange(currentPrice, lastPrice);
+            const percentGap = this.client.utils.getPercentageChange(currentPrice, lastPrice);
             if (green(currentPrice, lastPrice) && red(btcCurrentPrice, btcLastPrice)) {
                 hedges.push({ symbol, price: currentPrice, percentGap });
             }

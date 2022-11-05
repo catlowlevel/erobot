@@ -5,7 +5,6 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { formatNumber } from "../helper/utils";
 import { COOKIES, ytdlDownload } from "../lib/yt/app";
 
 @Command("yt", {
@@ -48,10 +47,10 @@ export default class extends BaseCommand {
                         return M.reply("Video terlalu panjang, maksimal 30 menit");
                     const text = `Judul: *${videoDetails.title}*\nChannel: *${videoDetails.author.name}*\nDurasi: *${
                         videoDetails.lengthSeconds
-                    }s*\nViews : *${formatNumber(Number(videoDetails.viewCount), 0)}*\nUpdate Date : *${format(
-                        videoDetails.publishDate,
-                        "id_ID"
-                    )}*`;
+                    }s*\nViews : *${this.client.utils.formatNumber(
+                        Number(videoDetails.viewCount),
+                        0
+                    )}*\nUpdate Date : *${format(videoDetails.publishDate, "id_ID")}*`;
                     const thumbnailArrayBuffer = await fetch(
                         videoDetails.thumbnails[videoDetails.thumbnails.length - 1].url
                     ).then((res) => res.arrayBuffer());

@@ -2,7 +2,6 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { formatDate } from "../helper/utils";
 import { Coin } from "../service/coindar/coindar";
 
 @Command("events", {
@@ -24,8 +23,8 @@ export default class extends BaseCommand {
         //log coins
         coins.forEach((c) => console.log(c.symbol, c.name));
 
-        const today = formatDate(new Date());
-        const tomorrow = formatDate(new Date(new Date().setHours(24)));
+        const today = this.client.utils.formatDate(new Date());
+        const tomorrow = this.client.utils.formatDate(new Date(new Date().setHours(24)));
         const events = await this.coindar.fetchEvents({
             startDate: today,
             endDate: tomorrow,

@@ -2,7 +2,6 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { countDecimalPlaces, getPercentageChange } from "../helper/utils";
 
 @Command("trades", {
     description: "",
@@ -59,7 +58,7 @@ export default class extends BaseCommand {
                 const current = candles.find((c) => c.symbol === t.symbol);
                 if (!current) throw new Error("current is undefined!");
                 const currentPrice = current.candles[current.candles.length - 1].close;
-                const precision = countDecimalPlaces(currentPrice);
+                const precision = this.client.utils.countDecimalPlaces(currentPrice);
                 const hitEntry = t.entries.some((a) => a.hit);
                 const entries = t.entries.filter((a) => a.hit);
                 const entryPrice = hitEntry
@@ -67,7 +66,7 @@ export default class extends BaseCommand {
                     : t.entry
                     ? t.entry
                     : t.entries[0].price;
-                let percentGap = getPercentageChange(currentPrice, entryPrice);
+                let percentGap = this.client.utils.getPercentageChange(currentPrice, entryPrice);
                 const isMines = currentPrice < entryPrice;
                 percentGap = isMines ? percentGap * -1 : percentGap;
                 return {

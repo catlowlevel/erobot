@@ -4,7 +4,6 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { groupBy } from "../helper/utils";
 import { shortenUrl } from "../lib/bitly/api";
 import { Driverays } from "../lib/driverays";
 
@@ -61,7 +60,7 @@ export default class extends BaseCommand {
                 if (!opts.url) return M.reply("URL required!");
                 const details = await drays.getPostDetails(opts.url);
 
-                const types = groupBy(details.dlData, "type");
+                const types = this.client.utils.groupBy(details.dlData, "type");
                 const typesKeys = Object.keys(types);
                 //let text = "";
                 //details.forEach((d) => {

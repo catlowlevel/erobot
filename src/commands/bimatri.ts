@@ -5,7 +5,6 @@ import { Command } from "../core/Command";
 import { Databse } from "../core/Database";
 import { TBimaModel } from "../core/Database/Models/BimaUser";
 import { IArgs } from "../core/MessageHandler";
-import { formatNumber, timeSince } from "../helper/utils";
 import { Bimatri } from "../lib/bimatri";
 import { LoginData } from "../lib/bimatri/types";
 
@@ -24,7 +23,7 @@ export default class Cmd extends BaseCommand {
                 sections[0].rows.push({
                     title: `${p.name}`,
                     rowId: `.bimatri --type=beli --id=${M.sender.jid} --nohp=${opts.nohp} --productId=${p.id}`,
-                    description: `Rp ${formatNumber(Number(p.price), 0)}`,
+                    description: `Rp ${this.client.utils.formatNumber(Number(p.price), 0)}`,
                 });
             }
         });
@@ -144,7 +143,7 @@ export default class Cmd extends BaseCommand {
             const pulsa = account.balanceTotal;
             let text = `Nomor tri : ${account.msisdn}\n`;
             text += `Sisa pulsa : ${pulsa}\n`;
-            const validity = timeSince(new Date(account.validity), 2, {
+            const validity = this.client.utils.timeSince(new Date(account.validity), 2, {
                 day: "hari",
                 hour: "jam",
                 minute: "menit",

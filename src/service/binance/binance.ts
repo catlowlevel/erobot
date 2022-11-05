@@ -16,7 +16,6 @@ import TypedEmitter from "typed-emitter";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
 import { LowDB } from "../../core/LowDB";
-import { countDecimalPlaces, getPercentageChange, percentageCalculator, timeSince } from "../../helper/utils";
 // prettier-ignore
 export type Interval = "1m" | "3m" | "5m" | "15m" | "30m" | "1h" | "2h" | "4h" | "6h" | "8h" | "12h" | "1d" | "3d" | "1w" | "1M";
 
@@ -130,7 +129,7 @@ export class BinanceClient {
                                 .slice(data.candles.length - 10)
                                 .map((c) => c.close)
                                 .sort((a, b) => (a.toString().length < b.toString().length ? 1 : -1))[0];
-                            const precision = countDecimalPlaces(longest);
+                            const precision = this.client.utils.countDecimalPlaces(longest);
                             this.symbolData[data.symbol].pricePrecision = precision;
                         }
                         const currentPrice = data.candles[data.candles.length - 1].close;
@@ -167,7 +166,7 @@ export class BinanceClient {
             };
             this.db.data?.push(alert);
             this.db.write();
-            const gap = getPercentageChange(price, data.currentPrice);
+            const gap = this.client.utils.getPercentageChange(price, data.currentPrice);
             return sendMessage
                 ? this.client.sendMessageQueue(
                       msg.key.remoteJid,
@@ -274,7 +273,7 @@ export class BinanceClient {
                     this.db.write().then(() => console.log("saved alert on greater"));
                 }
 
-                const percentChange = getPercentageChange(currentPrice, alert.price);
+                const percentChange = this.client.utils.getPercentageChange(currentPrice, alert.price);
                 const crossOrClose = alert.greater === false ? currentPrice <= alert.price : currentPrice > alert.price;
 
                 if (percentChange <= 0.01 || crossOrClose) {
@@ -302,7 +301,7 @@ export class BinanceClient {
                     }
 
                     if (trade.timestamp) {
-                        const period = timeSince(new Date(trade.timestamp), 2);
+                        const period = this.client.utils.timeSince(new Date(trade.timestamp), 2);
                         text += `\nPeriod : ${period}`;
                     }
                     this.client
@@ -324,7 +323,7 @@ export class BinanceClient {
                     this.db.write().then(() => console.log("saved alert on greater"));
                 }
 
-                const percentChange = getPercentageChange(currentPrice, alert.price);
+                const percentChange = this.client.utils.getPercentageChange(currentPrice, alert.price);
                 const crossOrClose = alert.greater === false ? currentPrice <= alert.price : currentPrice > alert.price;
 
                 if (percentChange <= 0.01 || crossOrClose) {
@@ -340,14 +339,14 @@ export class BinanceClient {
                         : "";
                     text += `📈 ${symbol} *Take-profit ${num}* | $${alert.price} 📈`;
                     if (trade.entry) {
-                        const percentGap = getPercentageChange(trade.entry, currentPrice);
+                        const percentGap = this.client.utils.getPercentageChange(trade.entry, currentPrice);
                         const profit = percentGap * this.symbolData[symbol].leverage;
                         text += `\nGain : ${profit.toFixed(2)}%`;
                     } else {
                         text += `\nCurrent Price : ${currentPrice}`;
                     }
                     if (trade.timestamp) {
-                        const period = timeSince(new Date(trade.timestamp), 2);
+                        const period = this.client.utils.timeSince(new Date(trade.timestamp), 2);
                         text += `\nPeriod : ${period}`;
                     }
 
@@ -369,7 +368,7 @@ export class BinanceClient {
                 this.db.write().then(() => console.log("saved alert on greater"));
             }
 
-            const percentChange = getPercentageChange(currentPrice, alert.price);
+            const percentChange = this.client.utils.getPercentageChange(currentPrice, alert.price);
             const crossOrClose = alert.greater === false ? currentPrice <= alert.price : currentPrice > alert.price;
 
             if (percentChange <= 0.01 || crossOrClose) {
@@ -379,7 +378,7 @@ export class BinanceClient {
                 let text = hitTp ? `Stop-lost hit after take-profit!\n` : "";
                 text += `📉 ${symbol} *Stop-lost* | $${alert.price} 📉`;
                 if (trade.entry) {
-                    const percentGap = getPercentageChange(trade.entry, currentPrice);
+                    const percentGap = this.client.utils.getPercentageChange(trade.entry, currentPrice);
                     const loss = percentGap * this.symbolData[symbol].leverage;
                     text += `\nLoss : ${loss.toFixed(2)}%`;
                 } else {
@@ -463,34 +462,34 @@ export class BinanceClient {
             const reds = candles.filter((d) => d.close < d.open);
 
             const lastPrice = candles[0].close;
-            const percentGap = getPercentageChange(currentPrice, lastPrice);
+            const percentGap = this.client.utils.getPercentageChange(currentPrice, lastPrice);
             // console.log(candles.length, data.candles.length);
             const precision = this.symbolData[data.symbol].pricePrecision;
             const alertPrice = (current.ema99 + current.ema25 + current.ema7) / 3;
-            const entry3 = percentageCalculator(1.5, alertPrice, "-");
+            const entry3 = this.client.utils.percentageCalculator(1.5, alertPrice, "-");
             const entries = [current.ema7, current.ema99, entry3].filter((p) => p < currentPrice);
-            const tp1 = percentageCalculator(1.5, alertPrice, "+");
-            const tp2 = percentageCalculator(2.2, alertPrice, "+");
-            //const tp3 = percentageCalculator(2.9, alertPrice, "+");
-            const tp4 = percentageCalculator(3.6, alertPrice, "+");
-            //const tp5 = percentageCalculator(4.2, alertPrice, "+");
-            const tp6 = percentageCalculator(5.0, alertPrice, "+");
-            //const tp7 = percentageCalculator(5.9, alertPrice, "+");
-            const tp8 = percentageCalculator(6.9, alertPrice, "+");
-            const tp9 = percentageCalculator(7.5, alertPrice, "+");
-            //const tp10 = percentageCalculator(8.7, alertPrice, "+");
-            const tp11 = percentageCalculator(9.9, alertPrice, "+");
-            //const tp12 = percentageCalculator(11.5, alertPrice, "+");
-            const tp13 = percentageCalculator(12.8, alertPrice, "+");
-            //const tp14 = percentageCalculator(14.5, alertPrice, "+");
-            const tp15 = percentageCalculator(16.3, alertPrice, "+");
-            const tp16 = percentageCalculator(18, alertPrice, "+");
-            const tp17 = percentageCalculator(19.3, alertPrice, "+");
-            const tp18 = percentageCalculator(21.1, alertPrice, "+");
-            const tp19 = percentageCalculator(22.8, alertPrice, "+");
-            const tp20 = percentageCalculator(24.5, alertPrice, "+");
+            const tp1 = this.client.utils.percentageCalculator(1.5, alertPrice, "+");
+            const tp2 = this.client.utils.percentageCalculator(2.2, alertPrice, "+");
+            //const tp3 = this.client.utils.percentageCalculator(2.9, alertPrice, "+");
+            const tp4 = this.client.utils.percentageCalculator(3.6, alertPrice, "+");
+            //const tp5 = this.client.utils.percentageCalculator(4.2, alertPrice, "+");
+            const tp6 = this.client.utils.percentageCalculator(5.0, alertPrice, "+");
+            //const tp7 = this.client.utils.percentageCalculator(5.9, alertPrice, "+");
+            const tp8 = this.client.utils.percentageCalculator(6.9, alertPrice, "+");
+            const tp9 = this.client.utils.percentageCalculator(7.5, alertPrice, "+");
+            //const tp10 = this.client.utils.percentageCalculator(8.7, alertPrice, "+");
+            const tp11 = this.client.utils.percentageCalculator(9.9, alertPrice, "+");
+            //const tp12 = this.client.utils.percentageCalculator(11.5, alertPrice, "+");
+            const tp13 = this.client.utils.percentageCalculator(12.8, alertPrice, "+");
+            //const tp14 = this.client.utils.percentageCalculator(14.5, alertPrice, "+");
+            const tp15 = this.client.utils.percentageCalculator(16.3, alertPrice, "+");
+            const tp16 = this.client.utils.percentageCalculator(18, alertPrice, "+");
+            const tp17 = this.client.utils.percentageCalculator(19.3, alertPrice, "+");
+            const tp18 = this.client.utils.percentageCalculator(21.1, alertPrice, "+");
+            const tp19 = this.client.utils.percentageCalculator(22.8, alertPrice, "+");
+            const tp20 = this.client.utils.percentageCalculator(24.5, alertPrice, "+");
             let slPrice = entries.reduce((acc, curr) => acc + curr, 0) / entries.length;
-            slPrice = Number(percentageCalculator(2, slPrice, "-").toFixed(precision));
+            slPrice = Number(this.client.utils.percentageCalculator(2, slPrice, "-").toFixed(precision));
             this.addTrade(
                 "62895611963535-1631537374@g.us",
                 data.symbol,
@@ -548,12 +547,12 @@ export class BinanceClient {
         let count = 0;
         candles.forEach((candle, idx) => {
             if (idx === 0) return;
-            const percent = getPercentageChange(candle.close, candle.open);
+            const percent = this.client.utils.getPercentageChange(candle.close, candle.open);
             totalPercent += percent;
             count++;
         });
         const avg = totalPercent / count;
-        const currentPercent = getPercentageChange(current.close, current.open);
+        const currentPercent = this.client.utils.getPercentageChange(current.close, current.open);
 
         if (Date.now() - this.avgDb.data[data.symbol].timeStamp >= 1000 * 60 * 10) {
             if (currentPercent > avg * 10) {
@@ -604,7 +603,7 @@ export class BinanceClient {
         for (const data of this.datas) {
             const currentPrice = data.candles[data.candles.length - 1].close;
             const lastPrice = data.candles[0].close;
-            const percentGap = getPercentageChange(currentPrice, lastPrice);
+            const percentGap = this.client.utils.getPercentageChange(currentPrice, lastPrice);
             const text = `${data.symbol} => ${percentGap.toFixed(2)}%\n${lastPrice} => ${currentPrice}`;
             console.log(`${data.symbol} => ${percentGap.toFixed(2)}%`);
             this.bullishDb.data[data.symbol] = 5;
@@ -664,7 +663,7 @@ export class BinanceClient {
             return;
         } else if (current) {
             const isExpired = Date.now() - current.createdAt > 1000 * 60 * 10; //n minutes
-            const percentGap = getPercentageChange(current.lastPrice, currentPrice);
+            const percentGap = this.client.utils.getPercentageChange(current.lastPrice, currentPrice);
             if (isExpired) {
                 this.pnd[symbol] = {
                     createdAt: Date.now(),
@@ -711,7 +710,7 @@ export class BinanceClient {
                 this.db.write().then(() => console.log("Saved alert on amGreater"));
             }
 
-            const percentChange = getPercentageChange(currentPrice, alertPrice);
+            const percentChange = this.client.utils.getPercentageChange(currentPrice, alertPrice);
             const crossOrClose = alert.amGreater === false ? currentPrice <= alertPrice : currentPrice > alertPrice;
 
             // console.log(

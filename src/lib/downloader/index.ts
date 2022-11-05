@@ -1,5 +1,7 @@
 import convert from "../../../node_modules/convert-pro/convert";
-import { generateRandomUniqueTag } from "../../helper/utils";
+import { Utils } from "../../helper/utils";
+
+const utils = new Utils();
 
 export const downloadFile = async (
     url: string,
@@ -13,7 +15,7 @@ export const downloadFile = async (
     const parts = contentDisposition?.split(";");
     let fileName = parts?.[1]?.split("=")[1];
     if (!fileName) fileName = url.substring(url.lastIndexOf("/") + 1);
-    if (!fileName) fileName = generateRandomUniqueTag(10);
+    if (!fileName) fileName = utils.generateRandomUniqueTag(10);
     console.log("filename :>> ", fileName);
 
     const size = convert.bytes(Number(contentLength), "MB");

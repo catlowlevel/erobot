@@ -2,7 +2,6 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { quoted } from "../helper/utils";
 
 @Command("auto", {
     description: "",
@@ -18,7 +17,7 @@ export default class extends BaseCommand {
         const db = this.handler.autoReply.db;
         if (!db.data[M.from]) db.data[M.from] = [];
 
-        const [pattern, replyMsg] = quoted(M.content);
+        const [pattern, replyMsg] = this.client.utils.quoted(M.content);
         if (!pattern) return M.reply("Pattern required");
         if (M.quoted) {
             const quotedMsg = M.quoted;
