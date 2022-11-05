@@ -118,6 +118,25 @@ export class Message {
         }
     }
 
+    /** Download quoted message video/image also with document type*/
+    public downloadQuotedMedia = () => {
+        if (!this.quoted) return;
+        const type = Object.keys(this.quoted.message)[0] as keyof proto.IMessage;
+        // console.log("messageKeys", messageKeys);
+        if (
+            (type === "videoMessage" ||
+                type === "imageMessage" ||
+                type === "documentMessage" ||
+                type === "stickerMessage") &&
+            (this.quoted.message[type]?.mimetype?.startsWith("image/") ||
+                this.quoted.message[type]?.mimetype?.startsWith("video/"))
+        ) {
+            return this.downloadMediaMessage(this.quoted.message);
+        }
+        // if (!types.includes(this.quoted.type)) return;
+        // return this.downloadMediaMessage(this.quoted.message);
+    };
+
     /**
      *
      * @param options Options
