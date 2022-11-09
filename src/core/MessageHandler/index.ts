@@ -10,6 +10,7 @@ export interface IArgs {
     context: string;
     args: string[];
     flags: string[];
+    command: string;
 }
 
 interface ICommandConfig {
@@ -101,7 +102,7 @@ export class MessageHandler {
                 if (M.from !== this.client.user?.id) {
                     M.markAsRead();
                 }
-                await command.execute(M, this.formatArgs(args));
+                await command.execute(M, this.formatArgs(args, cmd));
                 const timeTaken = Date.now() - lastTime;
                 this.client.log(
                     `Command ${chalk.keyword(color2)(cmd)} executed after ${chalk.keyword(color2)(
@@ -132,12 +133,13 @@ export class MessageHandler {
             }
         });
     };
-    private formatArgs = (args: string[]): IArgs => {
+    private formatArgs = (args: string[], command: string): IArgs => {
         args.splice(0, 1);
         return {
             args,
             context: args.join(" ").trim(),
             flags: args.filter((arg) => arg.startsWith("--")),
+            command,
         };
     };
 }
