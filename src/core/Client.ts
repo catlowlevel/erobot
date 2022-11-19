@@ -169,6 +169,28 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
                     conversation: "ignore",
                 };
             },
+            patchMessageBeforeSending: (message) => {
+                const requiresPatch = !!(
+                    message.buttonsMessage ||
+                    // || message.templateMessage
+                    message.listMessage
+                );
+                if (requiresPatch) {
+                    message = {
+                        viewOnceMessage: {
+                            message: {
+                                messageContextInfo: {
+                                    deviceListMetadataVersion: 2,
+                                    deviceListMetadata: {},
+                                },
+                                ...message,
+                            },
+                        },
+                    };
+                }
+
+                return message;
+            },
         });
         for (const method of Object.keys(this.client))
             this[method as keyof Client] = this.client[method as keyof client];
@@ -253,6 +275,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
 
     public condition!: "connected" | "connecting" | "logged_out";
 
+    public uploadPreKeysToServerIfRequired!: client["uploadPreKeysToServerIfRequired"];
     public end!: client["end"];
     public ev!: client["ev"];
     public fetchBlocklist!: client["fetchBlocklist"];
