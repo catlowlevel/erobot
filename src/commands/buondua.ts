@@ -10,36 +10,81 @@ import { Buondua } from "../lib/buondua";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const url = this.getFlag(args.flags, "--unblur=");
+        const id = this.getFlag(args.flags, "--id=");
         if (url) {
             console.log("url :>> ", url);
-
             const imageBuffer = await fetch(url)
                 .then((r) => r.arrayBuffer())
                 .then((ab) => Buffer.from(ab));
-            return M.reply(imageBuffer, "image");
+            return this.client.sendMessage(
+                M.from,
+                {
+                    image: imageBuffer,
+                    buttons: [
+                        {
+                            buttonId: `.buondua --id=${id}`,
+                            buttonText: { displayText: "More" },
+                            type: 1,
+                        },
+                        {
+                            buttonId: `.buondua`,
+                            buttonText: { displayText: "New" },
+                            type: 1,
+                        },
+                    ],
+                    caption: id,
+                },
+                { quoted: M.message }
+            );
         }
 
         const buondua = new Buondua();
-        const albums = await buondua.getHomepage();
-        const album = this.client.utils.randomArray(albums);
-        let albumData = await buondua.getAlbumsData(album.id);
+        let albums: Awaited<ReturnType<typeof buondua["getHomepage"]>> | undefined;
+        let album: Awaited<ReturnType<typeof buondua["getHomepage"]>>[0] | undefined;
+        let albumData;
+        if (!id) {
+            albums = await buondua.getHomepage();
+            album = this.client.utils.randomArray(albums);
+            albumData = await buondua.getAlbumsData(album.id);
+        } else albumData = await buondua.getAlbumsData(Number(id));
         const randomPage = this.client.utils.randomNumber(1, albumData.lastPage);
         console.log("randomPage :>> ", randomPage);
-        albumData = await buondua.getAlbumsData(album.id, randomPage);
         const image = this.client.utils.randomArray(albumData.images);
-        const imageBuffer = await fetch(image.link)
+        let imageBuffer = await fetch(image.link)
             .then((r) => r.arrayBuffer())
             .then((ab) => Buffer.from(ab));
 
-        const blurredImage = await sharp(imageBuffer).blur(50).toBuffer();
+        imageBuffer = id ? imageBuffer : await sharp(imageBuffer).blur(50).toBuffer();
+        if (id) {
+            return this.client.sendMessage(
+                M.from,
+                {
+                    image: imageBuffer,
+                    buttons: [
+                        {
+                            buttonId: `.buondua --id=${id}`,
+                            buttonText: { displayText: "More" },
+                            type: 1,
+                        },
+                        {
+                            buttonId: `.buondua`,
+                            buttonText: { displayText: "New" },
+                            type: 1,
+                        },
+                    ],
+                    caption: id,
+                },
+                { quoted: M.message }
+            );
+        }
 
         return this.client.sendMessage(
             M.from,
             {
-                image: blurredImage,
+                image: imageBuffer,
                 buttons: [
                     {
-                        buttonId: `.buondua --unblur=${image.link}`,
+                        buttonId: `.buondua --unblur=${image.link} --id=${albumData.id}`,
                         buttonText: { displayText: "Unblur" },
                         type: 1,
                     },

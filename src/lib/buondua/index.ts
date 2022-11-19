@@ -10,6 +10,7 @@ interface IAlbum {
 }
 
 interface IAlbumData {
+    id: number;
     images: IImage[];
     name: string;
     currentPage: number;
@@ -23,6 +24,15 @@ interface IImage {
 }
 export class Buondua {
     private BASE_URL = "https://buondua.com/";
+    private static cache: Record<string, IAlbumData> = {};
+    constructor() {
+        setTimeout(() => {
+            setInterval(() => {
+                console.log(`Resetting Buondua cache | ${Object.keys(Buondua.cache).length} `);
+                Buondua.cache = {};
+            }, 1000 * 60 * 60 * 12);
+        }, 1000 * 60 * 60 * 12);
+    }
 
     public getHomepage = async () => {
         const html = await fetch(this.BASE_URL).then((r) => r.text());
@@ -38,6 +48,10 @@ export class Buondua {
     public getAlbumsData = async (id: number, page = 1) => {
         const url = `${this.BASE_URL}${id}/?page=${page}`;
         console.log("url :>> ", url);
+        if (Buondua.cache[url]) {
+            console.log("returning cache");
+            return Buondua.cache[url];
+        }
         const html = await fetch(url).then((r) => r.text());
         const $ = load(html);
         const pTags = $(".article-fulltext").find("p");
@@ -69,7 +83,11 @@ export class Buondua {
         const currentPageText = currentSpan?.text()?.trim();
         const currentPage = Number(currentPageText);
         console.log("currentPage :>> ", currentPage);
-        const albumData: IAlbumData = { name, images, currentPage, lastPage };
+        const albumData: IAlbumData = { id, name, images, currentPage, lastPage };
+        if (!Buondua.cache[url]) {
+            console.log(`Setting cache for ${url}`);
+            Buondua.cache[url] = albumData;
+        }
         return albumData;
     };
     private parseAlbumHtml = (html: string) => {

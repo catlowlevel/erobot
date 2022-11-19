@@ -10,11 +10,24 @@ export default class extends BaseCommand {
         const groupMetadata = (await M.simplify()).groupMetadata;
         if (!groupMetadata) return M.reply("Gagal mendapatkan informasi group!");
         const participants = groupMetadata.participants.map((p) => p.id);
+        const msg = M.message.message;
+        if (!msg) return M.reply("Invalid message!");
+        const msgKeys = Object.keys(msg);
+        const msgKey = msgKeys[0] as keyof typeof msg;
+        console.log("msg", msg[msgKey]);
+
+        console.log(JSON.stringify(M.message, null, 2));
         return this.client
             .relayMessage(
                 M.from,
                 {
-                    extendedTextMessage: { text: args.context, contextInfo: { mentionedJid: participants } },
+                    [M.type]:
+                        M.type === "conversation"
+                            ? msg.conversation
+                            : {
+                                  ...(msg[msgKey] as Record<string, unknown>),
+                                  contextInfo: { mentionedJid: participants },
+                              },
                 },
                 {}
             )

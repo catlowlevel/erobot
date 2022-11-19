@@ -5,11 +5,12 @@ import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { toRoundedImage } from "../lib/canvas";
+import { removeBg } from "../lib/removebg";
 
 @Command("sticker", {
     description: "Mengubah gambar menjadi sticker",
     usage: "sticker <author> <pack>",
-    aliases: ["s", "stiker"],
+    aliases: ["s", "stiker", "snobg"],
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
@@ -81,6 +82,14 @@ export default class extends BaseCommand {
 
         const author = args.args[0] || "";
         const packName = args.args[1] || "";
+
+        if (!notImage && args.command === "snobg") {
+            try {
+                buffer = await removeBg(buffer);
+            } catch (error) {
+                console.log("error :>> ", error);
+            }
+        }
 
         const sticker = new Sticker(buffer)
             .setPack(packName)
