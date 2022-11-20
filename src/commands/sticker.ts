@@ -4,7 +4,7 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { toRoundedImage } from "../lib/canvas";
+// import { toRoundedImage } from "../lib/canvas";
 import { removeBg } from "../lib/removebg";
 
 @Command("sticker", {
@@ -74,7 +74,8 @@ export default class extends BaseCommand {
             try {
                 const value = radiusArg.split(":")[1] ?? "20";
                 const radius = Number(value);
-                buffer = await toRoundedImage(buffer, radius);
+                //TODO: Rounded image
+                // buffer = await toRoundedImage(buffer, radius);
             } catch (error) {
                 console.error(error);
             }
