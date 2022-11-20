@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import "dotenv/config";
 import path from "path";
 import { register } from "timeago.js";
 import id_ID from "timeago.js/lib/lang/id_ID";

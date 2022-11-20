@@ -11,7 +11,6 @@ import Baileys, {
     useMultiFileAuthState,
     WACallEvent,
 } from "@adiwajshing/baileys";
-import { config } from "dotenv";
 import EventEmitter from "events";
 import TypedEmitter from "typed-emitter";
 // import { connect } from "mongoose";
@@ -56,7 +55,6 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     utils = new Utils();
     constructor() {
         super();
-        config();
         console.log(nanoid());
         this.msgQueue = Queue({ autostart: true, concurrency: 1 });
         this.store = makeInMemoryStore({ logger: P({ level: "fatal" }) });
