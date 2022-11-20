@@ -78,42 +78,5 @@
     },
     "resolved": false,
     "amGreater": true
-  },
-  {
-    "alertPrice": "19000.0",
-    "symbol": "BTCUSDT",
-    "done": false,
-    "msg": {
-      "key": {
-        "remoteJid": "6282293787977@s.whatsapp.net",
-        "fromMe": false,
-        "id": "8834175913961D5E76831436BABD3419"
-      },
-      "messageTimestamp": 1666593750,
-      "pushName": "-",
-      "message": {
-        "extendedTextMessage": {
-          "text": ".alert btc 19000",
-          "previewType": "NONE",
-          "contextInfo": {
-            "expiration": 0,
-            "ephemeralSettingTimestamp": "1661312694",
-            "disappearingMode": {
-              "initiator": "CHANGED_IN_CHAT"
-            }
-          },
-          "inviteLinkGroupTypeV2": "DEFAULT"
-        },
-        "messageContextInfo": {
-          "deviceListMetadata": {
-            "recipientKeyHash": "p7eaxNZixGWJDA==",
-            "recipientTimestamp": "1666532123"
-          },
-          "deviceListMetadataVersion": 2
-        }
-      }
-    },
-    "resolved": false,
-    "amGreater": false
   }
 ]
