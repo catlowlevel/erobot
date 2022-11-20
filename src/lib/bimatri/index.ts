@@ -98,6 +98,7 @@ export class Bimatri {
         const url = "https://bima.tri.co.id/apibima/profile/profile";
         const { accessToken, appsflyerMsisdn, balance, creditLimit, profileColor, profileTime, status, ...rest } =
             loginData;
+        const { callPlan, language, msisdn, secretKey, subscriberType, ...rest2 } = rest;
         const response = await fetch(url, {
             headers: {
                 "content-type": "application/json",
@@ -112,7 +113,11 @@ export class Bimatri {
             //payload["lastId"] = 0
             body: JSON.stringify({
                 imei: "WebSelfcare",
-                ...rest,
+                callPlan,
+                language,
+                msisdn,
+                secretKey,
+                subscriberType,
             }),
             method: "POST",
         });
@@ -165,6 +170,7 @@ export class Bimatri {
         const url = "https://bima.tri.co.id/apibima/login/logout";
         const { accessToken, appsflyerMsisdn, balance, creditLimit, profileColor, profileTime, status, ...rest } =
             loginData;
+        const { callPlan, language, msisdn, secretKey, subscriberType, ...rest2 } = rest;
         const response = await fetch(url, {
             headers: {
                 "content-type": "application/json",
@@ -179,7 +185,11 @@ export class Bimatri {
             //payload["lastId"] = 0
             body: JSON.stringify({
                 imei: "WebSelfcare",
-                ...rest,
+                callPlan,
+                language,
+                msisdn,
+                secretKey,
+                subscriberType,
             }),
             method: "POST",
         });

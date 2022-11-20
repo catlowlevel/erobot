@@ -16,7 +16,6 @@ import TypedEmitter from "typed-emitter";
 // import { connect } from "mongoose";
 import { Boom } from "@hapi/boom";
 import chalk, { ChalkFunction } from "chalk";
-import { connect } from "mongoose";
 import nanoid from "nanoid";
 import { join } from "path";
 import P from "pino";
@@ -28,6 +27,7 @@ import { Utils } from "../helper/utils";
 import { BinanceClient } from "../service/binance/binance";
 import { Coindar } from "../service/coindar/coindar";
 import { Samehadaku } from "../service/samehadaku/samehadaku";
+import { dataSource } from "./Database/dataSource";
 export type client = ReturnType<typeof Baileys>;
 
 type Events = {
@@ -125,7 +125,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     async start() {
         if (!process.env.MONGO_URI) throw new Error("No mongo uri provided!");
         console.log("Connecting to database...");
-        await connect(process.env.MONGO_URI);
+        // await connect(process.env.MONGO_URI);
+        await dataSource.initialize()
         console.log("Connected to database!");
 
         const { saveCreds, state } = await useMultiFileAuthState(join(ROOT_DIR, "store", "auth"));
