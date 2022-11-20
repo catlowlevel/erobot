@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { BimaUser } from "./entities/BimaUser";
+import { BimaUser } from ".";
 
 export const dataSource = new DataSource({
     type: "mongodb",

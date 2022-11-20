@@ -2,7 +2,7 @@ import { proto } from "@adiwajshing/baileys";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
-import { BimaUser } from "../core/Database/entities/BimaUser";
+import { BimaUser } from "../core/Database";
 import { IArgs } from "../core/MessageHandler";
 import { Bimatri } from "../lib/bimatri";
 import { LoginData } from "../lib/bimatri/types";
