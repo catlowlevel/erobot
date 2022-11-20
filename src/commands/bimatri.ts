@@ -70,7 +70,8 @@ export default class Cmd extends BaseCommand {
     async handleReset(M: Message, bima: Bimatri, opts: Options) {
         if (!M.sender.jid) throw new Error("sender jid is not defined!");
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
-        const data = bima.db.data[M.sender.jid];
+        // const data = bima.db.data[M.sender.jid];
+        const data = await BimaUser.find({ where: { jid: M.sender.jid } });
         if (!data)
             return this.client.sendMessage(
                 M.from,
@@ -228,9 +229,9 @@ export default class Cmd extends BaseCommand {
             await bimaUser.save();
             console.log("Data saved to database!");
 
-            if (!data) bima.db.data[M.sender.jid] = [];
-            bima.db.data[M.sender.jid].push(loginData);
-            await bima.db.write();
+            // if (!data) bima.db.data[M.sender.jid] = [];
+            // bima.db.data[M.sender.jid].push(loginData);
+            // await bima.db.write();
             return this.handleAccount(otpMsg, bima, loginData);
         } catch (error) {
             console.log("error", error);

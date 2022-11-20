@@ -1,12 +1,10 @@
-import { ROOT_DIR } from "../..";
-import { LowDB } from "../../core/LowDB";
 import { Utils } from "../../helper/utils";
 import { AccountData, Data, LoginData, OtpData, ProductData } from "./types";
 
 type DBType = { [id: string]: LoginData[] };
 
 export class Bimatri {
-    db: LowDB<DBType>;
+    // db: LowDB<DBType>;
     utils = new Utils();
     constructor() {
         ////this.requestOtp(NOHP).then(() => {
@@ -20,7 +18,7 @@ export class Bimatri {
         //this.accountData(NOHP, loginData).then(() => {
         //console.log("Done ");
         //});
-        this.db = new LowDB<DBType>(`${ROOT_DIR}/json/bimatri.json`, {});
+        // this.db = new LowDB<DBType>(`${ROOT_DIR}/json/bimatri.json`, {});
     }
     async beliPaket(loginData: LoginData, product: ProductData) {
         const url = `https://bimaplus.tri.co.id/api/v1/purchase/purchase-product`;
