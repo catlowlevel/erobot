@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import chalk from "chalk";
+import { fetch, RequestInit } from "undici";
 
 //https://github.com/jonatanpedersen/quoted/blob/e72a980b600d07477ecc9e7028c8a5a62886faf6/index.js#L48
 function quotedRegExp(str: string) {
@@ -20,6 +21,45 @@ function quotedRegExp(str: string) {
 export class Utils {
     public randomArray = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
     public randomNumber = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
+
+    public getBuffer = async (url: string, opts?: RequestInit) =>
+        fetch(url, opts)
+            .then((r) => r.arrayBuffer())
+            .then((ab) => Buffer.from(ab));
+
+    public yandexThumbnail = async (image: Buffer) => {
+        type Result = {
+            image_id: string;
+            url: string;
+            image_shard: number;
+            height: number;
+            width: number;
+            namespace: string;
+        };
+        const result = await fetch(
+            "https://yandex.com/images-apphost/image-download?cbird=111&images_avatars_size=preview&images_avatars_namespace=images-cbir",
+            {
+                headers: {
+                    accept: "*/*",
+                    "accept-language": "en,en-US;q=0.9,en-VI;q=0.8,id;q=0.7",
+                    "content-type": "image/jpeg",
+                    "sec-ch-ua": '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',
+                    "sec-ch-ua-mobile": "?0",
+                    "sec-ch-ua-platform": '"Linux"',
+                    "sec-fetch-dest": "empty",
+                    "sec-fetch-mode": "cors",
+                    "sec-fetch-site": "same-origin",
+                    // cookie:
+                    // 	"yandexuid=2100182771669010651; is_gdpr=0; is_gdpr_b=CMyzPRDRlgE=; _yasc=TEUwizWAlKDt3MIQz0UPcChIBSetsFDYG9eHMZrZvr/USS/w0xlQ3AMsdoobmg==; i=6WKkGvhJ4jgJVp0yqN08seSWL+K1w4PVEwHZmzdGN1SC8vWMOafZlLQGQYBPND6oQNSp19yqABneOSCKxybx0TX3sQw=; yp=1669615458.szm.1:1920x1080:1920x957",
+                    Referer: "https://yandex.com/images",
+                    "Referrer-Policy": "no-referrer-when-downgrade",
+                },
+                body: image,
+                method: "POST",
+            }
+        ).then(async (r) => (await r.json()) as Result);
+        return result;
+    };
 
     public generateRandomUniqueTag = (n = 4): string => {
         let max = 11;
