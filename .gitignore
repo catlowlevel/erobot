@@ -3,3 +3,4 @@ store
 dist
 .env
 json
+src/types/env.d.ts
