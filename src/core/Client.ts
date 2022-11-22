@@ -126,7 +126,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         if (!process.env.MONGO_URI) throw new Error("No mongo uri provided!");
         console.log("Connecting to database...");
         // await connect(process.env.MONGO_URI);
-        await dataSource.initialize()
+        await dataSource.initialize();
         console.log("Connected to database!");
 
         const { saveCreds, state } = await useMultiFileAuthState(join(ROOT_DIR, "store", "auth"));
@@ -258,7 +258,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             }
         });
         this.client.ev.on("creds.update", saveCreds);
-        return this.client;
+        return this;
     }
     public getMessageFromStore = (jid: string, msgId: string) => this.store.messages[jid]?.get(msgId);
     public waitConnected = () =>
