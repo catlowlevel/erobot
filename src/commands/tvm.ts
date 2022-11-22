@@ -2,7 +2,7 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
-import { getMiniChartImg, validTf } from "../lib/chartimg/api";
+import { getMiniChartImg } from "../lib/chartimg/api";
 import { searchSymbol } from "../lib/tradingview/api";
 
 @Command("tvm", {
@@ -15,7 +15,6 @@ export default class extends BaseCommand {
         if (args.args.length <= 0) return M.reply("Invalid arguments!");
 
         let symbol: string | undefined;
-        let tf = "1h";
         for (const arg of args.args) {
             console.log("arg :>> ", arg);
             if (!symbol) {
@@ -25,10 +24,6 @@ export default class extends BaseCommand {
                     symbol = data[0].symbol;
                     continue;
                 }
-            }
-            if (validTf(arg)) {
-                tf = arg;
-                continue;
             }
         }
 

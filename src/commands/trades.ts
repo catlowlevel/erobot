@@ -19,7 +19,7 @@ export default class extends BaseCommand {
             const msg = messages[0];
             if (msg.content.toLowerCase() === "yes") {
                 const finishedTrades = trades.filter((t) => t.sl.hit || t.tp.some((a) => a.hit === false));
-                const unfinishedTrades = trades.filter((t) => !(t.sl.hit || t.tp.some((a) => a.hit === false)));
+                // const unfinishedTrades = trades.filter((t) => !(t.sl.hit || t.tp.some((a) => a.hit === false)));
                 const totalTrades = trades.length - finishedTrades.length;
                 const allTradesCount = trades.length;
                 console.log(`Before : ${binance.dbTrade.data.length}`);

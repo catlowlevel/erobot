@@ -4,9 +4,6 @@ import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { Post } from "../service/samehadaku/samehadaku";
-type UnUnion<T, S> = T extends S ? ([S] extends [T] ? T : never) : never;
-type NotUnion<T> = UnUnion<T, T>;
-type LiteralString<T extends string> = string extends T ? never : NotUnion<T>;
 
 @Command("samehadaku", {
     description: "Post terakhir dari samehadaku",

@@ -1,25 +1,8 @@
 import { Utils } from "../../helper/utils";
 import { AccountData, Data, LoginData, OtpData, ProductData } from "./types";
 
-type DBType = { [id: string]: LoginData[] };
-
 export class Bimatri {
-    // db: LowDB<DBType>;
     utils = new Utils();
-    constructor() {
-        ////this.requestOtp(NOHP).then(() => {
-        ////console.log("done");
-        ////});
-        ////this.loginOtp(NOHP, "243802").then(() => {
-        ////console.log("DONE");
-        ////});
-        //const data = readFileSync("login.json", { encoding: "utf-8" });
-        //const loginData: LoginData = JSON.parse(data);
-        //this.accountData(NOHP, loginData).then(() => {
-        //console.log("Done ");
-        //});
-        // this.db = new LowDB<DBType>(`${ROOT_DIR}/json/bimatri.json`, {});
-    }
     async beliPaket(loginData: LoginData, product: ProductData) {
         const url = `https://bimaplus.tri.co.id/api/v1/purchase/purchase-product`;
         const data = {
@@ -94,9 +77,7 @@ export class Bimatri {
     }
     async accountData(loginData: LoginData) {
         const url = "https://bima.tri.co.id/apibima/profile/profile";
-        const { accessToken, appsflyerMsisdn, balance, creditLimit, profileColor, profileTime, status, ...rest } =
-            loginData;
-        const { callPlan, language, msisdn, secretKey, subscriberType, ...rest2 } = rest;
+        const { callPlan, language, msisdn, secretKey, subscriberType } = loginData;
         const response = await fetch(url, {
             headers: {
                 "content-type": "application/json",
@@ -166,9 +147,7 @@ export class Bimatri {
     }
     async logout(loginData: LoginData) {
         const url = "https://bima.tri.co.id/apibima/login/logout";
-        const { accessToken, appsflyerMsisdn, balance, creditLimit, profileColor, profileTime, status, ...rest } =
-            loginData;
-        const { callPlan, language, msisdn, secretKey, subscriberType, ...rest2 } = rest;
+        const { callPlan, language, msisdn, secretKey, subscriberType } = loginData;
         const response = await fetch(url, {
             headers: {
                 "content-type": "application/json",

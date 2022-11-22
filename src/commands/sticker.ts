@@ -72,8 +72,8 @@ export default class extends BaseCommand {
         if (radiusArg && !notImage) {
             args.args.splice(index, 1);
             try {
-                const value = radiusArg.split(":")[1] ?? "20";
-                const radius = Number(value);
+                // const value = radiusArg.split(":")[1] ?? "20";
+                // const radius = Number(value);
                 //TODO: Rounded image
                 // buffer = await toRoundedImage(buffer, radius);
             } catch (error) {

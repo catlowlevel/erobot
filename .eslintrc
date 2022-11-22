@@ -7,5 +7,5 @@
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended"
     ],
-    "rules": { "no-unused-vars": "off", "@typescript-eslint/no-unused-vars": "off" }
+    "rules": { "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "_*" }] }
 }

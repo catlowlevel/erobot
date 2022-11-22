@@ -3,20 +3,20 @@ import chalk from "chalk";
 import { fetch, RequestInit } from "undici";
 
 //https://github.com/jonatanpedersen/quoted/blob/e72a980b600d07477ecc9e7028c8a5a62886faf6/index.js#L48
-function quotedRegExp(str: string) {
-    const expression = /(["'])(?:(?=(\\?))\2.)*?\1/gm;
-    const texts = [];
-    const emptyString = "";
-    let match;
-    while ((match = expression.exec(str))) {
-        const text = match[0].slice(1, -1);
-        if (text !== emptyString) {
-            texts.push(text);
-        }
-    }
+// function quotedRegExp(str: string) {
+//     const expression = /(["'])(?:(?=(\\?))\2.)*?\1/gm;
+//     const texts = [];
+//     const emptyString = "";
+//     let match;
+//     while ((match = expression.exec(str))) {
+//         const text = match[0].slice(1, -1);
+//         if (text !== emptyString) {
+//             texts.push(text);
+//         }
+//     }
 
-    return texts;
-}
+//     return texts;
+// }
 
 export class Utils {
     public randomArray = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];

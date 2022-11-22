@@ -27,7 +27,7 @@ export default class extends BaseCommand {
         const size = Number(size_f);
         const entry = Number(entry_f);
         const sl = Number(sl_f);
-        const timestamp = Number(timestamp_f);
+        // const timestamp = Number(timestamp_f);
         const symbolData = this.client.binance.symbolData[symbol];
         let quoteOrderQty = size / entry;
         quoteOrderQty = Number(quoteOrderQty.toFixed(symbolData.quantityPrecision));

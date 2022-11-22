@@ -403,7 +403,7 @@ export class BinanceClient {
         if (!db[data.symbol]) db[data.symbol] = { countdown: 0 };
 
         const MAX_INDEX = 19;
-        const INDEX = data.candles.length - 10;
+        // const INDEX = data.candles.length - 10;
 
         const ema25 = ema({ period: 25, values: data.candles.map((c) => c.close) }).reverse();
         const ema99 = ema({ period: 99, values: data.candles.map((c) => c.close) }).reverse();
@@ -455,14 +455,14 @@ export class BinanceClient {
         if (bullish && db[data.symbol].countdown <= 0) {
             this.bullishEmaDb.data[data.symbol].countdown = 10;
             const current = candles[candles.length - 1];
-            const current2 = candles[candles.length - 2];
+            // const current2 = candles[candles.length - 2];
             const currentPrice = current.close;
 
             const greens = candles.filter((d) => d.close > d.open);
             const reds = candles.filter((d) => d.close < d.open);
 
-            const lastPrice = candles[0].close;
-            const percentGap = this.client.utils.getPercentageChange(currentPrice, lastPrice);
+            // const lastPrice = candles[0].close;
+            // const percentGap = this.client.utils.getPercentageChange(currentPrice, lastPrice);
             // console.log(candles.length, data.candles.length);
             const precision = this.symbolData[data.symbol].pricePrecision;
             const alertPrice = (current.ema99 + current.ema25 + current.ema7) / 3;
