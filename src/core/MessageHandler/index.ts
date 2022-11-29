@@ -118,7 +118,7 @@ export class MessageHandler {
                     )}!\nReason : ${err}`,
                     "red"
                 );
-                // console.trace(err);
+                console.trace(err);
                 // if (command.handleError)
                 await command
                     .handleError(M, err)
