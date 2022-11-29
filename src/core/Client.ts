@@ -169,11 +169,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
                 };
             },
             patchMessageBeforeSending: (message) => {
-                const requiresPatch = !!(
-                    message.buttonsMessage ||
-                    // || message.templateMessage
-                    message.listMessage
-                );
+                const requiresPatch = !!(message.buttonsMessage || message.templateMessage || message.listMessage);
                 if (requiresPatch) {
                     message = {
                         viewOnceMessage: {

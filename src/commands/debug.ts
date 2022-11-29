@@ -13,6 +13,30 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length > 0) {
+            if (args.args?.[0].startsWith("temp")) {
+                //send a template message!
+                return this.client.sendMessage(M.from, {
+                    text: "Hi it's a template message",
+                    footer: "Hello World",
+                    templateButtons: [
+                        {
+                            index: 1,
+                            urlButton: {
+                                displayText: "⭐ Star Baileys on GitHub!",
+                                url: "https://github.com/adiwajshing/Baileys",
+                            },
+                        },
+                        { index: 3, callButton: { displayText: "Call me!", phoneNumber: "+1 (234) 5678-901" } },
+                        {
+                            index: 2,
+                            quickReplyButton: {
+                                displayText: "This is a reply, just like normal buttons!",
+                                id: "id-like-buttons-message",
+                            },
+                        },
+                    ],
+                });
+            }
             if (args.args?.[0].startsWith("blur")) {
                 let imageBuffer = await M.downloadQuotedMedia();
                 if (M.type !== "imageMessage" && !imageBuffer) return M.reply("Image only"); //TODO: Handle quoted message
