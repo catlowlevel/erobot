@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import chalk from "chalk";
+import { shuffle } from "lodash";
 import { fetch, RequestInit } from "undici";
 
 //https://github.com/jonatanpedersen/quoted/blob/e72a980b600d07477ecc9e7028c8a5a62886faf6/index.js#L48
@@ -21,6 +22,7 @@ import { fetch, RequestInit } from "undici";
 export class Utils {
     public randomArray = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
     public randomNumber = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
+    public shuffleArray = shuffle;
 
     public getBuffer = async (url: string, opts?: RequestInit) =>
         fetch(url, opts)
