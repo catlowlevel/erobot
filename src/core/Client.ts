@@ -91,7 +91,29 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         console.log(c(str));
     }
 
-    sendMessageQueue(
+    //TODO: use this, this is currently not used anwhere
+    //FIXME: fix typings
+    //FIXME: add quoted options
+    public sendButtons(
+        jid: string,
+        text: string,
+        buttons: [{ id: string; text: string }, { id: string; text: string }?, { id: string; text: string }?],
+        footer?: string,
+        queue = false
+    ) {
+        const sendMessage = queue ? this.sendMessageQueue : this.sendMessage;
+        return sendMessage(jid, {
+            text,
+            buttons: buttons.map((btn) => ({
+                buttonId: btn ? btn.id : "",
+                buttonText: { displayText: btn ? btn.text : "" },
+                type: 0,
+            })),
+            footer,
+        });
+    }
+
+    public sendMessageQueue(
         jid: string | undefined | null,
         content: AnyMessageContent,
         options?: MiscMessageGenerationOptions | undefined,
