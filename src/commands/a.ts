@@ -21,11 +21,15 @@ export default class extends BaseCommand {
             .relayMessage(
                 M.from,
                 {
-                    [M.type]:
+                    [M.type !== "conversation" ? M.type : "extendedTextMessage"]:
                         M.type === "conversation"
-                            ? msg.conversation
+                            ? {
+                                  text: args.context,
+                                  contextInfo: { mentionedJid: participants },
+                              }
                             : {
                                   ...(msg[msgKey] as Record<string, unknown>),
+                                  text: args.context,
                                   contextInfo: { mentionedJid: participants },
                               },
                 },
