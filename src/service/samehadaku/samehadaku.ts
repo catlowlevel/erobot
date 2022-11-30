@@ -25,7 +25,7 @@ export interface SearchPost {
 }
 
 export class Samehadaku {
-    BASE_URL = "https://194.163.183.129/";
+    BASE_URL = "https://samehadaku.win";
     private postAdapter = new JSONFile<Post[]>(`${ROOT_DIR}/json/samehadaku_posts.json`);
     db: Low<Post[]>;
     htmlCacheMap: Map<string, string>; //url, html
