@@ -216,7 +216,7 @@ export default class Cmd extends BaseCommand {
         }
         await nohpMsg.reply("Kirim kode OTP yang kamu terima");
         const { messages: otpMessages } = await M.collectMessages({ timeout: 2000 * 60, max: 1, senderOnly: true });
-        if (messages.length <= 0) return M.reply("Kamu tidak mengirim kode OTP\nMembatalkan...");
+        if (otpMessages.length <= 0) return M.reply("Kamu tidak mengirim kode OTP\nMembatalkan...");
         const otpMsg = otpMessages[0];
         const otp = otpMsg.content;
         try {
