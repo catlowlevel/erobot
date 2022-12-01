@@ -139,6 +139,7 @@ export class Samehadaku {
     }
 
     async getPosts() {
+        //FIXME: bypass cloudflare by providing extra headers here
         const response = await fetch(this.BASE_URL);
         const html = await response.text();
         const $ = cheerio.load(html);

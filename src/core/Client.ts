@@ -78,12 +78,12 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         if (process.env.BINANCE_APIKEY && process.env.BINANCE_APISECRET) this.binance = new BinanceClient(this, true);
         else console.log("Binance env variable is not set!");
 
-        this.samehadaku = new Samehadaku(this);
+        // this.samehadaku = new Samehadaku(this);
 
         if (process.env.COINDAR_ACCESSTOKEN && process.env.COINDAR_BASE_URL_API) this.coindar = new Coindar(this);
         else console.log("Coindar env variable is not set!");
 
-        this.log("Service loaded");
+        this.log("Services loaded");
     }
 
     log(str: string, color: keyof typeof chalk = "blue") {
