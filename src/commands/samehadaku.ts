@@ -9,6 +9,7 @@ import { Post } from "../service/samehadaku/samehadaku";
     description: "Post terakhir dari samehadaku",
     usage: "samehadaku",
     aliases: ["anime1"],
+    load: (client) => client.samehadaku !== undefined,
 })
 export default class extends BaseCommand {
     private get samehadaku() {

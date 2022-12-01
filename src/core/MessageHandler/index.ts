@@ -17,6 +17,8 @@ interface ICommandConfig {
     description: string;
     usage: string;
     aliases?: string[];
+    /** return false to not load this command */
+    load?: (client: Client) => boolean;
 }
 
 export interface ICommand {
@@ -29,7 +31,7 @@ export interface ICommand {
     handler: MessageHandler;
     /**Method for executing the command */
     execute(M: Message, args: IArgs): Promise<void | never | unknown>;
-    /**Method for catching error that exexcute throws */
+    /**Method for catching error that execute throws */
     handleError(M: Message, err: Error): Promise<void | never | unknown>;
 }
 
@@ -54,6 +56,11 @@ export class MessageHandler {
                 const command: BaseCommand = new (require(path).default)();
                 command.client = this.client;
                 command.handler = this;
+
+                //explicitly check false because load function is optional
+                if (command.config.load?.(this.client) === false) {
+                    throw new Error("command not loaded");
+                }
                 this.commands.set(command.name, command);
                 if (command.config.aliases) command.config.aliases.forEach((a) => this.aliases.set(a, command));
 
@@ -61,7 +68,7 @@ export class MessageHandler {
                 console.log(`Command ${chalk.keyword(color)(command.name)} loaded!`);
                 res();
             } catch (error) {
-                console.log(`Command ${chalk.red(path)} fail to load. Reason : ${error}`);
+                console.log(`Command ${chalk.red(path)} fail to load. Reason : ${error.message}`);
                 res();
             }
         });
