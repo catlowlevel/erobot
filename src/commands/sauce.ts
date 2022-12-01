@@ -3,10 +3,10 @@ import { BaseCommand, Command, IArgs, Message } from "../core";
 import { shortenUrl } from "../lib/bitly/api";
 import { searchImages } from "../lib/puppeteer";
 
-@Command("whatimage", {
+@Command("sauce", {
     description: "",
     usage: "",
-    aliases: ["wimg", "findimg"],
+    aliases: ["wimg", "findimg", "whatimage"],
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
@@ -15,7 +15,7 @@ export default class extends BaseCommand {
         if (!buffer) buffer = (await downloadMediaMessage(M.message, "buffer", {})) as Buffer;
         const yandexResult = await this.client.utils.yandexThumbnail(buffer);
         const result = await searchImages(yandexResult);
-        for (const r of result.slice(0, 5)) {
+        for (const r of result.slice(0, 10)) {
             console.log(`sending : ${r.title}`);
             const image = await this.client.utils.getBuffer(r.thumb);
             const link = await shortenUrl(r.link);
