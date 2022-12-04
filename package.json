@@ -36,7 +36,7 @@
         "typescript": "^4.9.3"
     },
     "dependencies": {
-        "@adiwajshing/baileys": "https://github.com/adiwajshing/Baileys.git#30e2cb5c4c8ca84b1814574ed4ce74f8f8f89ecf",
+        "@adiwajshing/baileys": "https://github.com/adiwajshing/Baileys.git#00d8cf427022d7698a577fcbb98d8561ccade24c",
         "@adiwajshing/keyed-db": "^0.2.4",
         "@commonify/lowdb": "^3.0.0",
         "@hapi/boom": "^10.0.0",

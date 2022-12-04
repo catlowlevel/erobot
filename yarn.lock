@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@adiwajshing/baileys@https://github.com/adiwajshing/Baileys.git#30e2cb5c4c8ca84b1814574ed4ce74f8f8f89ecf":
+"@adiwajshing/baileys@https://github.com/adiwajshing/Baileys.git#00d8cf427022d7698a577fcbb98d8561ccade24c":
   version "5.0.0"
-  resolved "https://github.com/adiwajshing/Baileys.git#30e2cb5c4c8ca84b1814574ed4ce74f8f8f89ecf"
+  resolved "https://github.com/adiwajshing/Baileys.git#00d8cf427022d7698a577fcbb98d8561ccade24c"
   dependencies:
     "@hapi/boom" "^9.1.3"
     axios "^0.24.0"
