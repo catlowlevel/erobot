@@ -7,6 +7,7 @@ const utils = new Utils();
 export const searchImages = (yandexThumbnailResult: Awaited<ReturnType<typeof utils.yandexThumbnail>>) =>
     new Promise<
         {
+            image: string;
             thumb: string;
             link: string;
             title: string;
@@ -47,13 +48,17 @@ export const searchImages = (yandexThumbnailResult: Awaited<ReturnType<typeof ut
                         };
                     });
 
-                    const thumb = await li.$eval("div[class$=ItemThumb] > a", (a) => {
+                    const images = await li.$eval("div[class$=ItemThumb] > a", (a) => {
                         let href = a.getAttribute("href");
                         href = decodeURIComponent(href ?? "");
-                        return { thumb: href };
+                        //TODO: Convert img source to buffer/base64
+                        const imgSrc = a.querySelector("img")?.getAttribute("src");
+                        let thumb = decodeURIComponent(imgSrc ?? "");
+                        if (!!thumb && !thumb.startsWith("http")) thumb = `https:${thumb}`;
+                        return { image: href, thumb };
                     });
 
-                    return { ...linkAndTitle, ...thumb };
+                    return { ...linkAndTitle, ...images };
                 });
 
                 const data = await Promise.all(results);

@@ -29,13 +29,18 @@ export default class extends BaseCommand {
         console.log("result.length", result.length);
 
         for (const r of result.slice(0, limit)) {
-            console.log(`sending : ${r.title}`);
-            const image = await this.client.utils.getBuffer(r.thumb);
-            const link = await shortenUrl(r.link);
-            await this.client.sendMessageQueue(M.from, {
-                image,
-                caption: `*${r.title}*\n\n${link}`,
-            });
+            try {
+                console.log(`sending : ${r.title}`);
+                const image = await this.client.utils.getBuffer(r.thumb ?? r.image);
+                const link = await shortenUrl(r.link);
+                await this.client.sendMessageQueue(M.from, {
+                    image,
+                    caption: `*${r.title}*\n\n${link}`,
+                });
+            } catch (err) {
+                console.log(err.message);
+                console.log(r);
+            }
         }
         return;
     };
