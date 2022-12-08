@@ -116,6 +116,35 @@ export default class Cmd extends BaseCommand {
         if (opts.id !== M.sender.jid) return M.reply("You are not authorized perform this action");
         if (!opts.nohp) return M.reply("No HP diperlukan!");
 
+        //TODO: Parse previous message to be compared with current data
+        const quoted =
+            M.message.message?.buttonsResponseMessage?.contextInfo?.quotedMessage?.buttonsMessage?.contentText;
+        if (quoted) {
+            console.log(quoted);
+            const sections = quoted.split("\n=======================");
+            console.log("sections :>> ", sections);
+            // const data: Record<string, any> = {};
+            // lines.forEach((line) => {
+            //     const [key, value] = line.split(":").map((s) => s.trim());
+            //     if (key) {
+            //         switch (key) {
+            //             case "Nomor tri":
+            //                 data["nohp"] = value;
+            //                 break;
+            //             case "Sisa pulsa":
+            //                 data["pulsa"] = value;
+            //                 break;
+            //             case "Masa aktif":
+            //                 data["masaAktif"] = value;
+            //                 break;
+            //             default:
+            //                 break;
+            //         }
+            //     }
+            // });
+            // console.log(data);
+        }
+
         // const data = bima.db.data[M.sender.jid];
         // const loginData = data.find((d) => d.msisdn === opts.nohp);
         // if (!loginData) return M.reply("Tidak dapat menemukan data!");
