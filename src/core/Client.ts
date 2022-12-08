@@ -148,7 +148,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         if (!process.env.MONGO_URI) throw new Error("No mongo uri provided!");
         console.log("Connecting to database...");
         // await connect(process.env.MONGO_URI);
-        await dataSource.initialize();
+        if (!dataSource.isInitialized) await dataSource.initialize();
         console.log("Connected to database!");
 
         const { saveCreds, state } = await useMultiFileAuthState(join(ROOT_DIR, "store", "auth"));
