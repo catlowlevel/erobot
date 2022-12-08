@@ -67,6 +67,7 @@ export class Message {
         let text = this.content;
         for (const mentioned of this.mentioned) text = text.replace(mentioned.split("@")[0], "");
         this.numbers = this.client.utils.extractNumbers(text);
+        //TODO: fix quoted reply of a button is undefined
         if (M.message?.[this.type as "extendedTextMessage"]?.contextInfo?.quotedMessage) {
             const { quotedMessage, participant, stanzaId } =
                 M.message?.[this.type as "extendedTextMessage"]?.contextInfo || {};
