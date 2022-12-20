@@ -50,6 +50,7 @@
         "debounce": "^1.2.1",
         "dotenv": "^16.0.3",
         "get-urls": "10.0.1",
+        "link-preview-js": "^3.0.4",
         "lodash": "^4.17.21",
         "mongodb": "3.6.0",
         "nanoid": "2.1.11",
