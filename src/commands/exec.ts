@@ -7,9 +7,12 @@ import { BaseCommand, Command, IArgs, Message } from "../core";
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
-        return exec(args.context, { timeout: 1000 * 60 }, async (err, out) => {
-            if (err) throw err;
-            await M.reply(out);
+        return new Promise<void>((res, rej) => {
+            exec(args.context, { timeout: 1000 * 60 }, async (err, out) => {
+                if (err) rej(err);
+                await M.reply(out);
+                res();
+            });
         });
     };
 
