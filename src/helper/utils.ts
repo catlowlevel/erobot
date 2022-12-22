@@ -24,6 +24,11 @@ export class Utils {
     public randomNumber = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
     public shuffleArray = shuffle;
 
+    public requireUncached = (module: string) => {
+        delete require.cache[require.resolve(module)];
+        return require(module);
+    };
+
     public getBuffer = async (url: string, opts?: RequestInit) =>
         fetch(url, opts)
             .then((r) => r.arrayBuffer())
