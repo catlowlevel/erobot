@@ -1,6 +1,7 @@
 import chalk from "chalk";
+import chokidar from "chokidar";
 import { readdirSync } from "fs";
-import { join } from "path";
+import { basename, join } from "path";
 import { INDEX_DIR } from "../..";
 import { BaseCommand } from "../BaseCommand";
 import { Client } from "../Client";
@@ -50,10 +51,14 @@ export class MessageHandler {
     }
 
     private loadCommand = (path: string) =>
-        new Promise<void>((res) => {
+        // eslint-disable-next-line no-async-promise-executor
+        new Promise<void>(async (res) => {
             try {
+                // const module = await import(path);
+                // console.log(module);
+
                 // eslint-disable-next-line @typescript-eslint/no-var-requires
-                const command: BaseCommand = new (require(path).default)();
+                const command: BaseCommand = new (this.client.utils.requireUncached(path).default)();
                 command.client = this.client;
                 command.handler = this;
 
@@ -74,6 +79,15 @@ export class MessageHandler {
         });
 
     public loadCommands = async () => {
+        const commandsPath = join(INDEX_DIR, "commands");
+        console.log(`Watching ${commandsPath}`);
+        chokidar.watch(commandsPath, { ignoreInitial: true }).on("all", (ev, p) => {
+            if (!["add", "change"].includes(ev)) return;
+            const filename = basename(p);
+            if (filename.startsWith("_")) return;
+            this.loadCommand(p);
+        });
+
         this.client.log("=====Loading commands========", "blue");
         const files = readdirSync(join(...this.path));
         files
