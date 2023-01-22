@@ -13,6 +13,7 @@ export default class extends BaseCommand {
         const urls = getUrls(args.context);
         if (!urls) return M.reply("Url required!");
         const url = urls.values().next().value as string;
+        //TODO: send the filename shorter if to long
         const { buffer, mimeType, fileName } = await downloadFile(url, async ({ fileName, size, sizeStr }) => {
             if (size <= 0) {
                 M.reply("This url is possibly not downloadable!");
