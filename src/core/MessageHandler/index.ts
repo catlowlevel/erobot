@@ -1,12 +1,12 @@
 import chalk from "chalk";
-import chokidar from "chokidar";
 import { readdirSync } from "fs";
-import { basename, join } from "path";
+import { join } from "path";
 import { INDEX_DIR } from "../..";
 import { BaseCommand } from "../BaseCommand";
 import { Client } from "../Client";
 import { Message } from "../Message";
 import { AutoReply } from "./AutoReply";
+import { StickerForwarder } from "./ForwardSticker";
 export interface IArgs {
     context: string;
     args: string[];
@@ -41,12 +41,14 @@ export class MessageHandler {
     aliases = new Map<string, ICommand>();
 
     autoReply: AutoReply;
+    stickerForwarder: StickerForwarder;
 
     private path = [INDEX_DIR, "commands"];
 
     constructor(private client: Client) {
         client.waitConnected().then(() => {
             this.autoReply = new AutoReply(client, this);
+            this.stickerForwarder = new StickerForwarder(client, this);
         });
     }
 
@@ -113,6 +115,7 @@ export class MessageHandler {
         const cmd = args[0].toLowerCase().slice(prefix.length);
         const command = this.commands?.get(cmd) || this.aliases?.get(cmd);
         if (!command) return; //M.reply("Perintah tidak dikenal!");
+        if (this.client.config.data.me?.[M.from] === true && !M.message.key.fromMe) return;
         const color = this.client.utils.getRandomColor();
         const color2 = this.client.utils.getRandomColor();
         this.client.log(`Executing command ${chalk.keyword(color2)(cmd)} from ${title} by ${M.sender.username}`, color);
