@@ -116,5 +116,3 @@ export class Snaptik {
         return token;
     }
 }
-
-export const snaptik = new Snaptik();
