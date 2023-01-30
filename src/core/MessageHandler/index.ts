@@ -81,12 +81,12 @@ export class MessageHandler {
     public loadCommands = async () => {
         const commandsPath = join(INDEX_DIR, "commands");
         console.log(`Watching ${commandsPath}`);
-        chokidar.watch(commandsPath, { ignoreInitial: true }).on("all", (ev, p) => {
-            if (!["add", "change"].includes(ev)) return;
-            const filename = basename(p);
-            if (filename.startsWith("_")) return;
-            this.loadCommand(p);
-        });
+        // chokidar.watch(commandsPath, { ignoreInitial: true }).on("all", (ev, p) => {
+        // if (!["add", "change"].includes(ev)) return;
+        // const filename = basename(p);
+        // if (filename.startsWith("_")) return;
+        // this..loadCommand(p);
+        // });
 
         this.client.log("=====Loading commands========", "blue");
         const files = readdirSync(join(...this.path));
