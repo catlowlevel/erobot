@@ -21,7 +21,7 @@ import { join } from "path";
 import P from "pino";
 import Queue from "queue";
 import { client } from "telegram";
-import { Message } from ".";
+import { LowDB, Message } from ".";
 import { ROOT_DIR } from "..";
 import { Utils } from "../helper/utils";
 import { BinanceClient } from "../service/binance/binance";
@@ -42,12 +42,19 @@ interface IEvent {
     participants: string[];
     action: ParticipantAction;
 }
+
+interface IConfig {
+    me?: { [jid: string]: boolean };
+}
+
 export class Client extends (EventEmitter as new () => TypedEmitter<Events>) implements client {
     private client!: client;
     store: ReturnType<typeof makeInMemoryStore>;
     binance: BinanceClient;
     samehadaku: Samehadaku;
     coindar: Coindar;
+
+    config: LowDB<IConfig>;
 
     msgQueue: Queue;
     // public contact = new Contact(this);
@@ -63,6 +70,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             this.store.writeToFile(join(ROOT_DIR, "store", "stores.json"));
         }, 10_000);
 
+        this.config = new LowDB(join(ROOT_DIR, "config.json"), {});
+
         this.initService();
     }
 
@@ -75,6 +84,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
                 }
             }, 500);
         });
+        await this.config.waitInit();
         if (process.env.BINANCE_APIKEY && process.env.BINANCE_APISECRET) this.binance = new BinanceClient(this, true);
         else console.log("Binance env variable is not set!");
 
