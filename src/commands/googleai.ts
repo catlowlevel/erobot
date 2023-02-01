@@ -4,7 +4,7 @@ import { CharaAi } from "../lib/beta.character.ai/CharaAi";
 @Command("googleai", {
     description: "",
     usage: "",
-    aliases: ["gai", "ai", "google"],
+    //aliases: ["gai", "ai", "google"],
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, { context }: IArgs): Promise<unknown> => {
