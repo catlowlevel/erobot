@@ -1,5 +1,4 @@
 import { JSONFile, Low } from "@commonify/lowdb";
-import { fetch } from "undici";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
 

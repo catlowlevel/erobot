@@ -1,6 +1,5 @@
 import { load } from "cheerio";
 
-import { fetch } from "undici";
 interface Post {
     title: string;
     version: string;

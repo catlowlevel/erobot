@@ -1,5 +1,4 @@
 import { load } from "cheerio";
-import { fetch } from "undici";
 
 const url = "https://sslecal2.forexprostools.com/";
 

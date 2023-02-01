@@ -1,7 +1,6 @@
 import { proto } from "@adiwajshing/baileys";
 import { JSONFile, Low } from "@commonify/lowdb";
 import * as cheerio from "cheerio";
-import { fetch } from "undici";
 import { ROOT_DIR } from "../..";
 import { Client } from "../../core";
 export interface Post {

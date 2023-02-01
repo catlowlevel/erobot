@@ -1,4 +1,3 @@
-import { fetch } from "undici";
 
 interface Result {
     video?: Video;

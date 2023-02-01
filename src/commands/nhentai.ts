@@ -1,6 +1,5 @@
 import { delay, proto } from "@adiwajshing/baileys";
 import { NHentai } from "@shineiichijo/nhentai-ts";
-import { fetch } from "undici";
 import { BaseCommand, Command, IArgs, Message } from "../core";
 
 type Options = ReturnType<command["getOptions"]>;

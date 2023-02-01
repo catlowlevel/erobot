@@ -1,5 +1,4 @@
 import getUrls from "get-urls";
-import { fetch } from "undici";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";

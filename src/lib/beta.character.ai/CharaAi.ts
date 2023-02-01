@@ -1,4 +1,3 @@
-import { fetch } from "undici";
 import { ROOT_DIR } from "../..";
 import { LowDB } from "../../core";
 import { CreateResponse, TextResponse } from "./types";

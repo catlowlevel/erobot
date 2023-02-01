@@ -1,6 +1,5 @@
 import { load as Cheerio } from "cheerio";
 import { connect, getCandles } from "tradingview-ws";
-import { fetch } from "undici";
 
 interface Data {
     symbol: string; //"BNBUSDT";

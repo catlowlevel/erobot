@@ -1,5 +1,4 @@
 import { load } from "cheerio";
-import { fetch } from "undici";
 
 interface IAlbum {
     id: number;

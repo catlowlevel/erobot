@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import chalk from "chalk";
 import { shuffle } from "lodash";
-import { fetch, RequestInit } from "undici";
-
 //https://github.com/jonatanpedersen/quoted/blob/e72a980b600d07477ecc9e7028c8a5a62886faf6/index.js#L48
 // function quotedRegExp(str: string) {
 //     const expression = /(["'])(?:(?=(\\?))\2.)*?\1/gm;

@@ -1,4 +1,3 @@
-import { fetch } from "undici";
 
 //prettier-ignore
 const indicators = [

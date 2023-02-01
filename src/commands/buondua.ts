@@ -1,5 +1,4 @@
 import sharp from "sharp";
-import { fetch } from "undici";
 import { BaseCommand, Command, IArgs, Message } from "../core";
 import { Buondua } from "../lib/buondua";
 
