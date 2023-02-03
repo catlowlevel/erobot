@@ -28,6 +28,7 @@ import { BinanceClient } from "../service/binance/binance";
 import { Coindar } from "../service/coindar/coindar";
 import { Samehadaku } from "../service/samehadaku/samehadaku";
 import { dataSource } from "./Database/dataSource";
+import { Server } from "./Server";
 export type client = ReturnType<typeof Baileys>;
 
 type Events = {
@@ -60,6 +61,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     // public contact = new Contact(this);
 
     utils = new Utils();
+
+    server: Server;
     constructor() {
         super();
         console.log(nanoid());
@@ -72,6 +75,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
 
         this.config = new LowDB(join(ROOT_DIR, "config.json"), {});
 
+        this.server = new Server(this);
         this.initService();
     }
 
