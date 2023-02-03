@@ -4,7 +4,8 @@ import sharp from "sharp";
 import { v4 as v4uuid } from "uuid";
 
 import asyncRetry from "async-retry";
-import { HttpsProxyAgent } from "https-proxy-agent";
+import Proxy from "https-proxy-agent";
+const { HttpsProxyAgent } = Proxy;
 
 // eslint-disable-next-line prefer-const
 export let QQ_MODE: "CHINA" | "WORLD" = "WORLD";
@@ -38,7 +39,7 @@ export const qqRequest = async (imgData: string) => {
     };
     const sign = signV1(obj);
 
-    const httpsAgent: HttpsProxyAgent = new HttpsProxyAgent("http://rtknibzg-rotate:o78zzaz6csfl@p.webshare.io:80");
+    const httpsAgent = new HttpsProxyAgent("http://rtknibzg-rotate:o78zzaz6csfl@p.webshare.io:80");
     let extra;
     try {
         extra = await asyncRetry(

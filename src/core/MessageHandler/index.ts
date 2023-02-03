@@ -59,8 +59,7 @@ export class MessageHandler {
                 // const module = await import(path);
                 // console.log(module);
 
-                // eslint-disable-next-line @typescript-eslint/no-var-requires
-                const command: BaseCommand = new (this.client.utils.requireUncached(path).default)();
+                const command: BaseCommand = new (await import(path)).default();
                 command.client = this.client;
                 command.handler = this;
 
