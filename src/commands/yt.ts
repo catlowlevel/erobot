@@ -1,12 +1,12 @@
 import { proto } from "@adiwajshing/baileys";
 import { format } from "timeago.js";
-import { getInfo } from "ytdl-core";
+import ytdl from "ytdl-core";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
 import { COOKIES, ytdlDownload } from "../lib/yt/app";
-
+const { getInfo } = ytdl;
 @Command("yt", {
     description: "",
     usage: "",

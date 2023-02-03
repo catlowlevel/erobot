@@ -1,10 +1,12 @@
-import { BaseEntity, Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
+import Typeorm from "typeorm";
 import { LoginData } from "../../../lib/bimatri/types";
+
+const { Entity, BaseEntity, ObjectID, ObjectIdColumn, Column } = Typeorm;
 
 @Entity()
 export class BimaUser extends BaseEntity implements LoginData {
     @ObjectIdColumn()
-    id: ObjectID;
+    id: typeof ObjectID;
 
     @Column()
     jid: string;

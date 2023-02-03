@@ -7,7 +7,6 @@ import Baileys, {
     MessageRetryMap,
     MiscMessageGenerationOptions,
     ParticipantAction,
-    proto,
     useMultiFileAuthState,
     WACallEvent,
 } from "@adiwajshing/baileys";
@@ -47,6 +46,8 @@ interface IEvent {
 interface IConfig {
     me?: { [jid: string]: boolean };
 }
+
+type WebMessageInfo = Exclude<Awaited<ReturnType<ReturnType<typeof Baileys>["sendMessage"]>>, undefined>;
 
 export class Client extends (EventEmitter as new () => TypedEmitter<Events>) implements client {
     private client!: client;
@@ -131,10 +132,10 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         jid: string | undefined | null,
         content: AnyMessageContent,
         options?: MiscMessageGenerationOptions | undefined,
-        sentCb?: (msg: proto.WebMessageInfo) => void
+        sentCb?: (msg: WebMessageInfo) => void
     ) {
         if (!jid) throw new Error("jid is undefined!");
-        return new Promise<proto.WebMessageInfo>((res, rej) => {
+        return new Promise<WebMessageInfo>((res, rej) => {
             this.msgQueue.push((cb) => {
                 this.client
                     .sendMessage(jid, content, options)
@@ -181,7 +182,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             .replace(/\./g, ":");
         this.log(today, "yellow");
         this.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`, "green");
-        this.client = Baileys({
+        this.client = ((Baileys as any).default as typeof Baileys)({
             version,
             printQRInTerminal: true,
             auth: state,
@@ -244,21 +245,29 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
                             action,
                         });
                     switch (M.stubType) {
-                        case proto.WebMessageInfo.StubType.GROUP_CREATE:
+                        // case proto.WebMessageInfo.StubType.GROUP_CREATE:
+                        case 20:
                             return this.emit("new_group_joined", {
                                 jid: M.from,
                                 subject: M.stubParameters[0],
                             });
-                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD:
-                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
-                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_INVITE:
+                        // case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD:
+                        // case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
+                        // case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_INVITE:
+                        case 27:
+                        case 71:
+                        case 31:
                             return emitParticipantsUpdate("add");
-                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_LEAVE:
-                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_REMOVE:
+                        // case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_LEAVE:
+                        // case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_REMOVE:
+                        case 32:
+                        case 28:
                             return emitParticipantsUpdate("remove");
-                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_DEMOTE:
+                        // case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_DEMOTE:
+                        case 30:
                             return emitParticipantsUpdate("demote");
-                        case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_PROMOTE:
+                        // case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_PROMOTE:
+                        case 29:
                             return emitParticipantsUpdate("promote");
                     }
                 }

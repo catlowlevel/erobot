@@ -7,7 +7,7 @@ import binanceApiNode, {
     PositionSide_LT,
     Symbol as Simbol,
 } from "binance-api-node";
-import { debounce } from "debounce";
+import Debounce from "debounce";
 import EventEmitter from "events";
 import nanoid from "nanoid";
 import pMap from "p-map";
@@ -597,7 +597,7 @@ export class BinanceClient {
     }
 
     private datas: Data[] = [];
-    private deb = debounce(async () => {
+    private deb = Debounce.debounce(async () => {
         // console.log(this.datas.length);
         let messages = "";
         for (const data of this.datas) {

@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "CommonJS",
+        "module": "ESNext",
         "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
         "skipLibCheck": true,
         // "sourceMap": true,
