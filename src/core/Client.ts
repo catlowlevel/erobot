@@ -45,6 +45,7 @@ interface IEvent {
 
 interface IConfig {
     me?: { [jid: string]: boolean };
+    allow: { [command: string]: string[] };
 }
 
 type WebMessageInfo = Exclude<Awaited<ReturnType<ReturnType<typeof Baileys>["sendMessage"]>>, undefined>;
@@ -74,7 +75,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             this.store.writeToFile(join(ROOT_DIR, "store", "stores.json"));
         }, 10_000);
 
-        this.config = new LowDB(join(ROOT_DIR, "config.json"), {});
+        this.config = new LowDB(join(ROOT_DIR, "config.json"), { allow: {} });
 
         this.server = new Server(this);
         this.initService();

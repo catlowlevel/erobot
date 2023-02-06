@@ -8,6 +8,12 @@ import { IArgs } from "../core/MessageHandler";
     description: "Cek status bot",
     usage: "ping",
     aliases: ["p"],
+    allow(M, client) {
+        if (!M.command || !client.user) return [];
+        const allows = client.config.data.allow?.[M.command.name];
+        const regexs = allows.map((a) => new RegExp(a));
+        return [new RegExp(client.correctJid(client.user.id)), ...regexs];
+    },
 })
 export default class extends BaseCommand {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
