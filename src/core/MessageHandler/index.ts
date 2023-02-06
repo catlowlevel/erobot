@@ -20,6 +20,7 @@ interface ICommandConfig {
     aliases?: string[];
     /** return false to not load this command */
     load?: (client: Client) => boolean;
+    allow?: RegExp[] | ((M: Message, client: Client) => RegExp[]);
 }
 
 export interface ICommand {
@@ -114,6 +115,20 @@ export class MessageHandler {
         const cmd = args[0].toLowerCase().slice(prefix.length);
         const command = this.commands?.get(cmd) || this.aliases?.get(cmd);
         if (!command) return; //M.reply("Perintah tidak dikenal!");
+
+        M.command = command;
+        let allow = true;
+        if (command.config.allow) {
+            const allows =
+                typeof command.config.allow !== "function"
+                    ? command.config.allow
+                    : command.config.allow(M, this.client);
+            const result = allows.some((a) => a.test(M.sender?.jid ?? "") || a.test(M.from));
+            allow = result;
+        }
+        console.log(allow);
+        if (!allow) return;
+
         if (this.client.config.data.me?.[M.from] === true && !M.message.key.fromMe) return;
         const color = this.client.utils.getRandomColor();
         const color2 = this.client.utils.getRandomColor();
