@@ -9,6 +9,7 @@ import {
 } from "@adiwajshing/baileys";
 // import getUrls from 'get-urls'
 import { Client } from "./Client";
+import { ICommand } from "./MessageHandler";
 
 interface CollectOption {
     /** Timeout in ms before stop collect */
@@ -396,4 +397,5 @@ export class Message {
     public emojis: string[];
     public urls: string[];
     public groupMetadata?: GroupMetadata;
+    public command?: ICommand
 }
