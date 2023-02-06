@@ -14,9 +14,12 @@ export default class extends BaseCommand {
         if (args.args.length <= 0) return M.reply("Link diperlukan!");
         const url = args.args[0];
         console.log("url :>> ", url);
-        //TODO: Directly download video
         const results = await new Snaptik().facebook(url);
-        return M.reply(JSON.stringify(results, null, 2));
+        const hd = results?.data?.hd;
+        if (!hd) return M.reply("Gagal mengunduh!");
+        M.content = ".dl " + hd + " --no-confirm";
+        this.client.emit("new_message", M);
+        // return M.reply(JSON.stringify(results, null, 2));
         // const buffer = await downloadFacebook(url);
         // return M.reply(buffer, "video");
     };
