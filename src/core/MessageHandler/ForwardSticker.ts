@@ -1,6 +1,6 @@
 import { downloadMediaMessage } from "@adiwajshing/baileys";
 import Queue from "queue";
-import Sticker, { StickerTypes } from "wa-sticker-formatter/dist";
+import { Sticker, StickerTypes } from "wa-sticker-formatter/";
 import { MessageHandler } from ".";
 import { Client } from "../Client";
 
@@ -12,7 +12,7 @@ export class StickerForwarder {
             if (M.type === "stickerMessage") {
                 //TODO: change this!
                 const sendTo = "120363049404065538@g.us";
-                this.queue.push(async (cb) => {
+                this.queue.push(async (_cb) => {
                     const buffer = (await downloadMediaMessage(M.message, "buffer", {})) as Buffer;
                     const sticker = new Sticker(buffer)
                         .setType(StickerTypes.FULL)
