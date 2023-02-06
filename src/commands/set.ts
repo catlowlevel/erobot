@@ -1,6 +1,6 @@
 import { BaseCommand, Command, IArgs, Message } from "../core";
 
-@Command("allow", {
+@Command("set", {
     description: "",
     usage: "",
 })
