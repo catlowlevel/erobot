@@ -140,7 +140,8 @@ export default class extends BaseCommand {
                 return Promise.all(proms);
             }
         }
-
-        M.reply("Pong!");
+        const msgTime = new Date(Number(M.message.messageTimestamp) * 1000).getTime();
+        const time = Date.now() - msgTime;
+        return M.reply(`${time} ms`);
     };
 }
