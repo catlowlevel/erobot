@@ -1,4 +1,4 @@
-import convert from "../../../node_modules/convert-pro/convert";
+import convert from "convert-pro/convert";
 import { Utils } from "../../helper/utils";
 
 const utils = new Utils();
@@ -18,9 +18,8 @@ export const downloadFile = async (
     if (!fileName) fileName = utils.generateRandomUniqueTag(10);
     console.log("filename :>> ", fileName);
 
-    const size = convert.bytes(Number(contentLength), "MB");
-
-    const sizeStr = convert.bytes(Number(contentLength), { accuracy: 2 });
+    const size = ((convert as any).default as typeof convert).bytes(Number(contentLength), "MB");
+    const sizeStr = ((convert as any).default as typeof convert).bytes(Number(contentLength), { accuracy: 2 });
 
     if (confirmation) {
         const result = await confirmation({ fileName, size, sizeStr });
