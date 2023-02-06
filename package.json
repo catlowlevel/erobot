@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "start": "yarn build && node --experimental-specifier-resolution=node dist/index.js",
-        "start:watch": "nodemon --delay 150ms --exitcrash --ignore 'dist/commands/*.js' --watch dist --ext js --exec node --experimental-specifier-resolution=node --no-warnings dist/index.js --color",
+        "start:watch": "nodemon --delay 150ms --exitcrash --watch dist --ext js --exec node --experimental-specifier-resolution=node --no-warnings dist/index.js --color",
         "dev": "nodemon --exitcrash --watch src --ext js,ts --exec node --no-warnings --loader ts-node/esm src/index.ts --color",
         "build": "tsc",
         "build:watch": "tsc -w",
