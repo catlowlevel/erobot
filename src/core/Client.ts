@@ -236,7 +236,10 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
                 // if (M.type === "protocolMessage" || M.type === "senderKeyDistributionMessage") return null;
 
                 if (type !== "notify") return null;
-                if (message.key.remoteJid === "status@broadcast") return null;
+                if (message.key.remoteJid === "status@broadcast") {
+                    console.log(JSON.stringify(message));
+                    return null;
+                }
 
                 if (M.stubType && M.stubParameters) {
                     const emitParticipantsUpdate = (action: ParticipantAction): boolean =>
