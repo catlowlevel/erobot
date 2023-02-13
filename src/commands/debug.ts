@@ -1,6 +1,7 @@
 import { downloadMediaMessage } from "@adiwajshing/baileys";
 import { exec } from "child_process";
 import sharp from "sharp";
+import { extractMetadata } from "wa-sticker-formatter";
 import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
@@ -128,6 +129,13 @@ export default class extends BaseCommand {
             }
         }
         if (M.quoted) {
+            if (M.quoted?.message?.stickerMessage) {
+                const buffer = await M.downloadQuotedMedia();
+                if (buffer) {
+                    const metadata = await extractMetadata(buffer);
+                    return M.reply(JSON.stringify(metadata));
+                }
+            }
             console.log(JSON.stringify(M.quoted, null, 2));
             return;
         }
