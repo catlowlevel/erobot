@@ -117,7 +117,8 @@ export class MessageHandler {
         if (!command) return; //M.reply("Perintah tidak dikenal!");
 
         M.command = command;
-        let allow = true;
+        let allow = false;
+        console.log(command.config.allow);
         if (command.config.allow) {
             const allows =
                 typeof command.config.allow !== "function"
@@ -125,8 +126,18 @@ export class MessageHandler {
                     : command.config.allow(M, this.client);
             const result = allows.some((a) => a.test(M.sender?.jid ?? "") || a.test(M.from));
             allow = result;
+        } else {
+            const allows = this.client.config.data.allow[command.name]?.map((r) => new RegExp(r));
+            const cb = (a: RegExp) => {
+                const user = a.test(M.sender?.jid ?? "");
+                const group = a.test(M.from);
+                const result = user || group;
+                return result;
+            };
+            const result = allows?.some(cb);
+            allow = result ? true : M.message.key.fromMe ? true : false;
         }
-        console.log(allow);
+        // console.log(allow);
         if (!allow) return;
 
         if (this.client.config.data.me?.[M.from] === true && !M.message.key.fromMe) return;
