@@ -261,6 +261,10 @@ export class Message {
         } = {}
     ): Promise<ReturnType<typeof this.client.sendMessage>> => {
         if (type === "text" && Buffer.isBuffer(content)) throw new Error("Cannot send Buffer as a text message");
+        const msgType = Object.keys(this.message.message ?? {})[0] as keyof typeof this.message.message;
+        const msg = this.message.message?.[msgType];
+        const eph = (msg as any)?.contextInfo?.expiration;
+
         return this.client.sendMessage(
             this.from,
             {
@@ -283,6 +287,7 @@ export class Message {
             } as unknown as AnyMessageContent,
             {
                 quoted: this.M,
+                ephemeralExpiration: eph,
             }
         );
     };
@@ -397,5 +402,5 @@ export class Message {
     public emojis: string[];
     public urls: string[];
     public groupMetadata?: GroupMetadata;
-    public command?: ICommand
+    public command?: ICommand;
 }
