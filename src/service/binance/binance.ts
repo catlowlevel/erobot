@@ -9,7 +9,7 @@ import binanceApiNode, {
 } from "binance-api-node";
 import Debounce from "debounce";
 import EventEmitter from "events";
-import nanoid from "nanoid";
+import { nanoid } from "nanoid";
 import pMap from "p-map";
 import { ema } from "technicalindicators";
 import TypedEmitter from "typed-emitter";
