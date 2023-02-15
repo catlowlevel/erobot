@@ -5,6 +5,7 @@ import Baileys, {
     fetchLatestBaileysVersion,
     makeInMemoryStore,
     MessageRetryMap,
+    MessageUserReceiptUpdate,
     MiscMessageGenerationOptions,
     ParticipantAction,
     useMultiFileAuthState,
@@ -35,6 +36,7 @@ type Events = {
     new_message: (M: Message) => void;
     participants_update: (event: IEvent) => void;
     new_group_joined: (group: { jid: string; subject: string }) => void;
+    message_receipt: (data: MessageUserReceiptUpdate) => void;
 };
 const msgRetryCounterMap: MessageRetryMap = {};
 interface IEvent {
@@ -229,6 +231,12 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
         for (const method of Object.keys(this.client))
             this[method as keyof Client] = this.client[method as keyof client];
         this.store.bind(this.client.ev);
+
+        this.client.ev.on("message-receipt.update", (muru) => {
+            for (const data of muru) {
+                this.emit("message_receipt", data);
+            }
+        });
 
         this.client.ev.on("messages.upsert", ({ messages, type }) => {
             for (const message of messages) {
