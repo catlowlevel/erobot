@@ -45,7 +45,7 @@ interface IEvent {
 
 interface IConfig {
     me?: { [jid: string]: boolean };
-    allow: { [command: string]: string[] };
+    allow: { [command: string]: string[] | undefined };
 }
 
 type WebMessageInfo = Exclude<Awaited<ReturnType<ReturnType<typeof Baileys>["sendMessage"]>>, undefined>;
@@ -103,7 +103,8 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
     }
 
     log(str: string, color: keyof typeof chalk = "blue") {
-        const c = chalk[color] as ChalkFunction;
+        const hex = color.startsWith("#");
+        const c = hex ? chalk.hex(color) : (chalk[color] as typeof chalk);
         console.log(c(str));
     }
 

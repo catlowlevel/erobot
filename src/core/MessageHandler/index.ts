@@ -71,8 +71,11 @@ export class MessageHandler {
                 this.commands.set(command.name, command);
                 if (command.config.aliases) command.config.aliases.forEach((a) => this.aliases.set(a, command));
 
-                const color = this.client.utils.getRandomColor();
-                console.log(`Command ${chalk.keyword(color)(command.name)} loaded!`);
+                // const color = this.client.utils.getRandomColor();
+                // Generate a random color
+                const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+                console.log(`Command ${chalk.hex(randomColor)(command.name)} loaded!`);
                 res();
             } catch (error) {
                 console.log(`Command ${chalk.red(path)} fail to load. Reason : ${error.message}`);
@@ -120,6 +123,7 @@ export class MessageHandler {
         let allow = false;
         console.log(command.config.allow);
         if (command.config.allow) {
+            //TODO: check this
             const allows =
                 typeof command.config.allow !== "function"
                     ? command.config.allow
@@ -127,23 +131,30 @@ export class MessageHandler {
             const result = allows.some((a) => a.test(M.sender?.jid ?? "") || a.test(M.from));
             allow = result;
         } else {
-            const allows = this.client.config.data.allow[command.name]?.map((r) => new RegExp(r));
-            const cb = (a: RegExp) => {
-                const user = a.test(M.sender?.jid ?? "");
-                const group = a.test(M.from);
-                const result = user || group;
-                return result;
-            };
-            const result = allows?.some(cb);
+            const allowedCommands = this.client.config.data.allow[M.from];
+            // const cb = (a: string) => {
+            //     const user = a.test(M.sender?.jid ?? "");
+            //     const group = a.test(M.from);
+            //     const result = user || group;
+            //     return result;
+            // };
+            const result = allowedCommands?.includes(command.name);
             allow = result ? true : M.message.key.fromMe ? true : false;
         }
         // console.log(allow);
         if (!allow) return;
 
         if (this.client.config.data.me?.[M.from] === true && !M.message.key.fromMe) return;
-        const color = this.client.utils.getRandomColor();
-        const color2 = this.client.utils.getRandomColor();
-        this.client.log(`Executing command ${chalk.keyword(color2)(cmd)} from ${title} by ${M.sender.username}`, color);
+
+        // const color = this.client.utils.getRandomColor();
+        // const color2 = this.client.utils.getRandomColor();
+        // Generate a random color
+        const color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        const color2 = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        this.client.log(
+            `Executing command ${chalk.hex(color2)(cmd)} from ${title} by ${M.sender.username}`,
+            color as any
+        );
 
         const lastTime = Date.now();
         return M.typing().then(async () => {
@@ -154,15 +165,15 @@ export class MessageHandler {
                 await command.execute(M, this.formatArgs(args, cmd));
                 const timeTaken = Date.now() - lastTime;
                 this.client.log(
-                    `Command ${chalk.keyword(color2)(cmd)} executed after ${chalk.keyword(color2)(
+                    `Command ${chalk.hex(color2)(cmd)} executed after ${chalk.hex(color2)(
                         `${(timeTaken / 1000).toFixed(3)}s`
                     )}!`,
-                    color
+                    color as any
                 );
             } catch (err) {
                 const timeTaken = Date.now() - lastTime;
                 this.client.log(
-                    `Command ${chalk.keyword(color2)(cmd)} fail to execute after ${chalk.keyword(color2)(
+                    `Command ${chalk.hex(color2)(cmd)} fail to execute after ${chalk.hex(color2)(
                         `${(timeTaken / 1000).toFixed(3)}s`
                     )}!\nReason : ${err}`,
                     "red"
