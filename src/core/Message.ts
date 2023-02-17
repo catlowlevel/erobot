@@ -337,6 +337,17 @@ export class Message {
 
     public markAsRead = async () => this.client.readMessages([this.message.key]);
 
+    public reactQ = async (
+        emoji: string,
+        key: proto.IMessageKey = this.M.key
+    ): Promise<ReturnType<typeof this.client.sendMessage>> =>
+        await this.client.sendMessageQueue(this.from, {
+            react: {
+                text: emoji,
+                key,
+            },
+        });
+
     public react = async (
         emoji: string,
         key: proto.IMessageKey = this.M.key
