@@ -14,6 +14,21 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length > 0) {
+            if (args.args?.[0].startsWith("react")) {
+                await new Promise<void>((res) => {
+                    let max = 5;
+                    const emojis = ["🗿", "😊", "🙏", "🤔", "🤣"];
+                    const loop = setInterval(async () => {
+                        const emoji = emojis[max];
+                        await M.react(emoji);
+
+                        if (!max--) {
+                            clearInterval(loop);
+                            res();
+                        }
+                    }, 1000);
+                });
+            }
             if (args.args?.[0].startsWith("temp")) {
                 //send a template message!
                 return this.client.sendMessage(M.from, {
