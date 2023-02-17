@@ -31,6 +31,7 @@ import { dataSource } from "./Database/dataSource";
 import { Server } from "./Server";
 export type client = ReturnType<typeof Baileys>;
 
+type EsmType = { default: unknown };
 type Events = {
     new_call: (call: WACallEvent) => void;
     new_message: (M: Message) => void;
@@ -186,7 +187,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             .replace(/\./g, ":");
         this.log(today, "yellow");
         this.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`, "green");
-        this.client = ((Baileys as any).default as typeof Baileys)({
+        this.client = ((Baileys as unknown as EsmType).default as typeof Baileys)({
             version,
             printQRInTerminal: true,
             auth: state,
