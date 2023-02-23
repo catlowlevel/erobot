@@ -5,6 +5,24 @@ import { register } from "timeago.js";
 import id_ID from "timeago.js/lib/lang/id_ID";
 import { Client } from "./core";
 import { MessageHandler } from "./core/MessageHandler";
+
+const log = console.log;
+console.log = (...data: any[]) => {
+    const time = new Date().toLocaleTimeString("en-US", {
+        hour12: false,
+    });
+    log(`${time} => ${data.join(" ")}`);
+};
+
+
+const error = console.log;
+console.error = (...data: any[]) => {
+    const time = new Date().toLocaleTimeString("en-US", {
+        hour12: false,
+    });
+    error(`${time} => ${data.join(" ")}`);
+};
+
 const url = new URL(import.meta.url);
 const __dirname = url.pathname;
 export const ROOT_DIR = path.resolve(__dirname, "..", "..");
