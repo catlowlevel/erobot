@@ -9,13 +9,19 @@ import { BaseCommand, Command, IArgs, Message } from "../core";
 export default class extends BaseCommand {
     queue = Queue({ autostart: true, concurrency: 1 });
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
+        const quoted = M.quoted?.content;
+        console.log(args.context, quoted);
+        args.context = args.context ? args.context : (quoted as string);
         if (!args.context) return M.reply("Prompt required!");
         if (this.queue.length > 0) M.reply(`You are in a queue : ${this.queue.length}`);
 
         const id = this.getFlag(args.flags, "--id");
+        const style = args.flags.some((a) => a.startsWith("--style"));
+        console.log(style);
+
         console.log(id);
 
-        if (!id) {
+        if (!id && style) {
             const sections: proto.Message.ListMessage.ISection[] = [];
             sections.push({
                 title: "Available styles",
@@ -42,7 +48,7 @@ export default class extends BaseCommand {
             this.queue.push(async (cb) => {
                 try {
                     const buffer = await this.imagine(args.context, id);
-                    await M.reply(buffer, "image");
+                    await M.reply(buffer, "image", undefined, undefined, args.context);
                     res();
                 } catch (err) {
                     await M.reply("Error");
