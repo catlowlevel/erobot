@@ -17,7 +17,7 @@ export default class extends BaseCommand {
         const results = await new Snaptik().facebook(url);
         const hd = results?.data?.hd;
         if (!hd) return M.reply("Gagal mengunduh!");
-        M.content = ".dl " + hd + " --no-confirm";
+        M.content = ".dl " + hd + " --no-confirm --non-verbose";
         this.client.emit("new_message", M);
         // return M.reply(JSON.stringify(results, null, 2));
         // const buffer = await downloadFacebook(url);

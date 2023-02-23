@@ -10,6 +10,7 @@ import { downloadFile } from "../lib/downloader";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         const noConfirm = args.flags.filter((f) => f.startsWith("--no-confirm")).length > 0;
+        const nonVerbose = args.flags.filter((f) => f.startsWith("--non-verbose")).length > 0;
         const urls = getUrls(args.context);
         if (!urls) return M.reply("Url required!");
         const url = urls.values().next().value as string;
@@ -32,12 +33,13 @@ export default class extends BaseCommand {
                 return false;
             }
 
-            await M.reply(`Downloading... *${fileName}*\nSize : *${sizeStr}*`);
+            if (!nonVerbose) await M.reply(`Downloading... *${fileName}*\nSize : *${sizeStr}*`);
             return true;
         });
         if (!buffer) return;
-        await M.reply("Download Completed\nUploading...");
-        const type: "text" | "image" | "video" | "audio" | "sticker" | "document" = mimeType.startsWith("video/")
+        if (!nonVerbose) await M.reply("Download Completed\nUploading...");
+        type BufferType = Parameters<typeof M.reply>[1];
+        const type: BufferType = mimeType.startsWith("video/")
             ? "video"
             : mimeType.startsWith("image/")
             ? "image"
