@@ -23,6 +23,6 @@
         "resolveJsonModule": true,
         "incremental": true
     },
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules","./src/tests/*"],
     "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }

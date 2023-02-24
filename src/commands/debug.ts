@@ -6,6 +6,7 @@ import { Message } from "../core";
 import { BaseCommand } from "../core/BaseCommand";
 import { Command } from "../core/Command";
 import { IArgs } from "../core/MessageHandler";
+import { searchAnime } from "../lib/mal";
 
 @Command("debug", {
     description: "",
@@ -14,6 +15,10 @@ import { IArgs } from "../core/MessageHandler";
 export default class extends BaseCommand {
     public override execute = async (M: Message, args: IArgs): Promise<unknown> => {
         if (args.args.length > 0) {
+            if (args.args?.[0].startsWith("anime")) {
+                const result = await searchAnime(args.args?.[1] ?? "naruto");
+                return M.reply(JSON.stringify(result.data[0]));
+            }
             if (args.args?.[0].startsWith("react")) {
                 await new Promise<void>((res) => {
                     let max = 5;
