@@ -8,19 +8,9 @@ import {
     proto,
 } from "@adiwajshing/baileys";
 // import getUrls from 'get-urls'
-import { Client } from "./Client";
-import { ICommand } from "./MessageHandler";
-
-interface CollectOption {
-    /** Timeout in ms before stop collect */
-    timeout: number;
-    /** Maximum number of message to collect */
-    max?: number;
-    /** Only collect message from the sender */
-    senderOnly?: boolean;
-}
-
-type NewMessageType = (M: Message, stopCollect: (dontCollect?: boolean) => void) => void | Promise<void>;
+import { Client } from "../Client";
+import { ICommand } from "../MessageHandler";
+import { Collector } from "./Collector";
 
 export class Message {
     static PREFIX = ".";
@@ -138,83 +128,11 @@ export class Message {
         // return this.downloadMediaMessage(this.quoted.message);
     };
 
-    /**
-     *
-     * @param options Options
-     * @param newMessageCB Process new messages, return undefined to NOT collect the message
-     * @returns Collected messages
-     */
-    public collectMessages = (
-        options: CollectOption,
-        newMessageCB?: NewMessageType,
-        timeoutCb?: (messages: Message[]) => void
-    ) => {
-        if (options.timeout < 1000) throw new Error("timeout must be greater than 1000ms");
-        console.log("Collecting messages");
-        return new Promise<{ messages: Message[]; isTimeout: boolean }>((res, rej) => {
-            const messages: Message[] = [];
+    public collectMessages = Collector(this);
 
-            const timeout = setTimeout(() => {
-                done({ isTimeout: true });
-            }, options.timeout);
-
-            const done = (opt: { isTimeout: boolean }) => {
-                try {
-                    clearTimeout(timeout);
-                    this.client.off("new_message", messageHandler);
-                    console.log(`Collect done : ${messages.length} collected`);
-                    res({ messages, ...opt });
-                } catch (error) {
-                    rej(error);
-                }
-            };
-
-            const messageHandler = async (M: Message) => {
-                if (options.senderOnly) {
-                    if (M.sender.jid !== this.sender.jid) return null;
-                }
-                M.markAsRead();
-                const addNewMessage = () => {
-                    messages.push(M);
-                    console.log(`${messages.length} message${messages.length > 1 ? "s" : ""} collected`);
-                };
-                if (newMessageCB) {
-                    const finishing = (dontCollect?: boolean) => {
-                        if (!dontCollect) addNewMessage();
-                        done({ isTimeout: false });
-                    };
-                    const result = await newMessageCB(M, finishing);
-                    if (result !== undefined) {
-                        addNewMessage();
-                    }
-                } else {
-                    addNewMessage();
-                }
-                if (options.max) {
-                    if (messages.length >= options.max) {
-                        done({ isTimeout: false });
-                    }
-                }
-            };
-            this.client.on("new_message", messageHandler);
-
-            //const interval = setInterval(() => {
-            //try {
-            //if (options.max) {
-            //if (messages.length >= options.max) {
-            //clearInterval(interval);
-            //clearTimeout(timeout);
-            //done();
-            //}
-            //} else {
-            //clearInterval(interval);
-            //}
-            //} catch (error) {
-            //rej(error);
-            //}
-            //}, 100);
-        });
-    };
+    public getClient(): Client {
+        return this.client;
+    }
 
     public typing = async (): Promise<void> => {
         await this.client.presenceSubscribe(this.from);
