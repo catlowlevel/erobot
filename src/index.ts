@@ -7,7 +7,7 @@ import { Client } from "./core";
 import { MessageHandler } from "./core/MessageHandler";
 
 const log = console.log;
-console.log = (...data: any[]) => {
+console.log = (...data: unknown[]) => {
     const time = new Date().toLocaleTimeString("en-US", {
         hour12: false,
     });
@@ -16,7 +16,7 @@ console.log = (...data: any[]) => {
 
 
 const error = console.log;
-console.error = (...data: any[]) => {
+console.error = (...data: unknown[]) => {
     const time = new Date().toLocaleTimeString("en-US", {
         hour12: false,
     });
