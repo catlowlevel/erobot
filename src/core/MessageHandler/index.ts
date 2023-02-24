@@ -37,6 +37,8 @@ export interface ICommand {
     handleError(M: Message, err: Error): Promise<void | never | unknown>;
 }
 
+type MessageKey = Message["message"]["key"];
+
 export class MessageHandler {
     commands = new Map<string, ICommand>();
     aliases = new Map<string, ICommand>();
@@ -45,6 +47,8 @@ export class MessageHandler {
     stickerForwarder: StickerForwarder;
 
     private path = [INDEX_DIR, "commands"];
+
+    public msgIds: { [id: string]: { key: MessageKey; count: number } } = {};
 
     constructor(private client: Client) {
         client.waitConnected().then(() => {
@@ -105,6 +109,8 @@ export class MessageHandler {
     };
 
     public handleMessage = (M: Message) => {
+        if (M.message.key && M.message.key.id && M.message.key.fromMe)
+            this.msgIds[M.message.key.id] = { key: M.message.key, count: 0 };
         const prefix = Message.PREFIX;
         const isCommand = M.isCommand; // calling this here is necessary
         const args = M.content.split(" ");
