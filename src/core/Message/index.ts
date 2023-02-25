@@ -179,15 +179,17 @@ export class Message {
             sections?: proto.Message.ListMessage.ISection[];
             buttonText?: string;
             title?: string;
-        } = {}
+        } = {},
+        queue = false
     ): Promise<ReturnType<typeof this.client.sendMessage>> => {
         if (type === "text" && Buffer.isBuffer(content)) throw new Error("Cannot send Buffer as a text message");
         const sendMessage = queue ? this.client.sendMessageQueue : this.client.sendMessage;
         const msgType = Object.keys(this.message.message ?? {})[0] as keyof NonNullable<typeof this.message.message>;
 
-        return this.client.sendMessage(
         const msg = this.message.message?.[msgType] as proto.Message.ExtendedTextMessage;
         const eph = msg?.contextInfo?.expiration as number;
+
+        return sendMessage(
             this.from,
             {
                 [type]: content,
