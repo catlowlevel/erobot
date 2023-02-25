@@ -203,7 +203,10 @@ export class MessageHandler {
         args.splice(0, 1);
         return {
             args,
-            context: args.join(" ").trim(),
+            context: args
+                .filter((arg) => !arg.startsWith("--"))
+                .join(" ")
+                .trim(),
             flags: args.filter((arg) => arg.startsWith("--")),
             command,
         };
