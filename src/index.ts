@@ -5,27 +5,6 @@ import { register } from "timeago.js";
 import id_ID from "timeago.js/lib/lang/id_ID";
 import { Client } from "./core";
 import { MessageHandler } from "./core/MessageHandler";
-<<<<<<< HEAD
-
-const log = console.log;
-console.log = (...data: unknown[]) => {
-    const time = new Date().toLocaleTimeString("en-US", {
-        hour12: false,
-    });
-    log(`${time} => ${data.join(" ")}`);
-};
-
-
-const error = console.log;
-console.error = (...data: unknown[]) => {
-    const time = new Date().toLocaleTimeString("en-US", {
-        hour12: false,
-    });
-    error(`${time} => ${data.join(" ")}`);
-};
-
-=======
->>>>>>> parent of 33c3075... override console log & error to output timestamp
 const url = new URL(import.meta.url);
 const __dirname = url.pathname;
 export const ROOT_DIR = path.resolve(__dirname, "..", "..");
