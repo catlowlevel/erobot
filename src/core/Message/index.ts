@@ -134,6 +134,9 @@ export class Message {
         return this.client;
     }
 
+    //Get message from store
+    public getMessage = (msgId: string) => this.client.getMessageFromStore(this.from, msgId);
+
     public typing = async (): Promise<void> => {
         await this.client.presenceSubscribe(this.from);
         return this.client.sendPresenceUpdate("composing", this.from);
