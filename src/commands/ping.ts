@@ -117,7 +117,7 @@ export default class extends BaseCommand {
                 );
             }
             if (args.args[0].startsWith("q")) {
-                const count = Number(args.args[1]) ?? 2;
+                const count = Number(args.args[1]) || 2;
                 const proms = [];
                 for (let i = 0; i < count; i++) {
                     proms.push(
