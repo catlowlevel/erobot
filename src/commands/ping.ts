@@ -121,14 +121,15 @@ export default class extends BaseCommand {
                 const proms = [];
                 for (let i = 0; i < count; i++) {
                     proms.push(
-                        this.client.sendMessageQueue(
-                            M.from,
-                            { text: "Pong! " + (i + 1) },
-                            { quoted: M.message },
-                            (msg) => {
-                                console.log(i, msg?.message?.extendedTextMessage?.text);
-                            }
-                        )
+                        // this.client.sendMessageQueue(
+                        //     M.from,
+                        //     { text: "Pong! " + (i + 1) },
+                        //     { quoted: M.message },
+                        //     (msg) => {
+                        //         console.log(i, msg?.message?.extendedTextMessage?.text);
+                        //     }
+                        // )
+                        M.replyQueue(`Pong! ${i + 1}`)
                     );
                 }
                 return Promise.all(proms);
