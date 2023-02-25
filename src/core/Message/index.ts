@@ -231,33 +231,20 @@ export class Message {
             buttonText?: string;
             title?: string;
         } = {}
-    ): Promise<ReturnType<typeof this.client.sendMessage>> => {
-        if (type === "text" && Buffer.isBuffer(content)) throw new Error("Cannot send Buffer as a text message");
-        return this.client.sendMessageQueue(
-            this.from,
-            {
-                [type]: content,
-                gifPlayback: gif,
-                caption,
-                mimetype,
-                mentions,
-                fileName,
-                jpegThumbnail: thumbnail ? thumbnail.toString("base64") : undefined,
-                contextInfo: externalAdReply
-                    ? {
-                          externalAdReply,
-                      }
-                    : undefined,
-                footer: options.sections?.length ? `EroBot` : undefined,
-                sections: options.sections,
-                title: options.title,
-                buttonText: options.buttonText,
-            } as unknown as AnyMessageContent,
-            {
-                quoted: this.M,
-            }
+    ): Promise<ReturnType<typeof this.client.sendMessage>> =>
+        this.reply(
+            content,
+            type,
+            gif,
+            mimetype,
+            caption,
+            mentions,
+            externalAdReply,
+            thumbnail,
+            fileName,
+            options,
+            true
         );
-    };
 
     public markAsRead = async () => this.client.readMessages([this.message.key]);
 
