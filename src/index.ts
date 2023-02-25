@@ -5,6 +5,7 @@ import { register } from "timeago.js";
 import id_ID from "timeago.js/lib/lang/id_ID";
 import { Client } from "./core";
 import { MessageHandler } from "./core/MessageHandler";
+<<<<<<< HEAD
 
 const log = console.log;
 console.log = (...data: unknown[]) => {
@@ -23,6 +24,8 @@ console.error = (...data: unknown[]) => {
     error(`${time} => ${data.join(" ")}`);
 };
 
+=======
+>>>>>>> parent of 33c3075... override console log & error to output timestamp
 const url = new URL(import.meta.url);
 const __dirname = url.pathname;
 export const ROOT_DIR = path.resolve(__dirname, "..", "..");
