@@ -182,11 +182,12 @@ export class Message {
         } = {}
     ): Promise<ReturnType<typeof this.client.sendMessage>> => {
         if (type === "text" && Buffer.isBuffer(content)) throw new Error("Cannot send Buffer as a text message");
-        const msgType = Object.keys(this.message.message ?? {})[0] as keyof typeof this.message.message;
-        const msg = this.message.message?.[msgType];
-        const eph = (msg as any)?.contextInfo?.expiration;
+        const sendMessage = queue ? this.client.sendMessageQueue : this.client.sendMessage;
+        const msgType = Object.keys(this.message.message ?? {})[0] as keyof NonNullable<typeof this.message.message>;
 
         return this.client.sendMessage(
+        const msg = this.message.message?.[msgType] as proto.Message.ExtendedTextMessage;
+        const eph = msg?.contextInfo?.expiration as number;
             this.from,
             {
                 [type]: content,
