@@ -59,10 +59,7 @@ export default class extends BaseCommand {
         });
     };
     imagine = async (prompt: string, styleId?: string) => {
-        const data = new URLSearchParams({ model_version: "1" });
-        data.append("prompt", prompt);
-        data.append("width", "512");
-        data.append("height", "512");
+        const data = new URLSearchParams({ model_version: "1", prompt, width: "512", height: "512" });
         if (styleId) data.append("style_id", styleId);
 
         return this.client.utils.getBuffer("https://inferenceengine.vyro.ai/sd", {
