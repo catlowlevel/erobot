@@ -137,6 +137,13 @@ export class Message {
     //Get message from store
     public getMessage = (msgId: string) => this.client.getMessageFromStore(this.from, msgId);
 
+    public createSections<T>(data: T[], title: string, generator: (data: T) => proto.Message.ListMessage.IRow) {
+        const sections: proto.Message.ListMessage.ISection[] = [];
+        //TODO: Handle multiple sections
+        sections.push({ title, rows: data.map(generator) });
+        return sections;
+    }
+
     public typing = async (): Promise<void> => {
         await this.client.presenceSubscribe(this.from);
         return this.client.sendPresenceUpdate("composing", this.from);
