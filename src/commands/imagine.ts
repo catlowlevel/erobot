@@ -15,21 +15,28 @@ export default class extends BaseCommand {
         if (!args.context) return M.reply("Prompt required!");
         if (this.queue.length > 0) M.reply(`You are in a queue : ${this.queue.length}`);
 
-        const id = this.getFlag(args.flags, "--id");
+        let id = this.getFlag(args.flags, "--id");
         const style = args.flags.some((a) => a.startsWith("--style"));
         console.log(style);
 
         console.log(id);
 
         if (!id && style) {
-            const sections: proto.Message.ListMessage.ISection[] = [];
-            sections.push({
-                title: "Available styles",
-                rows: this.styles.map((style) => ({
-                    title: style.style_name,
-                    rowId: `.imagine ${args.context} --id=${style.style_id}`,
-                })),
+            const sections = M.createSections(this.styles, "Available styles", (data) => {
+                return {
+                    title: data.style_name,
+                    rowId: `.imagine ${args.context} --id=${data.style_id}`,
+                };
             });
+
+            // const sections: proto.Message.ListMessage.ISection[] = [];
+            // sections.push({
+            //     title: "Available styles",
+            //     rows: this.styles.map((style) => ({
+            //         title: style.style_name,
+            //         rowId: `.imagine ${args.context} --id=${style.style_id}`,
+            //     })),
+            // });
             return M.reply(
                 "Style",
                 "text",
