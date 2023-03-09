@@ -1,4 +1,3 @@
-import { proto } from "@adiwajshing/baileys";
 import Queue from "queue";
 import { BaseCommand, Command, IArgs, Message } from "../core";
 
@@ -50,7 +49,7 @@ export default class extends BaseCommand {
                 { buttonText: "Select Style", sections }
             );
         }
-        //TODO: validate id
+        if (id) id = this.styles.find((s) => s.style_id === id)?.style_id;
         return new Promise<void>((res) => {
             this.queue.push(async (cb) => {
                 try {
