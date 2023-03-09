@@ -194,7 +194,7 @@ export class Client extends (EventEmitter as new () => TypedEmitter<Events>) imp
             logger: P({ level: "fatal" }),
             msgRetryCounterMap,
             browser: ["Erobot", "-_-", "0.3"],
-            keepAliveIntervalMs: 1000 * 30,
+            keepAliveIntervalMs: 1000 * 10,
             // implement to handle retries
             getMessage: async (key) => {
                 this.log("Handling retries!", "red");
